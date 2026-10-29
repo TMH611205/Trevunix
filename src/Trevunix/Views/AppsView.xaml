@@ -17,6 +17,290 @@
     </StackPanel>
 
     <TabControl Grid.Row="1" Margin="0,16,0,0">
+      <!-- Desktop programs, with deep uninstall -->
+      <TabItem DataContext="{Binding Programs}" Header="{l:T AppsPage.Tab.Programs}">
+        <Grid Margin="0,12,0,0">
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+          </Grid.RowDefinitions>
+
+          <StackPanel Grid.Row="0">
+            <TextBlock
+              Margin="0,0,0,10"
+              Style="{StaticResource Muted}"
+              Text="{l:T Programs.Hint}"
+              TextWrapping="Wrap"
+            />
+            <DockPanel>
+              <ui:Button
+                Margin="12,0,0,0"
+                Command="{Binding LoadCommand}"
+                Content="{l:T Programs.Refresh}"
+                DockPanel.Dock="Right"
+                Icon="{ui:SymbolIcon ArrowClockwise24}"
+              />
+              <ui:Button
+                Margin="12,0,0,0"
+                Command="{Binding ForceUninstallCommand}"
+                Content="{l:T Programs.Force.Button}"
+                DockPanel.Dock="Right"
+                Icon="{ui:SymbolIcon FolderProhibited24}"
+              />
+              <CheckBox
+                Margin="12,0,0,0"
+                Content="{l:T Programs.ShowHidden}"
+                DockPanel.Dock="Right"
+                IsChecked="{Binding ShowHidden}"
+              />
+              <TextBlock
+                Margin="12,0,0,0"
+                VerticalAlignment="Center"
+                DockPanel.Dock="Right"
+                Style="{StaticResource Muted}"
+                Text="{Binding Summary}"
+              />
+              <ui:TextBox
+                Icon="{ui:SymbolIcon Search24}"
+                PlaceholderText="{l:T Programs.Search}"
+                Text="{Binding Search, UpdateSourceTrigger=PropertyChanged}"
+              />
+            </DockPanel>
+
+            <StackPanel
+              Margin="0,10,0,0"
+              Orientation="Horizontal"
+              Visibility="{Binding Status, Converter={StaticResource VisibleWhen}}"
+            >
+              <ui:ProgressRing Width="18" Height="18" IsIndeterminate="True" />
+              <TextBlock
+                Margin="10,0,0,0"
+                VerticalAlignment="Center"
+                Style="{StaticResource Muted}"
+                Text="{Binding Status}"
+              />
+            </StackPanel>
+            <ui:InfoBar
+              Margin="0,10,0,0"
+              IsClosable="False"
+              IsOpen="True"
+              Message="{Binding Result}"
+              Severity="Success"
+              Visibility="{Binding Result, Converter={StaticResource VisibleWhen}}"
+            />
+
+            <!-- What the uninstalled program left behind -->
+            <Border
+              Margin="0,10,0,0"
+              Style="{StaticResource Panel}"
+              Visibility="{Binding HasCurrent, Converter={StaticResource VisibleWhen}}"
+            >
+              <StackPanel>
+                <TextBlock
+                  FontSize="16"
+                  FontWeight="SemiBold"
+                  Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                  Text="{Binding Current.Name}"
+                />
+                <ui:InfoBar
+                  Margin="0,8,0,0"
+                  IsClosable="False"
+                  IsOpen="True"
+                  Message="{l:T Programs.StillInstalled}"
+                  Severity="Warning"
+                  Visibility="{Binding StillInstalled, Converter={StaticResource VisibleWhen}}"
+                />
+                <TextBlock
+                  Margin="0,8,0,0"
+                  Style="{StaticResource Muted}"
+                  Text="{l:T Programs.LeftoversHint}"
+                  TextWrapping="Wrap"
+                />
+                <ScrollViewer MaxHeight="260" Margin="0,8,0,0" VerticalScrollBarVisibility="Auto">
+                  <ItemsControl ItemsSource="{Binding LeftoverItems}">
+                    <ItemsControl.ItemTemplate>
+                      <DataTemplate>
+                        <CheckBox Margin="0,2" IsChecked="{Binding IsSelected}">
+                          <StackPanel>
+                            <TextBlock
+                              Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                              Text="{Binding Path}"
+                              TextWrapping="Wrap"
+                            />
+                            <TextBlock
+                              FontSize="11"
+                              Style="{StaticResource Muted}"
+                              Text="{Binding Details}"
+                            />
+                          </StackPanel>
+                        </CheckBox>
+                      </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                  </ItemsControl>
+                </ScrollViewer>
+                <WrapPanel Margin="0,10,0,0">
+                  <ui:Button
+                    Margin="0,0,8,0"
+                    Appearance="Primary"
+                    Command="{Binding RemoveLeftoversCommand}"
+                    Content="{l:T Programs.RemoveLeftovers}"
+                    Icon="{ui:SymbolIcon Delete24}"
+                  />
+                  <ui:Button
+                    Margin="0,0,8,0"
+                    Command="{Binding ScanLeftoversCommand}"
+                    Content="{l:T Programs.ScanAgain}"
+                    Icon="{ui:SymbolIcon Search24}"
+                  />
+                  <ui:Button
+                    Margin="0,0,8,0"
+                    Command="{Binding SelectAllLeftoversCommand}"
+                    Content="{l:T Programs.SelectAll}"
+                  />
+                  <ui:Button Command="{Binding CloseCommand}" Content="{l:T Programs.Done}" />
+                </WrapPanel>
+              </StackPanel>
+            </Border>
+          </StackPanel>
+
+          <ScrollViewer Grid.Row="1" Margin="0,10,0,0" VerticalScrollBarVisibility="Auto">
+            <ItemsControl ItemsSource="{Binding View}">
+              <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                  <Border Margin="0,0,0,6" Padding="14,10" Style="{StaticResource Panel}">
+                    <DockPanel>
+                      <Grid Width="32" Height="32" VerticalAlignment="Center" DockPanel.Dock="Left">
+                        <ui:SymbolIcon
+                          FontSize="24"
+                          Symbol="AppGeneric24"
+                          Visibility="{Binding Icon, Converter={StaticResource VisibleWhen}, ConverterParameter=invert}"
+                        />
+                        <Image Source="{Binding Icon}" />
+                      </Grid>
+                      <ui:Button
+                        Margin="12,0,0,0"
+                        VerticalAlignment="Center"
+                        Command="{Binding DataContext.UninstallCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                        CommandParameter="{Binding}"
+                        Content="{l:T Programs.Uninstall}"
+                        DockPanel.Dock="Right"
+                        Icon="{ui:SymbolIcon Delete24}"
+                      />
+                      <StackPanel Margin="12,0,0,0" VerticalAlignment="Center">
+                        <TextBlock
+                          FontWeight="SemiBold"
+                          Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                          Text="{Binding Name}"
+                          TextTrimming="CharacterEllipsis"
+                        />
+                        <TextBlock Style="{StaticResource Muted}" Text="{Binding Details}" />
+                      </StackPanel>
+                    </DockPanel>
+                  </Border>
+                </DataTemplate>
+              </ItemsControl.ItemTemplate>
+            </ItemsControl>
+          </ScrollViewer>
+        </Grid>
+      </TabItem>
+
+      <!-- Browser extensions -->
+      <TabItem DataContext="{Binding Extensions}" Header="{l:T AppsPage.Tab.Extensions}">
+        <Grid Margin="0,12,0,0">
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+          </Grid.RowDefinitions>
+
+          <StackPanel Grid.Row="0">
+            <TextBlock
+              Margin="0,0,0,10"
+              Style="{StaticResource Muted}"
+              Text="{l:T Extensions.Hint}"
+              TextWrapping="Wrap"
+            />
+            <StackPanel Orientation="Horizontal">
+              <ui:Button
+                Appearance="Primary"
+                Command="{Binding LoadCommand}"
+                Content="{l:T Extensions.Load}"
+                Icon="{ui:SymbolIcon PuzzlePiece24}"
+              />
+              <ui:ProgressRing
+                Width="18"
+                Height="18"
+                Margin="12,0,0,0"
+                IsIndeterminate="True"
+                Visibility="{Binding IsBusy, Converter={StaticResource VisibleWhen}}"
+              />
+              <TextBlock
+                Margin="10,0,0,0"
+                VerticalAlignment="Center"
+                Style="{StaticResource Muted}"
+                Text="{Binding Status}"
+              />
+            </StackPanel>
+            <ui:InfoBar
+              Margin="0,10,0,0"
+              IsClosable="False"
+              IsOpen="True"
+              Message="{Binding Result}"
+              Severity="Informational"
+              Visibility="{Binding Result, Converter={StaticResource VisibleWhen}}"
+            />
+          </StackPanel>
+
+          <ScrollViewer Grid.Row="1" Margin="0,10,0,0" VerticalScrollBarVisibility="Auto">
+            <ItemsControl ItemsSource="{Binding View}">
+              <ItemsControl.GroupStyle>
+                <GroupStyle>
+                  <GroupStyle.HeaderTemplate>
+                    <DataTemplate>
+                      <TextBlock
+                        Margin="0,10,0,6"
+                        FontSize="15"
+                        FontWeight="SemiBold"
+                        Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                        Text="{Binding Name}"
+                      />
+                    </DataTemplate>
+                  </GroupStyle.HeaderTemplate>
+                </GroupStyle>
+              </ItemsControl.GroupStyle>
+              <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                  <Border Margin="0,0,0,6" Padding="14,10" Style="{StaticResource Panel}">
+                    <CheckBox VerticalAlignment="Center" IsChecked="{Binding IsSelected}">
+                      <StackPanel Margin="4,0,0,0">
+                        <TextBlock
+                          FontWeight="SemiBold"
+                          Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                          Text="{Binding Name}"
+                          TextTrimming="CharacterEllipsis"
+                        />
+                        <TextBlock Style="{StaticResource Muted}" Text="{Binding Details}" />
+                      </StackPanel>
+                    </CheckBox>
+                  </Border>
+                </DataTemplate>
+              </ItemsControl.ItemTemplate>
+            </ItemsControl>
+          </ScrollViewer>
+
+          <ui:Button
+            Grid.Row="2"
+            Margin="0,10,0,0"
+            HorizontalAlignment="Left"
+            Appearance="Primary"
+            Command="{Binding RemoveSelectedCommand}"
+            Content="{Binding RemoveText}"
+            Icon="{ui:SymbolIcon Delete24}"
+            Visibility="{Binding Loaded, Converter={StaticResource VisibleWhen}}"
+          />
+        </Grid>
+      </TabItem>
+
       <!-- Startup -->
       <TabItem Header="{l:T AppsPage.Tab.Startup}">
         <Grid Margin="0,12,0,0">

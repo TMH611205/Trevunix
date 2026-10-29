@@ -60,12 +60,18 @@ public sealed partial class AppsViewModel : ObservableObject
 {
     private readonly StartupManager _startup = new();
 
-    public AppsViewModel()
+    public AppsViewModel(RestorePointGuard restorePoints)
     {
+        Programs = new ProgramsViewModel(restorePoints);
         StoreView = CollectionViewSource.GetDefaultView(StoreItems);
         StoreView.Filter = FilterApp;
         LoadStartup();
+        Programs.OnShown();
     }
+
+    public ProgramsViewModel Programs { get; }
+
+    public BrowserExtensionsViewModel Extensions { get; } = new();
 
     public ObservableCollection<StartupItem> StartupItems { get; } = [];
     public ObservableCollection<StoreAppItem> StoreItems { get; } = [];

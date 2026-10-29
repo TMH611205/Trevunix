@@ -50,7 +50,7 @@ public sealed partial class MainViewModel : ObservableObject
             ),
             new NavItem("Nav.Cleanup", SymbolRegular.Broom24, () => new CleanupViewModel()),
             new NavItem("Nav.DiskUsage", SymbolRegular.DataPie24, () => DiskUsage),
-            new NavItem("Nav.Apps", SymbolRegular.Apps24, () => new AppsViewModel()),
+            new NavItem("Nav.Apps", SymbolRegular.Apps24, () => new AppsViewModel(RestorePoints)),
             new NavItem("Nav.Tools", SymbolRegular.Toolbox24, () => new SystemToolsViewModel()),
         ];
 

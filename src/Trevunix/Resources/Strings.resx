@@ -1618,4 +1618,157 @@ CPU {0}% · RAM {1}%</value>
   <data name="Battery.OnBattery" xml:space="preserve">
     <value>on battery</value>
   </data>
+  <data name="AppsPage.Tab.Programs" xml:space="preserve">
+    <value>Programs</value>
+  </data>
+  <data name="Programs.Hint" xml:space="preserve">
+    <value>Uninstall a program completely: its own uninstaller runs first, then Trevunix finds the folders and registry keys it left behind. Folders go to the Recycle Bin and registry keys are backed up, so nothing is lost for good.</value>
+  </data>
+  <data name="Programs.Refresh" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="Programs.Search" xml:space="preserve">
+    <value>Search programs</value>
+  </data>
+  <data name="Programs.Summary" xml:space="preserve">
+    <value>{0} programs, {1} hidden</value>
+  </data>
+  <data name="Programs.Uninstall" xml:space="preserve">
+    <value>Uninstall</value>
+  </data>
+  <data name="Programs.Confirm.Title" xml:space="preserve">
+    <value>Uninstall this program?</value>
+  </data>
+  <data name="Programs.Confirm.Message" xml:space="preserve">
+    <value>Trevunix will start the uninstaller of {0}. Follow its steps; when it finishes, Trevunix looks for what it left behind.</value>
+  </data>
+  <data name="Programs.Running" xml:space="preserve">
+    <value>Waiting for the uninstaller of {0}...</value>
+  </data>
+  <data name="Programs.NoUninstaller" xml:space="preserve">
+    <value>This program's uninstaller is missing, so Trevunix only removes what is left of it.</value>
+  </data>
+  <data name="Programs.Scanning" xml:space="preserve">
+    <value>Looking for leftovers...</value>
+  </data>
+  <data name="Programs.StillInstalled" xml:space="preserve">
+    <value>The program still looks installed. If its uninstaller is still open, finish it and press Scan again.</value>
+  </data>
+  <data name="Programs.LeftoversHint" xml:space="preserve">
+    <value>Found leftovers. Items marked "matched by name" were found by name only; check them before removing.</value>
+  </data>
+  <data name="Programs.Leftover.Folder" xml:space="preserve">
+    <value>Folder</value>
+  </data>
+  <data name="Programs.Leftover.ByName" xml:space="preserve">
+    <value>matched by name</value>
+  </data>
+  <data name="Programs.RemoveLeftovers" xml:space="preserve">
+    <value>Remove selected</value>
+  </data>
+  <data name="Programs.ScanAgain" xml:space="preserve">
+    <value>Scan again</value>
+  </data>
+  <data name="Programs.SelectAll" xml:space="preserve">
+    <value>Select all / none</value>
+  </data>
+  <data name="Programs.Done" xml:space="preserve">
+    <value>Done</value>
+  </data>
+  <data name="Programs.Clean" xml:space="preserve">
+    <value>{0} was uninstalled and left nothing behind.</value>
+  </data>
+  <data name="Programs.Removing" xml:space="preserve">
+    <value>Removing leftovers...</value>
+  </data>
+  <data name="Programs.Removed" xml:space="preserve">
+    <value>Removed {0} leftovers.</value>
+  </data>
+  <data name="Programs.RemovedSome" xml:space="preserve">
+    <value>Removed {0} leftovers; {1} could not be removed (in use or protected).</value>
+  </data>
+  <data name="Programs.Backup" xml:space="preserve">
+    <value>Registry backup: {0}</value>
+  </data>
+  <data name="Programs.ShowHidden" xml:space="preserve">
+    <value>Show hidden programs</value>
+  </data>
+  <data name="Programs.Hidden" xml:space="preserve">
+    <value>Hidden</value>
+  </data>
+  <data name="Programs.Confirm.Hidden" xml:space="preserve">
+    <value>Windows hides this entry. It may be part of another program or a system component, or its uninstaller may be gone. Removing it can break the program it belongs to.</value>
+  </data>
+  <data name="Programs.Leftover.Shortcut" xml:space="preserve">
+    <value>Shortcut</value>
+  </data>
+  <data name="Programs.Leftover.Service" xml:space="preserve">
+    <value>Service</value>
+  </data>
+  <data name="Programs.Leftover.ScheduledTask" xml:space="preserve">
+    <value>Scheduled task</value>
+  </data>
+  <data name="Programs.Leftover.StartupEntry" xml:space="preserve">
+    <value>Starts with Windows</value>
+  </data>
+  <data name="Programs.Leftover.RegistryKey" xml:space="preserve">
+    <value>Registry key</value>
+  </data>
+  <data name="Programs.Force.Button" xml:space="preserve">
+    <value>Forced uninstall...</value>
+  </data>
+  <data name="Programs.Force.Pick" xml:space="preserve">
+    <value>Choose the program's folder</value>
+  </data>
+  <data name="Programs.Force.Title" xml:space="preserve">
+    <value>Forced uninstall?</value>
+  </data>
+  <data name="Programs.Force.Message" xml:space="preserve">
+    <value>Trevunix will look for everything tied to {0}: the folder itself, data folders, shortcuts, services, scheduled tasks, startup entries and registry keys. Anything still running from that folder is closed when you remove it.</value>
+  </data>
+  <data name="Programs.Force.Primary" xml:space="preserve">
+    <value>Find leftovers</value>
+  </data>
+  <data name="Programs.Force.Nothing" xml:space="preserve">
+    <value>Nothing was found. Trevunix does not remove system folders, shared folders such as Program Files, or folders that hold other installed programs.</value>
+  </data>
+  <data name="AppsPage.Tab.Extensions" xml:space="preserve">
+    <value>Browser extensions</value>
+  </data>
+  <data name="Extensions.Hint" xml:space="preserve">
+    <value>Extensions you installed in Chrome, Edge, Brave, Vivaldi, Cốc Cốc, Opera and Firefox. Extensions that come with the browser are not listed. Removed extensions go to the Recycle Bin and the profile settings are backed up. If browser sync is on, the browser may add an extension back; remove it in the browser then.</value>
+  </data>
+  <data name="Extensions.Load" xml:space="preserve">
+    <value>Find extensions</value>
+  </data>
+  <data name="Extensions.Loading" xml:space="preserve">
+    <value>Reading browser profiles...</value>
+  </data>
+  <data name="Extensions.None" xml:space="preserve">
+    <value>No extensions installed by you were found.</value>
+  </data>
+  <data name="Extensions.Remove" xml:space="preserve">
+    <value>Remove selected ({0})</value>
+  </data>
+  <data name="Extensions.Removing" xml:space="preserve">
+    <value>Removing extensions...</value>
+  </data>
+  <data name="Extensions.Confirm.Title" xml:space="preserve">
+    <value>Remove these extensions?</value>
+  </data>
+  <data name="Extensions.Confirm.Message" xml:space="preserve">
+    <value>{0} extensions will be removed. Their data in the browser goes with them.</value>
+  </data>
+  <data name="Extensions.Confirm.Close" xml:space="preserve">
+    <value>These browsers are open and will be closed first: {0}. Pages you have open may need to be reopened.</value>
+  </data>
+  <data name="Extensions.Confirm.Primary" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="Extensions.Done" xml:space="preserve">
+    <value>Removed {0} extensions.</value>
+  </data>
+  <data name="Extensions.DoneSome" xml:space="preserve">
+    <value>Removed {0} extensions; {1} could not be removed. Close the browser and try again.</value>
+  </data>
 </root>

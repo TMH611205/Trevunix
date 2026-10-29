@@ -1618,4 +1618,157 @@ CPU {0}% · RAM {1}%</value>
   <data name="Battery.OnBattery" xml:space="preserve">
     <value>đang dùng pin</value>
   </data>
+  <data name="AppsPage.Tab.Programs" xml:space="preserve">
+    <value>Chương trình</value>
+  </data>
+  <data name="Programs.Hint" xml:space="preserve">
+    <value>Gỡ sạch một chương trình: chạy trình gỡ cài đặt của chính nó trước, sau đó Trevunix tìm các thư mục và khoá registry còn sót lại. Thư mục được chuyển vào Thùng rác và registry được sao lưu, nên không mất gì vĩnh viễn.</value>
+  </data>
+  <data name="Programs.Refresh" xml:space="preserve">
+    <value>Làm mới</value>
+  </data>
+  <data name="Programs.Search" xml:space="preserve">
+    <value>Tìm chương trình</value>
+  </data>
+  <data name="Programs.Summary" xml:space="preserve">
+    <value>{0} chương trình, {1} ẩn</value>
+  </data>
+  <data name="Programs.Uninstall" xml:space="preserve">
+    <value>Gỡ cài đặt</value>
+  </data>
+  <data name="Programs.Confirm.Title" xml:space="preserve">
+    <value>Gỡ chương trình này?</value>
+  </data>
+  <data name="Programs.Confirm.Message" xml:space="preserve">
+    <value>Trevunix sẽ mở trình gỡ cài đặt của {0}. Hãy làm theo các bước của nó; khi gỡ xong, Trevunix sẽ tìm những gì còn sót lại.</value>
+  </data>
+  <data name="Programs.Running" xml:space="preserve">
+    <value>Đang chờ trình gỡ cài đặt của {0}...</value>
+  </data>
+  <data name="Programs.NoUninstaller" xml:space="preserve">
+    <value>Không tìm thấy trình gỡ cài đặt của chương trình này, Trevunix sẽ chỉ dọn phần còn sót lại.</value>
+  </data>
+  <data name="Programs.Scanning" xml:space="preserve">
+    <value>Đang tìm phần còn sót lại...</value>
+  </data>
+  <data name="Programs.StillInstalled" xml:space="preserve">
+    <value>Chương trình có vẻ vẫn còn cài đặt. Nếu trình gỡ vẫn đang mở, hãy làm xong rồi bấm Quét lại.</value>
+  </data>
+  <data name="Programs.LeftoversHint" xml:space="preserve">
+    <value>Đã tìm thấy phần còn sót. Mục ghi "khớp theo tên" chỉ được tìm bằng tên, hãy xem lại trước khi xoá.</value>
+  </data>
+  <data name="Programs.Leftover.Folder" xml:space="preserve">
+    <value>Thư mục</value>
+  </data>
+  <data name="Programs.Leftover.ByName" xml:space="preserve">
+    <value>khớp theo tên</value>
+  </data>
+  <data name="Programs.RemoveLeftovers" xml:space="preserve">
+    <value>Xoá mục đã chọn</value>
+  </data>
+  <data name="Programs.ScanAgain" xml:space="preserve">
+    <value>Quét lại</value>
+  </data>
+  <data name="Programs.SelectAll" xml:space="preserve">
+    <value>Chọn hết / bỏ chọn</value>
+  </data>
+  <data name="Programs.Done" xml:space="preserve">
+    <value>Xong</value>
+  </data>
+  <data name="Programs.Clean" xml:space="preserve">
+    <value>Đã gỡ {0} và không còn gì sót lại.</value>
+  </data>
+  <data name="Programs.Removing" xml:space="preserve">
+    <value>Đang xoá phần còn sót...</value>
+  </data>
+  <data name="Programs.Removed" xml:space="preserve">
+    <value>Đã xoá {0} mục còn sót.</value>
+  </data>
+  <data name="Programs.RemovedSome" xml:space="preserve">
+    <value>Đã xoá {0} mục còn sót; {1} mục không xoá được (đang dùng hoặc được bảo vệ).</value>
+  </data>
+  <data name="Programs.Backup" xml:space="preserve">
+    <value>Bản sao lưu registry: {0}</value>
+  </data>
+  <data name="Programs.ShowHidden" xml:space="preserve">
+    <value>Hiện chương trình ẩn</value>
+  </data>
+  <data name="Programs.Hidden" xml:space="preserve">
+    <value>Ẩn</value>
+  </data>
+  <data name="Programs.Confirm.Hidden" xml:space="preserve">
+    <value>Windows ẩn mục này. Đây có thể là một phần của chương trình khác, một thành phần hệ thống, hoặc trình gỡ cài đặt của nó đã mất. Gỡ nó có thể làm hỏng chương trình mà nó thuộc về.</value>
+  </data>
+  <data name="Programs.Leftover.Shortcut" xml:space="preserve">
+    <value>Lối tắt</value>
+  </data>
+  <data name="Programs.Leftover.Service" xml:space="preserve">
+    <value>Dịch vụ</value>
+  </data>
+  <data name="Programs.Leftover.ScheduledTask" xml:space="preserve">
+    <value>Tác vụ theo lịch</value>
+  </data>
+  <data name="Programs.Leftover.StartupEntry" xml:space="preserve">
+    <value>Khởi động cùng Windows</value>
+  </data>
+  <data name="Programs.Leftover.RegistryKey" xml:space="preserve">
+    <value>Khoá registry</value>
+  </data>
+  <data name="Programs.Force.Button" xml:space="preserve">
+    <value>Gỡ cưỡng bức...</value>
+  </data>
+  <data name="Programs.Force.Pick" xml:space="preserve">
+    <value>Chọn thư mục của chương trình</value>
+  </data>
+  <data name="Programs.Force.Title" xml:space="preserve">
+    <value>Gỡ cưỡng bức?</value>
+  </data>
+  <data name="Programs.Force.Message" xml:space="preserve">
+    <value>Trevunix sẽ tìm mọi thứ liên quan đến {0}: chính thư mục đó, thư mục dữ liệu, lối tắt, dịch vụ, tác vụ theo lịch, mục khởi động và khoá registry. Chương trình nào đang chạy từ thư mục đó sẽ bị đóng khi xoá.</value>
+  </data>
+  <data name="Programs.Force.Primary" xml:space="preserve">
+    <value>Tìm phần liên quan</value>
+  </data>
+  <data name="Programs.Force.Nothing" xml:space="preserve">
+    <value>Không tìm thấy gì. Trevunix không xoá thư mục hệ thống, thư mục dùng chung như Program Files, hay thư mục đang chứa chương trình khác.</value>
+  </data>
+  <data name="AppsPage.Tab.Extensions" xml:space="preserve">
+    <value>Tiện ích trình duyệt</value>
+  </data>
+  <data name="Extensions.Hint" xml:space="preserve">
+    <value>Các tiện ích bạn đã cài trong Chrome, Edge, Brave, Vivaldi, Cốc Cốc, Opera và Firefox. Tiện ích có sẵn của trình duyệt không được liệt kê. Tiện ích bị xoá được chuyển vào Thùng rác và cài đặt của hồ sơ được sao lưu. Nếu trình duyệt bật đồng bộ, nó có thể cài lại tiện ích; khi đó hãy gỡ trong trình duyệt.</value>
+  </data>
+  <data name="Extensions.Load" xml:space="preserve">
+    <value>Tìm tiện ích</value>
+  </data>
+  <data name="Extensions.Loading" xml:space="preserve">
+    <value>Đang đọc hồ sơ trình duyệt...</value>
+  </data>
+  <data name="Extensions.None" xml:space="preserve">
+    <value>Không tìm thấy tiện ích nào do bạn cài.</value>
+  </data>
+  <data name="Extensions.Remove" xml:space="preserve">
+    <value>Xoá mục đã chọn ({0})</value>
+  </data>
+  <data name="Extensions.Removing" xml:space="preserve">
+    <value>Đang xoá tiện ích...</value>
+  </data>
+  <data name="Extensions.Confirm.Title" xml:space="preserve">
+    <value>Xoá các tiện ích này?</value>
+  </data>
+  <data name="Extensions.Confirm.Message" xml:space="preserve">
+    <value>Sẽ xoá {0} tiện ích. Dữ liệu của chúng trong trình duyệt cũng mất theo.</value>
+  </data>
+  <data name="Extensions.Confirm.Close" xml:space="preserve">
+    <value>Các trình duyệt sau đang mở và sẽ bị đóng trước: {0}. Các trang đang mở có thể cần mở lại.</value>
+  </data>
+  <data name="Extensions.Confirm.Primary" xml:space="preserve">
+    <value>Xoá</value>
+  </data>
+  <data name="Extensions.Done" xml:space="preserve">
+    <value>Đã xoá {0} tiện ích.</value>
+  </data>
+  <data name="Extensions.DoneSome" xml:space="preserve">
+    <value>Đã xoá {0} tiện ích; {1} tiện ích không xoá được. Hãy đóng trình duyệt rồi thử lại.</value>
+  </data>
 </root>
