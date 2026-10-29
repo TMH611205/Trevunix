@@ -1,0 +1,196 @@
+<UserControl
+  x:Class="Trevunix.Views.CleanupView"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:l="clr-namespace:Trevunix.Localization"
+  xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+>
+  <UserControl.Resources>
+    <CollectionViewSource x:Key="Grouped" Source="{Binding Items}">
+      <CollectionViewSource.GroupDescriptions>
+        <PropertyGroupDescription PropertyName="GroupName" />
+      </CollectionViewSource.GroupDescriptions>
+    </CollectionViewSource>
+  </UserControl.Resources>
+
+  <Grid Margin="32,28,32,20">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+
+    <StackPanel Grid.Row="0">
+      <TextBlock Style="{StaticResource PageTitle}" Text="{l:T Cleanup.Title}" />
+      <TextBlock Style="{StaticResource PageSubtitle}" Text="{l:T Cleanup.Subtitle}" />
+    </StackPanel>
+
+    <StackPanel Grid.Row="1" Margin="0,16,0,0">
+      <ui:InfoBar
+        Margin="0,0,0,12"
+        IsClosable="False"
+        IsOpen="True"
+        Message="{l:T Cleanup.SafetyNote}"
+        Severity="Success"
+        Title=""
+      />
+      <StackPanel Orientation="Horizontal">
+        <ui:Button
+          Margin="0,0,8,0"
+          Command="{Binding ScanCommand}"
+          Content="{l:T Cleanup.Scan}"
+          Icon="{ui:SymbolIcon ArrowClockwise24}"
+        />
+        <ui:Button
+          Margin="0,0,8,0"
+          Appearance="Transparent"
+          Command="{Binding SelectAllCommand}"
+          Content="{l:T Cleanup.SelectAll}"
+          Icon="{ui:SymbolIcon CheckboxChecked24}"
+        />
+        <ui:Button
+          Appearance="Transparent"
+          Command="{Binding SelectNoneCommand}"
+          Content="{l:T Cleanup.SelectNone}"
+          Icon="{ui:SymbolIcon CheckboxUnchecked24}"
+        />
+      </StackPanel>
+
+      <ui:InfoBar
+        Margin="0,12,0,0"
+        IsClosable="False"
+        IsOpen="True"
+        Message="{Binding Result}"
+        Severity="Success"
+        Visibility="{Binding Result, Converter={StaticResource VisibleWhen}}"
+      />
+    </StackPanel>
+
+    <ScrollViewer Grid.Row="2" Margin="0,12,0,0" VerticalScrollBarVisibility="Auto">
+      <ItemsControl ItemsSource="{Binding Source={StaticResource Grouped}}">
+        <ItemsControl.GroupStyle>
+          <GroupStyle>
+            <GroupStyle.HeaderTemplate>
+              <DataTemplate>
+                <TextBlock
+                  Style="{StaticResource SectionTitle}"
+                  Margin="0,16,0,8"
+                  Text="{Binding Name}"
+                />
+              </DataTemplate>
+            </GroupStyle.HeaderTemplate>
+          </GroupStyle>
+        </ItemsControl.GroupStyle>
+        <ItemsControl.ItemTemplate>
+          <DataTemplate>
+            <Border Margin="0,0,0,6" Padding="14,12" Style="{StaticResource Panel}">
+              <DockPanel>
+                <CheckBox
+                  Margin="0,0,8,0"
+                  VerticalAlignment="Center"
+                  DockPanel.Dock="Left"
+                  IsChecked="{Binding IsSelected}"
+                />
+                <ui:Button
+                  Margin="12,0,0,0"
+                  VerticalAlignment="Center"
+                  Appearance="Transparent"
+                  Command="{Binding DataContext.PreviewCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                  CommandParameter="{Binding}"
+                  Content="{l:T Cleanup.Preview}"
+                  DockPanel.Dock="Right"
+                  Icon="{ui:SymbolIcon Eye24}"
+                  Visibility="{Binding HasFiles, Converter={StaticResource VisibleWhen}}"
+                />
+                <TextBlock
+                  MinWidth="130"
+                  Margin="12,0,0,0"
+                  VerticalAlignment="Center"
+                  DockPanel.Dock="Right"
+                  FontWeight="SemiBold"
+                  Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                  Text="{Binding FoundText}"
+                  TextAlignment="Right"
+                />
+                <StackPanel VerticalAlignment="Center">
+                  <StackPanel Orientation="Horizontal">
+                    <TextBlock
+                      FontWeight="SemiBold"
+                      Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                      Text="{Binding Name}"
+                    />
+                    <Border
+                      Margin="8,0,0,0"
+                      Padding="6,1"
+                      VerticalAlignment="Center"
+                      Background="{DynamicResource AccentFillColorDefaultBrush}"
+                      CornerRadius="4"
+                      Visibility="{Binding Recommended, Converter={StaticResource VisibleWhen}}"
+                    >
+                      <TextBlock
+                        FontSize="11"
+                        Foreground="{DynamicResource TextOnAccentFillColorPrimaryBrush}"
+                        Text="{l:T Cleanup.Recommended}"
+                      />
+                    </Border>
+                  </StackPanel>
+                  <TextBlock
+                    Margin="0,3,0,0"
+                    Style="{StaticResource Muted}"
+                    Text="{Binding Description}"
+                    TextTrimming="None"
+                    TextWrapping="Wrap"
+                  />
+                  <TextBlock
+                    Margin="0,3,0,0"
+                    FontSize="12"
+                    Foreground="{DynamicResource SystemFillColorSuccessBrush}"
+                    Text="{Binding KeptText}"
+                    Visibility="{Binding KeptText, Converter={StaticResource VisibleWhen}}"
+                  />
+                </StackPanel>
+              </DockPanel>
+            </Border>
+          </DataTemplate>
+        </ItemsControl.ItemTemplate>
+      </ItemsControl>
+    </ScrollViewer>
+
+    <Border Grid.Row="3" Margin="0,12,0,0" Style="{StaticResource Panel}">
+      <DockPanel>
+        <ui:Button
+          MinWidth="140"
+          Appearance="Primary"
+          Command="{Binding CleanCommand}"
+          Content="{l:T Cleanup.Clean}"
+          DockPanel.Dock="Right"
+          Icon="{ui:SymbolIcon Broom24}"
+        />
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+          <ui:ProgressRing
+            Width="20"
+            Height="20"
+            Margin="0,0,10,0"
+            IsIndeterminate="True"
+            Visibility="{Binding IsBusy, Converter={StaticResource VisibleWhen}}"
+          />
+          <TextBlock
+            VerticalAlignment="Center"
+            Style="{StaticResource Muted}"
+            Text="{Binding BusyText}"
+            Visibility="{Binding IsBusy, Converter={StaticResource VisibleWhen}}"
+          />
+          <TextBlock
+            VerticalAlignment="Center"
+            FontSize="15"
+            FontWeight="SemiBold"
+            Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+            Text="{Binding SelectedText}"
+            Visibility="{Binding IsBusy, Converter={StaticResource VisibleWhen}, ConverterParameter=invert}"
+          />
+        </StackPanel>
+      </DockPanel>
+    </Border>
+  </Grid>
+</UserControl>

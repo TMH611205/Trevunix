@@ -1,0 +1,1621 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Nav.Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Nav.Optimize" xml:space="preserve">
+    <value>Optimize</value>
+  </data>
+  <data name="Nav.Cleanup" xml:space="preserve">
+    <value>Cleanup</value>
+  </data>
+  <data name="Nav.DiskUsage" xml:space="preserve">
+    <value>Disk usage</value>
+  </data>
+  <data name="Nav.Apps" xml:space="preserve">
+    <value>Apps &amp; startup</value>
+  </data>
+  <data name="Nav.Tools" xml:space="preserve">
+    <value>Utilities</value>
+  </data>
+  <data name="Nav.Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="Home.Greeting" xml:space="preserve">
+    <value>Welcome to Trevunix</value>
+  </data>
+  <data name="Home.Subtitle" xml:space="preserve">
+    <value>An overview of your PC.</value>
+  </data>
+  <data name="Home.System" xml:space="preserve">
+    <value>System</value>
+  </data>
+  <data name="Home.Computer" xml:space="preserve">
+    <value>Computer name</value>
+  </data>
+  <data name="Home.Windows" xml:space="preserve">
+    <value>Windows</value>
+  </data>
+  <data name="Home.Processor" xml:space="preserve">
+    <value>Processor</value>
+  </data>
+  <data name="Home.Cores" xml:space="preserve">
+    <value>{0} threads</value>
+  </data>
+  <data name="Home.Memory" xml:space="preserve">
+    <value>Memory</value>
+  </data>
+  <data name="Home.Uptime" xml:space="preserve">
+    <value>Uptime</value>
+  </data>
+  <data name="Home.UptimeValue" xml:space="preserve">
+    <value>{0} d {1} h {2} min</value>
+  </data>
+  <data name="Home.Drives" xml:space="preserve">
+    <value>Drives</value>
+  </data>
+  <data name="Home.DriveFree" xml:space="preserve">
+    <value>{0} free of {1}</value>
+  </data>
+  <data name="Home.Analyze" xml:space="preserve">
+    <value>Analyze</value>
+  </data>
+  <data name="Disk.Title" xml:space="preserve">
+    <value>Disk usage</value>
+  </data>
+  <data name="Disk.Subtitle" xml:space="preserve">
+    <value>See which folders and files take up the most space.</value>
+  </data>
+  <data name="Disk.Scan" xml:space="preserve">
+    <value>Scan</value>
+  </data>
+  <data name="Disk.PickFolder" xml:space="preserve">
+    <value>Choose folder…</value>
+  </data>
+  <data name="Disk.Stop" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="Disk.Scanning" xml:space="preserve">
+    <value>Scanning {0}…</value>
+  </data>
+  <data name="Disk.ScanStats" xml:space="preserve">
+    <value>{0} files · {1} folders · {2}</value>
+  </data>
+  <data name="Disk.Summary" xml:space="preserve">
+    <value>{0} · {1} files · {2} folders · scanned in {3} s</value>
+  </data>
+  <data name="Disk.Partial" xml:space="preserve">
+    <value>Scan stopped early, so the results are incomplete.</value>
+  </data>
+  <data name="Disk.Incomplete" xml:space="preserve">
+    <value>Some folders could not be read (no permission or in use).</value>
+  </data>
+  <data name="Disk.Up" xml:space="preserve">
+    <value>Up</value>
+  </data>
+  <data name="Disk.Rescan" xml:space="preserve">
+    <value>Rescan</value>
+  </data>
+  <data name="Disk.Back" xml:space="preserve">
+    <value>Other drive</value>
+  </data>
+  <data name="Disk.Tab.Folders" xml:space="preserve">
+    <value>Folders</value>
+  </data>
+  <data name="Disk.Tab.LargestFiles" xml:space="preserve">
+    <value>Largest files</value>
+  </data>
+  <data name="Disk.Tab.FileTypes" xml:space="preserve">
+    <value>By file type</value>
+  </data>
+  <data name="Disk.Col.Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Disk.Col.Size" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="Disk.Col.Share" xml:space="preserve">
+    <value>Share</value>
+  </data>
+  <data name="Disk.Col.Files" xml:space="preserve">
+    <value>Files</value>
+  </data>
+  <data name="Disk.Col.Modified" xml:space="preserve">
+    <value>Modified</value>
+  </data>
+  <data name="Disk.Col.Folder" xml:space="preserve">
+    <value>Folder</value>
+  </data>
+  <data name="Disk.Col.Type" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="Disk.NoExtension" xml:space="preserve">
+    <value>(no extension)</value>
+  </data>
+  <data name="Disk.SmallFiles" xml:space="preserve">
+    <value>{0} smaller files</value>
+  </data>
+  <data name="Disk.Open" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="Disk.ShowInExplorer" xml:space="preserve">
+    <value>Show in File Explorer</value>
+  </data>
+  <data name="Disk.CopyPath" xml:space="preserve">
+    <value>Copy path</value>
+  </data>
+  <data name="Disk.Delete" xml:space="preserve">
+    <value>Move to Recycle Bin</value>
+  </data>
+  <data name="Disk.DeleteConfirm.Title" xml:space="preserve">
+    <value>Move to Recycle Bin?</value>
+  </data>
+  <data name="Disk.DeleteConfirm.Message" xml:space="preserve">
+    <value>"{0}" ({1}) will be moved to the Recycle Bin. You can restore it from there.</value>
+  </data>
+  <data name="Disk.DeleteFailed" xml:space="preserve">
+    <value>Could not delete "{0}". It may be in use or protected by Windows.</value>
+  </data>
+  <data name="Disk.Empty" xml:space="preserve">
+    <value>Pick a drive or a folder to start.</value>
+  </data>
+  <data name="Common.Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Common.Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Settings.Title" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="Settings.Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="Settings.Language.Description" xml:space="preserve">
+    <value>Takes effect after Trevunix restarts.</value>
+  </data>
+  <data name="Settings.Theme" xml:space="preserve">
+    <value>Theme</value>
+  </data>
+  <data name="Theme.System" xml:space="preserve">
+    <value>Same as Windows</value>
+  </data>
+  <data name="Theme.Light" xml:space="preserve">
+    <value>Light</value>
+  </data>
+  <data name="Theme.Dark" xml:space="preserve">
+    <value>Dark</value>
+  </data>
+  <data name="Settings.Updates" xml:space="preserve">
+    <value>Automatic updates</value>
+  </data>
+  <data name="Settings.Updates.Description" xml:space="preserve">
+    <value>Check for and download new versions each time Trevunix starts.</value>
+  </data>
+  <data name="Settings.About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="Settings.Version" xml:space="preserve">
+    <value>Version {0}</value>
+  </data>
+  <data name="Settings.RestartNow" xml:space="preserve">
+    <value>Restart now</value>
+  </data>
+  <data name="Update.Ready.Title" xml:space="preserve">
+    <value>Update ready</value>
+  </data>
+  <data name="Update.Ready.Message" xml:space="preserve">
+    <value>Trevunix {0} has been downloaded. Restart now to use the new version?</value>
+  </data>
+  <data name="Update.Ready.Restart" xml:space="preserve">
+    <value>Restart now</value>
+  </data>
+  <data name="Update.Ready.Later" xml:space="preserve">
+    <value>Later</value>
+  </data>
+  <data name="Cleanup.Title" xml:space="preserve">
+    <value>Cleanup</value>
+  </data>
+  <data name="Cleanup.Subtitle" xml:space="preserve">
+    <value>Free up space by removing temporary files, caches and leftovers. Your documents, photos and passwords are never touched.</value>
+  </data>
+  <data name="Cleanup.Scan" xml:space="preserve">
+    <value>Scan again</value>
+  </data>
+  <data name="Cleanup.Scanning" xml:space="preserve">
+    <value>Looking for files to clean…</value>
+  </data>
+  <data name="Cleanup.Clean" xml:space="preserve">
+    <value>Clean</value>
+  </data>
+  <data name="Cleanup.Cleaning" xml:space="preserve">
+    <value>Cleaning…</value>
+  </data>
+  <data name="Cleanup.Selected" xml:space="preserve">
+    <value>Selected: {0}</value>
+  </data>
+  <data name="Cleanup.Found" xml:space="preserve">
+    <value>{0} · {1} files</value>
+  </data>
+  <data name="Cleanup.FoundNothing" xml:space="preserve">
+    <value>Nothing to clean</value>
+  </data>
+  <data name="Cleanup.SelectAll" xml:space="preserve">
+    <value>Select all</value>
+  </data>
+  <data name="Cleanup.SelectNone" xml:space="preserve">
+    <value>Clear selection</value>
+  </data>
+  <data name="Cleanup.Recommended" xml:space="preserve">
+    <value>Recommended</value>
+  </data>
+  <data name="Cleanup.Done" xml:space="preserve">
+    <value>Freed {0} ({1} files).</value>
+  </data>
+  <data name="Cleanup.DoneSkipped" xml:space="preserve">
+    <value>Freed {0} ({1} files). {2} files are in use and were skipped; close the apps using them and clean again.</value>
+  </data>
+  <data name="Cleanup.ConfirmRecycleBin.Title" xml:space="preserve">
+    <value>Empty the Recycle Bin?</value>
+  </data>
+  <data name="Cleanup.ConfirmRecycleBin.Message" xml:space="preserve">
+    <value>Files in the Recycle Bin ({0}) will be deleted permanently and cannot be restored.</value>
+  </data>
+  <data name="Cleanup.ConfirmRecycleBin.Primary" xml:space="preserve">
+    <value>Empty and clean</value>
+  </data>
+  <data name="Cleanup.Group.System" xml:space="preserve">
+    <value>Windows</value>
+  </data>
+  <data name="Cleanup.Group.Browsers" xml:space="preserve">
+    <value>Browsers</value>
+  </data>
+  <data name="Cleanup.Group.AppsAndGames" xml:space="preserve">
+    <value>Apps and games</value>
+  </data>
+  <data name="Cleanup.Group.RecycleBin" xml:space="preserve">
+    <value>Recycle Bin</value>
+  </data>
+  <data name="Cleanup.BrowsersHint" xml:space="preserve">
+    <value>Only caches are removed. History, cookies, saved passwords and open tabs stay. Close the browser to clean everything.</value>
+  </data>
+  <data name="Cleanup.Target.UserTemp" xml:space="preserve">
+    <value>Your temporary files</value>
+  </data>
+  <data name="Cleanup.Target.UserTemp.Description" xml:space="preserve">
+    <value>Files apps left in your Temp folder. Only files older than a day.</value>
+  </data>
+  <data name="Cleanup.Target.WindowsTemp" xml:space="preserve">
+    <value>Windows temporary files</value>
+  </data>
+  <data name="Cleanup.Target.WindowsTemp.Description" xml:space="preserve">
+    <value>Setup and update leftovers in Windows\Temp. Only files older than a day.</value>
+  </data>
+  <data name="Cleanup.Target.ErrorReports" xml:space="preserve">
+    <value>Error reports</value>
+  </data>
+  <data name="Cleanup.Target.ErrorReports.Description" xml:space="preserve">
+    <value>Crash reports Windows already sent or queued.</value>
+  </data>
+  <data name="Cleanup.Target.CrashDumps" xml:space="preserve">
+    <value>Crash dumps</value>
+  </data>
+  <data name="Cleanup.Target.CrashDumps.Description" xml:space="preserve">
+    <value>Memory dumps from blue screens and app crashes. Only needed to debug a crash.</value>
+  </data>
+  <data name="Cleanup.Target.DeliveryOptimization" xml:space="preserve">
+    <value>Delivery Optimization cache</value>
+  </data>
+  <data name="Cleanup.Target.DeliveryOptimization.Description" xml:space="preserve">
+    <value>Update pieces Windows keeps to share with other PCs.</value>
+  </data>
+  <data name="Cleanup.Target.WindowsUpdate" xml:space="preserve">
+    <value>Windows Update downloads</value>
+  </data>
+  <data name="Cleanup.Target.WindowsUpdate.Description" xml:space="preserve">
+    <value>Downloaded update packages. Windows downloads them again if still needed.</value>
+  </data>
+  <data name="Cleanup.Target.ThumbnailCache" xml:space="preserve">
+    <value>Thumbnail cache</value>
+  </data>
+  <data name="Cleanup.Target.ThumbnailCache.Description" xml:space="preserve">
+    <value>Picture and video previews in File Explorer. Rebuilt when you open folders again.</value>
+  </data>
+  <data name="Cleanup.Target.OldLogs" xml:space="preserve">
+    <value>Old Windows logs</value>
+  </data>
+  <data name="Cleanup.Target.OldLogs.Description" xml:space="preserve">
+    <value>Log files older than a week from setup and servicing.</value>
+  </data>
+  <data name="Cleanup.Target.Chrome" xml:space="preserve">
+    <value>Google Chrome</value>
+  </data>
+  <data name="Cleanup.Target.Chrome.Description" xml:space="preserve">
+    <value>Web cache, code cache and GPU cache of every profile.</value>
+  </data>
+  <data name="Cleanup.Target.Edge" xml:space="preserve">
+    <value>Microsoft Edge</value>
+  </data>
+  <data name="Cleanup.Target.Edge.Description" xml:space="preserve">
+    <value>Web cache, code cache and GPU cache of every profile.</value>
+  </data>
+  <data name="Cleanup.Target.Brave" xml:space="preserve">
+    <value>Brave</value>
+  </data>
+  <data name="Cleanup.Target.Brave.Description" xml:space="preserve">
+    <value>Web cache, code cache and GPU cache of every profile.</value>
+  </data>
+  <data name="Cleanup.Target.Opera" xml:space="preserve">
+    <value>Opera and Opera GX</value>
+  </data>
+  <data name="Cleanup.Target.Opera.Description" xml:space="preserve">
+    <value>Web cache.</value>
+  </data>
+  <data name="Cleanup.Target.Firefox" xml:space="preserve">
+    <value>Mozilla Firefox</value>
+  </data>
+  <data name="Cleanup.Target.Firefox.Description" xml:space="preserve">
+    <value>Web cache of every profile.</value>
+  </data>
+  <data name="Cleanup.Target.ShaderCache" xml:space="preserve">
+    <value>Graphics shader cache</value>
+  </data>
+  <data name="Cleanup.Target.ShaderCache.Description" xml:space="preserve">
+    <value>DirectX, NVIDIA and AMD shader caches. Games may stutter briefly while they rebuild it.</value>
+  </data>
+  <data name="Cleanup.Target.Discord" xml:space="preserve">
+    <value>Discord</value>
+  </data>
+  <data name="Cleanup.Target.Discord.Description" xml:space="preserve">
+    <value>Image and code cache. Messages and settings stay.</value>
+  </data>
+  <data name="Cleanup.Target.Teams" xml:space="preserve">
+    <value>Microsoft Teams</value>
+  </data>
+  <data name="Cleanup.Target.Teams.Description" xml:space="preserve">
+    <value>Web cache of the new Teams app.</value>
+  </data>
+  <data name="Cleanup.Target.RecycleBin" xml:space="preserve">
+    <value>Recycle Bin</value>
+  </data>
+  <data name="Cleanup.Target.RecycleBin.Description" xml:space="preserve">
+    <value>Deleted files waiting in the Recycle Bin. Emptying it cannot be undone.</value>
+  </data>
+  <data name="Optimize.Title" xml:space="preserve">
+    <value>Optimize</value>
+  </data>
+  <data name="Optimize.Subtitle" xml:space="preserve">
+    <value>Speed up Windows and turn off tracking. Trevunix saves the original settings, so every change can be undone.</value>
+  </data>
+  <data name="Optimize.ApplyRecommended" xml:space="preserve">
+    <value>Apply recommended</value>
+  </data>
+  <data name="Optimize.UndoAll" xml:space="preserve">
+    <value>Undo all</value>
+  </data>
+  <data name="Optimize.Summary" xml:space="preserve">
+    <value>{0} of {1} applied</value>
+  </data>
+  <data name="Optimize.Recommended" xml:space="preserve">
+    <value>Recommended</value>
+  </data>
+  <data name="Optimize.Partial" xml:space="preserve">
+    <value>Partly applied</value>
+  </data>
+  <data name="Optimize.NeedsRestartExplorer" xml:space="preserve">
+    <value>Restart Explorer</value>
+  </data>
+  <data name="Optimize.NeedsReboot" xml:space="preserve">
+    <value>Restart PC</value>
+  </data>
+  <data name="Optimize.NoUndo" xml:space="preserve">
+    <value>Already set outside Trevunix, so there is no saved original to restore.</value>
+  </data>
+  <data name="Optimize.Failed" xml:space="preserve">
+    <value>Some changes could not be made: {0}</value>
+  </data>
+  <data name="Optimize.PendingExplorer" xml:space="preserve">
+    <value>Some changes show up after Explorer restarts.</value>
+  </data>
+  <data name="Optimize.PendingReboot" xml:space="preserve">
+    <value>Some changes take effect after you restart your PC.</value>
+  </data>
+  <data name="Optimize.RestartExplorer" xml:space="preserve">
+    <value>Restart Explorer</value>
+  </data>
+  <data name="Optimize.ConfirmUndoAll.Title" xml:space="preserve">
+    <value>Undo all changes?</value>
+  </data>
+  <data name="Optimize.ConfirmUndoAll.Message" xml:space="preserve">
+    <value>Every tweak Trevunix applied goes back to its original setting.</value>
+  </data>
+  <data name="Optimize.ConfirmUndoAll.Primary" xml:space="preserve">
+    <value>Undo all</value>
+  </data>
+  <data name="Tweak.AdvertisingId" xml:space="preserve">
+    <value>Turn off advertising ID</value>
+  </data>
+  <data name="Tweak.AdvertisingId.Description" xml:space="preserve">
+    <value>Apps can no longer use an ID to show you personalized ads.</value>
+  </data>
+  <data name="Tweak.Telemetry" xml:space="preserve">
+    <value>Limit diagnostic data</value>
+  </data>
+  <data name="Tweak.Telemetry.Description" xml:space="preserve">
+    <value>Sends only the minimum diagnostic data and turns off the telemetry services.</value>
+  </data>
+  <data name="Tweak.TailoredExperiences" xml:space="preserve">
+    <value>Turn off tailored experiences</value>
+  </data>
+  <data name="Tweak.TailoredExperiences.Description" xml:space="preserve">
+    <value>Microsoft stops using your diagnostic data for tips and ads.</value>
+  </data>
+  <data name="Tweak.ActivityHistory" xml:space="preserve">
+    <value>Turn off activity history</value>
+  </data>
+  <data name="Tweak.ActivityHistory.Description" xml:space="preserve">
+    <value>Windows stops recording which apps and files you open.</value>
+  </data>
+  <data name="Tweak.StartSuggestions" xml:space="preserve">
+    <value>Turn off suggestions and ads in Start</value>
+  </data>
+  <data name="Tweak.StartSuggestions.Description" xml:space="preserve">
+    <value>No more suggested apps, tips or silently installed promoted apps.</value>
+  </data>
+  <data name="Tweak.WebSearch" xml:space="preserve">
+    <value>Turn off web results in Search</value>
+  </data>
+  <data name="Tweak.WebSearch.Description" xml:space="preserve">
+    <value>Search in Start finds only what is on your PC, without Bing.</value>
+  </data>
+  <data name="Tweak.FeedbackRequests" xml:space="preserve">
+    <value>Stop feedback requests</value>
+  </data>
+  <data name="Tweak.FeedbackRequests.Description" xml:space="preserve">
+    <value>Windows stops asking how you like it.</value>
+  </data>
+  <data name="Tweak.ExperienceTasks" xml:space="preserve">
+    <value>Turn off data collection tasks</value>
+  </data>
+  <data name="Tweak.ExperienceTasks.Description" xml:space="preserve">
+    <value>Disables the scheduled tasks that collect usage and compatibility data.</value>
+  </data>
+  <data name="Tweak.Copilot" xml:space="preserve">
+    <value>Turn off Copilot</value>
+  </data>
+  <data name="Tweak.Copilot.Description" xml:space="preserve">
+    <value>Hides the Copilot button and turns the sidebar off.</value>
+  </data>
+  <data name="Tweak.RecallSnapshots" xml:space="preserve">
+    <value>Turn off Recall snapshots</value>
+  </data>
+  <data name="Tweak.RecallSnapshots.Description" xml:space="preserve">
+    <value>Windows does not save screenshots of your activity.</value>
+  </data>
+  <data name="Tweak.StartupDelay" xml:space="preserve">
+    <value>Remove startup delay</value>
+  </data>
+  <data name="Tweak.StartupDelay.Description" xml:space="preserve">
+    <value>Startup apps open right after you sign in instead of waiting.</value>
+  </data>
+  <data name="Tweak.MenuDelay" xml:space="preserve">
+    <value>Faster menus</value>
+  </data>
+  <data name="Tweak.MenuDelay.Description" xml:space="preserve">
+    <value>Submenus open after 100 ms instead of 400 ms.</value>
+  </data>
+  <data name="Tweak.BackgroundApps" xml:space="preserve">
+    <value>Stop apps running in the background</value>
+  </data>
+  <data name="Tweak.BackgroundApps.Description" xml:space="preserve">
+    <value>Store apps no longer run when you are not using them. Some apps may send fewer notifications.</value>
+  </data>
+  <data name="Tweak.GpuScheduling" xml:space="preserve">
+    <value>Hardware-accelerated GPU scheduling</value>
+  </data>
+  <data name="Tweak.GpuScheduling.Description" xml:space="preserve">
+    <value>Lets the GPU manage its own memory, which can lower latency. Needs a supported GPU and driver.</value>
+  </data>
+  <data name="Tweak.MultimediaResponsiveness" xml:space="preserve">
+    <value>Prioritize games and media</value>
+  </data>
+  <data name="Tweak.MultimediaResponsiveness.Description" xml:space="preserve">
+    <value>Reserves less CPU for background tasks and removes network throttling while media plays.</value>
+  </data>
+  <data name="Tweak.GameMode" xml:space="preserve">
+    <value>Turn on Game Mode</value>
+  </data>
+  <data name="Tweak.GameMode.Description" xml:space="preserve">
+    <value>Windows gives games priority and holds back updates while you play.</value>
+  </data>
+  <data name="Tweak.BackgroundRecording" xml:space="preserve">
+    <value>Turn off background game recording</value>
+  </data>
+  <data name="Tweak.BackgroundRecording.Description" xml:space="preserve">
+    <value>Xbox Game Bar stops recording gameplay in the background, which frees up resources.</value>
+  </data>
+  <data name="Tweak.MouseAcceleration" xml:space="preserve">
+    <value>Turn off mouse acceleration</value>
+  </data>
+  <data name="Tweak.MouseAcceleration.Description" xml:space="preserve">
+    <value>Turns off "Enhance pointer precision" so the pointer moves exactly with your hand.</value>
+  </data>
+  <data name="Tweak.StickyKeysPrompt" xml:space="preserve">
+    <value>Turn off Sticky Keys prompt</value>
+  </data>
+  <data name="Tweak.StickyKeysPrompt.Description" xml:space="preserve">
+    <value>Pressing Shift five times no longer interrupts your game.</value>
+  </data>
+  <data name="Tweak.FileExtensions" xml:space="preserve">
+    <value>Show file extensions</value>
+  </data>
+  <data name="Tweak.FileExtensions.Description" xml:space="preserve">
+    <value>See .exe, .pdf and other extensions so you can spot fake files.</value>
+  </data>
+  <data name="Tweak.HiddenFiles" xml:space="preserve">
+    <value>Show hidden files</value>
+  </data>
+  <data name="Tweak.HiddenFiles.Description" xml:space="preserve">
+    <value>File Explorer shows hidden files and folders.</value>
+  </data>
+  <data name="Tweak.OpenThisPc" xml:space="preserve">
+    <value>Open File Explorer to This PC</value>
+  </data>
+  <data name="Tweak.OpenThisPc.Description" xml:space="preserve">
+    <value>File Explorer starts at your drives instead of Home.</value>
+  </data>
+  <data name="Tweak.ClassicContextMenu" xml:space="preserve">
+    <value>Classic right-click menu</value>
+  </data>
+  <data name="Tweak.ClassicContextMenu.Description" xml:space="preserve">
+    <value>Shows the full right-click menu straight away, without "Show more options".</value>
+  </data>
+  <data name="Tweak.TaskbarLeft" xml:space="preserve">
+    <value>Align taskbar to the left</value>
+  </data>
+  <data name="Tweak.TaskbarLeft.Description" xml:space="preserve">
+    <value>Moves the Start button and icons to the left like earlier Windows.</value>
+  </data>
+  <data name="Tweak.TaskbarEndTask" xml:space="preserve">
+    <value>Add End task to the taskbar</value>
+  </data>
+  <data name="Tweak.TaskbarEndTask.Description" xml:space="preserve">
+    <value>Right-click an app on the taskbar to close it when it hangs.</value>
+  </data>
+  <data name="AppsPage.Title" xml:space="preserve">
+    <value>Apps &amp; startup</value>
+  </data>
+  <data name="AppsPage.Subtitle" xml:space="preserve">
+    <value>Choose what starts with Windows and remove preinstalled apps you do not use.</value>
+  </data>
+  <data name="AppsPage.Tab.Startup" xml:space="preserve">
+    <value>Startup</value>
+  </data>
+  <data name="AppsPage.Tab.Store" xml:space="preserve">
+    <value>Preinstalled apps</value>
+  </data>
+  <data name="Startup.Hint" xml:space="preserve">
+    <value>Turning an item off only stops it starting with Windows; the program stays installed. Same as Task Manager.</value>
+  </data>
+  <data name="Startup.Summary" xml:space="preserve">
+    <value>{0} of {1} start with Windows</value>
+  </data>
+  <data name="Startup.Refresh" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="Startup.Empty" xml:space="preserve">
+    <value>No startup programs found.</value>
+  </data>
+  <data name="Startup.AllUsers" xml:space="preserve">
+    <value>All users</value>
+  </data>
+  <data name="Startup.ThisUser" xml:space="preserve">
+    <value>This user</value>
+  </data>
+  <data name="Startup.Folder" xml:space="preserve">
+    <value>Startup folder</value>
+  </data>
+  <data name="Startup.UnknownPublisher" xml:space="preserve">
+    <value>Unknown publisher</value>
+  </data>
+  <data name="Startup.OpenLocation" xml:space="preserve">
+    <value>Open file location</value>
+  </data>
+  <data name="Startup.Failed" xml:space="preserve">
+    <value>Could not change "{0}": {1}</value>
+  </data>
+  <data name="Store.Hint" xml:space="preserve">
+    <value>Removed apps can be installed again from the Microsoft Store. Windows components are never listed.</value>
+  </data>
+  <data name="Store.Load" xml:space="preserve">
+    <value>Load apps</value>
+  </data>
+  <data name="Store.Loading" xml:space="preserve">
+    <value>Reading installed apps…</value>
+  </data>
+  <data name="Store.Search" xml:space="preserve">
+    <value>Search apps</value>
+  </data>
+  <data name="Store.OnlySuggested" xml:space="preserve">
+    <value>Only show suggested</value>
+  </data>
+  <data name="Store.Suggested" xml:space="preserve">
+    <value>Suggested</value>
+  </data>
+  <data name="Store.AlsoNewUsers" xml:space="preserve">
+    <value>Also remove for new users</value>
+  </data>
+  <data name="Store.Remove" xml:space="preserve">
+    <value>Remove selected ({0})</value>
+  </data>
+  <data name="Store.Removing" xml:space="preserve">
+    <value>Removing {0}…</value>
+  </data>
+  <data name="Store.Confirm.Title" xml:space="preserve">
+    <value>Remove apps?</value>
+  </data>
+  <data name="Store.Confirm.Message" xml:space="preserve">
+    <value>{0} apps will be removed. You can install them again from the Microsoft Store.</value>
+  </data>
+  <data name="Store.Confirm.Primary" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="Store.Done" xml:space="preserve">
+    <value>Removed {0} apps.</value>
+  </data>
+  <data name="Store.DoneWithErrors" xml:space="preserve">
+    <value>Removed {0} apps. {1} could not be removed: {2}</value>
+  </data>
+  <data name="Store.LoadFailed" xml:space="preserve">
+    <value>Could not read installed apps: {0}</value>
+  </data>
+  <data name="ToolsPage.Title" xml:space="preserve">
+    <value>Utilities</value>
+  </data>
+  <data name="ToolsPage.Subtitle" xml:space="preserve">
+    <value>Network speed, live monitoring, processes, repairs, DNS, drive health and battery.</value>
+  </data>
+  <data name="Monitor.Cpu" xml:space="preserve">
+    <value>CPU</value>
+  </data>
+  <data name="Monitor.Memory" xml:space="preserve">
+    <value>Memory</value>
+  </data>
+  <data name="Monitor.Network" xml:space="preserve">
+    <value>Network</value>
+  </data>
+  <data name="Monitor.MemoryValue" xml:space="preserve">
+    <value>{0} of {1}</value>
+  </data>
+  <data name="Monitor.NetworkValue" xml:space="preserve">
+    <value>↓ {0}/s   ↑ {1}/s</value>
+  </data>
+  <data name="Monitor.History" xml:space="preserve">
+    <value>Last 60 seconds</value>
+  </data>
+  <data name="Processes.Search" xml:space="preserve">
+    <value>Search processes</value>
+  </data>
+  <data name="Processes.Count" xml:space="preserve">
+    <value>{0} processes</value>
+  </data>
+  <data name="Processes.Col.Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Processes.Col.Id" xml:space="preserve">
+    <value>PID</value>
+  </data>
+  <data name="Processes.Col.Cpu" xml:space="preserve">
+    <value>CPU</value>
+  </data>
+  <data name="Processes.Col.Memory" xml:space="preserve">
+    <value>Memory</value>
+  </data>
+  <data name="Processes.Col.Path" xml:space="preserve">
+    <value>Path</value>
+  </data>
+  <data name="Processes.End" xml:space="preserve">
+    <value>End task</value>
+  </data>
+  <data name="Processes.OpenLocation" xml:space="preserve">
+    <value>Open file location</value>
+  </data>
+  <data name="Processes.Confirm.Title" xml:space="preserve">
+    <value>End this process?</value>
+  </data>
+  <data name="Processes.Confirm.Message" xml:space="preserve">
+    <value>"{0}" (PID {1}) will be closed. Unsaved work in it will be lost.</value>
+  </data>
+  <data name="Processes.Failed" xml:space="preserve">
+    <value>Could not end "{0}". It may be protected by Windows.</value>
+  </data>
+  <data name="Repair.Hint" xml:space="preserve">
+    <value>Run one tool at a time. SFC and DISM can take 10 to 30 minutes; leave Trevunix open until they finish.</value>
+  </data>
+  <data name="Repair.Run" xml:space="preserve">
+    <value>Run</value>
+  </data>
+  <data name="Repair.Cancel" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="Repair.Output" xml:space="preserve">
+    <value>Output</value>
+  </data>
+  <data name="Repair.Finished" xml:space="preserve">
+    <value>Finished with exit code {0}.</value>
+  </data>
+  <data name="Repair.Cancelled" xml:space="preserve">
+    <value>Stopped.</value>
+  </data>
+  <data name="Repair.NeedsReboot" xml:space="preserve">
+    <value>Restart your PC to finish.</value>
+  </data>
+  <data name="Repair.LongRunning" xml:space="preserve">
+    <value>Takes a while</value>
+  </data>
+  <data name="Repair.Sfc" xml:space="preserve">
+    <value>Check system files (SFC)</value>
+  </data>
+  <data name="Repair.Sfc.Description" xml:space="preserve">
+    <value>Finds and repairs damaged or missing Windows files.</value>
+  </data>
+  <data name="Repair.DismRestore" xml:space="preserve">
+    <value>Repair Windows image (DISM)</value>
+  </data>
+  <data name="Repair.DismRestore.Description" xml:space="preserve">
+    <value>Repairs the component store SFC relies on, downloading clean files from Windows Update.</value>
+  </data>
+  <data name="Repair.DismComponentCleanup" xml:space="preserve">
+    <value>Clean up the component store</value>
+  </data>
+  <data name="Repair.DismComponentCleanup.Description" xml:space="preserve">
+    <value>Removes superseded update components to free space.</value>
+  </data>
+  <data name="Repair.FlushDns" xml:space="preserve">
+    <value>Flush DNS cache</value>
+  </data>
+  <data name="Repair.FlushDns.Description" xml:space="preserve">
+    <value>Fixes websites that do not load after their address changed.</value>
+  </data>
+  <data name="Repair.ResetWinsock" xml:space="preserve">
+    <value>Reset Winsock</value>
+  </data>
+  <data name="Repair.ResetWinsock.Description" xml:space="preserve">
+    <value>Fixes network problems caused by broken network software.</value>
+  </data>
+  <data name="Repair.ResetTcpIp" xml:space="preserve">
+    <value>Reset TCP/IP</value>
+  </data>
+  <data name="Repair.ResetTcpIp.Description" xml:space="preserve">
+    <value>Restores the TCP/IP settings to their defaults.</value>
+  </data>
+  <data name="Repair.ResetStore" xml:space="preserve">
+    <value>Reset Microsoft Store cache</value>
+  </data>
+  <data name="Repair.ResetStore.Description" xml:space="preserve">
+    <value>Fixes Store downloads that get stuck. The Store opens when done.</value>
+  </data>
+  <data name="Dns.Hint" xml:space="preserve">
+    <value>DNS turns website names into addresses. A faster or filtering DNS can speed up browsing or block ads. Applies to all connected adapters.</value>
+  </data>
+  <data name="Dns.Current" xml:space="preserve">
+    <value>Current DNS</value>
+  </data>
+  <data name="Dns.CurrentAuto" xml:space="preserve">
+    <value>Automatic</value>
+  </data>
+  <data name="Dns.TestSpeed" xml:space="preserve">
+    <value>Test speed</value>
+  </data>
+  <data name="Dns.Apply" xml:space="preserve">
+    <value>Use</value>
+  </data>
+  <data name="Dns.InUse" xml:space="preserve">
+    <value>In use</value>
+  </data>
+  <data name="Dns.Ping" xml:space="preserve">
+    <value>{0} ms</value>
+  </data>
+  <data name="Dns.NoReply" xml:space="preserve">
+    <value>No reply</value>
+  </data>
+  <data name="Dns.NoAdapters" xml:space="preserve">
+    <value>No connected network adapters.</value>
+  </data>
+  <data name="Dns.Applied" xml:space="preserve">
+    <value>DNS changed to {0}.</value>
+  </data>
+  <data name="Dns.Failed" xml:space="preserve">
+    <value>Could not change DNS on "{0}".</value>
+  </data>
+  <data name="Dns.Automatic" xml:space="preserve">
+    <value>Automatic (from router)</value>
+  </data>
+  <data name="Drives.Load" xml:space="preserve">
+    <value>Check drives</value>
+  </data>
+  <data name="Drives.Loading" xml:space="preserve">
+    <value>Reading drive health…</value>
+  </data>
+  <data name="Drives.Health.Healthy" xml:space="preserve">
+    <value>Healthy</value>
+  </data>
+  <data name="Drives.Health.Warning" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="Drives.Health.Unhealthy" xml:space="preserve">
+    <value>Failing, back up your data now</value>
+  </data>
+  <data name="Drives.Health.Unknown" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
+  <data name="Drives.Temperature" xml:space="preserve">
+    <value>Temperature</value>
+  </data>
+  <data name="Drives.Wear" xml:space="preserve">
+    <value>Wear</value>
+  </data>
+  <data name="Drives.PowerOn" xml:space="preserve">
+    <value>Power-on time</value>
+  </data>
+  <data name="Drives.Errors" xml:space="preserve">
+    <value>Read/write errors</value>
+  </data>
+  <data name="Drives.Hours" xml:space="preserve">
+    <value>{0} hours</value>
+  </data>
+  <data name="Drives.NotReported" xml:space="preserve">
+    <value>Not reported</value>
+  </data>
+  <data name="Drives.None" xml:space="preserve">
+    <value>No drives reported health data.</value>
+  </data>
+  <data name="Home.Loading" xml:space="preserve">
+    <value>Reading hardware details…</value>
+  </data>
+  <data name="Home.Card.System" xml:space="preserve">
+    <value>System</value>
+  </data>
+  <data name="Home.Card.Board" xml:space="preserve">
+    <value>Motherboard</value>
+  </data>
+  <data name="Home.Card.Cpu" xml:space="preserve">
+    <value>Processor (CPU)</value>
+  </data>
+  <data name="Home.Card.Memory" xml:space="preserve">
+    <value>Memory (RAM)</value>
+  </data>
+  <data name="Home.Card.Gpu" xml:space="preserve">
+    <value>Graphics (GPU)</value>
+  </data>
+  <data name="Home.Card.Disks" xml:space="preserve">
+    <value>Storage</value>
+  </data>
+  <data name="Home.Field.Os" xml:space="preserve">
+    <value>Operating system</value>
+  </data>
+  <data name="Home.Field.Version" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="Home.Field.Architecture" xml:space="preserve">
+    <value>Architecture</value>
+  </data>
+  <data name="Home.Field.Installed" xml:space="preserve">
+    <value>Installed on</value>
+  </data>
+  <data name="Home.Field.Manufacturer" xml:space="preserve">
+    <value>Manufacturer</value>
+  </data>
+  <data name="Home.Field.Model" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="Home.Field.Revision" xml:space="preserve">
+    <value>Revision</value>
+  </data>
+  <data name="Home.Field.Bios" xml:space="preserve">
+    <value>BIOS</value>
+  </data>
+  <data name="Home.Field.Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Home.Field.Cores" xml:space="preserve">
+    <value>Cores / threads</value>
+  </data>
+  <data name="Home.Field.Clock" xml:space="preserve">
+    <value>Max clock</value>
+  </data>
+  <data name="Home.Field.Socket" xml:space="preserve">
+    <value>Socket</value>
+  </data>
+  <data name="Home.Field.Total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="Home.Field.TypeSpeed" xml:space="preserve">
+    <value>Type / speed</value>
+  </data>
+  <data name="Home.Field.Slots" xml:space="preserve">
+    <value>Slots used</value>
+  </data>
+  <data name="Home.Field.Vram" xml:space="preserve">
+    <value>Video memory</value>
+  </data>
+  <data name="Home.Field.Driver" xml:space="preserve">
+    <value>Driver</value>
+  </data>
+  <data name="Home.Field.Interface" xml:space="preserve">
+    <value>Interface</value>
+  </data>
+  <data name="Home.Value.Cores" xml:space="preserve">
+    <value>{0} cores / {1} threads</value>
+  </data>
+  <data name="Home.Value.Clock" xml:space="preserve">
+    <value>{0} GHz</value>
+  </data>
+  <data name="Home.Value.Slots" xml:space="preserve">
+    <value>{0} of {1}</value>
+  </data>
+  <data name="Home.Value.Module" xml:space="preserve">
+    <value>Slot {0}</value>
+  </data>
+  <data name="Home.Value.Unknown" xml:space="preserve">
+    <value>Not reported</value>
+  </data>
+  <data name="Optimize.Category.AdsAndSuggestions" xml:space="preserve">
+    <value>Ads and suggestions</value>
+  </data>
+  <data name="Optimize.Category.AdsAndSuggestions.Description" xml:space="preserve">
+    <value>Stop Windows showing ads, promoted apps and web results.</value>
+  </data>
+  <data name="Optimize.Category.DataCollection" xml:space="preserve">
+    <value>Data collection</value>
+  </data>
+  <data name="Optimize.Category.DataCollection.Description" xml:space="preserve">
+    <value>Limit what Windows records about you and sends to Microsoft.</value>
+  </data>
+  <data name="Optimize.Category.Ai" xml:space="preserve">
+    <value>AI features</value>
+  </data>
+  <data name="Optimize.Category.Ai.Description" xml:space="preserve">
+    <value>Turn off Copilot and Recall.</value>
+  </data>
+  <data name="Optimize.Category.Performance" xml:space="preserve">
+    <value>Performance</value>
+  </data>
+  <data name="Optimize.Category.Performance.Description" xml:space="preserve">
+    <value>Make Windows start and respond faster.</value>
+  </data>
+  <data name="Optimize.Category.Gaming" xml:space="preserve">
+    <value>Gaming</value>
+  </data>
+  <data name="Optimize.Category.Gaming.Description" xml:space="preserve">
+    <value>Smoother games, lower latency and fewer interruptions.</value>
+  </data>
+  <data name="Optimize.Category.FileExplorer" xml:space="preserve">
+    <value>File Explorer</value>
+  </data>
+  <data name="Optimize.Category.FileExplorer.Description" xml:space="preserve">
+    <value>Show what you need and work faster with files.</value>
+  </data>
+  <data name="Optimize.Category.Taskbar" xml:space="preserve">
+    <value>Taskbar</value>
+  </data>
+  <data name="Optimize.Category.Taskbar.Description" xml:space="preserve">
+    <value>Arrange the taskbar the way you like.</value>
+  </data>
+  <data name="Optimize.ApplyGroup" xml:space="preserve">
+    <value>Apply recommended in this group</value>
+  </data>
+  <data name="Optimize.UndoGroup" xml:space="preserve">
+    <value>Undo this group</value>
+  </data>
+  <data name="Optimize.GroupCount" xml:space="preserve">
+    <value>{0}/{1}</value>
+  </data>
+  <data name="Cleanup.SafetyNote" xml:space="preserve">
+    <value>Trevunix only removes temporary files and caches. Documents, photos, videos, archives, password files and everything in Desktop, Documents, Downloads and OneDrive are always kept, and you can check every file before cleaning.</value>
+  </data>
+  <data name="Cleanup.Kept" xml:space="preserve">
+    <value>{0} files kept because they may be yours</value>
+  </data>
+  <data name="Cleanup.Preview" xml:space="preserve">
+    <value>View files</value>
+  </data>
+  <data name="Cleanup.PreviewTitle" xml:space="preserve">
+    <value>{0}: files to be removed</value>
+  </data>
+  <data name="Cleanup.PreviewMore" xml:space="preserve">
+    <value>… and {0} more files</value>
+  </data>
+  <data name="Memory.CleanNow" xml:space="preserve">
+    <value>Free up now</value>
+  </data>
+  <data name="Memory.Used" xml:space="preserve">
+    <value>{0} of {1} in use</value>
+  </data>
+  <data name="Memory.Available" xml:space="preserve">
+    <value>{0} free</value>
+  </data>
+  <data name="Memory.Result.Manual" xml:space="preserve">
+    <value>Freed {0} from {1} processes at {2}.</value>
+  </data>
+  <data name="Memory.Result.Auto" xml:space="preserve">
+    <value>Automatic: freed {0} from {1} processes at {2}.</value>
+  </data>
+  <data name="Memory.Auto.Title" xml:space="preserve">
+    <value>Automatic</value>
+  </data>
+  <data name="Memory.Auto.Threshold" xml:space="preserve">
+    <value>Free up RAM when use reaches</value>
+  </data>
+  <data name="Memory.Auto.Off" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="Memory.Auto.HintOff" xml:space="preserve">
+    <value>Trevunix will not free RAM by itself.</value>
+  </data>
+  <data name="Memory.Auto.HintOn" xml:space="preserve">
+    <value>When RAM use reaches {0}%, Trevunix frees it by itself (at most once every 2 minutes) while the app is open.</value>
+  </data>
+  <data name="Memory.Standby" xml:space="preserve">
+    <value>Also clear the standby cache</value>
+  </data>
+  <data name="Memory.Standby.Description" xml:space="preserve">
+    <value>Drops cached files Windows kept in RAM. Frees much more, but apps you open next may start a little slower.</value>
+  </data>
+  <data name="Memory.Safety" xml:space="preserve">
+    <value>Safe: no app is closed and no data is lost. Apps move unused memory to the page file and get it back when they need it.</value>
+  </data>
+  <data name="Nav.Resources" xml:space="preserve">
+    <value>Free up resources</value>
+  </data>
+  <data name="Resources.Title" xml:space="preserve">
+    <value>Free up resources</value>
+  </data>
+  <data name="Resources.Subtitle" xml:space="preserve">
+    <value>See what is using your RAM, CPU and GPU, give it back to the apps you care about, and boost games.</value>
+  </data>
+  <data name="Section.Ram" xml:space="preserve">
+    <value>RAM</value>
+  </data>
+  <data name="Section.Ram.Description" xml:space="preserve">
+    <value>Free memory, by hand or automatically</value>
+  </data>
+  <data name="Section.Cpu" xml:space="preserve">
+    <value>CPU</value>
+  </data>
+  <data name="Section.Cpu.Description" xml:space="preserve">
+    <value>Slow down busy background apps</value>
+  </data>
+  <data name="Section.Gpu" xml:space="preserve">
+    <value>GPU</value>
+  </data>
+  <data name="Section.Gpu.Description" xml:space="preserve">
+    <value>GPU and video memory per app</value>
+  </data>
+  <data name="Section.SpeedTest" xml:space="preserve">
+    <value>Network speed</value>
+  </data>
+  <data name="Section.SpeedTest.Description" xml:space="preserve">
+    <value>Download, upload, ping and jitter</value>
+  </data>
+  <data name="Section.Monitor" xml:space="preserve">
+    <value>Monitor</value>
+  </data>
+  <data name="Section.Monitor.Description" xml:space="preserve">
+    <value>Live CPU, memory and network</value>
+  </data>
+  <data name="Section.Processes" xml:space="preserve">
+    <value>Processes</value>
+  </data>
+  <data name="Section.Processes.Description" xml:space="preserve">
+    <value>Everything running right now</value>
+  </data>
+  <data name="Section.Repair" xml:space="preserve">
+    <value>Repair Windows</value>
+  </data>
+  <data name="Section.Repair.Description" xml:space="preserve">
+    <value>SFC, DISM, network reset and more</value>
+  </data>
+  <data name="Section.Dns" xml:space="preserve">
+    <value>DNS</value>
+  </data>
+  <data name="Section.Dns.Description" xml:space="preserve">
+    <value>Faster or more private DNS</value>
+  </data>
+  <data name="Section.Drives" xml:space="preserve">
+    <value>Drive health</value>
+  </data>
+  <data name="Section.Drives.Description" xml:space="preserve">
+    <value>Temperature, wear and errors</value>
+  </data>
+  <data name="Resources.Lower" xml:space="preserve">
+    <value>Lower priority</value>
+  </data>
+  <data name="Resources.Restore" xml:space="preserve">
+    <value>Restore priority</value>
+  </data>
+  <data name="Resources.RestoreAll" xml:space="preserve">
+    <value>Restore all</value>
+  </data>
+  <data name="Resources.LoweredBadge" xml:space="preserve">
+    <value>Lowered</value>
+  </data>
+  <data name="Resources.System" xml:space="preserve">
+    <value>Windows</value>
+  </data>
+  <data name="Resources.Lowered" xml:space="preserve">
+    <value>Lowered the priority of {0}.</value>
+  </data>
+  <data name="Resources.LowerFailed" xml:space="preserve">
+    <value>Windows did not allow changing {0}.</value>
+  </data>
+  <data name="Resources.Restored" xml:space="preserve">
+    <value>Restored the priority of {0}.</value>
+  </data>
+  <data name="Resources.RestoredAll" xml:space="preserve">
+    <value>Restored {0} processes to their original priority.</value>
+  </data>
+  <data name="Resources.Ended" xml:space="preserve">
+    <value>Closed {0}.</value>
+  </data>
+  <data name="Resources.CpuName" xml:space="preserve">
+    <value>{0} · {1} cores / {2} threads</value>
+  </data>
+  <data name="Resources.Cpu.Hint" xml:space="preserve">
+    <value>Lowering priority keeps background apps running but lets the app you use go first.</value>
+  </data>
+  <data name="Resources.Cpu.Free" xml:space="preserve">
+    <value>Free up CPU</value>
+  </data>
+  <data name="Resources.Cpu.Top" xml:space="preserve">
+    <value>Busiest processes</value>
+  </data>
+  <data name="Resources.Cpu.Nothing" xml:space="preserve">
+    <value>No background app is using much CPU right now.</value>
+  </data>
+  <data name="Resources.Cpu.Freed" xml:space="preserve">
+    <value>Lowered the priority of {0} busy apps: {1}. Use Restore all to undo.</value>
+  </data>
+  <data name="Resources.Gpu.Free" xml:space="preserve">
+    <value>Free up GPU</value>
+  </data>
+  <data name="Resources.Gpu.Vram" xml:space="preserve">
+    <value>Video memory</value>
+  </data>
+  <data name="Resources.Gpu.Memory" xml:space="preserve">
+    <value>{0} of {1}</value>
+  </data>
+  <data name="Resources.Gpu.Top" xml:space="preserve">
+    <value>Apps using the GPU</value>
+  </data>
+  <data name="Resources.Gpu.Hint" xml:space="preserve">
+    <value>Video memory is only released when the app holding it closes. Free up GPU lists the background apps using it and closes them after you confirm.</value>
+  </data>
+  <data name="Resources.Gpu.Nothing" xml:space="preserve">
+    <value>No background app is holding the GPU right now.</value>
+  </data>
+  <data name="Resources.Gpu.Confirm.Title" xml:space="preserve">
+    <value>Close apps using the GPU?</value>
+  </data>
+  <data name="Resources.Gpu.Confirm.Message" xml:space="preserve">
+    <value>These apps will be closed. Save your work in them first.
+
+{0}</value>
+  </data>
+  <data name="Resources.Gpu.Confirm.Primary" xml:space="preserve">
+    <value>Close them</value>
+  </data>
+  <data name="Resources.Gpu.Freed" xml:space="preserve">
+    <value>Closed {0} of {1} apps.</value>
+  </data>
+  <data name="Resources.Gpu.Unsupported" xml:space="preserve">
+    <value>This version of Windows does not report GPU use per app.</value>
+  </data>
+  <data name="Speed.Start" xml:space="preserve">
+    <value>Start test</value>
+  </data>
+  <data name="Speed.Cancel" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="Speed.Download" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="Speed.Upload" xml:space="preserve">
+    <value>Upload</value>
+  </data>
+  <data name="Speed.Ping" xml:space="preserve">
+    <value>Ping</value>
+  </data>
+  <data name="Speed.Jitter" xml:space="preserve">
+    <value>Jitter</value>
+  </data>
+  <data name="Speed.Phase.Connecting" xml:space="preserve">
+    <value>Finding the nearest server...</value>
+  </data>
+  <data name="Speed.Phase.Latency" xml:space="preserve">
+    <value>Measuring ping</value>
+  </data>
+  <data name="Speed.Phase.Download" xml:space="preserve">
+    <value>Measuring download</value>
+  </data>
+  <data name="Speed.Phase.Upload" xml:space="preserve">
+    <value>Measuring upload</value>
+  </data>
+  <data name="Speed.Phase.Done" xml:space="preserve">
+    <value>Done</value>
+  </data>
+  <data name="Speed.Phase.Cancelled" xml:space="preserve">
+    <value>Stopped</value>
+  </data>
+  <data name="Speed.Server" xml:space="preserve">
+    <value>Server: {0} ({1}) · Network: AS{2} · IP: {3}</value>
+  </data>
+  <data name="Speed.Failed" xml:space="preserve">
+    <value>Could not reach the test server: {0}</value>
+  </data>
+  <data name="Speed.Hint" xml:space="preserve">
+    <value>Uses Cloudflare's speed test servers, nearest data center first, with 8 connections at once like speed test websites. For the most accurate result, use a cable instead of Wi-Fi and pause downloads and streaming. A test on a fast line can use several hundred MB.</value>
+  </data>
+  <data name="Speed.Limited" xml:space="preserve">
+    <value>The test server is limiting your connection because of several tests in a row. Wait a few minutes and try again; a throttled result would be wrong, so none is shown.</value>
+  </data>
+  <data name="RestorePoint.Description" xml:space="preserve">
+    <value>Trevunix: before changing Windows settings</value>
+  </data>
+  <data name="RestorePoint.Creating" xml:space="preserve">
+    <value>Creating a restore point...</value>
+  </data>
+  <data name="RestorePoint.Failed.Title" xml:space="preserve">
+    <value>No restore point</value>
+  </data>
+  <data name="RestorePoint.Failed.Message" xml:space="preserve">
+    <value>Windows could not create a restore point. System Protection is probably turned off for drive C: (search Windows for "Create a restore point" to turn it on). Every tweak can still be undone from Trevunix. Continue without a restore point?</value>
+  </data>
+  <data name="RestorePoint.Failed.Continue" xml:space="preserve">
+    <value>Continue</value>
+  </data>
+  <data name="Settings.Care" xml:space="preserve">
+    <value>Automatic care</value>
+  </data>
+  <data name="Settings.RestorePoint" xml:space="preserve">
+    <value>Restore point before tweaks</value>
+  </data>
+  <data name="Settings.RestorePoint.Description" xml:space="preserve">
+    <value>Creates a System Restore point before the first tweak each time Trevunix opens, so Windows can be rolled back.</value>
+  </data>
+  <data name="Settings.HealthAlerts" xml:space="preserve">
+    <value>Health alerts</value>
+  </data>
+  <data name="Settings.HealthAlerts.Description" xml:space="preserve">
+    <value>Notifies you when a drive is almost full, a disk reports a problem, or the PC runs hot.</value>
+  </data>
+  <data name="Settings.CloseToTray" xml:space="preserve">
+    <value>Keep running in the background</value>
+  </data>
+  <data name="Settings.CloseToTray.Description" xml:space="preserve">
+    <value>Closing the window keeps Trevunix in the notification area, so automatic RAM cleaning and alerts keep working.</value>
+  </data>
+  <data name="AutoClean.Title" xml:space="preserve">
+    <value>Scheduled cleanup</value>
+  </data>
+  <data name="AutoClean.Description" xml:space="preserve">
+    <value>Cleans temporary files and caches on a schedule, even when Trevunix is closed.</value>
+  </data>
+  <data name="AutoClean.Off" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="AutoClean.Daily" xml:space="preserve">
+    <value>Every day</value>
+  </data>
+  <data name="AutoClean.Weekly" xml:space="preserve">
+    <value>Every week</value>
+  </data>
+  <data name="AutoClean.Monthly" xml:space="preserve">
+    <value>Every 4 weeks</value>
+  </data>
+  <data name="AutoClean.Saving" xml:space="preserve">
+    <value>Saving the schedule...</value>
+  </data>
+  <data name="AutoClean.Failed" xml:space="preserve">
+    <value>Could not save the schedule in Task Scheduler.</value>
+  </data>
+  <data name="AutoClean.NotRunYet" xml:space="preserve">
+    <value>Scheduled. It has not run yet.</value>
+  </data>
+  <data name="AutoClean.LastRun" xml:space="preserve">
+    <value>Last run {0}, freed {1}.</value>
+  </data>
+  <data name="AutoClean.Done.Title" xml:space="preserve">
+    <value>Scheduled cleanup finished</value>
+  </data>
+  <data name="AutoClean.Done" xml:space="preserve">
+    <value>Trevunix freed {0} of disk space.</value>
+  </data>
+  <data name="Tray.Open" xml:space="preserve">
+    <value>Open Trevunix</value>
+  </data>
+  <data name="Tray.FreeRam" xml:space="preserve">
+    <value>Free up RAM</value>
+  </data>
+  <data name="Tray.Exit" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="Tray.Tooltip" xml:space="preserve">
+    <value>Trevunix
+CPU {0}% · RAM {1}%</value>
+  </data>
+  <data name="Tray.StillRunning.Title" xml:space="preserve">
+    <value>Trevunix is still running</value>
+  </data>
+  <data name="Tray.StillRunning.Message" xml:space="preserve">
+    <value>It keeps working in the notification area. Right-click the icon to exit, or turn this off in Settings.</value>
+  </data>
+  <data name="Health.DriveAlmostFull.Title" xml:space="preserve">
+    <value>Drive almost full</value>
+  </data>
+  <data name="Health.DriveAlmostFull" xml:space="preserve">
+    <value>Drive {0} has only {1} free. Clean it up to keep Windows running smoothly.</value>
+  </data>
+  <data name="Health.DiskFailing.Title" xml:space="preserve">
+    <value>Disk problem</value>
+  </data>
+  <data name="Health.DiskFailing" xml:space="preserve">
+    <value>{0} reports a health problem. Back up your files soon.</value>
+  </data>
+  <data name="Health.DiskHot.Title" xml:space="preserve">
+    <value>Disk running hot</value>
+  </data>
+  <data name="Health.DiskHot" xml:space="preserve">
+    <value>{0} is at {1} °C.</value>
+  </data>
+  <data name="Health.CpuHot.Title" xml:space="preserve">
+    <value>PC running hot</value>
+  </data>
+  <data name="Health.CpuHot" xml:space="preserve">
+    <value>The CPU area is at {1} °C. Check the fans and vents.</value>
+  </data>
+  <data name="Quick.Title" xml:space="preserve">
+    <value>One-click optimize</value>
+  </data>
+  <data name="Quick.Description" xml:space="preserve">
+    <value>Cleans temporary files and caches and frees RAM. Personal files and the Recycle Bin are not touched.</value>
+  </data>
+  <data name="Quick.IncludeTweaks" xml:space="preserve">
+    <value>Also apply recommended tweaks (a restore point is made first)</value>
+  </data>
+  <data name="Quick.Run" xml:space="preserve">
+    <value>Optimize now</value>
+  </data>
+  <data name="Quick.Confirm.Title" xml:space="preserve">
+    <value>Optimize now?</value>
+  </data>
+  <data name="Quick.Confirm.Message" xml:space="preserve">
+    <value>Trevunix will delete temporary files and caches and free RAM. Nothing personal is removed.</value>
+  </data>
+  <data name="Quick.Confirm.WithTweaks" xml:space="preserve">
+    <value>Trevunix will delete temporary files and caches, free RAM and apply the recommended tweaks. Every tweak can be undone on the Optimize page.</value>
+  </data>
+  <data name="Quick.Step.Tweaks" xml:space="preserve">
+    <value>Applying tweaks...</value>
+  </data>
+  <data name="Quick.Step.Cleanup" xml:space="preserve">
+    <value>Cleaning up files...</value>
+  </data>
+  <data name="Quick.Step.Memory" xml:space="preserve">
+    <value>Freeing RAM...</value>
+  </data>
+  <data name="Quick.Result" xml:space="preserve">
+    <value>Done. Freed {0} of disk space and {1} of RAM.</value>
+  </data>
+  <data name="Quick.Result.Tweaks" xml:space="preserve">
+    <value>Applied {0} tweaks.</value>
+  </data>
+  <data name="Quick.Result.TweaksFailed" xml:space="preserve">
+    <value>{0} tweaks could not be applied.</value>
+  </data>
+  <data name="Quick.Result.Restart" xml:space="preserve">
+    <value>Restart the PC to finish some changes.</value>
+  </data>
+  <data name="Settings.MadeBy" xml:space="preserve">
+    <value>Made by {0}</value>
+  </data>
+  <data name="Nav.Appearance" xml:space="preserve">
+    <value>Appearance</value>
+  </data>
+  <data name="Appearance.Title" xml:space="preserve">
+    <value>Appearance</value>
+  </data>
+  <data name="Appearance.Subtitle" xml:space="preserve">
+    <value>Colors, taskbar and File Explorer. Every change can be undone.</value>
+  </data>
+  <data name="Optimize.Category.Appearance" xml:space="preserve">
+    <value>Colors and effects</value>
+  </data>
+  <data name="Optimize.Category.Appearance.Description" xml:space="preserve">
+    <value>Dark mode, accent color and animations.</value>
+  </data>
+  <data name="Tweak.HideWidgets" xml:space="preserve">
+    <value>Hide Widgets</value>
+  </data>
+  <data name="Tweak.HideWidgets.Description" xml:space="preserve">
+    <value>Removes the news and weather button from the taskbar.</value>
+  </data>
+  <data name="Tweak.HideTaskView" xml:space="preserve">
+    <value>Hide Task View button</value>
+  </data>
+  <data name="Tweak.HideTaskView.Description" xml:space="preserve">
+    <value>Removes the Task View button. Win+Tab still opens it.</value>
+  </data>
+  <data name="Tweak.SearchIcon" xml:space="preserve">
+    <value>Search as an icon</value>
+  </data>
+  <data name="Tweak.SearchIcon.Description" xml:space="preserve">
+    <value>Shows search as a small icon instead of a wide box, leaving more room for apps.</value>
+  </data>
+  <data name="Tweak.ClockSeconds" xml:space="preserve">
+    <value>Seconds on the clock</value>
+  </data>
+  <data name="Tweak.ClockSeconds.Description" xml:space="preserve">
+    <value>Shows seconds on the taskbar clock.</value>
+  </data>
+  <data name="Tweak.CompactExplorer" xml:space="preserve">
+    <value>Compact File Explorer</value>
+  </data>
+  <data name="Tweak.CompactExplorer.Description" xml:space="preserve">
+    <value>Less space between items, so more files fit on screen.</value>
+  </data>
+  <data name="Tweak.HideExplorerHome" xml:space="preserve">
+    <value>Hide Home in File Explorer</value>
+  </data>
+  <data name="Tweak.HideExplorerHome.Description" xml:space="preserve">
+    <value>Removes Home from the navigation pane.</value>
+  </data>
+  <data name="Tweak.HideExplorerGallery" xml:space="preserve">
+    <value>Hide Gallery in File Explorer</value>
+  </data>
+  <data name="Tweak.HideExplorerGallery.Description" xml:space="preserve">
+    <value>Removes Gallery from the navigation pane.</value>
+  </data>
+  <data name="Tweak.NoShortcutSuffix" xml:space="preserve">
+    <value>No "- Shortcut" in names</value>
+  </data>
+  <data name="Tweak.NoShortcutSuffix.Description" xml:space="preserve">
+    <value>New shortcuts keep the plain name of what they point to.</value>
+  </data>
+  <data name="Tweak.DarkMode" xml:space="preserve">
+    <value>Dark mode</value>
+  </data>
+  <data name="Tweak.DarkMode.Description" xml:space="preserve">
+    <value>Dark colors for Windows and apps that follow it.</value>
+  </data>
+  <data name="Tweak.AccentTitleBars" xml:space="preserve">
+    <value>Accent color on title bars</value>
+  </data>
+  <data name="Tweak.AccentTitleBars.Description" xml:space="preserve">
+    <value>Window title bars and borders use your accent color.</value>
+  </data>
+  <data name="Tweak.AccentTaskbar" xml:space="preserve">
+    <value>Accent color on Start and taskbar</value>
+  </data>
+  <data name="Tweak.AccentTaskbar.Description" xml:space="preserve">
+    <value>Start and the taskbar use your accent color. Needs dark mode for Windows.</value>
+  </data>
+  <data name="Tweak.NoTransparency" xml:space="preserve">
+    <value>Turn off transparency</value>
+  </data>
+  <data name="Tweak.NoTransparency.Description" xml:space="preserve">
+    <value>Solid backgrounds instead of see-through ones. Lighter on older graphics.</value>
+  </data>
+  <data name="Tweak.FewerAnimations" xml:space="preserve">
+    <value>Fewer animations</value>
+  </data>
+  <data name="Tweak.FewerAnimations.Description" xml:space="preserve">
+    <value>Windows and the taskbar open and close without animation, which feels faster on slow PCs.</value>
+  </data>
+  <data name="Settings.StartWithWindows" xml:space="preserve">
+    <value>Start with Windows</value>
+  </data>
+  <data name="Settings.StartWithWindows.Description" xml:space="preserve">
+    <value>Opens Trevunix in the notification area when you sign in, without a UAC prompt.</value>
+  </data>
+  <data name="Settings.StartWithWindows.Failed" xml:space="preserve">
+    <value>Could not save this in Task Scheduler.</value>
+  </data>
+  <data name="Section.Booster" xml:space="preserve">
+    <value>Game mode</value>
+  </data>
+  <data name="Section.Booster.Description" xml:space="preserve">
+    <value>More power and memory for games</value>
+  </data>
+  <data name="Booster.Title" xml:space="preserve">
+    <value>Game Booster</value>
+  </data>
+  <data name="Booster.Description" xml:space="preserve">
+    <value>Switches to the High performance power plan, frees RAM and closes the apps you pick below. Turning it off puts the power plan back and reopens those apps.</value>
+  </data>
+  <data name="Booster.Start" xml:space="preserve">
+    <value>Turn on</value>
+  </data>
+  <data name="Booster.Stop" xml:space="preserve">
+    <value>Turn off</value>
+  </data>
+  <data name="Booster.Refresh" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="Booster.AppsTitle" xml:space="preserve">
+    <value>Apps to close</value>
+  </data>
+  <data name="Booster.AppsHint" xml:space="preserve">
+    <value>Biggest first. Your choice is remembered for next time.</value>
+  </data>
+  <data name="Booster.Confirm.Title" xml:space="preserve">
+    <value>Close these apps?</value>
+  </data>
+  <data name="Booster.Confirm.Message" xml:space="preserve">
+    <value>{0} will be closed. Save your work in them first; anything unsaved may be lost.</value>
+  </data>
+  <data name="Booster.Starting" xml:space="preserve">
+    <value>Turning on game mode...</value>
+  </data>
+  <data name="Booster.On" xml:space="preserve">
+    <value>Game mode is on. Closed {0} apps and freed {1} of RAM.</value>
+  </data>
+  <data name="Booster.NoPowerPlan" xml:space="preserve">
+    <value>This PC has no High performance power plan, so the power plan was left as it is.</value>
+  </data>
+  <data name="Booster.Off" xml:space="preserve">
+    <value>Game mode is off. Power plan restored and {0} apps reopened.</value>
+  </data>
+  <data name="Section.Battery" xml:space="preserve">
+    <value>Battery</value>
+  </data>
+  <data name="Section.Battery.Description" xml:space="preserve">
+    <value>Health, capacity and charge cycles</value>
+  </data>
+  <data name="Battery.Load" xml:space="preserve">
+    <value>Check again</value>
+  </data>
+  <data name="Battery.None" xml:space="preserve">
+    <value>This PC has no battery.</value>
+  </data>
+  <data name="Battery.Unnamed" xml:space="preserve">
+    <value>Battery</value>
+  </data>
+  <data name="Battery.Health" xml:space="preserve">
+    <value>Capacity left compared with new</value>
+  </data>
+  <data name="Battery.Good" xml:space="preserve">
+    <value>Good condition.</value>
+  </data>
+  <data name="Battery.Worn" xml:space="preserve">
+    <value>Worn. The battery runs out noticeably sooner than when new.</value>
+  </data>
+  <data name="Battery.Replace" xml:space="preserve">
+    <value>Heavily worn. Consider replacing the battery.</value>
+  </data>
+  <data name="Battery.Capacity" xml:space="preserve">
+    <value>Full charge / design</value>
+  </data>
+  <data name="Battery.CapacityValue" xml:space="preserve">
+    <value>{0} / {1} Wh</value>
+  </data>
+  <data name="Battery.Cycles" xml:space="preserve">
+    <value>Charge cycles</value>
+  </data>
+  <data name="Battery.Charge" xml:space="preserve">
+    <value>Charge</value>
+  </data>
+  <data name="Battery.Charging" xml:space="preserve">
+    <value>charging</value>
+  </data>
+  <data name="Battery.PluggedIn" xml:space="preserve">
+    <value>plugged in</value>
+  </data>
+  <data name="Battery.OnBattery" xml:space="preserve">
+    <value>on battery</value>
+  </data>
+</root>

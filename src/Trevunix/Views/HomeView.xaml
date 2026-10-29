@@ -1,0 +1,262 @@
+<UserControl
+  x:Class="Trevunix.Views.HomeView"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:l="clr-namespace:Trevunix.Localization"
+  xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+>
+  <ScrollViewer VerticalScrollBarVisibility="Auto">
+    <StackPanel Margin="32,28">
+      <TextBlock Style="{StaticResource PageTitle}" Text="{l:T Home.Greeting}" />
+      <TextBlock Style="{StaticResource PageSubtitle}" Text="{l:T Home.Subtitle}" />
+
+      <!-- Health alerts -->
+      <ItemsControl Margin="0,16,0,0" ItemsSource="{Binding Alerts}">
+        <ItemsControl.ItemTemplate>
+          <DataTemplate>
+            <ui:InfoBar
+              Margin="0,0,0,8"
+              IsClosable="False"
+              IsOpen="True"
+              Message="{Binding}"
+              Severity="Warning"
+            />
+          </DataTemplate>
+        </ItemsControl.ItemTemplate>
+      </ItemsControl>
+
+      <!-- One-click optimize -->
+      <Border Margin="0,8,0,0" Style="{StaticResource Panel}">
+        <DockPanel>
+          <StackPanel VerticalAlignment="Center" DockPanel.Dock="Right" Orientation="Horizontal">
+            <ui:ProgressRing
+              Width="20"
+              Height="20"
+              Margin="0,0,12,0"
+              IsIndeterminate="True"
+              Visibility="{Binding IsOptimizing, Converter={StaticResource VisibleWhen}}"
+            />
+            <ui:Button
+              Appearance="Primary"
+              Command="{Binding QuickOptimizeCommand}"
+              Content="{l:T Quick.Run}"
+              Icon="{ui:SymbolIcon Sparkle24}"
+            />
+          </StackPanel>
+          <ui:SymbolIcon
+            Margin="0,0,14,0"
+            VerticalAlignment="Top"
+            DockPanel.Dock="Left"
+            FontSize="28"
+            Foreground="{DynamicResource AccentTextFillColorPrimaryBrush}"
+            Symbol="Rocket24"
+          />
+          <StackPanel Margin="0,0,16,0">
+            <TextBlock
+              FontSize="16"
+              FontWeight="SemiBold"
+              Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+              Text="{l:T Quick.Title}"
+            />
+            <TextBlock
+              Margin="0,2,0,0"
+              Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+              Text="{l:T Quick.Description}"
+              TextWrapping="Wrap"
+            />
+            <CheckBox
+              Margin="0,8,0,0"
+              Content="{l:T Quick.IncludeTweaks}"
+              IsChecked="{Binding IncludeTweaks}"
+            />
+            <TextBlock
+              Margin="0,6,0,0"
+              Style="{StaticResource Muted}"
+              Text="{Binding OptimizeStatus}"
+              Visibility="{Binding OptimizeStatus, Converter={StaticResource VisibleWhen}}"
+            />
+            <TextBlock
+              Margin="0,6,0,0"
+              FontWeight="SemiBold"
+              Foreground="{DynamicResource SystemFillColorSuccessBrush}"
+              Text="{Binding OptimizeResult}"
+              TextWrapping="Wrap"
+              Visibility="{Binding OptimizeResult, Converter={StaticResource VisibleWhen}}"
+            />
+          </StackPanel>
+        </DockPanel>
+      </Border>
+
+      <!-- At a glance -->
+      <WrapPanel Margin="0,20,0,0">
+        <Border Width="260" Margin="0,0,12,12" Style="{StaticResource Panel}">
+          <StackPanel>
+            <TextBlock Style="{StaticResource Muted}" Text="{l:T Home.Computer}" />
+            <TextBlock
+              Margin="0,4,0,0"
+              FontSize="18"
+              FontWeight="SemiBold"
+              Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+              Text="{Binding Machine.ComputerName}"
+              TextTrimming="CharacterEllipsis"
+            />
+          </StackPanel>
+        </Border>
+        <Border Width="260" Margin="0,0,12,12" Style="{StaticResource Panel}">
+          <StackPanel>
+            <TextBlock Style="{StaticResource Muted}" Text="{l:T Home.Uptime}" />
+            <TextBlock
+              Margin="0,4,0,0"
+              FontSize="18"
+              FontWeight="SemiBold"
+              Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+              Text="{Binding Uptime}"
+            />
+          </StackPanel>
+        </Border>
+        <Border Width="260" Margin="0,0,12,12" Style="{StaticResource Panel}">
+          <StackPanel>
+            <TextBlock Style="{StaticResource Muted}" Text="{l:T Home.Windows}" />
+            <TextBlock
+              Margin="0,4,0,0"
+              FontSize="18"
+              FontWeight="SemiBold"
+              Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+              Text="{Binding Machine.WindowsName}"
+              TextTrimming="CharacterEllipsis"
+            />
+          </StackPanel>
+        </Border>
+      </WrapPanel>
+
+      <!-- Hardware details -->
+      <StackPanel
+        Margin="0,8,0,0"
+        Orientation="Horizontal"
+        Visibility="{Binding IsLoading, Converter={StaticResource VisibleWhen}}"
+      >
+        <ui:ProgressRing Width="20" Height="20" IsIndeterminate="True" />
+        <TextBlock
+          Margin="10,0,0,0"
+          VerticalAlignment="Center"
+          Style="{StaticResource Muted}"
+          Text="{l:T Home.Loading}"
+        />
+      </StackPanel>
+
+      <ItemsControl ItemsSource="{Binding Cards}">
+        <ItemsControl.ItemsPanel>
+          <ItemsPanelTemplate>
+            <WrapPanel />
+          </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+        <ItemsControl.ItemTemplate>
+          <DataTemplate>
+            <Border Width="400" Margin="0,0,12,12" Style="{StaticResource Panel}">
+              <StackPanel>
+                <StackPanel Margin="0,0,0,10" Orientation="Horizontal">
+                  <ui:SymbolIcon
+                    FontSize="20"
+                    Foreground="{DynamicResource AccentTextFillColorPrimaryBrush}"
+                    Symbol="{Binding Icon}"
+                  />
+                  <TextBlock
+                    Margin="10,0,0,0"
+                    VerticalAlignment="Center"
+                    FontSize="15"
+                    FontWeight="SemiBold"
+                    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                    Text="{Binding Title}"
+                  />
+                </StackPanel>
+                <ItemsControl ItemsSource="{Binding Rows}">
+                  <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                      <Grid Margin="0,3">
+                        <Grid.ColumnDefinitions>
+                          <ColumnDefinition Width="140" />
+                          <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock
+                          Style="{StaticResource Muted}"
+                          Text="{Binding Label}"
+                          Visibility="{Binding IsHeading, Converter={StaticResource VisibleWhen}, ConverterParameter=invert}"
+                        />
+                        <TextBlock
+                          Grid.Column="1"
+                          Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                          Text="{Binding Value}"
+                          TextWrapping="Wrap"
+                          Visibility="{Binding IsHeading, Converter={StaticResource VisibleWhen}, ConverterParameter=invert}"
+                        />
+                        <!-- A heading row spans both columns. -->
+                        <TextBlock
+                          Grid.ColumnSpan="2"
+                          Margin="0,4,0,0"
+                          FontWeight="SemiBold"
+                          Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                          Text="{Binding Value}"
+                          TextWrapping="Wrap"
+                          Visibility="{Binding IsHeading, Converter={StaticResource VisibleWhen}}"
+                        />
+                      </Grid>
+                    </DataTemplate>
+                  </ItemsControl.ItemTemplate>
+                </ItemsControl>
+              </StackPanel>
+            </Border>
+          </DataTemplate>
+        </ItemsControl.ItemTemplate>
+      </ItemsControl>
+
+      <TextBlock Style="{StaticResource SectionTitle}" Text="{l:T Home.Drives}" />
+      <ItemsControl ItemsSource="{Binding Drives}">
+        <ItemsControl.ItemsPanel>
+          <ItemsPanelTemplate>
+            <WrapPanel />
+          </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+        <ItemsControl.ItemTemplate>
+          <DataTemplate>
+            <Border Width="340" Margin="0,0,12,12" Style="{StaticResource Panel}">
+              <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                  <ui:SymbolIcon FontSize="22" Symbol="HardDrive20" />
+                  <TextBlock
+                    Margin="10,0,0,0"
+                    VerticalAlignment="Center"
+                    FontWeight="SemiBold"
+                    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                    Text="{Binding Title}"
+                  />
+                </StackPanel>
+                <ProgressBar
+                  Margin="0,14,0,8"
+                  Style="{StaticResource UsageBar}"
+                  Value="{Binding UsedPercent, Mode=OneWay}"
+                />
+                <DockPanel>
+                  <ui:Button
+                    Appearance="Secondary"
+                    Command="{Binding DataContext.AnalyzeCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                    CommandParameter="{Binding}"
+                    Content="{l:T Home.Analyze}"
+                    DockPanel.Dock="Right"
+                    Icon="{ui:SymbolIcon DataPie24}"
+                  />
+                  <TextBlock
+                    Margin="0,0,8,0"
+                    VerticalAlignment="Center"
+                    Style="{StaticResource Muted}"
+                    Text="{Binding FreeText}"
+                    TextWrapping="Wrap"
+                  />
+                </DockPanel>
+              </StackPanel>
+            </Border>
+          </DataTemplate>
+        </ItemsControl.ItemTemplate>
+      </ItemsControl>
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>

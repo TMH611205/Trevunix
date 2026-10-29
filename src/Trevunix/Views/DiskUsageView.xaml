@@ -1,0 +1,355 @@
+<UserControl
+  x:Class="Trevunix.Views.DiskUsageView"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:l="clr-namespace:Trevunix.Localization"
+  xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+>
+  <UserControl.Resources>
+    <ContextMenu x:Key="RowMenu">
+      <MenuItem
+        Command="{Binding PlacementTarget.DataContext.OpenCommand, RelativeSource={RelativeSource AncestorType=ContextMenu}}"
+        CommandParameter="{Binding PlacementTarget.SelectedItem, RelativeSource={RelativeSource AncestorType=ContextMenu}}"
+        Header="{l:T Disk.Open}"
+        Icon="{ui:SymbolIcon Open24}"
+      />
+      <MenuItem
+        Command="{Binding PlacementTarget.DataContext.ShowInExplorerCommand, RelativeSource={RelativeSource AncestorType=ContextMenu}}"
+        CommandParameter="{Binding PlacementTarget.SelectedItem, RelativeSource={RelativeSource AncestorType=ContextMenu}}"
+        Header="{l:T Disk.ShowInExplorer}"
+        Icon="{ui:SymbolIcon FolderOpen24}"
+      />
+      <MenuItem
+        Command="{Binding PlacementTarget.DataContext.CopyPathCommand, RelativeSource={RelativeSource AncestorType=ContextMenu}}"
+        CommandParameter="{Binding PlacementTarget.SelectedItem, RelativeSource={RelativeSource AncestorType=ContextMenu}}"
+        Header="{l:T Disk.CopyPath}"
+        Icon="{ui:SymbolIcon Copy24}"
+      />
+      <Separator />
+      <MenuItem
+        Command="{Binding PlacementTarget.DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType=ContextMenu}}"
+        CommandParameter="{Binding PlacementTarget.SelectedItem, RelativeSource={RelativeSource AncestorType=ContextMenu}}"
+        Header="{l:T Disk.Delete}"
+        Icon="{ui:SymbolIcon Delete24}"
+      />
+    </ContextMenu>
+
+    <DataTemplate x:Key="NameCell">
+      <StackPanel Orientation="Horizontal">
+        <ui:SymbolIcon FontSize="18" Symbol="{Binding Icon}" />
+        <TextBlock
+          Margin="8,0,0,0"
+          VerticalAlignment="Center"
+          Text="{Binding Name}"
+          TextTrimming="CharacterEllipsis"
+        />
+      </StackPanel>
+    </DataTemplate>
+
+    <DataTemplate x:Key="ShareCell">
+      <Grid Width="150">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="52" />
+        </Grid.ColumnDefinitions>
+        <ProgressBar
+          Style="{StaticResource UsageBar}"
+          Value="{Binding SharePercent, Mode=OneWay}"
+        />
+        <TextBlock
+          Grid.Column="1"
+          HorizontalAlignment="Right"
+          Style="{StaticResource Muted}"
+          Text="{Binding Share, Converter={StaticResource Percent}}"
+        />
+      </Grid>
+    </DataTemplate>
+
+    <DataTemplate x:Key="SizeCell">
+      <TextBlock
+        HorizontalAlignment="Right"
+        FontWeight="SemiBold"
+        Text="{Binding Size, Converter={StaticResource Bytes}}"
+      />
+    </DataTemplate>
+  </UserControl.Resources>
+
+  <Grid Margin="32,28,32,20">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+
+    <StackPanel Grid.Row="0">
+      <TextBlock Style="{StaticResource PageTitle}" Text="{l:T Disk.Title}" />
+      <TextBlock Style="{StaticResource PageSubtitle}" Text="{l:T Disk.Subtitle}" />
+    </StackPanel>
+
+    <!-- Pick a drive or folder. -->
+    <ScrollViewer
+      Grid.Row="1"
+      Margin="0,20,0,0"
+      VerticalScrollBarVisibility="Auto"
+      Visibility="{Binding IsIdle, Converter={StaticResource VisibleWhen}}"
+    >
+      <StackPanel>
+        <ItemsControl ItemsSource="{Binding Drives}">
+          <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+              <WrapPanel />
+            </ItemsPanelTemplate>
+          </ItemsControl.ItemsPanel>
+          <ItemsControl.ItemTemplate>
+            <DataTemplate>
+              <Border Width="340" Margin="0,0,12,12" Style="{StaticResource Panel}">
+                <StackPanel>
+                  <StackPanel Orientation="Horizontal">
+                    <ui:SymbolIcon FontSize="22" Symbol="HardDrive20" />
+                    <TextBlock
+                      Margin="10,0,0,0"
+                      VerticalAlignment="Center"
+                      FontWeight="SemiBold"
+                      Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                      Text="{Binding Title}"
+                    />
+                  </StackPanel>
+                  <ProgressBar
+                    Margin="0,14,0,8"
+                    Style="{StaticResource UsageBar}"
+                    Value="{Binding UsedPercent, Mode=OneWay}"
+                  />
+                  <DockPanel>
+                    <ui:Button
+                      Appearance="Primary"
+                      Command="{Binding DataContext.ScanDriveCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                      CommandParameter="{Binding}"
+                      Content="{l:T Disk.Scan}"
+                      DockPanel.Dock="Right"
+                      Icon="{ui:SymbolIcon Search24}"
+                    />
+                    <TextBlock
+                      Margin="0,0,8,0"
+                      VerticalAlignment="Center"
+                      Style="{StaticResource Muted}"
+                      Text="{Binding FreeText}"
+                      TextWrapping="Wrap"
+                    />
+                  </DockPanel>
+                </StackPanel>
+              </Border>
+            </DataTemplate>
+          </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <ui:Button
+          Margin="0,4,0,0"
+          Command="{Binding PickFolderCommand}"
+          Content="{l:T Disk.PickFolder}"
+          Icon="{ui:SymbolIcon FolderSearch24}"
+        />
+      </StackPanel>
+    </ScrollViewer>
+
+    <!-- Scanning. -->
+    <Border
+      Grid.Row="1"
+      Margin="0,20,0,0"
+      VerticalAlignment="Top"
+      Style="{StaticResource Panel}"
+      Visibility="{Binding IsScanning, Converter={StaticResource VisibleWhen}}"
+    >
+      <DockPanel>
+        <ui:ProgressRing Width="40" Height="40" DockPanel.Dock="Left" IsIndeterminate="True" />
+        <ui:Button
+          Margin="16,0,0,0"
+          Command="{Binding StopCommand}"
+          Content="{l:T Disk.Stop}"
+          DockPanel.Dock="Right"
+          Icon="{ui:SymbolIcon Stop24}"
+        />
+        <StackPanel Margin="16,0,0,0" VerticalAlignment="Center">
+          <TextBlock
+            FontWeight="SemiBold"
+            Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+            Text="{Binding ScanTitle}"
+          />
+          <TextBlock Margin="0,4,0,0" Style="{StaticResource Muted}" Text="{Binding ScanStats}" />
+          <TextBlock
+            Margin="0,2,0,0"
+            FontSize="11"
+            Style="{StaticResource Muted}"
+            Text="{Binding ScanPath}"
+          />
+        </StackPanel>
+      </DockPanel>
+    </Border>
+
+    <!-- Results. -->
+    <Grid
+      Grid.Row="1"
+      Margin="0,16,0,0"
+      Visibility="{Binding HasResult, Converter={StaticResource VisibleWhen}}"
+    >
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="*" />
+      </Grid.RowDefinitions>
+
+      <DockPanel Grid.Row="0">
+        <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+          <ui:Button
+            Margin="0,0,8,0"
+            Command="{Binding RescanCommand}"
+            Content="{l:T Disk.Rescan}"
+            Icon="{ui:SymbolIcon ArrowClockwise24}"
+          />
+          <ui:Button
+            Command="{Binding BackCommand}"
+            Content="{l:T Disk.Back}"
+            Icon="{ui:SymbolIcon HardDrive20}"
+          />
+        </StackPanel>
+        <TextBlock
+          VerticalAlignment="Center"
+          FontSize="15"
+          FontWeight="SemiBold"
+          Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+          Text="{Binding Summary}"
+        />
+      </DockPanel>
+
+      <ui:InfoBar
+        Grid.Row="1"
+        Margin="0,10,0,0"
+        IsClosable="False"
+        IsOpen="True"
+        Message="{Binding Warning}"
+        Severity="Warning"
+        Visibility="{Binding Warning, Converter={StaticResource VisibleWhen}}"
+      />
+
+      <TabControl Grid.Row="2" Margin="0,12,0,0">
+        <TabItem Header="{l:T Disk.Tab.Folders}">
+          <DockPanel Margin="0,10,0,0">
+            <DockPanel Margin="0,0,0,8" DockPanel.Dock="Top">
+              <ui:Button
+                Command="{Binding UpCommand}"
+                Content="{l:T Disk.Up}"
+                DockPanel.Dock="Left"
+                Icon="{ui:SymbolIcon ArrowUp24}"
+                IsEnabled="{Binding CanGoUp}"
+              />
+              <TextBlock
+                Margin="12,0,0,0"
+                VerticalAlignment="Center"
+                Style="{StaticResource Muted}"
+                Text="{Binding Current.FullPath}"
+              />
+            </DockPanel>
+            <ListView
+              x:Name="FolderList"
+              ContextMenu="{StaticResource RowMenu}"
+              ItemsSource="{Binding Rows}"
+              MouseDoubleClick="OnRowDoubleClick"
+              SelectionMode="Single"
+            >
+              <ListView.View>
+                <GridView>
+                  <GridViewColumn
+                    Width="380"
+                    CellTemplate="{StaticResource NameCell}"
+                    Header="{l:T Disk.Col.Name}"
+                  />
+                  <GridViewColumn
+                    Width="110"
+                    CellTemplate="{StaticResource SizeCell}"
+                    Header="{l:T Disk.Col.Size}"
+                  />
+                  <GridViewColumn
+                    Width="180"
+                    CellTemplate="{StaticResource ShareCell}"
+                    Header="{l:T Disk.Col.Share}"
+                  />
+                  <GridViewColumn
+                    Width="90"
+                    DisplayMemberBinding="{Binding Files, StringFormat=N0}"
+                    Header="{l:T Disk.Col.Files}"
+                  />
+                  <GridViewColumn
+                    Width="150"
+                    DisplayMemberBinding="{Binding Modified}"
+                    Header="{l:T Disk.Col.Modified}"
+                  />
+                </GridView>
+              </ListView.View>
+            </ListView>
+          </DockPanel>
+        </TabItem>
+
+        <TabItem Header="{l:T Disk.Tab.LargestFiles}">
+          <ListView
+            Margin="0,10,0,0"
+            ContextMenu="{StaticResource RowMenu}"
+            ItemsSource="{Binding LargestFiles}"
+            MouseDoubleClick="OnRowDoubleClick"
+            SelectionMode="Single"
+          >
+            <ListView.View>
+              <GridView>
+                <GridViewColumn
+                  Width="300"
+                  CellTemplate="{StaticResource NameCell}"
+                  Header="{l:T Disk.Col.Name}"
+                />
+                <GridViewColumn
+                  Width="110"
+                  CellTemplate="{StaticResource SizeCell}"
+                  Header="{l:T Disk.Col.Size}"
+                />
+                <GridViewColumn
+                  Width="360"
+                  DisplayMemberBinding="{Binding Folder}"
+                  Header="{l:T Disk.Col.Folder}"
+                />
+                <GridViewColumn
+                  Width="150"
+                  DisplayMemberBinding="{Binding Modified}"
+                  Header="{l:T Disk.Col.Modified}"
+                />
+              </GridView>
+            </ListView.View>
+          </ListView>
+        </TabItem>
+
+        <TabItem Header="{l:T Disk.Tab.FileTypes}">
+          <ListView Margin="0,10,0,0" ItemsSource="{Binding FileTypes}">
+            <ListView.View>
+              <GridView>
+                <GridViewColumn
+                  Width="220"
+                  CellTemplate="{StaticResource NameCell}"
+                  Header="{l:T Disk.Col.Type}"
+                />
+                <GridViewColumn
+                  Width="110"
+                  CellTemplate="{StaticResource SizeCell}"
+                  Header="{l:T Disk.Col.Size}"
+                />
+                <GridViewColumn
+                  Width="180"
+                  CellTemplate="{StaticResource ShareCell}"
+                  Header="{l:T Disk.Col.Share}"
+                />
+                <GridViewColumn
+                  Width="110"
+                  DisplayMemberBinding="{Binding Files, StringFormat=N0}"
+                  Header="{l:T Disk.Col.Files}"
+                />
+              </GridView>
+            </ListView.View>
+          </ListView>
+        </TabItem>
+      </TabControl>
+    </Grid>
+  </Grid>
+</UserControl>

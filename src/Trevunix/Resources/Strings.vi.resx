@@ -1,0 +1,1621 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Nav.Home" xml:space="preserve">
+    <value>Trang chủ</value>
+  </data>
+  <data name="Nav.Optimize" xml:space="preserve">
+    <value>Tối ưu</value>
+  </data>
+  <data name="Nav.Cleanup" xml:space="preserve">
+    <value>Dọn dẹp</value>
+  </data>
+  <data name="Nav.DiskUsage" xml:space="preserve">
+    <value>Dung lượng ổ đĩa</value>
+  </data>
+  <data name="Nav.Apps" xml:space="preserve">
+    <value>Ứng dụng &amp; Khởi động</value>
+  </data>
+  <data name="Nav.Tools" xml:space="preserve">
+    <value>Công cụ tiện ích</value>
+  </data>
+  <data name="Nav.Settings" xml:space="preserve">
+    <value>Cài đặt</value>
+  </data>
+  <data name="Home.Greeting" xml:space="preserve">
+    <value>Chào mừng đến với Trevunix</value>
+  </data>
+  <data name="Home.Subtitle" xml:space="preserve">
+    <value>Tổng quan về máy tính của bạn.</value>
+  </data>
+  <data name="Home.System" xml:space="preserve">
+    <value>Hệ thống</value>
+  </data>
+  <data name="Home.Computer" xml:space="preserve">
+    <value>Tên máy</value>
+  </data>
+  <data name="Home.Windows" xml:space="preserve">
+    <value>Windows</value>
+  </data>
+  <data name="Home.Processor" xml:space="preserve">
+    <value>CPU</value>
+  </data>
+  <data name="Home.Cores" xml:space="preserve">
+    <value>{0} luồng</value>
+  </data>
+  <data name="Home.Memory" xml:space="preserve">
+    <value>RAM</value>
+  </data>
+  <data name="Home.Uptime" xml:space="preserve">
+    <value>Thời gian hoạt động</value>
+  </data>
+  <data name="Home.UptimeValue" xml:space="preserve">
+    <value>{0} ngày {1} giờ {2} phút</value>
+  </data>
+  <data name="Home.Drives" xml:space="preserve">
+    <value>Ổ đĩa</value>
+  </data>
+  <data name="Home.DriveFree" xml:space="preserve">
+    <value>Còn trống {0} / {1}</value>
+  </data>
+  <data name="Home.Analyze" xml:space="preserve">
+    <value>Phân tích</value>
+  </data>
+  <data name="Disk.Title" xml:space="preserve">
+    <value>Phân tích dung lượng ổ đĩa</value>
+  </data>
+  <data name="Disk.Subtitle" xml:space="preserve">
+    <value>Xem thư mục và tệp nào đang chiếm nhiều dung lượng nhất.</value>
+  </data>
+  <data name="Disk.Scan" xml:space="preserve">
+    <value>Quét</value>
+  </data>
+  <data name="Disk.PickFolder" xml:space="preserve">
+    <value>Chọn thư mục…</value>
+  </data>
+  <data name="Disk.Stop" xml:space="preserve">
+    <value>Dừng</value>
+  </data>
+  <data name="Disk.Scanning" xml:space="preserve">
+    <value>Đang quét {0}…</value>
+  </data>
+  <data name="Disk.ScanStats" xml:space="preserve">
+    <value>{0} tệp · {1} thư mục · {2}</value>
+  </data>
+  <data name="Disk.Summary" xml:space="preserve">
+    <value>{0} · {1} tệp · {2} thư mục · quét trong {3} giây</value>
+  </data>
+  <data name="Disk.Partial" xml:space="preserve">
+    <value>Đã dừng quét giữa chừng nên kết quả chưa đầy đủ.</value>
+  </data>
+  <data name="Disk.Incomplete" xml:space="preserve">
+    <value>Một số thư mục không đọc được (không có quyền hoặc đang được sử dụng).</value>
+  </data>
+  <data name="Disk.Up" xml:space="preserve">
+    <value>Lên</value>
+  </data>
+  <data name="Disk.Rescan" xml:space="preserve">
+    <value>Quét lại</value>
+  </data>
+  <data name="Disk.Back" xml:space="preserve">
+    <value>Ổ khác</value>
+  </data>
+  <data name="Disk.Tab.Folders" xml:space="preserve">
+    <value>Thư mục</value>
+  </data>
+  <data name="Disk.Tab.LargestFiles" xml:space="preserve">
+    <value>Tệp lớn nhất</value>
+  </data>
+  <data name="Disk.Tab.FileTypes" xml:space="preserve">
+    <value>Theo loại tệp</value>
+  </data>
+  <data name="Disk.Col.Name" xml:space="preserve">
+    <value>Tên</value>
+  </data>
+  <data name="Disk.Col.Size" xml:space="preserve">
+    <value>Dung lượng</value>
+  </data>
+  <data name="Disk.Col.Share" xml:space="preserve">
+    <value>Tỷ lệ</value>
+  </data>
+  <data name="Disk.Col.Files" xml:space="preserve">
+    <value>Số tệp</value>
+  </data>
+  <data name="Disk.Col.Modified" xml:space="preserve">
+    <value>Ngày sửa</value>
+  </data>
+  <data name="Disk.Col.Folder" xml:space="preserve">
+    <value>Thư mục</value>
+  </data>
+  <data name="Disk.Col.Type" xml:space="preserve">
+    <value>Loại tệp</value>
+  </data>
+  <data name="Disk.NoExtension" xml:space="preserve">
+    <value>(không có đuôi)</value>
+  </data>
+  <data name="Disk.SmallFiles" xml:space="preserve">
+    <value>{0} tệp nhỏ khác</value>
+  </data>
+  <data name="Disk.Open" xml:space="preserve">
+    <value>Mở</value>
+  </data>
+  <data name="Disk.ShowInExplorer" xml:space="preserve">
+    <value>Mở vị trí trong File Explorer</value>
+  </data>
+  <data name="Disk.CopyPath" xml:space="preserve">
+    <value>Sao chép đường dẫn</value>
+  </data>
+  <data name="Disk.Delete" xml:space="preserve">
+    <value>Xoá vào Thùng rác</value>
+  </data>
+  <data name="Disk.DeleteConfirm.Title" xml:space="preserve">
+    <value>Xoá vào Thùng rác?</value>
+  </data>
+  <data name="Disk.DeleteConfirm.Message" xml:space="preserve">
+    <value>"{0}" ({1}) sẽ được chuyển vào Thùng rác. Bạn có thể khôi phục lại từ Thùng rác.</value>
+  </data>
+  <data name="Disk.DeleteFailed" xml:space="preserve">
+    <value>Không xoá được "{0}". Tệp có thể đang được dùng hoặc được Windows bảo vệ.</value>
+  </data>
+  <data name="Disk.Empty" xml:space="preserve">
+    <value>Chọn một ổ đĩa hoặc thư mục để bắt đầu.</value>
+  </data>
+  <data name="Common.Cancel" xml:space="preserve">
+    <value>Huỷ</value>
+  </data>
+  <data name="Common.Delete" xml:space="preserve">
+    <value>Xoá</value>
+  </data>
+  <data name="Settings.Title" xml:space="preserve">
+    <value>Cài đặt</value>
+  </data>
+  <data name="Settings.Language" xml:space="preserve">
+    <value>Ngôn ngữ</value>
+  </data>
+  <data name="Settings.Language.Description" xml:space="preserve">
+    <value>Có hiệu lực sau khi khởi động lại Trevunix.</value>
+  </data>
+  <data name="Settings.Theme" xml:space="preserve">
+    <value>Giao diện</value>
+  </data>
+  <data name="Theme.System" xml:space="preserve">
+    <value>Theo Windows</value>
+  </data>
+  <data name="Theme.Light" xml:space="preserve">
+    <value>Sáng</value>
+  </data>
+  <data name="Theme.Dark" xml:space="preserve">
+    <value>Tối</value>
+  </data>
+  <data name="Settings.Updates" xml:space="preserve">
+    <value>Tự động cập nhật</value>
+  </data>
+  <data name="Settings.Updates.Description" xml:space="preserve">
+    <value>Kiểm tra và tải bản mới mỗi khi mở Trevunix.</value>
+  </data>
+  <data name="Settings.About" xml:space="preserve">
+    <value>Giới thiệu</value>
+  </data>
+  <data name="Settings.Version" xml:space="preserve">
+    <value>Phiên bản {0}</value>
+  </data>
+  <data name="Settings.RestartNow" xml:space="preserve">
+    <value>Khởi động lại</value>
+  </data>
+  <data name="Update.Ready.Title" xml:space="preserve">
+    <value>Đã có bản cập nhật</value>
+  </data>
+  <data name="Update.Ready.Message" xml:space="preserve">
+    <value>Đã tải xong Trevunix {0}. Khởi động lại ngay để dùng phiên bản mới?</value>
+  </data>
+  <data name="Update.Ready.Restart" xml:space="preserve">
+    <value>Khởi động lại</value>
+  </data>
+  <data name="Update.Ready.Later" xml:space="preserve">
+    <value>Để sau</value>
+  </data>
+  <data name="Cleanup.Title" xml:space="preserve">
+    <value>Dọn dẹp</value>
+  </data>
+  <data name="Cleanup.Subtitle" xml:space="preserve">
+    <value>Giải phóng dung lượng bằng cách xoá file tạm, bộ nhớ đệm và phần còn sót lại. Tài liệu, ảnh và mật khẩu của bạn không bao giờ bị động đến.</value>
+  </data>
+  <data name="Cleanup.Scan" xml:space="preserve">
+    <value>Quét lại</value>
+  </data>
+  <data name="Cleanup.Scanning" xml:space="preserve">
+    <value>Đang tìm file có thể dọn…</value>
+  </data>
+  <data name="Cleanup.Clean" xml:space="preserve">
+    <value>Dọn dẹp</value>
+  </data>
+  <data name="Cleanup.Cleaning" xml:space="preserve">
+    <value>Đang dọn dẹp…</value>
+  </data>
+  <data name="Cleanup.Selected" xml:space="preserve">
+    <value>Đã chọn: {0}</value>
+  </data>
+  <data name="Cleanup.Found" xml:space="preserve">
+    <value>{0} · {1} tệp</value>
+  </data>
+  <data name="Cleanup.FoundNothing" xml:space="preserve">
+    <value>Không có gì để dọn</value>
+  </data>
+  <data name="Cleanup.SelectAll" xml:space="preserve">
+    <value>Chọn tất cả</value>
+  </data>
+  <data name="Cleanup.SelectNone" xml:space="preserve">
+    <value>Bỏ chọn</value>
+  </data>
+  <data name="Cleanup.Recommended" xml:space="preserve">
+    <value>Khuyên dùng</value>
+  </data>
+  <data name="Cleanup.Done" xml:space="preserve">
+    <value>Đã giải phóng {0} ({1} tệp).</value>
+  </data>
+  <data name="Cleanup.DoneSkipped" xml:space="preserve">
+    <value>Đã giải phóng {0} ({1} tệp). {2} tệp đang được dùng nên đã bỏ qua; hãy đóng ứng dụng đang dùng chúng rồi dọn lại.</value>
+  </data>
+  <data name="Cleanup.ConfirmRecycleBin.Title" xml:space="preserve">
+    <value>Dọn sạch Thùng rác?</value>
+  </data>
+  <data name="Cleanup.ConfirmRecycleBin.Message" xml:space="preserve">
+    <value>Các tệp trong Thùng rác ({0}) sẽ bị xoá vĩnh viễn và không thể khôi phục.</value>
+  </data>
+  <data name="Cleanup.ConfirmRecycleBin.Primary" xml:space="preserve">
+    <value>Xoá và dọn dẹp</value>
+  </data>
+  <data name="Cleanup.Group.System" xml:space="preserve">
+    <value>Windows</value>
+  </data>
+  <data name="Cleanup.Group.Browsers" xml:space="preserve">
+    <value>Trình duyệt</value>
+  </data>
+  <data name="Cleanup.Group.AppsAndGames" xml:space="preserve">
+    <value>Ứng dụng và game</value>
+  </data>
+  <data name="Cleanup.Group.RecycleBin" xml:space="preserve">
+    <value>Thùng rác</value>
+  </data>
+  <data name="Cleanup.BrowsersHint" xml:space="preserve">
+    <value>Chỉ xoá bộ nhớ đệm. Lịch sử, cookie, mật khẩu đã lưu và các tab đang mở vẫn giữ nguyên. Đóng trình duyệt để dọn được hết.</value>
+  </data>
+  <data name="Cleanup.Target.UserTemp" xml:space="preserve">
+    <value>File tạm của bạn</value>
+  </data>
+  <data name="Cleanup.Target.UserTemp.Description" xml:space="preserve">
+    <value>File các ứng dụng để lại trong thư mục Temp. Chỉ xoá file cũ hơn 1 ngày.</value>
+  </data>
+  <data name="Cleanup.Target.WindowsTemp" xml:space="preserve">
+    <value>File tạm của Windows</value>
+  </data>
+  <data name="Cleanup.Target.WindowsTemp.Description" xml:space="preserve">
+    <value>Phần sót lại sau khi cài đặt, cập nhật trong Windows\Temp. Chỉ xoá file cũ hơn 1 ngày.</value>
+  </data>
+  <data name="Cleanup.Target.ErrorReports" xml:space="preserve">
+    <value>Báo cáo lỗi</value>
+  </data>
+  <data name="Cleanup.Target.ErrorReports.Description" xml:space="preserve">
+    <value>Báo cáo sự cố mà Windows đã gửi hoặc đang chờ gửi.</value>
+  </data>
+  <data name="Cleanup.Target.CrashDumps" xml:space="preserve">
+    <value>File dump khi treo máy</value>
+  </data>
+  <data name="Cleanup.Target.CrashDumps.Description" xml:space="preserve">
+    <value>Bản ghi bộ nhớ khi màn hình xanh hoặc ứng dụng bị lỗi. Chỉ cần khi điều tra sự cố.</value>
+  </data>
+  <data name="Cleanup.Target.DeliveryOptimization" xml:space="preserve">
+    <value>Bộ nhớ đệm Delivery Optimization</value>
+  </data>
+  <data name="Cleanup.Target.DeliveryOptimization.Description" xml:space="preserve">
+    <value>Các mảnh bản cập nhật Windows giữ lại để chia sẻ với máy khác.</value>
+  </data>
+  <data name="Cleanup.Target.WindowsUpdate" xml:space="preserve">
+    <value>File tải về của Windows Update</value>
+  </data>
+  <data name="Cleanup.Target.WindowsUpdate.Description" xml:space="preserve">
+    <value>Gói cập nhật đã tải. Windows sẽ tải lại nếu vẫn cần.</value>
+  </data>
+  <data name="Cleanup.Target.ThumbnailCache" xml:space="preserve">
+    <value>Bộ nhớ đệm ảnh thu nhỏ</value>
+  </data>
+  <data name="Cleanup.Target.ThumbnailCache.Description" xml:space="preserve">
+    <value>Ảnh xem trước trong File Explorer. Sẽ được tạo lại khi bạn mở thư mục.</value>
+  </data>
+  <data name="Cleanup.Target.OldLogs" xml:space="preserve">
+    <value>Nhật ký Windows cũ</value>
+  </data>
+  <data name="Cleanup.Target.OldLogs.Description" xml:space="preserve">
+    <value>File nhật ký cài đặt và bảo trì cũ hơn 1 tuần.</value>
+  </data>
+  <data name="Cleanup.Target.Chrome" xml:space="preserve">
+    <value>Google Chrome</value>
+  </data>
+  <data name="Cleanup.Target.Chrome.Description" xml:space="preserve">
+    <value>Bộ nhớ đệm web, code và GPU của mọi hồ sơ.</value>
+  </data>
+  <data name="Cleanup.Target.Edge" xml:space="preserve">
+    <value>Microsoft Edge</value>
+  </data>
+  <data name="Cleanup.Target.Edge.Description" xml:space="preserve">
+    <value>Bộ nhớ đệm web, code và GPU của mọi hồ sơ.</value>
+  </data>
+  <data name="Cleanup.Target.Brave" xml:space="preserve">
+    <value>Brave</value>
+  </data>
+  <data name="Cleanup.Target.Brave.Description" xml:space="preserve">
+    <value>Bộ nhớ đệm web, code và GPU của mọi hồ sơ.</value>
+  </data>
+  <data name="Cleanup.Target.Opera" xml:space="preserve">
+    <value>Opera và Opera GX</value>
+  </data>
+  <data name="Cleanup.Target.Opera.Description" xml:space="preserve">
+    <value>Bộ nhớ đệm web.</value>
+  </data>
+  <data name="Cleanup.Target.Firefox" xml:space="preserve">
+    <value>Mozilla Firefox</value>
+  </data>
+  <data name="Cleanup.Target.Firefox.Description" xml:space="preserve">
+    <value>Bộ nhớ đệm web của mọi hồ sơ.</value>
+  </data>
+  <data name="Cleanup.Target.ShaderCache" xml:space="preserve">
+    <value>Bộ nhớ đệm shader đồ hoạ</value>
+  </data>
+  <data name="Cleanup.Target.ShaderCache.Description" xml:space="preserve">
+    <value>Bộ nhớ đệm shader của DirectX, NVIDIA và AMD. Game có thể giật nhẹ một lúc trong khi tạo lại.</value>
+  </data>
+  <data name="Cleanup.Target.Discord" xml:space="preserve">
+    <value>Discord</value>
+  </data>
+  <data name="Cleanup.Target.Discord.Description" xml:space="preserve">
+    <value>Bộ nhớ đệm ảnh và code. Tin nhắn và cài đặt vẫn giữ nguyên.</value>
+  </data>
+  <data name="Cleanup.Target.Teams" xml:space="preserve">
+    <value>Microsoft Teams</value>
+  </data>
+  <data name="Cleanup.Target.Teams.Description" xml:space="preserve">
+    <value>Bộ nhớ đệm web của ứng dụng Teams mới.</value>
+  </data>
+  <data name="Cleanup.Target.RecycleBin" xml:space="preserve">
+    <value>Thùng rác</value>
+  </data>
+  <data name="Cleanup.Target.RecycleBin.Description" xml:space="preserve">
+    <value>Các tệp đã xoá đang nằm trong Thùng rác. Không thể khôi phục sau khi dọn.</value>
+  </data>
+  <data name="Optimize.Title" xml:space="preserve">
+    <value>Tối ưu</value>
+  </data>
+  <data name="Optimize.Subtitle" xml:space="preserve">
+    <value>Tăng tốc Windows và tắt theo dõi. Trevunix lưu lại cài đặt gốc nên mọi thay đổi đều có thể hoàn tác.</value>
+  </data>
+  <data name="Optimize.ApplyRecommended" xml:space="preserve">
+    <value>Áp dụng khuyên dùng</value>
+  </data>
+  <data name="Optimize.UndoAll" xml:space="preserve">
+    <value>Hoàn tác tất cả</value>
+  </data>
+  <data name="Optimize.Summary" xml:space="preserve">
+    <value>Đã áp dụng {0}/{1}</value>
+  </data>
+  <data name="Optimize.Recommended" xml:space="preserve">
+    <value>Khuyên dùng</value>
+  </data>
+  <data name="Optimize.Partial" xml:space="preserve">
+    <value>Áp dụng một phần</value>
+  </data>
+  <data name="Optimize.NeedsRestartExplorer" xml:space="preserve">
+    <value>Cần khởi động lại Explorer</value>
+  </data>
+  <data name="Optimize.NeedsReboot" xml:space="preserve">
+    <value>Cần khởi động lại máy</value>
+  </data>
+  <data name="Optimize.NoUndo" xml:space="preserve">
+    <value>Cài đặt này đã được bật từ bên ngoài Trevunix nên không có bản gốc để khôi phục.</value>
+  </data>
+  <data name="Optimize.Failed" xml:space="preserve">
+    <value>Một số thay đổi không thực hiện được: {0}</value>
+  </data>
+  <data name="Optimize.PendingExplorer" xml:space="preserve">
+    <value>Một số thay đổi sẽ có hiệu lực sau khi khởi động lại Explorer.</value>
+  </data>
+  <data name="Optimize.PendingReboot" xml:space="preserve">
+    <value>Một số thay đổi sẽ có hiệu lực sau khi khởi động lại máy.</value>
+  </data>
+  <data name="Optimize.RestartExplorer" xml:space="preserve">
+    <value>Khởi động lại Explorer</value>
+  </data>
+  <data name="Optimize.ConfirmUndoAll.Title" xml:space="preserve">
+    <value>Hoàn tác tất cả thay đổi?</value>
+  </data>
+  <data name="Optimize.ConfirmUndoAll.Message" xml:space="preserve">
+    <value>Mọi tinh chỉnh Trevunix đã áp dụng sẽ trở về cài đặt gốc.</value>
+  </data>
+  <data name="Optimize.ConfirmUndoAll.Primary" xml:space="preserve">
+    <value>Hoàn tác tất cả</value>
+  </data>
+  <data name="Tweak.AdvertisingId" xml:space="preserve">
+    <value>Tắt mã định danh quảng cáo</value>
+  </data>
+  <data name="Tweak.AdvertisingId.Description" xml:space="preserve">
+    <value>Ứng dụng không thể dùng mã định danh để hiện quảng cáo theo sở thích của bạn.</value>
+  </data>
+  <data name="Tweak.Telemetry" xml:space="preserve">
+    <value>Hạn chế dữ liệu chẩn đoán</value>
+  </data>
+  <data name="Tweak.Telemetry.Description" xml:space="preserve">
+    <value>Chỉ gửi dữ liệu chẩn đoán tối thiểu và tắt các dịch vụ thu thập dữ liệu.</value>
+  </data>
+  <data name="Tweak.TailoredExperiences" xml:space="preserve">
+    <value>Tắt trải nghiệm được cá nhân hoá</value>
+  </data>
+  <data name="Tweak.TailoredExperiences.Description" xml:space="preserve">
+    <value>Microsoft không dùng dữ liệu chẩn đoán của bạn để gợi ý và quảng cáo nữa.</value>
+  </data>
+  <data name="Tweak.ActivityHistory" xml:space="preserve">
+    <value>Tắt lịch sử hoạt động</value>
+  </data>
+  <data name="Tweak.ActivityHistory.Description" xml:space="preserve">
+    <value>Windows ngừng ghi lại ứng dụng và tệp bạn đã mở.</value>
+  </data>
+  <data name="Tweak.StartSuggestions" xml:space="preserve">
+    <value>Tắt gợi ý và quảng cáo trong Start</value>
+  </data>
+  <data name="Tweak.StartSuggestions.Description" xml:space="preserve">
+    <value>Không còn ứng dụng gợi ý, mẹo hay ứng dụng quảng cáo tự cài.</value>
+  </data>
+  <data name="Tweak.WebSearch" xml:space="preserve">
+    <value>Tắt kết quả web khi tìm kiếm</value>
+  </data>
+  <data name="Tweak.WebSearch.Description" xml:space="preserve">
+    <value>Tìm kiếm trong Start chỉ tìm trên máy bạn, không dùng Bing.</value>
+  </data>
+  <data name="Tweak.FeedbackRequests" xml:space="preserve">
+    <value>Tắt yêu cầu đánh giá</value>
+  </data>
+  <data name="Tweak.FeedbackRequests.Description" xml:space="preserve">
+    <value>Windows ngừng hỏi ý kiến đánh giá của bạn.</value>
+  </data>
+  <data name="Tweak.ExperienceTasks" xml:space="preserve">
+    <value>Tắt tác vụ thu thập dữ liệu</value>
+  </data>
+  <data name="Tweak.ExperienceTasks.Description" xml:space="preserve">
+    <value>Tắt các tác vụ định kỳ thu thập dữ liệu sử dụng và tương thích.</value>
+  </data>
+  <data name="Tweak.Copilot" xml:space="preserve">
+    <value>Tắt Copilot</value>
+  </data>
+  <data name="Tweak.Copilot.Description" xml:space="preserve">
+    <value>Ẩn nút Copilot và tắt thanh bên Copilot.</value>
+  </data>
+  <data name="Tweak.RecallSnapshots" xml:space="preserve">
+    <value>Tắt ảnh chụp của Recall</value>
+  </data>
+  <data name="Tweak.RecallSnapshots.Description" xml:space="preserve">
+    <value>Windows không lưu ảnh chụp màn hình hoạt động của bạn.</value>
+  </data>
+  <data name="Tweak.StartupDelay" xml:space="preserve">
+    <value>Bỏ độ trễ khi khởi động</value>
+  </data>
+  <data name="Tweak.StartupDelay.Description" xml:space="preserve">
+    <value>Ứng dụng khởi động mở ngay sau khi đăng nhập thay vì phải chờ.</value>
+  </data>
+  <data name="Tweak.MenuDelay" xml:space="preserve">
+    <value>Menu mở nhanh hơn</value>
+  </data>
+  <data name="Tweak.MenuDelay.Description" xml:space="preserve">
+    <value>Menu con mở sau 100 ms thay vì 400 ms.</value>
+  </data>
+  <data name="Tweak.BackgroundApps" xml:space="preserve">
+    <value>Không cho ứng dụng chạy nền</value>
+  </data>
+  <data name="Tweak.BackgroundApps.Description" xml:space="preserve">
+    <value>Ứng dụng Store không chạy khi bạn không dùng. Một số ứng dụng có thể ít thông báo hơn.</value>
+  </data>
+  <data name="Tweak.GpuScheduling" xml:space="preserve">
+    <value>Lập lịch GPU bằng phần cứng</value>
+  </data>
+  <data name="Tweak.GpuScheduling.Description" xml:space="preserve">
+    <value>Để GPU tự quản lý bộ nhớ, có thể giảm độ trễ. Cần GPU và Driver hỗ trợ.</value>
+  </data>
+  <data name="Tweak.MultimediaResponsiveness" xml:space="preserve">
+    <value>Ưu tiên game và đa phương tiện</value>
+  </data>
+  <data name="Tweak.MultimediaResponsiveness.Description" xml:space="preserve">
+    <value>Dành ít CPU hơn cho tác vụ nền và bỏ giới hạn mạng khi phát media.</value>
+  </data>
+  <data name="Tweak.GameMode" xml:space="preserve">
+    <value>Bật Game Mode</value>
+  </data>
+  <data name="Tweak.GameMode.Description" xml:space="preserve">
+    <value>Windows ưu tiên game và hoãn cập nhật khi bạn đang chơi.</value>
+  </data>
+  <data name="Tweak.BackgroundRecording" xml:space="preserve">
+    <value>Tắt quay video game chạy nền</value>
+  </data>
+  <data name="Tweak.BackgroundRecording.Description" xml:space="preserve">
+    <value>Xbox Game Bar ngừng quay video nền khi chơi game, giải phóng tài nguyên.</value>
+  </data>
+  <data name="Tweak.MouseAcceleration" xml:space="preserve">
+    <value>Tắt tăng tốc chuột</value>
+  </data>
+  <data name="Tweak.MouseAcceleration.Description" xml:space="preserve">
+    <value>Tắt "Enhance pointer precision" để con trỏ di chuyển đúng theo tay bạn.</value>
+  </data>
+  <data name="Tweak.StickyKeysPrompt" xml:space="preserve">
+    <value>Tắt hộp thoại Sticky Keys</value>
+  </data>
+  <data name="Tweak.StickyKeysPrompt.Description" xml:space="preserve">
+    <value>Nhấn Shift 5 lần không còn làm gián đoạn game.</value>
+  </data>
+  <data name="Tweak.FileExtensions" xml:space="preserve">
+    <value>Hiện phần mở rộng của tệp</value>
+  </data>
+  <data name="Tweak.FileExtensions.Description" xml:space="preserve">
+    <value>Thấy đuôi .exe, .pdf và các đuôi khác để nhận ra tệp giả mạo.</value>
+  </data>
+  <data name="Tweak.HiddenFiles" xml:space="preserve">
+    <value>Hiện tệp ẩn</value>
+  </data>
+  <data name="Tweak.HiddenFiles.Description" xml:space="preserve">
+    <value>File Explorer hiện các tệp và thư mục ẩn.</value>
+  </data>
+  <data name="Tweak.OpenThisPc" xml:space="preserve">
+    <value>Mở File Explorer tại This PC</value>
+  </data>
+  <data name="Tweak.OpenThisPc.Description" xml:space="preserve">
+    <value>File Explorer mở tại danh sách ổ đĩa thay vì Home.</value>
+  </data>
+  <data name="Tweak.ClassicContextMenu" xml:space="preserve">
+    <value>Menu chuột phải kiểu cũ</value>
+  </data>
+  <data name="Tweak.ClassicContextMenu.Description" xml:space="preserve">
+    <value>Hiện ngay menu chuột phải đầy đủ, không cần bấm "Show more options".</value>
+  </data>
+  <data name="Tweak.TaskbarLeft" xml:space="preserve">
+    <value>Căn thanh tác vụ sang trái</value>
+  </data>
+  <data name="Tweak.TaskbarLeft.Description" xml:space="preserve">
+    <value>Đưa nút Start và biểu tượng sang trái như các bản Windows trước.</value>
+  </data>
+  <data name="Tweak.TaskbarEndTask" xml:space="preserve">
+    <value>Thêm End task vào thanh tác vụ</value>
+  </data>
+  <data name="Tweak.TaskbarEndTask.Description" xml:space="preserve">
+    <value>Chuột phải vào ứng dụng trên thanh tác vụ để đóng khi nó bị treo.</value>
+  </data>
+  <data name="AppsPage.Title" xml:space="preserve">
+    <value>Ứng dụng &amp; Khởi động</value>
+  </data>
+  <data name="AppsPage.Subtitle" xml:space="preserve">
+    <value>Chọn chương trình chạy cùng Windows và gỡ các ứng dụng cài sẵn bạn không dùng.</value>
+  </data>
+  <data name="AppsPage.Tab.Startup" xml:space="preserve">
+    <value>Khởi động</value>
+  </data>
+  <data name="AppsPage.Tab.Store" xml:space="preserve">
+    <value>Ứng dụng cài sẵn</value>
+  </data>
+  <data name="Startup.Hint" xml:space="preserve">
+    <value>Tắt một mục chỉ ngăn nó chạy cùng Windows, chương trình vẫn được giữ nguyên. Giống hệt Task Manager.</value>
+  </data>
+  <data name="Startup.Summary" xml:space="preserve">
+    <value>{0}/{1} chương trình chạy cùng Windows</value>
+  </data>
+  <data name="Startup.Refresh" xml:space="preserve">
+    <value>Làm mới</value>
+  </data>
+  <data name="Startup.Empty" xml:space="preserve">
+    <value>Không có chương trình khởi động nào.</value>
+  </data>
+  <data name="Startup.AllUsers" xml:space="preserve">
+    <value>Mọi người dùng</value>
+  </data>
+  <data name="Startup.ThisUser" xml:space="preserve">
+    <value>Người dùng này</value>
+  </data>
+  <data name="Startup.Folder" xml:space="preserve">
+    <value>Thư mục Startup</value>
+  </data>
+  <data name="Startup.UnknownPublisher" xml:space="preserve">
+    <value>Không rõ nhà phát hành</value>
+  </data>
+  <data name="Startup.OpenLocation" xml:space="preserve">
+    <value>Mở vị trí tệp</value>
+  </data>
+  <data name="Startup.Failed" xml:space="preserve">
+    <value>Không thay đổi được "{0}": {1}</value>
+  </data>
+  <data name="Store.Hint" xml:space="preserve">
+    <value>Ứng dụng đã gỡ có thể cài lại từ Microsoft Store. Các thành phần của Windows không bao giờ được liệt kê.</value>
+  </data>
+  <data name="Store.Load" xml:space="preserve">
+    <value>Tải danh sách</value>
+  </data>
+  <data name="Store.Loading" xml:space="preserve">
+    <value>Đang đọc danh sách ứng dụng…</value>
+  </data>
+  <data name="Store.Search" xml:space="preserve">
+    <value>Tìm ứng dụng</value>
+  </data>
+  <data name="Store.OnlySuggested" xml:space="preserve">
+    <value>Chỉ hiện ứng dụng nên gỡ</value>
+  </data>
+  <data name="Store.Suggested" xml:space="preserve">
+    <value>Nên gỡ</value>
+  </data>
+  <data name="Store.AlsoNewUsers" xml:space="preserve">
+    <value>Gỡ luôn cho người dùng mới</value>
+  </data>
+  <data name="Store.Remove" xml:space="preserve">
+    <value>Gỡ mục đã chọn ({0})</value>
+  </data>
+  <data name="Store.Removing" xml:space="preserve">
+    <value>Đang gỡ {0}…</value>
+  </data>
+  <data name="Store.Confirm.Title" xml:space="preserve">
+    <value>Gỡ ứng dụng?</value>
+  </data>
+  <data name="Store.Confirm.Message" xml:space="preserve">
+    <value>{0} ứng dụng sẽ bị gỡ. Bạn có thể cài lại từ Microsoft Store.</value>
+  </data>
+  <data name="Store.Confirm.Primary" xml:space="preserve">
+    <value>Gỡ</value>
+  </data>
+  <data name="Store.Done" xml:space="preserve">
+    <value>Đã gỡ {0} ứng dụng.</value>
+  </data>
+  <data name="Store.DoneWithErrors" xml:space="preserve">
+    <value>Đã gỡ {0} ứng dụng. Không gỡ được {1} ứng dụng: {2}</value>
+  </data>
+  <data name="Store.LoadFailed" xml:space="preserve">
+    <value>Không đọc được danh sách ứng dụng: {0}</value>
+  </data>
+  <data name="ToolsPage.Title" xml:space="preserve">
+    <value>Công cụ tiện ích</value>
+  </data>
+  <data name="ToolsPage.Subtitle" xml:space="preserve">
+    <value>Đo tốc độ mạng, theo dõi máy, tiến trình, sửa lỗi, DNS, sức khoẻ ổ đĩa và pin.</value>
+  </data>
+  <data name="Monitor.Cpu" xml:space="preserve">
+    <value>CPU</value>
+  </data>
+  <data name="Monitor.Memory" xml:space="preserve">
+    <value>RAM</value>
+  </data>
+  <data name="Monitor.Network" xml:space="preserve">
+    <value>Mạng</value>
+  </data>
+  <data name="Monitor.MemoryValue" xml:space="preserve">
+    <value>{0} / {1}</value>
+  </data>
+  <data name="Monitor.NetworkValue" xml:space="preserve">
+    <value>↓ {0}/s   ↑ {1}/s</value>
+  </data>
+  <data name="Monitor.History" xml:space="preserve">
+    <value>60 giây gần nhất</value>
+  </data>
+  <data name="Processes.Search" xml:space="preserve">
+    <value>Tìm tiến trình</value>
+  </data>
+  <data name="Processes.Count" xml:space="preserve">
+    <value>{0} tiến trình</value>
+  </data>
+  <data name="Processes.Col.Name" xml:space="preserve">
+    <value>Tên</value>
+  </data>
+  <data name="Processes.Col.Id" xml:space="preserve">
+    <value>PID</value>
+  </data>
+  <data name="Processes.Col.Cpu" xml:space="preserve">
+    <value>CPU</value>
+  </data>
+  <data name="Processes.Col.Memory" xml:space="preserve">
+    <value>RAM</value>
+  </data>
+  <data name="Processes.Col.Path" xml:space="preserve">
+    <value>Đường dẫn</value>
+  </data>
+  <data name="Processes.End" xml:space="preserve">
+    <value>Kết thúc</value>
+  </data>
+  <data name="Processes.OpenLocation" xml:space="preserve">
+    <value>Mở vị trí tệp</value>
+  </data>
+  <data name="Processes.Confirm.Title" xml:space="preserve">
+    <value>Kết thúc tiến trình này?</value>
+  </data>
+  <data name="Processes.Confirm.Message" xml:space="preserve">
+    <value>"{0}" (PID {1}) sẽ bị đóng. Dữ liệu chưa lưu trong đó sẽ mất.</value>
+  </data>
+  <data name="Processes.Failed" xml:space="preserve">
+    <value>Không kết thúc được "{0}". Tiến trình có thể được Windows bảo vệ.</value>
+  </data>
+  <data name="Repair.Hint" xml:space="preserve">
+    <value>Chạy từng công cụ một. SFC và DISM có thể mất 10 đến 30 phút, hãy để Trevunix mở cho đến khi xong.</value>
+  </data>
+  <data name="Repair.Run" xml:space="preserve">
+    <value>Chạy</value>
+  </data>
+  <data name="Repair.Cancel" xml:space="preserve">
+    <value>Dừng</value>
+  </data>
+  <data name="Repair.Output" xml:space="preserve">
+    <value>Kết quả</value>
+  </data>
+  <data name="Repair.Finished" xml:space="preserve">
+    <value>Đã xong, mã thoát {0}.</value>
+  </data>
+  <data name="Repair.Cancelled" xml:space="preserve">
+    <value>Đã dừng.</value>
+  </data>
+  <data name="Repair.NeedsReboot" xml:space="preserve">
+    <value>Khởi động lại máy để hoàn tất.</value>
+  </data>
+  <data name="Repair.LongRunning" xml:space="preserve">
+    <value>Mất nhiều thời gian</value>
+  </data>
+  <data name="Repair.Sfc" xml:space="preserve">
+    <value>Kiểm tra file hệ thống (SFC)</value>
+  </data>
+  <data name="Repair.Sfc.Description" xml:space="preserve">
+    <value>Tìm và sửa các file Windows bị hỏng hoặc bị thiếu.</value>
+  </data>
+  <data name="Repair.DismRestore" xml:space="preserve">
+    <value>Sửa ảnh hệ thống Windows (DISM)</value>
+  </data>
+  <data name="Repair.DismRestore.Description" xml:space="preserve">
+    <value>Sửa kho thành phần mà SFC dựa vào, tải file sạch từ Windows Update.</value>
+  </data>
+  <data name="Repair.DismComponentCleanup" xml:space="preserve">
+    <value>Dọn kho thành phần (WinSxS)</value>
+  </data>
+  <data name="Repair.DismComponentCleanup.Description" xml:space="preserve">
+    <value>Xoá các thành phần cập nhật cũ đã bị thay thế để giải phóng dung lượng.</value>
+  </data>
+  <data name="Repair.FlushDns" xml:space="preserve">
+    <value>Xoá bộ nhớ đệm DNS</value>
+  </data>
+  <data name="Repair.FlushDns.Description" xml:space="preserve">
+    <value>Sửa lỗi trang web không vào được sau khi đổi địa chỉ.</value>
+  </data>
+  <data name="Repair.ResetWinsock" xml:space="preserve">
+    <value>Đặt lại Winsock</value>
+  </data>
+  <data name="Repair.ResetWinsock.Description" xml:space="preserve">
+    <value>Sửa lỗi mạng do phần mềm mạng bị hỏng.</value>
+  </data>
+  <data name="Repair.ResetTcpIp" xml:space="preserve">
+    <value>Đặt lại TCP/IP</value>
+  </data>
+  <data name="Repair.ResetTcpIp.Description" xml:space="preserve">
+    <value>Đưa cài đặt TCP/IP về mặc định.</value>
+  </data>
+  <data name="Repair.ResetStore" xml:space="preserve">
+    <value>Đặt lại bộ nhớ đệm Microsoft Store</value>
+  </data>
+  <data name="Repair.ResetStore.Description" xml:space="preserve">
+    <value>Sửa lỗi Store tải bị treo. Store sẽ mở ra khi xong.</value>
+  </data>
+  <data name="Dns.Hint" xml:space="preserve">
+    <value>DNS chuyển tên trang web thành địa chỉ. DNS nhanh hơn hoặc có lọc giúp duyệt web nhanh hơn hoặc chặn quảng cáo. Áp dụng cho mọi kết nối đang dùng.</value>
+  </data>
+  <data name="Dns.Current" xml:space="preserve">
+    <value>DNS hiện tại</value>
+  </data>
+  <data name="Dns.CurrentAuto" xml:space="preserve">
+    <value>Tự động</value>
+  </data>
+  <data name="Dns.TestSpeed" xml:space="preserve">
+    <value>Đo tốc độ</value>
+  </data>
+  <data name="Dns.Apply" xml:space="preserve">
+    <value>Dùng</value>
+  </data>
+  <data name="Dns.InUse" xml:space="preserve">
+    <value>Đang dùng</value>
+  </data>
+  <data name="Dns.Ping" xml:space="preserve">
+    <value>{0} ms</value>
+  </data>
+  <data name="Dns.NoReply" xml:space="preserve">
+    <value>Không phản hồi</value>
+  </data>
+  <data name="Dns.NoAdapters" xml:space="preserve">
+    <value>Không có kết nối mạng nào.</value>
+  </data>
+  <data name="Dns.Applied" xml:space="preserve">
+    <value>Đã đổi DNS sang {0}.</value>
+  </data>
+  <data name="Dns.Failed" xml:space="preserve">
+    <value>Không đổi được DNS cho "{0}".</value>
+  </data>
+  <data name="Dns.Automatic" xml:space="preserve">
+    <value>Tự động (theo router)</value>
+  </data>
+  <data name="Drives.Load" xml:space="preserve">
+    <value>Kiểm tra ổ đĩa</value>
+  </data>
+  <data name="Drives.Loading" xml:space="preserve">
+    <value>Đang đọc tình trạng ổ đĩa…</value>
+  </data>
+  <data name="Drives.Health.Healthy" xml:space="preserve">
+    <value>Tốt</value>
+  </data>
+  <data name="Drives.Health.Warning" xml:space="preserve">
+    <value>Cảnh báo</value>
+  </data>
+  <data name="Drives.Health.Unhealthy" xml:space="preserve">
+    <value>Sắp hỏng, hãy sao lưu dữ liệu ngay</value>
+  </data>
+  <data name="Drives.Health.Unknown" xml:space="preserve">
+    <value>Không rõ</value>
+  </data>
+  <data name="Drives.Temperature" xml:space="preserve">
+    <value>Nhiệt độ</value>
+  </data>
+  <data name="Drives.Wear" xml:space="preserve">
+    <value>Độ hao mòn</value>
+  </data>
+  <data name="Drives.PowerOn" xml:space="preserve">
+    <value>Thời gian đã chạy</value>
+  </data>
+  <data name="Drives.Errors" xml:space="preserve">
+    <value>Lỗi đọc/ghi</value>
+  </data>
+  <data name="Drives.Hours" xml:space="preserve">
+    <value>{0} giờ</value>
+  </data>
+  <data name="Drives.NotReported" xml:space="preserve">
+    <value>Không có dữ liệu</value>
+  </data>
+  <data name="Drives.None" xml:space="preserve">
+    <value>Không ổ đĩa nào cung cấp dữ liệu sức khoẻ.</value>
+  </data>
+  <data name="Home.Loading" xml:space="preserve">
+    <value>Đang đọc thông tin phần cứng…</value>
+  </data>
+  <data name="Home.Card.System" xml:space="preserve">
+    <value>Hệ thống</value>
+  </data>
+  <data name="Home.Card.Board" xml:space="preserve">
+    <value>Bo mạch chủ (Mainboard)</value>
+  </data>
+  <data name="Home.Card.Cpu" xml:space="preserve">
+    <value>Bộ xử lý (CPU)</value>
+  </data>
+  <data name="Home.Card.Memory" xml:space="preserve">
+    <value>Bộ nhớ (RAM)</value>
+  </data>
+  <data name="Home.Card.Gpu" xml:space="preserve">
+    <value>Card đồ hoạ (GPU)</value>
+  </data>
+  <data name="Home.Card.Disks" xml:space="preserve">
+    <value>Ổ cứng</value>
+  </data>
+  <data name="Home.Field.Os" xml:space="preserve">
+    <value>Hệ điều hành</value>
+  </data>
+  <data name="Home.Field.Version" xml:space="preserve">
+    <value>Phiên bản</value>
+  </data>
+  <data name="Home.Field.Architecture" xml:space="preserve">
+    <value>Kiến trúc</value>
+  </data>
+  <data name="Home.Field.Installed" xml:space="preserve">
+    <value>Ngày cài đặt</value>
+  </data>
+  <data name="Home.Field.Manufacturer" xml:space="preserve">
+    <value>Hãng sản xuất</value>
+  </data>
+  <data name="Home.Field.Model" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="Home.Field.Revision" xml:space="preserve">
+    <value>Phiên bản</value>
+  </data>
+  <data name="Home.Field.Bios" xml:space="preserve">
+    <value>BIOS</value>
+  </data>
+  <data name="Home.Field.Name" xml:space="preserve">
+    <value>Tên</value>
+  </data>
+  <data name="Home.Field.Cores" xml:space="preserve">
+    <value>Số nhân / luồng</value>
+  </data>
+  <data name="Home.Field.Clock" xml:space="preserve">
+    <value>Xung nhịp tối đa</value>
+  </data>
+  <data name="Home.Field.Socket" xml:space="preserve">
+    <value>Socket</value>
+  </data>
+  <data name="Home.Field.Total" xml:space="preserve">
+    <value>Tổng dung lượng</value>
+  </data>
+  <data name="Home.Field.TypeSpeed" xml:space="preserve">
+    <value>Loại / tốc độ</value>
+  </data>
+  <data name="Home.Field.Slots" xml:space="preserve">
+    <value>Khe cắm đã dùng</value>
+  </data>
+  <data name="Home.Field.Vram" xml:space="preserve">
+    <value>Bộ nhớ đồ hoạ (VRAM)</value>
+  </data>
+  <data name="Home.Field.Driver" xml:space="preserve">
+    <value>Driver</value>
+  </data>
+  <data name="Home.Field.Interface" xml:space="preserve">
+    <value>Chuẩn kết nối</value>
+  </data>
+  <data name="Home.Value.Cores" xml:space="preserve">
+    <value>{0} nhân / {1} luồng</value>
+  </data>
+  <data name="Home.Value.Clock" xml:space="preserve">
+    <value>{0} GHz</value>
+  </data>
+  <data name="Home.Value.Slots" xml:space="preserve">
+    <value>{0}/{1}</value>
+  </data>
+  <data name="Home.Value.Module" xml:space="preserve">
+    <value>Khe {0}</value>
+  </data>
+  <data name="Home.Value.Unknown" xml:space="preserve">
+    <value>Không có dữ liệu</value>
+  </data>
+  <data name="Optimize.Category.AdsAndSuggestions" xml:space="preserve">
+    <value>Quảng cáo và gợi ý</value>
+  </data>
+  <data name="Optimize.Category.AdsAndSuggestions.Description" xml:space="preserve">
+    <value>Không để Windows hiện quảng cáo, ứng dụng quảng bá và kết quả web.</value>
+  </data>
+  <data name="Optimize.Category.DataCollection" xml:space="preserve">
+    <value>Thu thập dữ liệu</value>
+  </data>
+  <data name="Optimize.Category.DataCollection.Description" xml:space="preserve">
+    <value>Hạn chế những gì Windows ghi lại về bạn và gửi cho Microsoft.</value>
+  </data>
+  <data name="Optimize.Category.Ai" xml:space="preserve">
+    <value>Tính năng AI</value>
+  </data>
+  <data name="Optimize.Category.Ai.Description" xml:space="preserve">
+    <value>Tắt Copilot và Recall.</value>
+  </data>
+  <data name="Optimize.Category.Performance" xml:space="preserve">
+    <value>Hiệu năng</value>
+  </data>
+  <data name="Optimize.Category.Performance.Description" xml:space="preserve">
+    <value>Giúp Windows khởi động và phản hồi nhanh hơn.</value>
+  </data>
+  <data name="Optimize.Category.Gaming" xml:space="preserve">
+    <value>Chơi game</value>
+  </data>
+  <data name="Optimize.Category.Gaming.Description" xml:space="preserve">
+    <value>Game mượt hơn, độ trễ thấp hơn và ít bị gián đoạn.</value>
+  </data>
+  <data name="Optimize.Category.FileExplorer" xml:space="preserve">
+    <value>File Explorer</value>
+  </data>
+  <data name="Optimize.Category.FileExplorer.Description" xml:space="preserve">
+    <value>Hiện những gì bạn cần và làm việc với tệp nhanh hơn.</value>
+  </data>
+  <data name="Optimize.Category.Taskbar" xml:space="preserve">
+    <value>Thanh tác vụ</value>
+  </data>
+  <data name="Optimize.Category.Taskbar.Description" xml:space="preserve">
+    <value>Sắp xếp thanh tác vụ theo ý bạn.</value>
+  </data>
+  <data name="Optimize.ApplyGroup" xml:space="preserve">
+    <value>Áp dụng khuyên dùng trong mục này</value>
+  </data>
+  <data name="Optimize.UndoGroup" xml:space="preserve">
+    <value>Hoàn tác mục này</value>
+  </data>
+  <data name="Optimize.GroupCount" xml:space="preserve">
+    <value>{0}/{1}</value>
+  </data>
+  <data name="Cleanup.SafetyNote" xml:space="preserve">
+    <value>Trevunix chỉ xoá file tạm và bộ nhớ đệm. Tài liệu, ảnh, video, file nén, file mật khẩu và mọi thứ trong Desktop, Documents, Downloads, OneDrive luôn được giữ lại. Bạn có thể xem từng tệp trước khi dọn.</value>
+  </data>
+  <data name="Cleanup.Kept" xml:space="preserve">
+    <value>Giữ lại {0} tệp vì có thể là của bạn</value>
+  </data>
+  <data name="Cleanup.Preview" xml:space="preserve">
+    <value>Xem tệp</value>
+  </data>
+  <data name="Cleanup.PreviewTitle" xml:space="preserve">
+    <value>{0}: các tệp sẽ bị xoá</value>
+  </data>
+  <data name="Cleanup.PreviewMore" xml:space="preserve">
+    <value>… và {0} tệp khác</value>
+  </data>
+  <data name="Memory.CleanNow" xml:space="preserve">
+    <value>Giải phóng ngay</value>
+  </data>
+  <data name="Memory.Used" xml:space="preserve">
+    <value>Đang dùng {0} / {1}</value>
+  </data>
+  <data name="Memory.Available" xml:space="preserve">
+    <value>Còn trống {0}</value>
+  </data>
+  <data name="Memory.Result.Manual" xml:space="preserve">
+    <value>Đã giải phóng {0} từ {1} tiến trình lúc {2}.</value>
+  </data>
+  <data name="Memory.Result.Auto" xml:space="preserve">
+    <value>Tự động: đã giải phóng {0} từ {1} tiến trình lúc {2}.</value>
+  </data>
+  <data name="Memory.Auto.Title" xml:space="preserve">
+    <value>Tự động</value>
+  </data>
+  <data name="Memory.Auto.Threshold" xml:space="preserve">
+    <value>Tự giải phóng khi RAM đạt</value>
+  </data>
+  <data name="Memory.Auto.Off" xml:space="preserve">
+    <value>Tắt</value>
+  </data>
+  <data name="Memory.Auto.HintOff" xml:space="preserve">
+    <value>Trevunix sẽ không tự giải phóng RAM.</value>
+  </data>
+  <data name="Memory.Auto.HintOn" xml:space="preserve">
+    <value>Khi RAM dùng đến {0}%, Trevunix sẽ tự giải phóng (tối đa 2 phút một lần) trong lúc ứng dụng đang mở.</value>
+  </data>
+  <data name="Memory.Standby" xml:space="preserve">
+    <value>Xoá cả bộ nhớ đệm chờ (standby)</value>
+  </data>
+  <data name="Memory.Standby.Description" xml:space="preserve">
+    <value>Bỏ các tệp Windows đang giữ sẵn trong RAM. Giải phóng được nhiều hơn, nhưng ứng dụng mở tiếp theo có thể khởi động chậm hơn một chút.</value>
+  </data>
+  <data name="Memory.Safety" xml:space="preserve">
+    <value>An toàn: không đóng ứng dụng nào và không mất dữ liệu. Ứng dụng chuyển phần bộ nhớ chưa dùng ra tệp hoán đổi và lấy lại khi cần.</value>
+  </data>
+  <data name="Nav.Resources" xml:space="preserve">
+    <value>Giải phóng tài nguyên</value>
+  </data>
+  <data name="Resources.Title" xml:space="preserve">
+    <value>Giải phóng tài nguyên</value>
+  </data>
+  <data name="Resources.Subtitle" xml:space="preserve">
+    <value>Xem cái gì đang chiếm RAM, CPU, GPU, trả lại cho ứng dụng bạn đang dùng và tăng tốc khi chơi game.</value>
+  </data>
+  <data name="Section.Ram" xml:space="preserve">
+    <value>RAM</value>
+  </data>
+  <data name="Section.Ram.Description" xml:space="preserve">
+    <value>Giải phóng bộ nhớ, bằng tay hoặc tự động</value>
+  </data>
+  <data name="Section.Cpu" xml:space="preserve">
+    <value>CPU</value>
+  </data>
+  <data name="Section.Cpu.Description" xml:space="preserve">
+    <value>Giảm tốc ứng dụng nền đang ngốn CPU</value>
+  </data>
+  <data name="Section.Gpu" xml:space="preserve">
+    <value>GPU</value>
+  </data>
+  <data name="Section.Gpu.Description" xml:space="preserve">
+    <value>GPU và bộ nhớ đồ hoạ của từng ứng dụng</value>
+  </data>
+  <data name="Section.SpeedTest" xml:space="preserve">
+    <value>Tốc độ mạng</value>
+  </data>
+  <data name="Section.SpeedTest.Description" xml:space="preserve">
+    <value>Tải xuống, tải lên, ping và jitter</value>
+  </data>
+  <data name="Section.Monitor" xml:space="preserve">
+    <value>Theo dõi</value>
+  </data>
+  <data name="Section.Monitor.Description" xml:space="preserve">
+    <value>CPU, bộ nhớ và mạng theo thời gian thực</value>
+  </data>
+  <data name="Section.Processes" xml:space="preserve">
+    <value>Tiến trình</value>
+  </data>
+  <data name="Section.Processes.Description" xml:space="preserve">
+    <value>Mọi thứ đang chạy trên máy</value>
+  </data>
+  <data name="Section.Repair" xml:space="preserve">
+    <value>Sửa lỗi Windows</value>
+  </data>
+  <data name="Section.Repair.Description" xml:space="preserve">
+    <value>SFC, DISM, đặt lại mạng và hơn nữa</value>
+  </data>
+  <data name="Section.Dns" xml:space="preserve">
+    <value>DNS</value>
+  </data>
+  <data name="Section.Dns.Description" xml:space="preserve">
+    <value>DNS nhanh hơn hoặc riêng tư hơn</value>
+  </data>
+  <data name="Section.Drives" xml:space="preserve">
+    <value>Sức khoẻ ổ đĩa</value>
+  </data>
+  <data name="Section.Drives.Description" xml:space="preserve">
+    <value>Nhiệt độ, độ hao mòn và lỗi</value>
+  </data>
+  <data name="Resources.Lower" xml:space="preserve">
+    <value>Hạ mức ưu tiên</value>
+  </data>
+  <data name="Resources.Restore" xml:space="preserve">
+    <value>Khôi phục mức ưu tiên</value>
+  </data>
+  <data name="Resources.RestoreAll" xml:space="preserve">
+    <value>Khôi phục tất cả</value>
+  </data>
+  <data name="Resources.LoweredBadge" xml:space="preserve">
+    <value>Đã hạ ưu tiên</value>
+  </data>
+  <data name="Resources.System" xml:space="preserve">
+    <value>Windows</value>
+  </data>
+  <data name="Resources.Lowered" xml:space="preserve">
+    <value>Đã hạ mức ưu tiên của {0}.</value>
+  </data>
+  <data name="Resources.LowerFailed" xml:space="preserve">
+    <value>Windows không cho phép thay đổi {0}.</value>
+  </data>
+  <data name="Resources.Restored" xml:space="preserve">
+    <value>Đã khôi phục mức ưu tiên của {0}.</value>
+  </data>
+  <data name="Resources.RestoredAll" xml:space="preserve">
+    <value>Đã khôi phục {0} tiến trình về mức ưu tiên ban đầu.</value>
+  </data>
+  <data name="Resources.Ended" xml:space="preserve">
+    <value>Đã đóng {0}.</value>
+  </data>
+  <data name="Resources.CpuName" xml:space="preserve">
+    <value>{0} · {1} nhân / {2} luồng</value>
+  </data>
+  <data name="Resources.Cpu.Hint" xml:space="preserve">
+    <value>Hạ mức ưu tiên vẫn giữ ứng dụng nền chạy, nhưng ứng dụng bạn đang dùng được chạy trước.</value>
+  </data>
+  <data name="Resources.Cpu.Free" xml:space="preserve">
+    <value>Giải phóng CPU</value>
+  </data>
+  <data name="Resources.Cpu.Top" xml:space="preserve">
+    <value>Tiến trình dùng CPU nhiều nhất</value>
+  </data>
+  <data name="Resources.Cpu.Nothing" xml:space="preserve">
+    <value>Hiện không có ứng dụng nền nào dùng nhiều CPU.</value>
+  </data>
+  <data name="Resources.Cpu.Freed" xml:space="preserve">
+    <value>Đã hạ mức ưu tiên của {0} ứng dụng đang bận: {1}. Bấm Khôi phục tất cả để hoàn tác.</value>
+  </data>
+  <data name="Resources.Gpu.Free" xml:space="preserve">
+    <value>Giải phóng GPU</value>
+  </data>
+  <data name="Resources.Gpu.Vram" xml:space="preserve">
+    <value>Bộ nhớ đồ hoạ (VRAM)</value>
+  </data>
+  <data name="Resources.Gpu.Memory" xml:space="preserve">
+    <value>{0} / {1}</value>
+  </data>
+  <data name="Resources.Gpu.Top" xml:space="preserve">
+    <value>Ứng dụng đang dùng GPU</value>
+  </data>
+  <data name="Resources.Gpu.Hint" xml:space="preserve">
+    <value>VRAM chỉ được trả lại khi ứng dụng đang giữ nó đóng lại. Giải phóng GPU sẽ liệt kê các ứng dụng nền đang dùng GPU và đóng chúng sau khi bạn đồng ý.</value>
+  </data>
+  <data name="Resources.Gpu.Nothing" xml:space="preserve">
+    <value>Hiện không có ứng dụng nền nào đang giữ GPU.</value>
+  </data>
+  <data name="Resources.Gpu.Confirm.Title" xml:space="preserve">
+    <value>Đóng các ứng dụng đang dùng GPU?</value>
+  </data>
+  <data name="Resources.Gpu.Confirm.Message" xml:space="preserve">
+    <value>Các ứng dụng sau sẽ bị đóng. Hãy lưu công việc trong đó trước.
+
+{0}</value>
+  </data>
+  <data name="Resources.Gpu.Confirm.Primary" xml:space="preserve">
+    <value>Đóng</value>
+  </data>
+  <data name="Resources.Gpu.Freed" xml:space="preserve">
+    <value>Đã đóng {0} / {1} ứng dụng.</value>
+  </data>
+  <data name="Resources.Gpu.Unsupported" xml:space="preserve">
+    <value>Phiên bản Windows này không cho biết mức dùng GPU của từng ứng dụng.</value>
+  </data>
+  <data name="Speed.Start" xml:space="preserve">
+    <value>Bắt đầu đo</value>
+  </data>
+  <data name="Speed.Cancel" xml:space="preserve">
+    <value>Dừng</value>
+  </data>
+  <data name="Speed.Download" xml:space="preserve">
+    <value>Tải xuống</value>
+  </data>
+  <data name="Speed.Upload" xml:space="preserve">
+    <value>Tải lên</value>
+  </data>
+  <data name="Speed.Ping" xml:space="preserve">
+    <value>Ping</value>
+  </data>
+  <data name="Speed.Jitter" xml:space="preserve">
+    <value>Jitter</value>
+  </data>
+  <data name="Speed.Phase.Connecting" xml:space="preserve">
+    <value>Đang tìm máy chủ gần nhất...</value>
+  </data>
+  <data name="Speed.Phase.Latency" xml:space="preserve">
+    <value>Đang đo ping</value>
+  </data>
+  <data name="Speed.Phase.Download" xml:space="preserve">
+    <value>Đang đo tải xuống</value>
+  </data>
+  <data name="Speed.Phase.Upload" xml:space="preserve">
+    <value>Đang đo tải lên</value>
+  </data>
+  <data name="Speed.Phase.Done" xml:space="preserve">
+    <value>Hoàn tất</value>
+  </data>
+  <data name="Speed.Phase.Cancelled" xml:space="preserve">
+    <value>Đã dừng</value>
+  </data>
+  <data name="Speed.Server" xml:space="preserve">
+    <value>Máy chủ: {0} ({1}) · Mạng: AS{2} · IP: {3}</value>
+  </data>
+  <data name="Speed.Failed" xml:space="preserve">
+    <value>Không kết nối được máy chủ đo: {0}</value>
+  </data>
+  <data name="Speed.Hint" xml:space="preserve">
+    <value>Dùng máy chủ đo tốc độ của Cloudflare, tự chọn trung tâm dữ liệu gần nhất, chạy 8 kết nối cùng lúc như các trang đo tốc độ. Để kết quả chính xác nhất, hãy cắm dây mạng thay vì Wi-Fi và tạm dừng tải xuống, xem phim. Một lần đo trên mạng nhanh có thể dùng vài trăm MB.</value>
+  </data>
+  <data name="Speed.Limited" xml:space="preserve">
+    <value>Máy chủ đo đang tạm giới hạn mạng của bạn vì đo nhiều lần liên tiếp. Hãy đợi vài phút rồi đo lại; kết quả lúc bị giới hạn sẽ sai nên không hiển thị.</value>
+  </data>
+  <data name="RestorePoint.Description" xml:space="preserve">
+    <value>Trevunix: trước khi thay đổi cài đặt Windows</value>
+  </data>
+  <data name="RestorePoint.Creating" xml:space="preserve">
+    <value>Đang tạo điểm khôi phục...</value>
+  </data>
+  <data name="RestorePoint.Failed.Title" xml:space="preserve">
+    <value>Không tạo được điểm khôi phục</value>
+  </data>
+  <data name="RestorePoint.Failed.Message" xml:space="preserve">
+    <value>Windows không tạo được điểm khôi phục. Có thể tính năng System Protection đang tắt cho ổ C: (tìm "Tạo điểm khôi phục" trong Windows để bật). Mọi tinh chỉnh vẫn hoàn tác được trong Trevunix. Tiếp tục mà không có điểm khôi phục?</value>
+  </data>
+  <data name="RestorePoint.Failed.Continue" xml:space="preserve">
+    <value>Tiếp tục</value>
+  </data>
+  <data name="Settings.Care" xml:space="preserve">
+    <value>Chăm sóc tự động</value>
+  </data>
+  <data name="Settings.RestorePoint" xml:space="preserve">
+    <value>Tạo điểm khôi phục trước khi tinh chỉnh</value>
+  </data>
+  <data name="Settings.RestorePoint.Description" xml:space="preserve">
+    <value>Tạo điểm khôi phục hệ thống trước lần tinh chỉnh đầu tiên mỗi khi mở Trevunix, để có thể đưa Windows về trạng thái cũ.</value>
+  </data>
+  <data name="Settings.HealthAlerts" xml:space="preserve">
+    <value>Cảnh báo sức khỏe máy</value>
+  </data>
+  <data name="Settings.HealthAlerts.Description" xml:space="preserve">
+    <value>Thông báo khi ổ đĩa sắp đầy, ổ cứng báo lỗi hoặc máy quá nóng.</value>
+  </data>
+  <data name="Settings.CloseToTray" xml:space="preserve">
+    <value>Chạy nền khi đóng cửa sổ</value>
+  </data>
+  <data name="Settings.CloseToTray.Description" xml:space="preserve">
+    <value>Đóng cửa sổ thì Trevunix vẫn nằm ở khay hệ thống, để tự giải phóng RAM và cảnh báo vẫn hoạt động.</value>
+  </data>
+  <data name="AutoClean.Title" xml:space="preserve">
+    <value>Dọn dẹp tự động</value>
+  </data>
+  <data name="AutoClean.Description" xml:space="preserve">
+    <value>Tự dọn file tạm và bộ nhớ đệm theo lịch, kể cả khi Trevunix đang tắt.</value>
+  </data>
+  <data name="AutoClean.Off" xml:space="preserve">
+    <value>Tắt</value>
+  </data>
+  <data name="AutoClean.Daily" xml:space="preserve">
+    <value>Hằng ngày</value>
+  </data>
+  <data name="AutoClean.Weekly" xml:space="preserve">
+    <value>Hằng tuần</value>
+  </data>
+  <data name="AutoClean.Monthly" xml:space="preserve">
+    <value>Mỗi 4 tuần</value>
+  </data>
+  <data name="AutoClean.Saving" xml:space="preserve">
+    <value>Đang lưu lịch...</value>
+  </data>
+  <data name="AutoClean.Failed" xml:space="preserve">
+    <value>Không lưu được lịch vào Task Scheduler.</value>
+  </data>
+  <data name="AutoClean.NotRunYet" xml:space="preserve">
+    <value>Đã đặt lịch, chưa chạy lần nào.</value>
+  </data>
+  <data name="AutoClean.LastRun" xml:space="preserve">
+    <value>Lần chạy gần nhất {0}, đã giải phóng {1}.</value>
+  </data>
+  <data name="AutoClean.Done.Title" xml:space="preserve">
+    <value>Đã dọn dẹp tự động</value>
+  </data>
+  <data name="AutoClean.Done" xml:space="preserve">
+    <value>Trevunix đã giải phóng {0} dung lượng ổ đĩa.</value>
+  </data>
+  <data name="Tray.Open" xml:space="preserve">
+    <value>Mở Trevunix</value>
+  </data>
+  <data name="Tray.FreeRam" xml:space="preserve">
+    <value>Giải phóng RAM</value>
+  </data>
+  <data name="Tray.Exit" xml:space="preserve">
+    <value>Thoát</value>
+  </data>
+  <data name="Tray.Tooltip" xml:space="preserve">
+    <value>Trevunix
+CPU {0}% · RAM {1}%</value>
+  </data>
+  <data name="Tray.StillRunning.Title" xml:space="preserve">
+    <value>Trevunix vẫn đang chạy</value>
+  </data>
+  <data name="Tray.StillRunning.Message" xml:space="preserve">
+    <value>Ứng dụng vẫn chạy ở khay hệ thống. Nhấp chuột phải vào biểu tượng để thoát, hoặc tắt tính năng này trong Cài đặt.</value>
+  </data>
+  <data name="Health.DriveAlmostFull.Title" xml:space="preserve">
+    <value>Ổ đĩa sắp đầy</value>
+  </data>
+  <data name="Health.DriveAlmostFull" xml:space="preserve">
+    <value>Ổ {0} chỉ còn trống {1}. Hãy dọn dẹp để Windows chạy mượt.</value>
+  </data>
+  <data name="Health.DiskFailing.Title" xml:space="preserve">
+    <value>Ổ cứng có vấn đề</value>
+  </data>
+  <data name="Health.DiskFailing" xml:space="preserve">
+    <value>{0} đang báo lỗi sức khỏe. Hãy sao lưu dữ liệu sớm.</value>
+  </data>
+  <data name="Health.DiskHot.Title" xml:space="preserve">
+    <value>Ổ cứng quá nóng</value>
+  </data>
+  <data name="Health.DiskHot" xml:space="preserve">
+    <value>{0} đang ở {1} °C.</value>
+  </data>
+  <data name="Health.CpuHot.Title" xml:space="preserve">
+    <value>Máy quá nóng</value>
+  </data>
+  <data name="Health.CpuHot" xml:space="preserve">
+    <value>Khu vực CPU đang ở {1} °C. Hãy kiểm tra quạt và khe tản nhiệt.</value>
+  </data>
+  <data name="Quick.Title" xml:space="preserve">
+    <value>Tối ưu nhanh</value>
+  </data>
+  <data name="Quick.Description" xml:space="preserve">
+    <value>Dọn file tạm, bộ nhớ đệm và giải phóng RAM. Không đụng đến file cá nhân và Thùng rác.</value>
+  </data>
+  <data name="Quick.IncludeTweaks" xml:space="preserve">
+    <value>Áp dụng thêm các tinh chỉnh được khuyên dùng (tạo điểm khôi phục trước)</value>
+  </data>
+  <data name="Quick.Run" xml:space="preserve">
+    <value>Tối ưu ngay</value>
+  </data>
+  <data name="Quick.Confirm.Title" xml:space="preserve">
+    <value>Tối ưu ngay?</value>
+  </data>
+  <data name="Quick.Confirm.Message" xml:space="preserve">
+    <value>Trevunix sẽ xoá file tạm, bộ nhớ đệm và giải phóng RAM. Không xoá dữ liệu cá nhân.</value>
+  </data>
+  <data name="Quick.Confirm.WithTweaks" xml:space="preserve">
+    <value>Trevunix sẽ xoá file tạm, bộ nhớ đệm, giải phóng RAM và áp dụng các tinh chỉnh được khuyên dùng. Mọi tinh chỉnh đều hoàn tác được ở trang Tối ưu.</value>
+  </data>
+  <data name="Quick.Step.Tweaks" xml:space="preserve">
+    <value>Đang áp dụng tinh chỉnh...</value>
+  </data>
+  <data name="Quick.Step.Cleanup" xml:space="preserve">
+    <value>Đang dọn file...</value>
+  </data>
+  <data name="Quick.Step.Memory" xml:space="preserve">
+    <value>Đang giải phóng RAM...</value>
+  </data>
+  <data name="Quick.Result" xml:space="preserve">
+    <value>Xong. Đã giải phóng {0} ổ đĩa và {1} RAM.</value>
+  </data>
+  <data name="Quick.Result.Tweaks" xml:space="preserve">
+    <value>Đã áp dụng {0} tinh chỉnh.</value>
+  </data>
+  <data name="Quick.Result.TweaksFailed" xml:space="preserve">
+    <value>{0} tinh chỉnh không áp dụng được.</value>
+  </data>
+  <data name="Quick.Result.Restart" xml:space="preserve">
+    <value>Khởi động lại máy để hoàn tất một số thay đổi.</value>
+  </data>
+  <data name="Settings.MadeBy" xml:space="preserve">
+    <value>Phát triển bởi {0}</value>
+  </data>
+  <data name="Nav.Appearance" xml:space="preserve">
+    <value>Giao diện</value>
+  </data>
+  <data name="Appearance.Title" xml:space="preserve">
+    <value>Giao diện</value>
+  </data>
+  <data name="Appearance.Subtitle" xml:space="preserve">
+    <value>Màu sắc, thanh taskbar và File Explorer. Mọi thay đổi đều hoàn tác được.</value>
+  </data>
+  <data name="Optimize.Category.Appearance" xml:space="preserve">
+    <value>Màu sắc và hiệu ứng</value>
+  </data>
+  <data name="Optimize.Category.Appearance.Description" xml:space="preserve">
+    <value>Chế độ tối, màu nhấn và hiệu ứng chuyển động.</value>
+  </data>
+  <data name="Tweak.HideWidgets" xml:space="preserve">
+    <value>Ẩn Widgets</value>
+  </data>
+  <data name="Tweak.HideWidgets.Description" xml:space="preserve">
+    <value>Bỏ nút tin tức và thời tiết khỏi taskbar.</value>
+  </data>
+  <data name="Tweak.HideTaskView" xml:space="preserve">
+    <value>Ẩn nút Task View</value>
+  </data>
+  <data name="Tweak.HideTaskView.Description" xml:space="preserve">
+    <value>Bỏ nút Task View. Vẫn mở được bằng Win+Tab.</value>
+  </data>
+  <data name="Tweak.SearchIcon" xml:space="preserve">
+    <value>Thu ô tìm kiếm thành biểu tượng</value>
+  </data>
+  <data name="Tweak.SearchIcon.Description" xml:space="preserve">
+    <value>Hiện tìm kiếm dạng biểu tượng nhỏ thay vì ô dài, để taskbar có thêm chỗ cho ứng dụng.</value>
+  </data>
+  <data name="Tweak.ClockSeconds" xml:space="preserve">
+    <value>Hiện giây trên đồng hồ</value>
+  </data>
+  <data name="Tweak.ClockSeconds.Description" xml:space="preserve">
+    <value>Hiện cả giây trên đồng hồ ở taskbar.</value>
+  </data>
+  <data name="Tweak.CompactExplorer" xml:space="preserve">
+    <value>File Explorer gọn hơn</value>
+  </data>
+  <data name="Tweak.CompactExplorer.Description" xml:space="preserve">
+    <value>Giảm khoảng cách giữa các mục để thấy được nhiều file hơn.</value>
+  </data>
+  <data name="Tweak.HideExplorerHome" xml:space="preserve">
+    <value>Ẩn mục Home trong File Explorer</value>
+  </data>
+  <data name="Tweak.HideExplorerHome.Description" xml:space="preserve">
+    <value>Bỏ mục Home ở thanh bên trái.</value>
+  </data>
+  <data name="Tweak.HideExplorerGallery" xml:space="preserve">
+    <value>Ẩn mục Gallery trong File Explorer</value>
+  </data>
+  <data name="Tweak.HideExplorerGallery.Description" xml:space="preserve">
+    <value>Bỏ mục Gallery ở thanh bên trái.</value>
+  </data>
+  <data name="Tweak.NoShortcutSuffix" xml:space="preserve">
+    <value>Bỏ chữ "- Shortcut" khi tạo lối tắt</value>
+  </data>
+  <data name="Tweak.NoShortcutSuffix.Description" xml:space="preserve">
+    <value>Lối tắt mới giữ đúng tên của file hoặc thư mục gốc.</value>
+  </data>
+  <data name="Tweak.DarkMode" xml:space="preserve">
+    <value>Chế độ tối</value>
+  </data>
+  <data name="Tweak.DarkMode.Description" xml:space="preserve">
+    <value>Dùng màu tối cho Windows và các ứng dụng theo giao diện Windows.</value>
+  </data>
+  <data name="Tweak.AccentTitleBars" xml:space="preserve">
+    <value>Màu nhấn trên thanh tiêu đề</value>
+  </data>
+  <data name="Tweak.AccentTitleBars.Description" xml:space="preserve">
+    <value>Thanh tiêu đề và viền cửa sổ dùng màu nhấn của bạn.</value>
+  </data>
+  <data name="Tweak.AccentTaskbar" xml:space="preserve">
+    <value>Màu nhấn cho Start và taskbar</value>
+  </data>
+  <data name="Tweak.AccentTaskbar.Description" xml:space="preserve">
+    <value>Menu Start và taskbar dùng màu nhấn. Cần bật chế độ tối cho Windows.</value>
+  </data>
+  <data name="Tweak.NoTransparency" xml:space="preserve">
+    <value>Tắt hiệu ứng trong suốt</value>
+  </data>
+  <data name="Tweak.NoTransparency.Description" xml:space="preserve">
+    <value>Dùng nền đặc thay vì trong suốt. Nhẹ hơn cho card đồ hoạ yếu.</value>
+  </data>
+  <data name="Tweak.FewerAnimations" xml:space="preserve">
+    <value>Giảm hiệu ứng chuyển động</value>
+  </data>
+  <data name="Tweak.FewerAnimations.Description" xml:space="preserve">
+    <value>Cửa sổ và taskbar mở, đóng không có hiệu ứng, cảm giác nhanh hơn trên máy yếu.</value>
+  </data>
+  <data name="Settings.StartWithWindows" xml:space="preserve">
+    <value>Khởi động cùng Windows</value>
+  </data>
+  <data name="Settings.StartWithWindows.Description" xml:space="preserve">
+    <value>Mở Trevunix ở khay hệ thống khi đăng nhập, không hiện hộp thoại UAC.</value>
+  </data>
+  <data name="Settings.StartWithWindows.Failed" xml:space="preserve">
+    <value>Không lưu được vào Task Scheduler.</value>
+  </data>
+  <data name="Section.Booster" xml:space="preserve">
+    <value>Chế độ chơi game</value>
+  </data>
+  <data name="Section.Booster.Description" xml:space="preserve">
+    <value>Dồn hiệu năng và bộ nhớ cho game</value>
+  </data>
+  <data name="Booster.Title" xml:space="preserve">
+    <value>Game Booster</value>
+  </data>
+  <data name="Booster.Description" xml:space="preserve">
+    <value>Chuyển sang chế độ nguồn Hiệu năng cao, giải phóng RAM và đóng các ứng dụng bạn chọn bên dưới. Tắt đi sẽ trả lại chế độ nguồn cũ và mở lại các ứng dụng đó.</value>
+  </data>
+  <data name="Booster.Start" xml:space="preserve">
+    <value>Bật</value>
+  </data>
+  <data name="Booster.Stop" xml:space="preserve">
+    <value>Tắt</value>
+  </data>
+  <data name="Booster.Refresh" xml:space="preserve">
+    <value>Làm mới</value>
+  </data>
+  <data name="Booster.AppsTitle" xml:space="preserve">
+    <value>Ứng dụng sẽ đóng</value>
+  </data>
+  <data name="Booster.AppsHint" xml:space="preserve">
+    <value>Xếp theo bộ nhớ dùng nhiều nhất. Lựa chọn được nhớ cho lần sau.</value>
+  </data>
+  <data name="Booster.Confirm.Title" xml:space="preserve">
+    <value>Đóng các ứng dụng này?</value>
+  </data>
+  <data name="Booster.Confirm.Message" xml:space="preserve">
+    <value>Sẽ đóng {0}. Hãy lưu công việc trong các ứng dụng này trước, phần chưa lưu có thể bị mất.</value>
+  </data>
+  <data name="Booster.Starting" xml:space="preserve">
+    <value>Đang bật chế độ chơi game...</value>
+  </data>
+  <data name="Booster.On" xml:space="preserve">
+    <value>Đã bật chế độ chơi game. Đã đóng {0} ứng dụng và giải phóng {1} RAM.</value>
+  </data>
+  <data name="Booster.NoPowerPlan" xml:space="preserve">
+    <value>Máy này không có chế độ nguồn Hiệu năng cao nên chế độ nguồn được giữ nguyên.</value>
+  </data>
+  <data name="Booster.Off" xml:space="preserve">
+    <value>Đã tắt chế độ chơi game. Đã trả lại chế độ nguồn và mở lại {0} ứng dụng.</value>
+  </data>
+  <data name="Section.Battery" xml:space="preserve">
+    <value>Pin</value>
+  </data>
+  <data name="Section.Battery.Description" xml:space="preserve">
+    <value>Độ chai, dung lượng và số lần sạc</value>
+  </data>
+  <data name="Battery.Load" xml:space="preserve">
+    <value>Kiểm tra lại</value>
+  </data>
+  <data name="Battery.None" xml:space="preserve">
+    <value>Máy này không có pin.</value>
+  </data>
+  <data name="Battery.Unnamed" xml:space="preserve">
+    <value>Pin</value>
+  </data>
+  <data name="Battery.Health" xml:space="preserve">
+    <value>Dung lượng còn lại so với lúc mới</value>
+  </data>
+  <data name="Battery.Good" xml:space="preserve">
+    <value>Pin còn tốt.</value>
+  </data>
+  <data name="Battery.Worn" xml:space="preserve">
+    <value>Pin đã chai, thời gian dùng ngắn hơn rõ so với lúc mới.</value>
+  </data>
+  <data name="Battery.Replace" xml:space="preserve">
+    <value>Pin chai nhiều, nên cân nhắc thay pin.</value>
+  </data>
+  <data name="Battery.Capacity" xml:space="preserve">
+    <value>Sạc đầy / thiết kế</value>
+  </data>
+  <data name="Battery.CapacityValue" xml:space="preserve">
+    <value>{0} / {1} Wh</value>
+  </data>
+  <data name="Battery.Cycles" xml:space="preserve">
+    <value>Số lần sạc</value>
+  </data>
+  <data name="Battery.Charge" xml:space="preserve">
+    <value>Mức pin</value>
+  </data>
+  <data name="Battery.Charging" xml:space="preserve">
+    <value>đang sạc</value>
+  </data>
+  <data name="Battery.PluggedIn" xml:space="preserve">
+    <value>đang cắm sạc</value>
+  </data>
+  <data name="Battery.OnBattery" xml:space="preserve">
+    <value>đang dùng pin</value>
+  </data>
+</root>

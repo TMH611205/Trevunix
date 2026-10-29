@@ -1,0 +1,118 @@
+<UserControl
+  x:Class="Trevunix.Views.MemoryView"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:l="clr-namespace:Trevunix.Localization"
+  xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+>
+  <ScrollViewer VerticalScrollBarVisibility="Auto">
+    <StackPanel>
+      <!-- Current use and the manual button -->
+      <Border Style="{StaticResource Panel}">
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+          </Grid.ColumnDefinitions>
+          <TextBlock
+            Grid.Column="0"
+            MinWidth="110"
+            VerticalAlignment="Center"
+            FontSize="40"
+            FontWeight="SemiBold"
+            Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+            Text="{Binding LoadText}"
+          />
+          <StackPanel Grid.Column="1" Margin="16,0" VerticalAlignment="Center">
+            <TextBlock
+              FontWeight="SemiBold"
+              Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+              Text="{Binding UsedText}"
+            />
+            <ProgressBar
+              Margin="0,8"
+              Style="{StaticResource UsageBar}"
+              Value="{Binding LoadPercent, Mode=OneWay}"
+            />
+            <TextBlock Style="{StaticResource Muted}" Text="{Binding AvailableText}" />
+          </StackPanel>
+          <StackPanel Grid.Column="2" VerticalAlignment="Center" Orientation="Horizontal">
+            <ui:ProgressRing
+              Width="20"
+              Height="20"
+              Margin="0,0,10,0"
+              IsIndeterminate="True"
+              Visibility="{Binding IsBusy, Converter={StaticResource VisibleWhen}}"
+            />
+            <ui:Button
+              Appearance="Primary"
+              Command="{Binding CleanCommand}"
+              Content="{l:T Memory.CleanNow}"
+              Icon="{ui:SymbolIcon Flash24}"
+            />
+          </StackPanel>
+        </Grid>
+      </Border>
+      <TextBlock
+        Margin="2,8,0,0"
+        Foreground="{DynamicResource SystemFillColorSuccessBrush}"
+        Text="{Binding LastResult}"
+        TextWrapping="Wrap"
+        Visibility="{Binding LastResult, Converter={StaticResource VisibleWhen}}"
+      />
+
+      <TextBlock Style="{StaticResource SectionTitle}" Text="{l:T Memory.Auto.Title}" />
+      <ui:CardControl Margin="0,0,0,6" Icon="{ui:SymbolIcon TopSpeed24}">
+        <ui:CardControl.Header>
+          <StackPanel>
+            <TextBlock
+              FontWeight="SemiBold"
+              Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+              Text="{l:T Memory.Auto.Threshold}"
+            />
+            <TextBlock
+              Style="{StaticResource Muted}"
+              Text="{Binding AutoHint}"
+              TextTrimming="None"
+              TextWrapping="Wrap"
+            />
+          </StackPanel>
+        </ui:CardControl.Header>
+        <ComboBox
+          MinWidth="140"
+          DisplayMemberPath="Name"
+          ItemsSource="{Binding Thresholds}"
+          SelectedItem="{Binding Threshold}"
+        />
+      </ui:CardControl>
+
+      <ui:CardControl Margin="0,0,0,6" Icon="{ui:SymbolIcon DatabaseArrowDown20}">
+        <ui:CardControl.Header>
+          <StackPanel>
+            <TextBlock
+              FontWeight="SemiBold"
+              Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+              Text="{l:T Memory.Standby}"
+            />
+            <TextBlock
+              Style="{StaticResource Muted}"
+              Text="{l:T Memory.Standby.Description}"
+              TextTrimming="None"
+              TextWrapping="Wrap"
+            />
+          </StackPanel>
+        </ui:CardControl.Header>
+        <ui:ToggleSwitch IsChecked="{Binding PurgeStandby}" />
+      </ui:CardControl>
+
+      <ui:InfoBar
+        Margin="0,12,0,0"
+        IsClosable="False"
+        IsOpen="True"
+        Message="{l:T Memory.Safety}"
+        Severity="Informational"
+      />
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>

@@ -1,0 +1,95 @@
+name: Release
+
+# A push to main only builds, tests and uploads Trevunix.exe as an artifact to try.
+# Nothing reaches users until someone runs this workflow by hand (Actions > Release >
+# Run workflow); that run publishes the exe as the latest release of this repo, where
+# the app's self-updater looks for it.
+# The version is <Version> from Directory.Build.props plus the run number as the fourth
+# part (3.0.0 -> 3.0.0.<run>), so each build is newer than the last and the app's
+# self-updater (src/Trevunix.Core/Updates/UpdateService.cs) picks it up.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      notes:
+        description: "What changed in this release (shown on the release page)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Compute version
+        id: version
+        shell: pwsh
+        run: |
+          [xml]$props = Get-Content Directory.Build.props
+          $base = ($props.Project.PropertyGroup | ForEach-Object { $_.Version } | Where-Object { $_ } | Select-Object -First 1).Trim()
+          $parts = $base.Split('.')
+          while ($parts.Count -lt 3) { $parts += '0' }
+          $version = "$($parts[0]).$($parts[1]).$($parts[2]).${{ github.run_number }}"
+          "version=$version" >> $env:GITHUB_OUTPUT
+          Write-Host "Version: $version"
+
+      - name: Restore
+        run: dotnet restore Trevunix.slnx
+
+      - name: Build
+        run: dotnet build Trevunix.slnx --configuration Release --no-restore
+
+      - name: Test
+        run: dotnet run --project tests/Trevunix.Core.Tests --configuration Release --no-build
+
+      - name: Publish single-file exe
+        run: >
+          dotnet publish src/Trevunix/Trevunix.csproj -c Release -r win-x64 --nologo
+          -o publish
+          -p:SelfContained=true
+          -p:PublishSingleFile=true
+          -p:IncludeNativeLibrariesForSelfExtract=true
+          -p:EnableCompressionInSingleFile=true
+          -p:PublishReadyToRun=true
+          -p:DebugType=none
+          -p:Version=${{ steps.version.outputs.version }}
+          -p:FileVersion=${{ steps.version.outputs.version }}
+
+      - name: Upload test build
+        uses: actions/upload-artifact@v4
+        with:
+          name: Trevunix-${{ steps.version.outputs.version }}
+          path: publish/Trevunix.exe
+          retention-days: 14
+
+      - name: Create release
+        if: github.event_name == 'workflow_dispatch'
+        env:
+          NOTES: ${{ inputs.notes }}
+          GH_TOKEN: ${{ github.token }}
+        shell: pwsh
+        run: |
+          $version = "${{ steps.version.outputs.version }}"
+          $exe = "publish/Trevunix.exe"
+          if (-not (Test-Path $exe)) { throw "Published exe not found: $exe" }
+          $notes = if ($env:NOTES) { "$env:NOTES`n`n" } else { "Trevunix v$version.`n`n" }
+          $notes += "Download Trevunix.exe and run it as Administrator. Installed copies update themselves on next launch."
+          gh release create "v$version" $exe `
+            --repo ${{ github.repository }} `
+            --title "Trevunix v$version" `
+            --notes $notes `
+            --latest

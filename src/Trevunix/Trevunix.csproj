@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <!-- Only for the notification area icon; WPF has none. -->
+    <UseWindowsForms>true</UseWindowsForms>
+    <!-- WPF sets the DPI mode in app.manifest; there are no WinForms windows to configure. -->
+    <NoWarn>$(NoWarn);WFO0003</NoWarn>
+    <AssemblyName>Trevunix</AssemblyName>
+    <RootNamespace>Trevunix</RootNamespace>
+    <ApplicationIcon>Assets\Logo.ico</ApplicationIcon>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <!-- CET shadow stacks need an API missing on Windows 10; keep Windows 10 working. -->
+    <CETCompat>false</CETCompat>
+  </PropertyGroup>
+  <!-- build.cmd sets LocalBuild so a hand-built exe never replaces itself with the public release. -->
+  <PropertyGroup Condition="'$(LocalBuild)' == 'true'">
+    <DefineConstants>$(DefineConstants);LOCAL_BUILD</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
+    <PackageReference Include="WPF-UI" Version="4.3.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Trevunix.Core\Trevunix.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- Keep WinForms names out of the WPF code; the tray service names them explicitly. -->
+    <Using Remove="System.Windows.Forms" />
+    <Using Remove="System.Drawing" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Logo.png" />
+    <Resource Include="Assets\Logo.ico" />
+  </ItemGroup>
+</Project>

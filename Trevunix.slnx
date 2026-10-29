@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Trevunix.Core/Trevunix.Core.csproj" />
+    <Project Path="src/Trevunix/Trevunix.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Trevunix.Core.Tests/Trevunix.Core.Tests.csproj" />
+  </Folder>
+</Solution>
