@@ -54,6 +54,9 @@ public sealed class CleanupEngine(Func<DateTime>? utcNow = null, CleanupSafety? 
     private readonly Func<DateTime> _utcNow = utcNow ?? (() => DateTime.UtcNow);
     private readonly CleanupSafety _safety = safety ?? new CleanupSafety();
 
+    /// <summary>Deleting is mostly waiting on the file system, so a few threads overlap well.</summary>
+    private static readonly int DeleteThreads = Math.Clamp(Environment.ProcessorCount, 2, 8);
+
     private static readonly EnumerationOptions TopLevel = new()
     {
         IgnoreInaccessible = true,
@@ -75,7 +78,13 @@ public sealed class CleanupEngine(Func<DateTime>? utcNow = null, CleanupSafety? 
         CancellationToken cancellationToken = default
     ) =>
         Task.Run<IReadOnlyList<TargetScan>>(
-            () => targets.Select(t => Scan(t, cancellationToken)).ToList(),
+            () =>
+                targets
+                    .AsParallel()
+                    .AsOrdered()
+                    .WithCancellation(cancellationToken)
+                    .Select(t => Scan(t, cancellationToken))
+                    .ToList(),
             cancellationToken
         );
 
@@ -118,10 +127,11 @@ public sealed class CleanupEngine(Func<DateTime>? utcNow = null, CleanupSafety? 
                     continue;
                 }
 
+                var inside = Path.GetFullPath(root).TrimEnd('\\') + "\\";
                 foreach (var file in SafeEnumerate(found))
                 {
                     // Belt and braces: never leave the folder we were asked to clean.
-                    if (!CleanupSafety.IsSameOrInside(file.FullName, root))
+                    if (!file.FullName.StartsWith(inside, StringComparison.OrdinalIgnoreCase))
                         continue;
                     if (_safety.IsProtectedFile(file))
                     {
@@ -178,23 +188,38 @@ public sealed class CleanupEngine(Func<DateTime>? utcNow = null, CleanupSafety? 
             }
 
             var done = 0L;
-            foreach (var file in scan.Files)
+            try
             {
-                if (cancellationToken.IsCancellationRequested)
-                    break;
+                Parallel.ForEach(
+                    scan.Files,
+                    new ParallelOptions
+                    {
+                        CancellationToken = cancellationToken,
+                        MaxDegreeOfParallelism = DeleteThreads,
+                    },
+                    file =>
+                    {
+                        if (TryDelete(file.Path))
+                        {
+                            Interlocked.Add(ref freed, file.Size);
+                            Interlocked.Increment(ref deleted);
+                        }
+                        else
+                        {
+                            Interlocked.Increment(ref skipped);
+                        }
 
-                if (TryDelete(file.Path))
-                {
-                    freed += file.Size;
-                    deleted++;
-                }
-                else
-                {
-                    skipped++;
-                }
-
-                if (++done % 200 == 0)
-                    progress?.Report(new CleanupProgress(scan.Target.Id, done, scan.Files.Count));
+                        var count = Interlocked.Increment(ref done);
+                        if (count % 200 == 0)
+                            progress?.Report(
+                                new CleanupProgress(scan.Target.Id, count, scan.Files.Count)
+                            );
+                    }
+                );
+            }
+            catch (OperationCanceledException)
+            {
+                break;
             }
 
             foreach (var root in scan.Roots)
@@ -280,15 +305,30 @@ public sealed class CleanupEngine(Func<DateTime>? utcNow = null, CleanupSafety? 
     {
         try
         {
-            var info = new FileInfo(path);
-            if (!info.Exists)
+            // File.Delete does not complain about a file that is already gone, so check first.
+            if (!File.Exists(path))
                 return false;
-            if (info.IsReadOnly)
-                info.IsReadOnly = false;
-            info.Delete();
+            File.Delete(path);
             return true;
         }
-        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
+        catch (UnauthorizedAccessException)
+        {
+            // Usually a read-only file; clear the flag and try once more.
+            try
+            {
+                var info = new FileInfo(path);
+                if (!info.IsReadOnly)
+                    return false;
+                info.IsReadOnly = false;
+                info.Delete();
+                return true;
+            }
+            catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
+            {
+                return false;
+            }
+        }
+        catch (IOException)
         {
             return false;
         }

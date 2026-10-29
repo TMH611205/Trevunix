@@ -119,13 +119,15 @@ public sealed partial class HomeViewModel : ObservableObject
         OptimizeResult = "";
         try
         {
-            var applied = new TweakBatchResult(0, 0, false, false);
-            if (tweaks)
-            {
-                OptimizeStatus = Tr.Get("RestorePoint.Creating");
-                if (!await _main.RestorePoints.EnsureAsync())
-                    return;
+            // Cleaning does not depend on the restore point, which can take half a minute, so
+            // both run at the same time.
+            var cleaning = QuickMaintenance.CleanAsync(new CleanupEngine());
 
+            var applied = new TweakBatchResult(0, 0, false);
+            OptimizeStatus = Tr.Get(tweaks ? "RestorePoint.Creating" : "Quick.Step.Cleanup");
+            // Without a restore point the owner may decline the tweaks; the cleanup still finishes.
+            if (tweaks && await _main.RestorePoints.EnsureAsync())
+            {
                 OptimizeStatus = Tr.Get("Quick.Step.Tweaks");
                 applied = await Task.Run(() =>
                 {
@@ -138,7 +140,7 @@ public sealed partial class HomeViewModel : ObservableObject
             }
 
             OptimizeStatus = Tr.Get("Quick.Step.Cleanup");
-            var cleaned = await QuickMaintenance.CleanAsync(new CleanupEngine());
+            var cleaned = await cleaning;
 
             OptimizeStatus = Tr.Get("Quick.Step.Memory");
             var purge = _main.Settings.PurgeStandbyCache;
@@ -153,7 +155,7 @@ public sealed partial class HomeViewModel : ObservableObject
                 result += " " + Tr.Format("Quick.Result.Tweaks", applied.Applied);
             if (applied.Failed > 0)
                 result += " " + Tr.Format("Quick.Result.TweaksFailed", applied.Failed);
-            if (applied.NeedsReboot || applied.NeedsExplorerRestart)
+            if (applied.NeedsRestart)
                 result += " " + Tr.Get("Quick.Result.Restart");
             OptimizeResult = result;
 

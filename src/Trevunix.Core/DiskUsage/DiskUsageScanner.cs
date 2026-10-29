@@ -1,5 +1,6 @@
 using System.Collections.Concurrent;
 using System.Diagnostics;
+using System.IO.Enumeration;
 
 namespace Trevunix.Core.DiskUsage;
 
@@ -11,8 +12,11 @@ public sealed class DiskUsageScannerOptions
     /// <summary>Size of the global "largest files" list.</summary>
     public int LargestFileCount { get; init; } = 200;
 
-    /// <summary>Folders down to this depth are scanned in parallel.</summary>
-    public int ParallelDepth { get; init; } = 3;
+    /// <summary>
+    ///     Folders down to this depth spread their subfolders over several threads. Deep, heavy
+    ///     trees (WinSxS, AppData, node_modules) sit well below the top levels, so it goes deep.
+    /// </summary>
+    public int ParallelDepth { get; init; } = 12;
 
     public TimeSpan ProgressInterval { get; init; } = TimeSpan.FromMilliseconds(150);
 }
@@ -75,47 +79,57 @@ public sealed class DiskUsageScanner(DiskUsageScannerOptions? options = null)
         };
     }
 
+    /// <summary>One directory entry, read straight from the enumeration buffer.</summary>
+    private readonly record struct Entry(string Name, bool IsDirectory, long Size, DateTime Write);
+
+    private static readonly FileSystemEnumerable<Entry>.FindTransform ToEntry = (
+        ref FileSystemEntry e
+    ) => new Entry(e.FileName.ToString(), e.IsDirectory, e.Length, e.LastWriteTimeUtc.UtcDateTime);
+
     private void ScanDirectory(UsageNode node, int depth, ScanState state)
     {
         state.Token.ThrowIfCancellationRequested();
 
-        var info = new DirectoryInfo(node.FullPath);
+        if (depth == 0)
+            node.LastWriteUtc = SafeLastWrite(node.FullPath);
+
         var subdirs = new List<UsageNode>();
-        var files = new List<(string Path, string Name, long Size, DateTime Write)>();
+        var files = new List<Entry>();
         var types = new Dictionary<string, (long Size, long Count)>(
             StringComparer.OrdinalIgnoreCase
         );
+        // Look extensions up by span so only a folder's first file of each type allocates.
+        var typesBySpan = types.GetAlternateLookup<ReadOnlySpan<char>>();
 
         try
         {
-            node.LastWriteUtc = info.LastWriteTimeUtc;
-            foreach (var entry in info.EnumerateFileSystemInfos("*", Enumeration))
+            // Reading the find data directly skips a FileInfo and a full path per entry, which
+            // is most of the cost on a drive with millions of files.
+            var entries = new FileSystemEnumerable<Entry>(node.FullPath, ToEntry, Enumeration);
+            foreach (var entry in entries)
             {
-                if (entry is DirectoryInfo dir)
+                if (entry.IsDirectory)
                 {
                     subdirs.Add(
-                        new UsageNode(dir.Name, dir.FullName, UsageNodeKind.Directory, node)
+                        new UsageNode(
+                            entry.Name,
+                            Path.Join(node.FullPath, entry.Name),
+                            UsageNodeKind.Directory,
+                            node
+                        )
+                        {
+                            LastWriteUtc = entry.Write,
+                        }
                     );
+                    continue;
                 }
-                else if (entry is FileInfo file)
-                {
-                    long fileSize;
-                    try
-                    {
-                        fileSize = file.Length;
-                    }
-                    catch (IOException)
-                    {
-                        node.Incomplete = true;
-                        continue;
-                    }
 
-                    files.Add((file.FullName, file.Name, fileSize, file.LastWriteTimeUtc));
-                    var ext = file.Extension.Length > 0 ? file.Extension.ToLowerInvariant() : "";
-                    types[ext] = types.TryGetValue(ext, out var t)
-                        ? (t.Size + fileSize, t.Count + 1)
-                        : (fileSize, 1);
-                }
+                files.Add(entry);
+                var ext = Path.GetExtension(entry.Name.AsSpan());
+                if (typesBySpan.TryGetValue(ext, out var t))
+                    typesBySpan[ext] = (t.Size + entry.Size, t.Count + 1);
+                else
+                    types[ext.ToString().ToLowerInvariant()] = (entry.Size, 1);
             }
         }
         catch (Exception ex) when (ex is UnauthorizedAccessException or IOException)
@@ -153,16 +167,25 @@ public sealed class DiskUsageScanner(DiskUsageScannerOptions? options = null)
         files.Sort((a, b) => b.Size.CompareTo(a.Size));
         long restSize = 0;
         long restCount = 0;
+        long filesSize = 0;
         for (var i = 0; i < files.Count; i++)
         {
             var f = files[i];
-            size += f.Size;
-            state.OfferLargeFile(f.Path, f.Size, f.Write);
+            filesSize += f.Size;
+            // Build the full path only for files that end up shown somewhere.
+            string? path = null;
+            if (state.IsLargeCandidate(f.Size))
+                state.OfferLargeFile(path = Path.Join(node.FullPath, f.Name), f.Size, f.Write);
 
             if (i < _options.FilesPerFolder)
             {
                 node.AddChild(
-                    new UsageNode(f.Name, f.Path, UsageNodeKind.File, node)
+                    new UsageNode(
+                        f.Name,
+                        path ?? Path.Join(node.FullPath, f.Name),
+                        UsageNodeKind.File,
+                        node
+                    )
                     {
                         Size = f.Size,
                         FileCount = 1,
@@ -193,13 +216,25 @@ public sealed class DiskUsageScanner(DiskUsageScannerOptions? options = null)
             );
         }
 
-        node.Size = size;
+        node.Size = size + filesSize;
         node.FileCount = fileCount;
         node.FolderCount = folderCount;
         node.SortChildrenBySize();
 
         state.MergeTypes(types);
-        state.Count(files.Count, files.Sum(f => f.Size), node.FullPath);
+        state.Count(files.Count, filesSize, node.FullPath);
+    }
+
+    private static DateTime SafeLastWrite(string path)
+    {
+        try
+        {
+            return Directory.GetLastWriteTimeUtc(path);
+        }
+        catch (Exception ex) when (ex is UnauthorizedAccessException or IOException)
+        {
+            return default;
+        }
     }
 
     private static string DisplayName(string fullPath)
@@ -222,12 +257,18 @@ public sealed class DiskUsageScanner(DiskUsageScannerOptions? options = null)
         private long _bytes;
         private long _lastReportTicks;
 
+        /// <summary>The size a file must beat to enter the largest list once it is full.</summary>
+        private long _threshold;
+
         public CancellationToken Token { get; } = token;
 
         public ConcurrentDictionary<string, (long Size, long Count)> FileTypes { get; } =
             new(StringComparer.OrdinalIgnoreCase);
 
         public TimeSpan Elapsed => _clock.Elapsed;
+
+        /// <summary>A cheap, lock-free pre-check; <see cref="OfferLargeFile"/> decides for real.</summary>
+        public bool IsLargeCandidate(long size) => size > Interlocked.Read(ref _threshold);
 
         public void OfferLargeFile(string path, long size, DateTime write)
         {
@@ -240,6 +281,12 @@ public sealed class DiskUsageScanner(DiskUsageScannerOptions? options = null)
                 else if (_largest.TryPeek(out _, out var smallest) && size > smallest)
                 {
                     _largest.EnqueueDequeue(new LargeFile(path, size, write), size);
+                }
+
+                if (_largest.Count >= options.LargestFileCount)
+                {
+                    _largest.TryPeek(out _, out var min);
+                    Interlocked.Exchange(ref _threshold, min);
                 }
             }
         }

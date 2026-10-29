@@ -95,14 +95,20 @@ public sealed partial class CleanupViewModel : ObservableObject
     private bool CanClean => !IsBusy && Items.Any(i => i.IsSelected && i.HasFiles);
 
     [RelayCommand(CanExecute = nameof(CanRun))]
-    private async Task ScanAsync()
+    private Task ScanAsync() => ScanItemsAsync(Items);
+
+    /// <summary>Scans the items at once (they are separate folders); each row fills in as it finishes.</summary>
+    private async Task ScanItemsAsync(IEnumerable<CleanupItem> items)
     {
         IsBusy = true;
         BusyText = Tr.Get("Cleanup.Scanning");
         try
         {
-            foreach (var item in Items)
-                item.Scan = await Task.Run(() => _engine.Scan(item.Target));
+            await Task.WhenAll(
+                items.Select(async item =>
+                    item.Scan = await Task.Run(() => _engine.Scan(item.Target))
+                )
+            );
         }
         finally
         {
@@ -156,7 +162,8 @@ public sealed partial class CleanupViewModel : ObservableObject
                 )
                 : Tr.Format("Cleanup.Done", freed, files);
 
-        await ScanAsync();
+        // Only the cleaned rows changed; the others keep their results.
+        await ScanItemsAsync(chosen);
     }
 
     [RelayCommand]
