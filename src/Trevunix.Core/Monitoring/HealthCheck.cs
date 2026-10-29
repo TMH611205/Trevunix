@@ -1,4 +1,3 @@
-using System.Management;
 using Trevunix.Core.DiskUsage;
 using Trevunix.Core.Storage;
 using Trevunix.Core.SystemInfo;
@@ -75,31 +74,24 @@ public static class HealthCheck
     /// </summary>
     public static int? ReadCpuTemperature()
     {
-        try
+        var zones = Wmi.Query(
+            "SELECT CurrentTemperature FROM MSAcpi_ThermalZoneTemperature",
+            @"root\WMI"
+        );
+        int? highest = null;
+        foreach (var zone in zones)
         {
-            using var searcher = new ManagementObjectSearcher(
-                @"root\WMI",
-                "SELECT CurrentTemperature FROM MSAcpi_ThermalZoneTemperature"
-            );
-            int? highest = null;
-            foreach (var zone in searcher.Get())
+            using (zone)
             {
-                using (zone)
-                {
-                    // Tenths of a kelvin.
-                    if (zone["CurrentTemperature"] is not uint raw)
-                        continue;
-                    var celsius = (int)Math.Round(raw / 10d - 273.15);
-                    // Some boards report placeholder values; ignore anything implausible.
-                    if (celsius is > 0 and < 125)
-                        highest = Math.Max(highest ?? celsius, celsius);
-                }
+                // Tenths of a kelvin.
+                if (zone["CurrentTemperature"] is not uint raw)
+                    continue;
+                var celsius = (int)Math.Round(raw / 10d - 273.15);
+                // Some boards report placeholder values; ignore anything implausible.
+                if (celsius is > 0 and < 125)
+                    highest = Math.Max(highest ?? celsius, celsius);
             }
-            return highest;
         }
-        catch (Exception ex) when (Wmi.IsUnavailable(ex))
-        {
-            return null;
-        }
+        return highest;
     }
 }

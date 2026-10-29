@@ -69,13 +69,20 @@ public partial class App : Application
                 _tray.Notify(title, message, warning: true);
         };
 
-        // The exe may have moved or been updated since the task was made; point it here again.
-        if (Environment.ProcessPath is { } path)
+        // The exe may have moved since the scheduled tasks were made; point them here again.
+        if (Environment.ProcessPath is { } path && path != _settings.TasksExePath)
         {
-            if (_settings.AutoClean != CleanFrequency.Off)
-                _ = Task.Run(() => AutoCleanSchedule.Register(path, _settings.AutoClean));
-            if (_settings.StartWithWindows)
-                _ = Task.Run(() => LaunchAtLogon.Set(path, true));
+            var autoClean = _settings.AutoClean;
+            var startWithWindows = _settings.StartWithWindows;
+            _ = Task.Run(() =>
+            {
+                if (autoClean != CleanFrequency.Off)
+                    AutoCleanSchedule.Register(path, autoClean);
+                if (startWithWindows)
+                    LaunchAtLogon.Set(path, true);
+            });
+            _settings.TasksExePath = path;
+            _store.TrySave(_settings);
         }
 
 #if !LOCAL_BUILD
@@ -152,9 +159,7 @@ public partial class App : Application
             var result = await QuickMaintenance.CleanAsync(new CleanupEngine());
             try
             {
-                AutoCleanSchedule.SaveRun(
-                    new AutoCleanRun(DateTime.Now, result.FreedBytes, result.DeletedFiles)
-                );
+                AutoCleanSchedule.SaveRun(new AutoCleanRun(DateTime.Now, result.FreedBytes));
             }
             catch (IOException) { }
 
@@ -197,8 +202,12 @@ public partial class App : Application
         Restart();
     }
 
+    /// <summary>Errors already shown this session; a timer that keeps failing is logged, not shown again.</summary>
+    private static readonly HashSet<string> ShownErrors = [];
+
     private static void OnUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
     {
+        e.Handled = true;
         try
         {
             Directory.CreateDirectory(AppPaths.DataDirectory);
@@ -209,12 +218,12 @@ public partial class App : Application
         }
         catch (IOException) { }
 
-        MessageBox.Show(
-            e.Exception.Message,
-            "Trevunix",
-            MessageBoxButton.OK,
-            MessageBoxImage.Error
-        );
-        e.Handled = true;
+        if (ShownErrors.Add(e.Exception.GetType().FullName + e.Exception.Message))
+            MessageBox.Show(
+                e.Exception.Message,
+                "Trevunix",
+                MessageBoxButton.OK,
+                MessageBoxImage.Error
+            );
     }
 }

@@ -24,11 +24,14 @@ public sealed class HealthWatcher
     private IReadOnlyList<DriveSummary> _drives = [];
     private IReadOnlyList<DiskHealth> _disks = [];
     private DateTime _drivesAt = DateTime.MinValue;
-    private DateTime _disksAt = DateTime.MinValue;
+    private DateTime _disksAt;
+    private bool _cpuReported = true;
     private bool _checking;
 
     public HealthWatcher()
     {
+        // The disk check starts PowerShell; leave it until a minute after start-up.
+        _disksAt = DateTime.Now - DiskEvery + TimeSpan.FromMinutes(1);
         _timer.Tick += async (_, _) => await CheckAsync();
         _timer.Start();
         _ = CheckAsync();
@@ -56,7 +59,7 @@ public sealed class HealthWatcher
             {
                 try
                 {
-                    _disks = await DriveHealth.ReadAsync();
+                    _disks = await Task.Run(() => DriveHealth.ReadAsync());
                 }
                 catch (Exception ex)
                     when (ex
@@ -69,19 +72,30 @@ public sealed class HealthWatcher
                 }
                 _disksAt = now;
             }
-            var cpu = await Task.Run(HealthCheck.ReadCpuTemperature);
+            // Most PCs never report a CPU temperature; stop asking after the first empty answer.
+            int? cpu = null;
+            if (_cpuReported)
+            {
+                cpu = await Task.Run(HealthCheck.ReadCpuTemperature);
+                _cpuReported = cpu is not null;
+            }
 
             var alerts = HealthCheck.Evaluate(_drives, _disks, cpu);
-            Active.Clear();
-            foreach (var alert in alerts)
-                Active.Add(Describe(alert));
-
-            foreach (var alert in alerts)
+            var messages = alerts.Select(Describe).ToList();
+            if (!messages.SequenceEqual(Active))
             {
-                if (_notified.TryGetValue(alert.Key, out var last) && now - last < RepeatAfter)
+                Active.Clear();
+                foreach (var message in messages)
+                    Active.Add(message);
+            }
+
+            for (var i = 0; i < alerts.Count; i++)
+            {
+                var key = alerts[i].Key;
+                if (_notified.TryGetValue(key, out var last) && now - last < RepeatAfter)
                     continue;
-                _notified[alert.Key] = now;
-                Raised?.Invoke(Tr.Get($"Health.{alert.Kind}.Title"), Describe(alert));
+                _notified[key] = now;
+                Raised?.Invoke(Tr.Get($"Health.{alerts[i].Kind}.Title"), messages[i]);
             }
         }
         catch (Exception ex)

@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using System.Windows.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -149,15 +148,5 @@ public sealed partial class MemoryViewModel : PageSection
         );
     }
 
-    private void Save()
-    {
-        try
-        {
-            _store.Save(_settings);
-        }
-        catch (Exception ex) when (ex is System.IO.IOException or UnauthorizedAccessException)
-        {
-            Trace.TraceWarning("Could not save settings: {0}", ex.Message);
-        }
-    }
+    private void Save() => _store.TrySave(_settings);
 }

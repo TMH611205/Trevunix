@@ -1,6 +1,6 @@
-using System.Diagnostics;
 using System.Security;
 using System.Text;
+using Trevunix.Core.Tools;
 
 namespace Trevunix.Core.Maintenance;
 
@@ -86,29 +86,6 @@ internal static class ScheduledTask
             </Task>
             """;
 
-    private static bool Run(params string[] args)
-    {
-        var info = new ProcessStartInfo("schtasks.exe")
-        {
-            UseShellExecute = false,
-            CreateNoWindow = true,
-            RedirectStandardOutput = true,
-            RedirectStandardError = true,
-        };
-        foreach (var arg in args)
-            info.ArgumentList.Add(arg);
-
-        try
-        {
-            using var process = Process.Start(info)!;
-            process.StandardOutput.ReadToEnd();
-            process.StandardError.ReadToEnd();
-            process.WaitForExit();
-            return process.ExitCode == 0;
-        }
-        catch (System.ComponentModel.Win32Exception)
-        {
-            return false;
-        }
-    }
+    private static bool Run(params string[] args) =>
+        CommandRunner.Run("schtasks.exe", args).Code == 0;
 }

@@ -3,12 +3,8 @@ using Trevunix.Core.Tweaks;
 
 namespace Trevunix.Core.Maintenance;
 
-public sealed record TweakBatchResult(
-    int Applied,
-    int Failed,
-    bool NeedsExplorerRestart,
-    bool NeedsReboot
-);
+/// <param name="NeedsRestart">Some change shows only after Explorer or the PC restarts.</param>
+public sealed record TweakBatchResult(int Applied, int Failed, bool NeedsRestart);
 
 /// <summary>
 ///     The safe, hands-off parts of Trevunix in one place, shared by the one-click optimize on
@@ -41,17 +37,15 @@ public static class QuickMaintenance
     {
         int applied = 0,
             failed = 0;
-        bool explorer = false,
-            reboot = false;
+        var restart = false;
         foreach (var tweak in tweaks)
         {
             if (engine.Apply(tweak).Success)
                 applied++;
             else
                 failed++;
-            explorer |= tweak.After == TweakAfter.RestartExplorer;
-            reboot |= tweak.After == TweakAfter.Reboot;
+            restart |= tweak.After != TweakAfter.Nothing;
         }
-        return new TweakBatchResult(applied, failed, explorer, reboot);
+        return new TweakBatchResult(applied, failed, restart);
     }
 }

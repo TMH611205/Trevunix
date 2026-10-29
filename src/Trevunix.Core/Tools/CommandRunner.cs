@@ -132,6 +132,38 @@ public static class CommandRunner
         return process.ExitCode;
     }
 
+    /// <summary>
+    ///     Runs a short console program to completion and returns its exit code and output;
+    ///     code -1 when it could not start. For quick helpers such as schtasks and powercfg.
+    /// </summary>
+    public static (int Code, string Output) Run(string fileName, params string[] arguments)
+    {
+        var info = new ProcessStartInfo(fileName)
+        {
+            UseShellExecute = false,
+            CreateNoWindow = true,
+            RedirectStandardOutput = true,
+            RedirectStandardError = true,
+        };
+        foreach (var argument in arguments)
+            info.ArgumentList.Add(argument);
+
+        try
+        {
+            using var process = Process.Start(info)!;
+            // Read stderr alongside stdout so neither pipe can fill up and stall the program.
+            var errors = process.StandardError.ReadToEndAsync();
+            var output = process.StandardOutput.ReadToEnd();
+            errors.Wait();
+            process.WaitForExit();
+            return (process.ExitCode, output);
+        }
+        catch (System.ComponentModel.Win32Exception)
+        {
+            return (-1, "");
+        }
+    }
+
     private static async Task Pump(StreamReader reader, LineAssembler assembler)
     {
         var buffer = new char[1024];

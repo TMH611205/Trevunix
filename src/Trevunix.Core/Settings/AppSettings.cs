@@ -35,6 +35,9 @@ public sealed class AppSettings
     /// <summary>Start in the notification area when the owner signs in to Windows.</summary>
     public bool StartWithWindows { get; set; }
 
+    /// <summary>The exe the scheduled tasks were last pointed at, so they are redone only after a move.</summary>
+    public string? TasksExePath { get; set; }
+
     /// <summary>Apps the game booster closes, by process name, as last chosen.</summary>
     public List<string> BoosterApps { get; set; } = [];
 
@@ -91,6 +94,7 @@ public sealed class SettingsStore(string? filePath = null)
         }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
         {
+            System.Diagnostics.Trace.TraceWarning("Could not save settings: {0}", ex.Message);
             return false;
         }
     }

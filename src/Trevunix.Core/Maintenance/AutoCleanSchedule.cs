@@ -13,7 +13,7 @@ public enum CleanFrequency
 }
 
 /// <summary>What the last scheduled cleanup did; kept in its own file because it runs in a separate process.</summary>
-public sealed record AutoCleanRun(DateTime FinishedAt, long FreedBytes, long DeletedFiles);
+public sealed record AutoCleanRun(DateTime FinishedAt, long FreedBytes);
 
 /// <summary>
 ///     Runs the cleanup on a schedule through Windows Task Scheduler with

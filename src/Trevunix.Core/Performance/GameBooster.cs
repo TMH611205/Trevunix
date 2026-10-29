@@ -1,6 +1,8 @@
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
+using Trevunix.Core.Monitoring;
+using Trevunix.Core.Tools;
 
 namespace Trevunix.Core.Performance;
 
@@ -10,7 +12,8 @@ public sealed record BoosterApp(string Name, string? Path, long MemoryBytes, int
 /// <summary>What starting the booster changed, so stopping it can put things back.</summary>
 public sealed record BoostSession(Guid? PreviousPowerPlan, IReadOnlyList<string> ClosedAppPaths);
 
-public sealed record BoostResult(BoostSession Session, bool PowerPlanChanged, int AppsClosed);
+/// <param name="HighPerformanceOn">False when this PC has no High performance plan to switch to.</param>
+public sealed record BoostResult(BoostSession Session, bool HighPerformanceOn);
 
 /// <summary>
 ///     Frees the PC up for a game: switches to the High performance power plan and closes the
@@ -24,29 +27,6 @@ public static partial class GameBooster
 
     private static readonly TimeSpan CloseWait = TimeSpan.FromSeconds(4);
 
-    /// <summary>Parts of the Windows shell that have windows but are not apps to close.</summary>
-    private static readonly HashSet<string> Shell = new(StringComparer.OrdinalIgnoreCase)
-    {
-        "ApplicationFrameHost",
-        "ShellExperienceHost",
-        "StartMenuExperienceHost",
-        "SearchHost",
-        "SearchApp",
-        "TextInputHost",
-        "LockApp",
-        "SystemSettings",
-        "Widgets",
-        "WidgetService",
-        "PhoneExperienceHost",
-        "RuntimeBroker",
-        "dllhost",
-        "taskhostw",
-        "SecurityHealthSystray",
-    };
-
-    public static bool CanClose(string name) =>
-        !ProcessControl.IsProtected(name) && !Shell.Contains(name);
-
     /// <summary>Apps with a window or a large footprint, biggest first, never system processes.</summary>
     public static IReadOnlyList<BoosterApp> ListApps()
     {
@@ -56,18 +36,18 @@ public static partial class GameBooster
         {
             try
             {
-                if (!CanClose(group.Key) || group.Any(p => p.Id == self))
+                if (!ProcessControl.CanClose(group.Key) || group.Any(p => p.Id == self))
                     continue;
 
-                var memory = group.Sum(SafeMemory);
-                var hasWindow = group.Any(p => SafeHandle(p) != IntPtr.Zero);
+                var memory = group.Sum(p => Try(() => p.WorkingSet64, 0L));
+                var hasWindow = group.Any(p => Try(() => p.MainWindowHandle, IntPtr.Zero) != 0);
                 if (!hasWindow && memory < 150L * 1024 * 1024)
                     continue;
 
                 apps.Add(
                     new BoosterApp(
                         group.Key,
-                        group.Select(SafePath).FirstOrDefault(p => p is not null),
+                        group.Select(ProcessSampler.TryPath).FirstOrDefault(p => p is not null),
                         memory,
                         group.Count()
                     )
@@ -86,21 +66,10 @@ public static partial class GameBooster
     {
         var previous = ActivePowerPlan();
         var changed = previous != HighPerformance && SetPowerPlan(HighPerformance);
-
-        var closed = new List<string>();
-        foreach (var name in appNames.Distinct(StringComparer.OrdinalIgnoreCase))
-        {
-            if (!CanClose(name))
-                continue;
-            var path = CloseApp(name);
-            if (path is not null)
-                closed.Add(path);
-        }
-
+        var closed = CloseApps(appNames.Distinct(StringComparer.OrdinalIgnoreCase));
         return new BoostResult(
             new BoostSession(changed ? previous : null, closed),
-            changed,
-            closed.Count
+            changed || previous == HighPerformance
         );
     }
 
@@ -126,32 +95,38 @@ public static partial class GameBooster
         return opened;
     }
 
-    public static Guid? ActivePowerPlan() => ParsePowerPlan(RunPowercfg("/getactivescheme").Output);
+    public static Guid? ActivePowerPlan() =>
+        ParsePowerPlan(CommandRunner.Run("powercfg.exe", "/getactivescheme").Output);
 
     /// <summary>Reads the GUID from <c>powercfg /getactivescheme</c>, whose text is localized.</summary>
     internal static Guid? ParsePowerPlan(string output) =>
         GuidPattern().Match(output) is { Success: true } m ? Guid.Parse(m.Value) : null;
 
-    private static bool SetPowerPlan(Guid plan) => RunPowercfg($"/setactive {plan}").Code == 0;
+    private static bool SetPowerPlan(Guid plan) =>
+        CommandRunner.Run("powercfg.exe", "/setactive", plan.ToString()).Code == 0;
 
-    /// <summary>Asks every window of the app to close, then ends what is left. Returns its exe.</summary>
-    private static string? CloseApp(string name)
+    /// <summary>
+    ///     Asks every window of every chosen app to close at once, waits one shared grace period,
+    ///     then ends what is left. Returns the exe of each app that was running.
+    /// </summary>
+    private static List<string> CloseApps(IEnumerable<string> names)
     {
-        var processes = Process.GetProcessesByName(name);
-        if (processes.Length == 0)
-            return null;
-
-        var path = processes.Select(SafePath).FirstOrDefault(p => p is not null);
+        var running = names
+            .Where(ProcessControl.CanClose)
+            .Select(Process.GetProcessesByName)
+            .Where(group => group.Length > 0)
+            .ToList();
+        var paths = running
+            .Select(group =>
+                group.Select(ProcessSampler.TryPath).FirstOrDefault(p => p is not null)
+            )
+            .OfType<string>()
+            .ToList();
+        var processes = running.SelectMany(group => group).ToList();
         try
         {
             foreach (var p in processes)
-            {
-                try
-                {
-                    p.CloseMainWindow();
-                }
-                catch (InvalidOperationException) { }
-            }
+                Try(p.CloseMainWindow, false);
 
             var deadline = DateTime.UtcNow + CloseWait;
             foreach (var p in processes)
@@ -172,63 +147,19 @@ public static partial class GameBooster
             foreach (var p in processes)
                 p.Dispose();
         }
-        return path;
+        return paths;
     }
 
-    private static long SafeMemory(Process p)
+    /// <summary>Reads a property of a process that may exit or deny access while we look.</summary>
+    private static T Try<T>(Func<T> read, T fallback)
     {
         try
         {
-            return p.WorkingSet64;
-        }
-        catch (InvalidOperationException)
-        {
-            return 0;
-        }
-    }
-
-    private static IntPtr SafeHandle(Process p)
-    {
-        try
-        {
-            return p.MainWindowHandle;
-        }
-        catch (InvalidOperationException)
-        {
-            return IntPtr.Zero;
-        }
-    }
-
-    private static string? SafePath(Process p)
-    {
-        try
-        {
-            return p.MainModule?.FileName;
+            return read();
         }
         catch (Exception ex) when (ex is InvalidOperationException or Win32Exception)
         {
-            return null;
-        }
-    }
-
-    private static (int Code, string Output) RunPowercfg(string arguments)
-    {
-        var info = new ProcessStartInfo("powercfg.exe", arguments)
-        {
-            UseShellExecute = false,
-            CreateNoWindow = true,
-            RedirectStandardOutput = true,
-        };
-        try
-        {
-            using var process = Process.Start(info)!;
-            var output = process.StandardOutput.ReadToEnd();
-            process.WaitForExit();
-            return (process.ExitCode, output);
-        }
-        catch (Win32Exception)
-        {
-            return (-1, "");
+            return fallback;
         }
     }
 

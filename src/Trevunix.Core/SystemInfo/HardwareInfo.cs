@@ -266,18 +266,7 @@ public sealed record HardwareInfo(
             .Where(d => d.Model.Length > 0)
             .ToList();
 
-    private static List<ManagementBaseObject> Query(string wql)
-    {
-        try
-        {
-            using var searcher = new ManagementObjectSearcher(wql);
-            return searcher.Get().Cast<ManagementBaseObject>().ToList();
-        }
-        catch (Exception ex) when (Wmi.IsUnavailable(ex))
-        {
-            return [];
-        }
-    }
+    private static List<ManagementBaseObject> Query(string wql) => Wmi.Query(wql);
 
     private static int ToInt(object? value) =>
         value switch

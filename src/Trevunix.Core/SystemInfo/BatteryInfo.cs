@@ -76,25 +76,17 @@ public sealed record BatteryInfo(
     private static Dictionary<string, Dictionary<string, object?>> Query(string className)
     {
         var result = new Dictionary<string, Dictionary<string, object?>>();
-        try
+        foreach (var item in Wmi.Query($"SELECT * FROM {className}", @"root\WMI"))
         {
-            using var searcher = new ManagementObjectSearcher(
-                @"root\WMI",
-                $"SELECT * FROM {className}"
-            );
-            foreach (var item in searcher.Get())
+            using (item)
             {
-                using (item)
-                {
-                    var values = item
-                        .Properties.Cast<PropertyData>()
-                        .ToDictionary(p => p.Name, p => (object?)p.Value);
-                    if (values.TryGetValue("InstanceName", out var tag) && tag is string key)
-                        result[key] = values;
-                }
+                var values = item
+                    .Properties.Cast<PropertyData>()
+                    .ToDictionary(p => p.Name, p => (object?)p.Value);
+                if (values.TryGetValue("InstanceName", out var tag) && tag is string key)
+                    result[key] = values;
             }
         }
-        catch (Exception ex) when (Wmi.IsUnavailable(ex)) { }
         return result;
     }
 

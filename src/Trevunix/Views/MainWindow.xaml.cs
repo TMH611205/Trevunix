@@ -24,7 +24,7 @@ public partial class MainWindow : FluentWindow
     }
 
     public string VersionText =>
-        $"v{UpdateService.CurrentVersion.ToString(3)} · {Tr.Format("Settings.MadeBy", SettingsViewModel.Author)}";
+        $"v{UpdateService.CurrentVersion.ToString(3)} · {SettingsViewModel.Credit}";
 
     // The two sidebar lists act as one selection: picking in one clears the other.
     private void OnMainSelected(object sender, SelectionChangedEventArgs e)

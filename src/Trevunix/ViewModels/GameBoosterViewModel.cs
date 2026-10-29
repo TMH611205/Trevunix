@@ -13,7 +13,6 @@ namespace Trevunix.ViewModels;
 
 public sealed partial class BoosterAppItem(BoosterApp app, bool selected) : ObservableObject
 {
-    public BoosterApp App { get; } = app;
     public string Name { get; } = app.Name;
     public string Path { get; } = app.Path ?? "";
     public string MemoryText { get; } = ByteSize.Format(app.MemoryBytes, Tr.Culture);
@@ -104,13 +103,10 @@ public sealed partial class GameBoosterViewModel(AppSettings settings, SettingsS
 
             Status = Tr.Format(
                 "Booster.On",
-                result.AppsClosed,
+                result.Session.ClosedAppPaths.Count,
                 ByteSize.Format(memory.Freed, Tr.Culture)
             );
-            if (
-                !result.PowerPlanChanged
-                && GameBooster.ActivePowerPlan() != GameBooster.HighPerformance
-            )
+            if (!result.HighPerformanceOn)
                 Status += " " + Tr.Get("Booster.NoPowerPlan");
         }
         finally

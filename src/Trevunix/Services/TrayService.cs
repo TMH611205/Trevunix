@@ -1,5 +1,4 @@
 using System.Windows;
-using System.Windows.Threading;
 using Trevunix.Core.Monitoring;
 using Trevunix.Localization;
 using Forms = System.Windows.Forms;
@@ -15,7 +14,7 @@ public sealed class TrayService : IDisposable
 {
     private readonly Forms.NotifyIcon _icon;
     private readonly SystemMonitor _monitor = new();
-    private readonly DispatcherTimer _timer = new() { Interval = TimeSpan.FromSeconds(3) };
+    private DateTime _sampledAt;
 
     /// <param name="withMenu">False for the short-lived icon of a scheduled cleanup, which only shows a notification.</param>
     public TrayService(bool withMenu = true)
@@ -32,9 +31,10 @@ public sealed class TrayService : IDisposable
             _icon.ContextMenuStrip = menu;
             _icon.DoubleClick += (_, _) => OpenRequested?.Invoke();
 
-            _timer.Tick += (_, _) => UpdateTooltip();
+            // The tooltip only shows while hovered, so refresh it then instead of on a timer.
+            _icon.MouseMove += (_, _) => UpdateTooltip();
             _monitor.Sample();
-            _timer.Start();
+            _sampledAt = DateTime.UtcNow;
         }
 
         _icon.Visible = true;
@@ -54,7 +54,6 @@ public sealed class TrayService : IDisposable
 
     public void Dispose()
     {
-        _timer.Stop();
         _icon.Visible = false;
         _icon.ContextMenuStrip?.Dispose();
         _icon.Dispose();
@@ -62,6 +61,10 @@ public sealed class TrayService : IDisposable
 
     private void UpdateTooltip()
     {
+        // CPU use is measured between two samples; too short a gap gives a meaningless number.
+        if (DateTime.UtcNow - _sampledAt < TimeSpan.FromSeconds(1))
+            return;
+        _sampledAt = DateTime.UtcNow;
         var sample = _monitor.Sample();
         // The tooltip holds at most 127 characters.
         var text = Tr.Format("Tray.Tooltip", (int)sample.CpuPercent, (int)sample.MemoryPercent);

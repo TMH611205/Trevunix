@@ -40,7 +40,31 @@ public static class ProcessControl
         "Trevunix",
     };
 
+    /// <summary>Parts of the Windows shell that may be slowed down but should not be closed.</summary>
+    private static readonly HashSet<string> Shell = new(StringComparer.OrdinalIgnoreCase)
+    {
+        "ApplicationFrameHost",
+        "ShellExperienceHost",
+        "StartMenuExperienceHost",
+        "SearchHost",
+        "SearchApp",
+        "TextInputHost",
+        "LockApp",
+        "SystemSettings",
+        "Widgets",
+        "WidgetService",
+        "PhoneExperienceHost",
+        "RuntimeBroker",
+        "dllhost",
+        "taskhostw",
+        "SecurityHealthSystray",
+    };
+
     public static bool IsProtected(string processName) => Protected.Contains(processName);
+
+    /// <summary>Whether ending the process is safe: not protected and not part of the shell.</summary>
+    public static bool CanClose(string processName) =>
+        !Protected.Contains(processName) && !Shell.Contains(processName);
 
     /// <summary>
     ///     Background processes busy enough to be worth slowing down: at least

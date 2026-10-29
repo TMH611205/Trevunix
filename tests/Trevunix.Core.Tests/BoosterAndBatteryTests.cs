@@ -45,10 +45,10 @@ public class BoosterAndBatteryTests
     [InlineData("StartMenuExperienceHost")]
     [InlineData("Trevunix")]
     public void Booster_never_closes_windows_itself(string name) =>
-        Assert.False(GameBooster.CanClose(name));
+        Assert.False(ProcessControl.CanClose(name));
 
     [Fact]
-    public void Booster_may_close_ordinary_apps() => Assert.True(GameBooster.CanClose("chrome"));
+    public void Booster_may_close_ordinary_apps() => Assert.True(ProcessControl.CanClose("chrome"));
 
     [Theory]
     [InlineData(50000L, 40000L, 80)]
@@ -83,12 +83,8 @@ public class WmiTests
     [Fact]
     public void Old_framework_errors_count_as_wmi_unavailable()
     {
-        Assert.True(
-            Trevunix.Core.SystemInfo.Wmi.IsUnavailable(new PlatformNotSupportedException())
-        );
-        Assert.True(
-            Trevunix.Core.SystemInfo.Wmi.IsUnavailable(new TypeInitializationException("X", null))
-        );
-        Assert.False(Trevunix.Core.SystemInfo.Wmi.IsUnavailable(new ArgumentNullException()));
+        Assert.True(Wmi.IsUnavailable(new PlatformNotSupportedException()));
+        Assert.True(Wmi.IsUnavailable(new TypeInitializationException("X", null)));
+        Assert.False(Wmi.IsUnavailable(new ArgumentNullException()));
     }
 }

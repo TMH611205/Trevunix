@@ -191,7 +191,10 @@ public sealed partial class SettingsViewModel : ObservableObject
     public const string Author = "Bii";
     public const string Website = "https://github.com/TMH611205/Trevunix";
 
-    public string MadeBy => Tr.Format("Settings.MadeBy", Author);
+    /// <summary>"Made by Bii", also shown under the version in the sidebar.</summary>
+    public static string Credit => Tr.Format("Settings.MadeBy", Author);
+
+    public string MadeBy => Credit;
 
     [RelayCommand]
     private static void OpenWebsite() =>
@@ -200,15 +203,5 @@ public sealed partial class SettingsViewModel : ObservableObject
     [RelayCommand]
     private static void Restart() => ((App)Application.Current).Restart();
 
-    private void Save()
-    {
-        try
-        {
-            _store.Save(_settings);
-        }
-        catch (Exception ex) when (ex is System.IO.IOException or UnauthorizedAccessException)
-        {
-            Trace.TraceWarning("Could not save settings: {0}", ex.Message);
-        }
-    }
+    private void Save() => _store.TrySave(_settings);
 }

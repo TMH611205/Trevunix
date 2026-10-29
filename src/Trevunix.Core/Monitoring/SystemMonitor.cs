@@ -242,7 +242,7 @@ public sealed class ProcessSampler
         return path;
     }
 
-    private static string? TryPath(Process process)
+    internal static string? TryPath(Process process)
     {
         try
         {

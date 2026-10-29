@@ -1,4 +1,3 @@
-using System.Management;
 using Trevunix.Core.SystemInfo;
 
 namespace Trevunix.Core.Recovery;
@@ -19,20 +18,17 @@ public static class RestorePoint
     /// </summary>
     public static bool Create(string description)
     {
-        try
-        {
-            using var restore = new ManagementClass(@"\\.\root\default", "SystemRestore", null);
-            using var input = restore.GetMethodParameters("CreateRestorePoint");
-            input["Description"] = description;
-            input["RestorePointType"] = ModifySettings;
-            input["EventType"] = BeginSystemChange;
-
-            using var output = restore.InvokeMethod("CreateRestorePoint", input, null);
-            return output?["ReturnValue"] is uint and 0;
-        }
-        catch (Exception ex) when (Wmi.IsUnavailable(ex))
-        {
-            return false;
-        }
+        using var output = Wmi.Invoke(
+            @"\\.\root\default",
+            "SystemRestore",
+            "CreateRestorePoint",
+            new Dictionary<string, object>
+            {
+                ["Description"] = description,
+                ["RestorePointType"] = ModifySettings,
+                ["EventType"] = BeginSystemChange,
+            }
+        );
+        return output?["ReturnValue"] is uint and 0;
     }
 }
