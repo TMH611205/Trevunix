@@ -36,6 +36,8 @@ public sealed partial class SystemToolsViewModel : ObservableObject
             Drives,
             Battery,
             Duplicates,
+            Shredder,
+            WipeFreeSpace,
             Report,
             History,
         ];
@@ -51,6 +53,9 @@ public sealed partial class SystemToolsViewModel : ObservableObject
     public RepairViewModel Drivers { get; } =
         new("Drivers", SymbolRegular.Connector24, RepairCatalog.Drivers);
     public DuplicatesViewModel Duplicates { get; } = new();
+    public ShredderViewModel Shredder { get; } = new();
+    public RepairViewModel WipeFreeSpace { get; } =
+        new("WipeFreeSpace", SymbolRegular.Eraser24, RepairCatalog.WipeFreeSpace());
     public ReportViewModel Report { get; } = new();
     public HistoryViewModel History { get; } = new();
     public DnsViewModel Dns { get; } = new();
@@ -269,7 +274,7 @@ public sealed partial class ProcessesViewModel : PageSection
 public sealed class RepairItem(RepairCommand command)
 {
     public RepairCommand Command { get; } = command;
-    public string Name { get; } = Tr.Get($"Repair.{command.Id}");
+    public string Name { get; } = Tr.Format($"Repair.{command.Id}", command.NameArg);
     public string Description { get; } = Tr.Get($"Repair.{command.Id}.Description");
     public bool LongRunning => Command.LongRunning;
 }

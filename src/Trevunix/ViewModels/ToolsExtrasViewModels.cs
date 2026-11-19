@@ -269,3 +269,73 @@ public sealed partial class HistoryViewModel() : PageSection("History", SymbolRe
             _ => Tr.Format($"History.{e.Kind}", ByteSize.Format(e.FreedBytes, Tr.Culture)),
         };
 }
+
+public sealed partial class ShredderViewModel()
+    : PageSection("Shredder", SymbolRegular.DeleteDismiss24)
+{
+    public ObservableCollection<string> Paths { get; } = [];
+
+    [ObservableProperty]
+    [NotifyCanExecuteChangedFor(nameof(ShredCommand))]
+    private bool _isBusy;
+
+    [ObservableProperty]
+    private string _status = "";
+
+    [RelayCommand]
+    private void AddFiles()
+    {
+        var dialog = new Microsoft.Win32.OpenFileDialog { Multiselect = true };
+        if (dialog.ShowDialog() == true)
+            Add(dialog.FileNames);
+    }
+
+    [RelayCommand]
+    private void AddFolder()
+    {
+        var dialog = new Microsoft.Win32.OpenFolderDialog { Multiselect = true };
+        if (dialog.ShowDialog() == true)
+            Add(dialog.FolderNames);
+    }
+
+    [RelayCommand]
+    private void Clear() => Paths.Clear();
+
+    private void Add(IEnumerable<string> paths)
+    {
+        foreach (var path in paths)
+        {
+            if (Shredder.IsRefused(path))
+                Status = Tr.Format("Shredder.Refused", path);
+            else if (!Paths.Contains(path, StringComparer.OrdinalIgnoreCase))
+                Paths.Add(path);
+        }
+        ShredCommand.NotifyCanExecuteChanged();
+    }
+
+    private bool CanShred => !IsBusy && Paths.Count > 0;
+
+    [RelayCommand(CanExecute = nameof(CanShred))]
+    private async Task Shred()
+    {
+        var confirmed = await Dialogs.ConfirmAsync(
+            Tr.Get("Section.Shredder"),
+            Tr.Format("Shredder.Confirm", Paths.Count),
+            Tr.Get("Shredder.Shred")
+        );
+        if (!confirmed)
+            return;
+
+        IsBusy = true;
+        try
+        {
+            var result = await Task.Run(() => Shredder.Shred(Paths.ToList()));
+            Status = Tr.Format("Shredder.Done", result.Shredded, result.Failed);
+            Paths.Clear();
+        }
+        finally
+        {
+            IsBusy = false;
+        }
+    }
+}

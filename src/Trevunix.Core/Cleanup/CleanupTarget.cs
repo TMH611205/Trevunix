@@ -5,6 +5,7 @@ public enum CleanupGroup
     System,
     Browsers,
     AppsAndGames,
+    Privacy,
     RecycleBin,
 }
 
@@ -21,12 +22,16 @@ public sealed record CleanupSource(
     bool RemoveEmptyFolders = true
 );
 
-/// <summary>One line in the cleanup list, made of one or more folders.</summary>
+/// <summary>
+///     One line in the cleanup list, made of one or more folders. <see cref="RegistryKeys"/> are
+///     history lists (such as the Run box) whose values are all removed; the keys stay.
+/// </summary>
 public sealed record CleanupTarget(
     string Id,
     CleanupGroup Group,
     bool SelectedByDefault,
-    IReadOnlyList<CleanupSource> Sources
+    IReadOnlyList<CleanupSource> Sources,
+    IReadOnlyList<string>? RegistryKeys = null
 )
 {
     /// <summary>The Recycle Bin is emptied through the shell, not by deleting files.</summary>
@@ -40,6 +45,7 @@ public static class CleanupCatalog
     private static readonly TimeSpan OneWeek = TimeSpan.FromDays(7);
 
     private const string ChromiumProfiles = "*";
+    private const string ExplorerKey = @"HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer";
 
     public static IReadOnlyList<CleanupTarget> All { get; } =
     [
@@ -202,6 +208,42 @@ public static class CleanupCatalog
                 new(@"%LOCALAPPDATA%\pip\Cache"),
                 new(@"%LOCALAPPDATA%\Yarn\Cache"),
             ]
+        ),
+        new(
+            "RecentFiles",
+            CleanupGroup.Privacy,
+            false,
+            [
+                new(
+                    @"%APPDATA%\Microsoft\Windows\Recent",
+                    "*.lnk",
+                    Recursive: false,
+                    RemoveEmptyFolders: false
+                ),
+            ]
+        ),
+        new(
+            "JumpLists",
+            CleanupGroup.Privacy,
+            false,
+            [
+                new(
+                    @"%APPDATA%\Microsoft\Windows\Recent\AutomaticDestinations",
+                    RemoveEmptyFolders: false
+                ),
+                new(
+                    @"%APPDATA%\Microsoft\Windows\Recent\CustomDestinations",
+                    RemoveEmptyFolders: false
+                ),
+            ]
+        ),
+        new("RunHistory", CleanupGroup.Privacy, false, [], [$@"{ExplorerKey}\RunMRU"]),
+        new(
+            "ExplorerHistory",
+            CleanupGroup.Privacy,
+            false,
+            [],
+            [$@"{ExplorerKey}\TypedPaths", $@"{ExplorerKey}\WordWheelQuery"]
         ),
         new("RecycleBin", CleanupGroup.RecycleBin, false, []),
     ];

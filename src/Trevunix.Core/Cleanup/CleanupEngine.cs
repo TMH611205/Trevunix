@@ -11,16 +11,21 @@ public sealed class TargetScan
         CleanupTarget target,
         List<FoundFile> files,
         List<string> roots,
-        long keptFiles = 0
+        long keptFiles = 0,
+        int registryValues = 0
     )
     {
         Target = target;
         Files = files;
         Roots = roots;
         KeptFiles = keptFiles;
+        RegistryValues = registryValues;
         Size = files.Sum(f => f.Size);
-        Count = files.Count;
+        Count = files.Count + registryValues;
     }
+
+    /// <summary>History entries found under the target's registry keys.</summary>
+    public int RegistryValues { get; }
 
     internal TargetScan(CleanupTarget target, long size, long count)
     {
@@ -152,7 +157,8 @@ public sealed class CleanupEngine(Func<DateTime>? utcNow = null, CleanupSafety? 
             }
         }
 
-        return new TargetScan(target, files, roots, kept);
+        var values = target.RegistryKeys?.Sum(RegistryTraces.Count) ?? 0;
+        return new TargetScan(target, files, roots, kept, values);
     }
 
     public Task<CleanupResult> CleanAsync(
@@ -224,6 +230,8 @@ public sealed class CleanupEngine(Func<DateTime>? utcNow = null, CleanupSafety? 
 
             foreach (var root in scan.Roots)
                 RemoveEmptyFolders(root);
+            if (scan.RegistryValues > 0)
+                deleted += scan.Target.RegistryKeys!.Sum(RegistryTraces.Clear);
 
             progress?.Report(new CleanupProgress(scan.Target.Id, done, scan.Files.Count));
         }

@@ -2044,4 +2044,76 @@ CPU {0}% · RAM {1}%</value>
   <data name="Tweak.NoAutoRestart.Description" xml:space="preserve">
     <value>Windows waits for you to restart after an update instead of restarting on its own.</value>
   </data>
+  <data name="Cleanup.Group.Privacy" xml:space="preserve">
+    <value>Privacy traces</value>
+  </data>
+  <data name="Cleanup.Target.RecentFiles" xml:space="preserve">
+    <value>Recent files list</value>
+  </data>
+  <data name="Cleanup.Target.RecentFiles.Description" xml:space="preserve">
+    <value>The Recent list in File Explorer and Start. The files themselves stay.</value>
+  </data>
+  <data name="Cleanup.Target.JumpLists" xml:space="preserve">
+    <value>Jump lists</value>
+  </data>
+  <data name="Cleanup.Target.JumpLists.Description" xml:space="preserve">
+    <value>Recent items when you right-click a taskbar app. Items pinned there are removed too.</value>
+  </data>
+  <data name="Cleanup.Target.RunHistory" xml:space="preserve">
+    <value>Run box history</value>
+  </data>
+  <data name="Cleanup.Target.RunHistory.Description" xml:space="preserve">
+    <value>Commands typed in Windows + R.</value>
+  </data>
+  <data name="Cleanup.Target.ExplorerHistory" xml:space="preserve">
+    <value>File Explorer history</value>
+  </data>
+  <data name="Cleanup.Target.ExplorerHistory.Description" xml:space="preserve">
+    <value>Paths typed in the address bar and searches made in File Explorer.</value>
+  </data>
+  <data name="Repair.WipeFreeSpace" xml:space="preserve">
+    <value>Wipe free space on {0}</value>
+  </data>
+  <data name="Repair.WipeFreeSpace.Description" xml:space="preserve">
+    <value>Overwrites the free space three times so deleted files cannot be recovered. Your files stay. Takes a long time on large drives.</value>
+  </data>
+  <data name="Section.WipeFreeSpace" xml:space="preserve">
+    <value>Wipe free space</value>
+  </data>
+  <data name="Section.WipeFreeSpace.Description" xml:space="preserve">
+    <value>Make deleted files unrecoverable</value>
+  </data>
+  <data name="WipeFreeSpace.Hint" xml:space="preserve">
+    <value>Uses Windows' cipher tool. On SSDs Windows already erases deleted blocks with TRIM, so this matters most on hard disks and USB drives.</value>
+  </data>
+  <data name="Section.Shredder" xml:space="preserve">
+    <value>File shredder</value>
+  </data>
+  <data name="Section.Shredder.Description" xml:space="preserve">
+    <value>Delete files so they cannot be recovered</value>
+  </data>
+  <data name="Shredder.Hint" xml:space="preserve">
+    <value>Files are overwritten with random data, renamed, then deleted. They do not go to the Recycle Bin and cannot be brought back.</value>
+  </data>
+  <data name="Shredder.AddFiles" xml:space="preserve">
+    <value>Add files</value>
+  </data>
+  <data name="Shredder.AddFolder" xml:space="preserve">
+    <value>Add folder</value>
+  </data>
+  <data name="Shredder.Clear" xml:space="preserve">
+    <value>Clear list</value>
+  </data>
+  <data name="Shredder.Shred" xml:space="preserve">
+    <value>Shred</value>
+  </data>
+  <data name="Shredder.Refused" xml:space="preserve">
+    <value>Windows, program folders and whole drives cannot be shredded: {0}</value>
+  </data>
+  <data name="Shredder.Confirm" xml:space="preserve">
+    <value>Permanently destroy {0} items? This cannot be undone.</value>
+  </data>
+  <data name="Shredder.Done" xml:space="preserve">
+    <value>Shredded {0} files. {1} could not be shredded (in use or no access).</value>
+  </data>
 </root>

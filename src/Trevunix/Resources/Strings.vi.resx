@@ -2044,4 +2044,76 @@ CPU {0}% · RAM {1}%</value>
   <data name="Tweak.NoAutoRestart.Description" xml:space="preserve">
     <value>Windows chờ bạn khởi động lại sau khi cập nhật thay vì tự khởi động lại.</value>
   </data>
+  <data name="Cleanup.Group.Privacy" xml:space="preserve">
+    <value>Dấu vết riêng tư</value>
+  </data>
+  <data name="Cleanup.Target.RecentFiles" xml:space="preserve">
+    <value>Danh sách file gần đây</value>
+  </data>
+  <data name="Cleanup.Target.RecentFiles.Description" xml:space="preserve">
+    <value>Danh sách gần đây trong File Explorer và Start. Bản thân các file vẫn giữ nguyên.</value>
+  </data>
+  <data name="Cleanup.Target.JumpLists" xml:space="preserve">
+    <value>Jump list</value>
+  </data>
+  <data name="Cleanup.Target.JumpLists.Description" xml:space="preserve">
+    <value>Mục gần đây khi nhấn chuột phải vào ứng dụng trên thanh tác vụ. Mục đã ghim ở đó cũng bị xoá.</value>
+  </data>
+  <data name="Cleanup.Target.RunHistory" xml:space="preserve">
+    <value>Lịch sử hộp thoại Run</value>
+  </data>
+  <data name="Cleanup.Target.RunHistory.Description" xml:space="preserve">
+    <value>Các lệnh đã gõ trong Windows + R.</value>
+  </data>
+  <data name="Cleanup.Target.ExplorerHistory" xml:space="preserve">
+    <value>Lịch sử File Explorer</value>
+  </data>
+  <data name="Cleanup.Target.ExplorerHistory.Description" xml:space="preserve">
+    <value>Đường dẫn đã gõ trên thanh địa chỉ và các lần tìm kiếm trong File Explorer.</value>
+  </data>
+  <data name="Repair.WipeFreeSpace" xml:space="preserve">
+    <value>Xoá dấu vết trên ổ trống {0}</value>
+  </data>
+  <data name="Repair.WipeFreeSpace.Description" xml:space="preserve">
+    <value>Ghi đè vùng trống ba lần để file đã xoá không khôi phục được. File của bạn vẫn giữ nguyên. Ổ lớn sẽ mất nhiều thời gian.</value>
+  </data>
+  <data name="Section.WipeFreeSpace" xml:space="preserve">
+    <value>Xoá dấu vết ổ trống</value>
+  </data>
+  <data name="Section.WipeFreeSpace.Description" xml:space="preserve">
+    <value>Không cho khôi phục file đã xoá</value>
+  </data>
+  <data name="WipeFreeSpace.Hint" xml:space="preserve">
+    <value>Dùng công cụ cipher của Windows. Trên SSD, Windows đã tự xoá khối dữ liệu bằng TRIM, nên tính năng này có ích nhất với ổ HDD và USB.</value>
+  </data>
+  <data name="Section.Shredder" xml:space="preserve">
+    <value>Xoá file vĩnh viễn</value>
+  </data>
+  <data name="Section.Shredder.Description" xml:space="preserve">
+    <value>Xoá file không thể khôi phục</value>
+  </data>
+  <data name="Shredder.Hint" xml:space="preserve">
+    <value>File được ghi đè dữ liệu ngẫu nhiên, đổi tên rồi xoá. File không vào Thùng rác và không thể lấy lại.</value>
+  </data>
+  <data name="Shredder.AddFiles" xml:space="preserve">
+    <value>Thêm file</value>
+  </data>
+  <data name="Shredder.AddFolder" xml:space="preserve">
+    <value>Thêm thư mục</value>
+  </data>
+  <data name="Shredder.Clear" xml:space="preserve">
+    <value>Xoá danh sách</value>
+  </data>
+  <data name="Shredder.Shred" xml:space="preserve">
+    <value>Xoá vĩnh viễn</value>
+  </data>
+  <data name="Shredder.Refused" xml:space="preserve">
+    <value>Không thể xoá vĩnh viễn thư mục Windows, thư mục chương trình hay cả ổ đĩa: {0}</value>
+  </data>
+  <data name="Shredder.Confirm" xml:space="preserve">
+    <value>Xoá vĩnh viễn {0} mục? Không thể hoàn tác.</value>
+  </data>
+  <data name="Shredder.Done" xml:space="preserve">
+    <value>Đã xoá vĩnh viễn {0} file. {1} file không xoá được (đang dùng hoặc không có quyền).</value>
+  </data>
 </root>

@@ -191,7 +191,8 @@ public sealed record RepairCommand(
     string Arguments,
     OutputEncoding Encoding,
     bool NeedsReboot = false,
-    bool LongRunning = false
+    bool LongRunning = false,
+    string NameArg = ""
 );
 
 public static class RepairCatalog
@@ -223,6 +224,25 @@ public static class RepairCatalog
 
     private const string Winget = "winget.exe";
     private const string WingetCommon = "--accept-source-agreements --disable-interactivity";
+
+    /// <summary>
+    ///     Overwrites the free space of each fixed drive three times (zeros, ones, random) with
+    ///     cipher.exe, so deleted files cannot be recovered. Files in use stay untouched.
+    /// </summary>
+    public static IReadOnlyList<RepairCommand> WipeFreeSpace() =>
+        [
+            .. DriveInfo
+                .GetDrives()
+                .Where(d => d.DriveType == DriveType.Fixed && d.IsReady)
+                .Select(d => new RepairCommand(
+                    "WipeFreeSpace",
+                    "cipher.exe",
+                    $"/w:{d.Name}",
+                    OutputEncoding.Oem,
+                    LongRunning: true,
+                    NameArg: d.Name.TrimEnd('\\')
+                )),
+        ];
 
     /// <summary>App updates through winget, which ships with Windows 10 and 11.</summary>
     public static IReadOnlyList<RepairCommand> AppUpdates { get; } =
