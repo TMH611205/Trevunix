@@ -38,6 +38,8 @@ internal static class ScheduledTask
     public static bool Remove(string name) =>
         Run("/Delete", "/TN", name, "/F") || !Run("/Query", "/TN", name);
 
+    public static bool Exists(string name) => Run("/Query", "/TN", name);
+
     public static string CurrentUser() =>
         System.Security.Principal.WindowsIdentity.GetCurrent().Name;
 
@@ -50,7 +52,8 @@ internal static class ScheduledTask
         string exePath,
         string arguments,
         string timeLimit,
-        bool startWhenAvailable
+        bool startWhenAvailable,
+        bool elevated = true
     ) =>
         $"""
             <?xml version="1.0" encoding="UTF-16"?>
@@ -65,7 +68,7 @@ internal static class ScheduledTask
                 <Principal id="Author">
                   <UserId>{SecurityElement.Escape(user)}</UserId>
                   <LogonType>InteractiveToken</LogonType>
-                  <RunLevel>HighestAvailable</RunLevel>
+                  <RunLevel>{(elevated ? "HighestAvailable" : "LeastPrivilege")}</RunLevel>
                 </Principal>
               </Principals>
               <Settings>

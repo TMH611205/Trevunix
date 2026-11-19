@@ -13,9 +13,16 @@ using Trevunix.Services;
 
 namespace Trevunix.ViewModels;
 
-public sealed partial class StartupItem(StartupEntry entry) : ObservableObject
+public sealed partial class StartupItem(StartupEntry entry, StartupImpactLevel impact)
+    : ObservableObject
 {
     public StartupEntry Entry { get; private set; } = entry;
+    public StartupImpactLevel ImpactLevel { get; } = impact;
+    public string Impact { get; } = Tr.Get($"Startup.Impact.{impact}");
+    public bool IsHighImpact => ImpactLevel == StartupImpactLevel.High;
+
+    [ObservableProperty]
+    private bool _isDelayed = StartupDelay.IsDelayed(entry);
     public string Name => Entry.Name;
     public string Command => Entry.Command;
     public string Publisher => Entry.Publisher ?? Tr.Get("Startup.UnknownPublisher");
@@ -112,8 +119,15 @@ public sealed partial class AppsViewModel : ObservableObject
     private void LoadStartup()
     {
         StartupItems.Clear();
+        var impacts = StartupImpact.Read();
         foreach (var entry in _startup.List())
-            StartupItems.Add(new StartupItem(entry));
+        {
+            var impact =
+                entry.FilePath is { } path && impacts.TryGetValue(path, out var level)
+                    ? level
+                    : StartupImpactLevel.NotMeasured;
+            StartupItems.Add(new StartupItem(entry, impact));
+        }
         UpdateStartupSummary();
     }
 
@@ -123,6 +137,9 @@ public sealed partial class AppsViewModel : ObservableObject
         var enable = !item.Entry.Enabled;
         try
         {
+            // A delayed program turned back on starts normally again, not twice.
+            if (enable && item.IsDelayed && StartupDelay.Undo(item.Entry, _startup))
+                item.IsDelayed = false;
             _startup.SetEnabled(item.Entry, enable);
             item.Error = "";
             item.Update(item.Entry with { Enabled = enable });
@@ -138,6 +155,25 @@ public sealed partial class AppsViewModel : ObservableObject
             item.NotifyState();
         }
 
+        UpdateStartupSummary();
+    }
+
+    [RelayCommand]
+    private async Task ToggleDelay(StartupItem item)
+    {
+        var entry = item.Entry;
+        var delayed = item.IsDelayed;
+        var ok = await Task.Run(() =>
+            delayed ? StartupDelay.Undo(entry, _startup) : StartupDelay.Delay(entry, _startup)
+        );
+        if (ok)
+        {
+            item.IsDelayed = !delayed;
+            item.Update(entry with { Enabled = delayed });
+            item.Error = "";
+        }
+        else
+            item.Error = Tr.Format("Startup.Failed", item.Name, Tr.Get("Startup.DelayFailed"));
         UpdateStartupSummary();
     }
 

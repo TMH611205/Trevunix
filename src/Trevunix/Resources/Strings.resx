@@ -2233,4 +2233,52 @@ CPU {0}% · RAM {1}%</value>
   <data name="ContextMenu.Place.Drives" xml:space="preserve">
     <value>Drives</value>
   </data>
+  <data name="Startup.Impact.NotMeasured" xml:space="preserve">
+    <value>Not measured</value>
+  </data>
+  <data name="Startup.Impact.Low" xml:space="preserve">
+    <value>Low impact</value>
+  </data>
+  <data name="Startup.Impact.Medium" xml:space="preserve">
+    <value>Medium impact</value>
+  </data>
+  <data name="Startup.Impact.High" xml:space="preserve">
+    <value>High impact</value>
+  </data>
+  <data name="Startup.Delay" xml:space="preserve">
+    <value>Delay</value>
+  </data>
+  <data name="Startup.Undelay" xml:space="preserve">
+    <value>Start normally</value>
+  </data>
+  <data name="Startup.Delayed" xml:space="preserve">
+    <value>Starts 60 s after sign-in</value>
+  </data>
+  <data name="Startup.DelayTip" xml:space="preserve">
+    <value>Start this program 60 seconds after sign-in so Windows is ready sooner.</value>
+  </data>
+  <data name="Startup.DelayFailed" xml:space="preserve">
+    <value>Task Scheduler did not accept the delayed start.</value>
+  </data>
+  <data name="Section.Shortcuts" xml:space="preserve">
+    <value>Broken shortcuts</value>
+  </data>
+  <data name="Section.Shortcuts.Description" xml:space="preserve">
+    <value>Shortcuts to removed programs</value>
+  </data>
+  <data name="Shortcuts.Missing" xml:space="preserve">
+    <value>Points to {0}, which no longer exists</value>
+  </data>
+  <data name="Shortcuts.EmptyFolder" xml:space="preserve">
+    <value>Empty Start menu folder: {0}</value>
+  </data>
+  <data name="Shortcuts.None" xml:space="preserve">
+    <value>No broken shortcuts or empty Start menu folders.</value>
+  </data>
+  <data name="Shortcuts.Found" xml:space="preserve">
+    <value>Found {0}. Ticked items go to the Recycle Bin.</value>
+  </data>
+  <data name="Shortcuts.Removed" xml:space="preserve">
+    <value>Moved {0} to the Recycle Bin. {1} could not be moved.</value>
+  </data>
 </root>

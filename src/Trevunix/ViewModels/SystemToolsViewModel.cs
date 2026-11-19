@@ -40,6 +40,7 @@ public sealed partial class SystemToolsViewModel : ObservableObject
             Drives,
             Battery,
             Duplicates,
+            Shortcuts,
             Shredder,
             WipeFreeSpace,
             Report,
@@ -62,6 +63,7 @@ public sealed partial class SystemToolsViewModel : ObservableObject
     public FirewallViewModel Firewall { get; } = new();
     public ContextMenuViewModel ContextMenu { get; } = new();
     public ShredderViewModel Shredder { get; } = new();
+    public ShortcutsViewModel Shortcuts { get; } = new();
     public RepairViewModel WipeFreeSpace { get; } =
         new("WipeFreeSpace", SymbolRegular.Eraser24, RepairCatalog.WipeFreeSpace());
     public ReportViewModel Report { get; } = new();

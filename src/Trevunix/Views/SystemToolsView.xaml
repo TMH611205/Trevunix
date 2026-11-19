@@ -1157,6 +1157,61 @@
         </ScrollViewer>
       </DockPanel>
     </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:ShortcutsViewModel}">
+      <DockPanel>
+        <StackPanel Margin="0,0,0,8" DockPanel.Dock="Top" Orientation="Horizontal">
+          <ui:Button
+            Appearance="Primary"
+            Command="{Binding ScanCommand}"
+            Content="{l:T Duplicates.Scan}"
+            Icon="{ui:SymbolIcon Search24}"
+          />
+          <ui:Button
+            Margin="8,0,0,0"
+            Command="{Binding RemoveCommand}"
+            Content="{l:T Duplicates.Remove}"
+            Icon="{ui:SymbolIcon Delete24}"
+          />
+          <ui:ProgressRing
+            Width="18"
+            Height="18"
+            Margin="12,0,0,0"
+            IsIndeterminate="True"
+            Visibility="{Binding IsBusy, Converter={StaticResource VisibleWhen}}"
+          />
+          <TextBlock
+            Margin="12,0,0,0"
+            VerticalAlignment="Center"
+            Style="{StaticResource Muted}"
+            Text="{Binding Status}"
+          />
+        </StackPanel>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+          <ItemsControl ItemsSource="{Binding Rows}">
+            <ItemsControl.ItemTemplate>
+              <DataTemplate>
+                <Border Margin="0,0,0,6" Padding="14,8" Style="{StaticResource Panel}">
+                  <CheckBox IsChecked="{Binding IsChecked}">
+                    <StackPanel>
+                      <TextBlock
+                        FontWeight="SemiBold"
+                        Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                        Text="{Binding Name}"
+                      />
+                      <TextBlock
+                        Style="{StaticResource Muted}"
+                        Text="{Binding Detail}"
+                        TextTrimming="CharacterEllipsis"
+                      />
+                    </StackPanel>
+                  </CheckBox>
+                </Border>
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+        </ScrollViewer>
+      </DockPanel>
+    </DataTemplate>
     <DataTemplate DataType="{x:Type vm:ShredderViewModel}">
       <DockPanel>
         <TextBlock

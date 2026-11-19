@@ -2233,4 +2233,52 @@ CPU {0}% · RAM {1}%</value>
   <data name="ContextMenu.Place.Drives" xml:space="preserve">
     <value>Ổ đĩa</value>
   </data>
+  <data name="Startup.Impact.NotMeasured" xml:space="preserve">
+    <value>Chưa đo</value>
+  </data>
+  <data name="Startup.Impact.Low" xml:space="preserve">
+    <value>Ảnh hưởng thấp</value>
+  </data>
+  <data name="Startup.Impact.Medium" xml:space="preserve">
+    <value>Ảnh hưởng vừa</value>
+  </data>
+  <data name="Startup.Impact.High" xml:space="preserve">
+    <value>Ảnh hưởng cao</value>
+  </data>
+  <data name="Startup.Delay" xml:space="preserve">
+    <value>Chạy trễ</value>
+  </data>
+  <data name="Startup.Undelay" xml:space="preserve">
+    <value>Chạy bình thường</value>
+  </data>
+  <data name="Startup.Delayed" xml:space="preserve">
+    <value>Chạy sau khi đăng nhập 60 giây</value>
+  </data>
+  <data name="Startup.DelayTip" xml:space="preserve">
+    <value>Chạy chương trình này 60 giây sau khi đăng nhập để Windows sẵn sàng sớm hơn.</value>
+  </data>
+  <data name="Startup.DelayFailed" xml:space="preserve">
+    <value>Task Scheduler không chấp nhận lệnh chạy trễ.</value>
+  </data>
+  <data name="Section.Shortcuts" xml:space="preserve">
+    <value>Shortcut hỏng</value>
+  </data>
+  <data name="Section.Shortcuts.Description" xml:space="preserve">
+    <value>Shortcut trỏ đến chương trình đã gỡ</value>
+  </data>
+  <data name="Shortcuts.Missing" xml:space="preserve">
+    <value>Trỏ đến {0}, file này không còn tồn tại</value>
+  </data>
+  <data name="Shortcuts.EmptyFolder" xml:space="preserve">
+    <value>Thư mục Start menu rỗng: {0}</value>
+  </data>
+  <data name="Shortcuts.None" xml:space="preserve">
+    <value>Không có shortcut hỏng hay thư mục Start menu rỗng.</value>
+  </data>
+  <data name="Shortcuts.Found" xml:space="preserve">
+    <value>Tìm thấy {0} mục. Mục được đánh dấu sẽ chuyển vào Thùng rác.</value>
+  </data>
+  <data name="Shortcuts.Removed" xml:space="preserve">
+    <value>Đã chuyển {0} mục vào Thùng rác. {1} mục không chuyển được.</value>
+  </data>
 </root>
