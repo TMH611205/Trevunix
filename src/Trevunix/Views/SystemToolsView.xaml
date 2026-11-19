@@ -921,6 +921,130 @@
         </ScrollViewer>
       </DockPanel>
     </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:AppUpdatesViewModel}">
+      <Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="*" />
+          <RowDefinition Height="12" />
+          <RowDefinition Height="170" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Margin="0,0,0,8">
+          <TextBlock
+            Margin="0,0,0,8"
+            Style="{StaticResource Muted}"
+            Text="{l:T AppUpdates.Hint}"
+            TextWrapping="Wrap"
+          />
+          <StackPanel Orientation="Horizontal">
+            <ui:Button
+              Appearance="Primary"
+              Command="{Binding UpdateAllCommand}"
+              Content="{l:T AppUpdates.UpdateAll}"
+              Icon="{ui:SymbolIcon ArrowDownload24}"
+            />
+            <ui:Button
+              Margin="8,0,0,0"
+              Command="{Binding RefreshCommand}"
+              Content="{l:T AppUpdates.Refresh}"
+              Icon="{ui:SymbolIcon ArrowClockwise24}"
+            />
+            <ui:Button
+              Margin="8,0,0,0"
+              Command="{Binding CancelCommand}"
+              Content="{l:T Repair.Cancel}"
+              Icon="{ui:SymbolIcon Stop24}"
+            />
+            <ui:ProgressRing
+              Width="18"
+              Height="18"
+              Margin="12,0,0,0"
+              IsIndeterminate="True"
+              Visibility="{Binding IsBusy, Converter={StaticResource VisibleWhen}}"
+            />
+            <TextBlock
+              Margin="12,0,0,0"
+              VerticalAlignment="Center"
+              FontWeight="SemiBold"
+              Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+              Text="{Binding Status}"
+            />
+          </StackPanel>
+        </StackPanel>
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+          <ItemsControl ItemsSource="{Binding Rows}">
+            <ItemsControl.ItemTemplate>
+              <DataTemplate>
+                <Border Margin="0,0,0,6" Padding="14,8" Style="{StaticResource Panel}">
+                  <DockPanel>
+                    <ui:Button
+                      Margin="12,0,0,0"
+                      Command="{Binding DataContext.UpdateCommand, RelativeSource={RelativeSource AncestorType=ScrollViewer}}"
+                      CommandParameter="{Binding}"
+                      Content="{l:T AppUpdates.Update}"
+                      DockPanel.Dock="Right"
+                      Icon="{ui:SymbolIcon ArrowDownload24}"
+                    />
+                    <TextBlock
+                      Margin="12,0,0,0"
+                      VerticalAlignment="Center"
+                      DockPanel.Dock="Right"
+                      Style="{StaticResource Muted}"
+                      Text="{Binding Status}"
+                    />
+                    <ui:ProgressRing
+                      Width="16"
+                      Height="16"
+                      Margin="12,0,0,0"
+                      DockPanel.Dock="Right"
+                      IsIndeterminate="True"
+                      Visibility="{Binding IsUpdating, Converter={StaticResource VisibleWhen}}"
+                    />
+                    <StackPanel>
+                      <TextBlock
+                        FontWeight="SemiBold"
+                        Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                        Text="{Binding Name}"
+                        TextTrimming="CharacterEllipsis"
+                      />
+                      <TextBlock
+                        Style="{StaticResource Muted}"
+                        Text="{Binding Versions}"
+                        TextTrimming="CharacterEllipsis"
+                      />
+                    </StackPanel>
+                  </DockPanel>
+                </Border>
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+        </ScrollViewer>
+        <Border Grid.Row="3" Padding="10" Background="#FF101418" CornerRadius="8">
+          <ListBox
+            Loaded="OnOutputLoaded"
+            Background="Transparent"
+            BorderThickness="0"
+            FontFamily="Cascadia Mono, Consolas"
+            FontSize="12"
+            Foreground="#FFD6DEE6"
+            ItemsSource="{Binding Output}"
+            ScrollViewer.HorizontalScrollBarVisibility="Auto"
+          >
+            <ListBox.ItemContainerStyle>
+              <Style TargetType="ListBoxItem">
+                <Setter Property="Template">
+                  <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                      <TextBlock Foreground="#FFD6DEE6" Text="{Binding}" />
+                    </ControlTemplate>
+                  </Setter.Value>
+                </Setter>
+              </Style>
+            </ListBox.ItemContainerStyle>
+          </ListBox>
+        </Border>
+      </Grid>
+    </DataTemplate>
     <DataTemplate DataType="{x:Type vm:WindowsUpdateViewModel}">
       <StackPanel>
         <TextBlock

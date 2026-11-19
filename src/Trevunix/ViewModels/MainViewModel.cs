@@ -51,7 +51,7 @@ public sealed partial class MainViewModel : ObservableObject
             new NavItem("Nav.Cleanup", SymbolRegular.Broom24, () => new CleanupViewModel()),
             new NavItem("Nav.DiskUsage", SymbolRegular.DataPie24, () => DiskUsage),
             new NavItem("Nav.Apps", SymbolRegular.Apps24, () => new AppsViewModel(RestorePoints)),
-            new NavItem("Nav.Tools", SymbolRegular.Toolbox24, () => new SystemToolsViewModel()),
+            new NavItem("Nav.Tools", SymbolRegular.Toolbox24, () => new SystemToolsViewModel(this)),
         ];
 
         SettingsItem = new NavItem(
@@ -121,9 +121,8 @@ public sealed partial class MainViewModel : ObservableObject
         if (item.Page is SystemToolsViewModel tools)
         {
             tools.Selected = tools.AppUpdates;
-            var list = tools.AppUpdates.Items[0];
-            if (tools.AppUpdates.RunCommand.CanExecute(list))
-                tools.AppUpdates.RunCommand.Execute(list);
+            if (tools.AppUpdates.RefreshCommand.CanExecute(null))
+                tools.AppUpdates.RefreshCommand.Execute(null);
         }
     }
 

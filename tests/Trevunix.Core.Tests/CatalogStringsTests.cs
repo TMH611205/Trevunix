@@ -39,8 +39,7 @@ public class CatalogStringsTests
             )
             .Concat(
                 RepairCatalog
-                    .All.Concat(RepairCatalog.AppUpdates)
-                    .Concat(RepairCatalog.Drivers)
+                    .All.Concat(RepairCatalog.Drivers)
                     .SelectMany(c => new[] { $"Repair.{c.Id}", $"Repair.{c.Id}.Description" })
             )
             .Concat(Enum.GetNames<HistoryKind>().Select(k => $"History.{k}"));

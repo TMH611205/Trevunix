@@ -77,4 +77,13 @@ public class HealthScoreTests
         Assert.Empty(watch.Update(["firefox"]));
         Assert.Equal(["Firefox"], watch.Update([]));
     }
+
+    [Theory]
+    [InlineData("7zip.7zip", true)]
+    [InlineData("9NCBCSZSJRSB", true)]
+    [InlineData("Microsoft.VCRedist.2015+.x64", true)]
+    [InlineData("evil --source x", false)]
+    [InlineData("a\"b", false)]
+    public void UpgradeOne_OnlyForPlainIds(string id, bool ok) =>
+        Assert.Equal(ok, Trevunix.Core.Tools.RepairCatalog.UpgradeOne(id) is not null);
 }

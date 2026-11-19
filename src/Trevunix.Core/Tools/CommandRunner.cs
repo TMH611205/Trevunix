@@ -226,6 +226,20 @@ public static class RepairCatalog
     private const string WingetCommon = "--accept-source-agreements --disable-interactivity";
 
     /// <summary>
+    ///     The winget command that updates one app silently, or null for an id that is not a
+    ///     plain package id (ids come from parsed winget output and go onto a command line).
+    /// </summary>
+    public static RepairCommand? UpgradeOne(string id) =>
+        System.Text.RegularExpressions.Regex.IsMatch(id, @"^[\w.+\-]+$")
+            ? new RepairCommand(
+                "WingetUpgradeOne",
+                Winget,
+                $"upgrade --id {id} --exact --silent --accept-package-agreements {WingetCommon}",
+                OutputEncoding.Utf8
+            )
+            : null;
+
+    /// <summary>
     ///     Overwrites the free space of each fixed drive three times (zeros, ones, random) with
     ///     cipher.exe, so deleted files cannot be recovered. Files in use stay untouched.
     /// </summary>
@@ -243,19 +257,6 @@ public static class RepairCatalog
                     NameArg: d.Name.TrimEnd('\\')
                 )),
         ];
-
-    /// <summary>App updates through winget, which ships with Windows 10 and 11.</summary>
-    public static IReadOnlyList<RepairCommand> AppUpdates { get; } =
-    [
-        new("WingetList", Winget, $"upgrade --include-unknown {WingetCommon}", OutputEncoding.Utf8),
-        new(
-            "WingetUpgradeAll",
-            Winget,
-            $"upgrade --all --silent --accept-package-agreements {WingetCommon}",
-            OutputEncoding.Utf8,
-            LongRunning: true
-        ),
-    ];
 
     private const string PowerShellUtf8 =
         "-NoProfile -NonInteractive -Command \"[Console]::OutputEncoding=[Text.Encoding]::UTF8; ";

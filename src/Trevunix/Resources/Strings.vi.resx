@@ -1865,19 +1865,7 @@ CPU {0}% · RAM {1}%</value>
     <value>Cập nhật ứng dụng bằng winget</value>
   </data>
   <data name="AppUpdates.Hint" xml:space="preserve">
-    <value>Liệt kê ứng dụng có bản mới, rồi cập nhật tất cả cùng lúc. Hãy đóng các ứng dụng trước; một số ứng dụng vẫn có thể hỏi trước khi cập nhật.</value>
-  </data>
-  <data name="Repair.WingetList" xml:space="preserve">
-    <value>Liệt kê bản cập nhật</value>
-  </data>
-  <data name="Repair.WingetList.Description" xml:space="preserve">
-    <value>Kiểm tra mọi ứng dụng đã cài với danh mục winget. Không thay đổi gì.</value>
-  </data>
-  <data name="Repair.WingetUpgradeAll" xml:space="preserve">
-    <value>Cập nhật tất cả ứng dụng</value>
-  </data>
-  <data name="Repair.WingetUpgradeAll.Description" xml:space="preserve">
-    <value>Tải và cài mọi bản cập nhật có sẵn ở chế độ im lặng.</value>
+    <value>Cập nhật từng ứng dụng hoặc tất cả bằng winget. Hãy đóng ứng dụng trước khi cập nhật; một số trình cài đặt vẫn có thể hỏi xác nhận.</value>
   </data>
   <data name="Section.Drivers" xml:space="preserve">
     <value>Driver</value>
@@ -2391,5 +2379,35 @@ CPU {0}% · RAM {1}%</value>
   </data>
   <data name="Home.AppUpdates.Open" xml:space="preserve">
     <value>Xem bản cập nhật</value>
+  </data>
+  <data name="AppUpdates.UpdateAll" xml:space="preserve">
+    <value>Cập nhật tất cả</value>
+  </data>
+  <data name="AppUpdates.Refresh" xml:space="preserve">
+    <value>Kiểm tra lại</value>
+  </data>
+  <data name="AppUpdates.Update" xml:space="preserve">
+    <value>Cập nhật</value>
+  </data>
+  <data name="AppUpdates.Checking" xml:space="preserve">
+    <value>Đang kiểm tra bản cập nhật...</value>
+  </data>
+  <data name="AppUpdates.NoWinget" xml:space="preserve">
+    <value>Máy này chưa có winget. Hãy cài App Installer từ Microsoft Store.</value>
+  </data>
+  <data name="AppUpdates.None" xml:space="preserve">
+    <value>Mọi ứng dụng đều đã là bản mới nhất.</value>
+  </data>
+  <data name="AppUpdates.Updating" xml:space="preserve">
+    <value>Đang cập nhật...</value>
+  </data>
+  <data name="AppUpdates.UpdatingName" xml:space="preserve">
+    <value>Đang cập nhật {0}...</value>
+  </data>
+  <data name="AppUpdates.Done" xml:space="preserve">
+    <value>Đã cập nhật</value>
+  </data>
+  <data name="AppUpdates.Failed" xml:space="preserve">
+    <value>Chưa cập nhật được</value>
   </data>
 </root>

@@ -1865,19 +1865,7 @@ CPU {0}% · RAM {1}%</value>
     <value>Update installed apps with winget</value>
   </data>
   <data name="AppUpdates.Hint" xml:space="preserve">
-    <value>Shows the apps with a newer version, then updates them all at once. Close the apps first; some may still ask before they update.</value>
-  </data>
-  <data name="Repair.WingetList" xml:space="preserve">
-    <value>List available updates</value>
-  </data>
-  <data name="Repair.WingetList.Description" xml:space="preserve">
-    <value>Checks every installed app against the winget catalog. Changes nothing.</value>
-  </data>
-  <data name="Repair.WingetUpgradeAll" xml:space="preserve">
-    <value>Update all apps</value>
-  </data>
-  <data name="Repair.WingetUpgradeAll.Description" xml:space="preserve">
-    <value>Downloads and installs every available update silently.</value>
+    <value>Update one app or all of them through winget. Close an app before updating it; some installers may still ask to confirm.</value>
   </data>
   <data name="Section.Drivers" xml:space="preserve">
     <value>Drivers</value>
@@ -2391,5 +2379,35 @@ CPU {0}% · RAM {1}%</value>
   </data>
   <data name="Home.AppUpdates.Open" xml:space="preserve">
     <value>View updates</value>
+  </data>
+  <data name="AppUpdates.UpdateAll" xml:space="preserve">
+    <value>Update all</value>
+  </data>
+  <data name="AppUpdates.Refresh" xml:space="preserve">
+    <value>Check again</value>
+  </data>
+  <data name="AppUpdates.Update" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="AppUpdates.Checking" xml:space="preserve">
+    <value>Checking for updates...</value>
+  </data>
+  <data name="AppUpdates.NoWinget" xml:space="preserve">
+    <value>winget is not available on this PC. Install App Installer from the Microsoft Store.</value>
+  </data>
+  <data name="AppUpdates.None" xml:space="preserve">
+    <value>All apps are up to date.</value>
+  </data>
+  <data name="AppUpdates.Updating" xml:space="preserve">
+    <value>Updating...</value>
+  </data>
+  <data name="AppUpdates.UpdatingName" xml:space="preserve">
+    <value>Updating {0}...</value>
+  </data>
+  <data name="AppUpdates.Done" xml:space="preserve">
+    <value>Updated</value>
+  </data>
+  <data name="AppUpdates.Failed" xml:space="preserve">
+    <value>Not updated</value>
   </data>
 </root>

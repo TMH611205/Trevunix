@@ -22,8 +22,9 @@ namespace Trevunix.ViewModels;
 /// <summary>Hosts the utility sections. Timers run only while the page is on screen.</summary>
 public sealed partial class SystemToolsViewModel : ObservableObject
 {
-    public SystemToolsViewModel()
+    public SystemToolsViewModel(MainViewModel main)
     {
+        AppUpdates = new AppUpdatesViewModel(main.AppUpdates, main.SetAppUpdates);
         Sections =
         [
             SpeedTest,
@@ -53,8 +54,7 @@ public sealed partial class SystemToolsViewModel : ObservableObject
     public MonitorViewModel Monitor { get; } = new();
     public ProcessesViewModel Processes { get; } = new();
     public RepairViewModel Repair { get; } = new();
-    public RepairViewModel AppUpdates { get; } =
-        new("AppUpdates", SymbolRegular.ArrowSync24, RepairCatalog.AppUpdates);
+    public AppUpdatesViewModel AppUpdates { get; }
     public RepairViewModel Drivers { get; } =
         new("Drivers", SymbolRegular.Connector24, RepairCatalog.Drivers);
     public DuplicatesViewModel Duplicates { get; } = new();
