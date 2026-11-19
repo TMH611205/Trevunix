@@ -217,6 +217,8 @@ public static class RepairCatalog
         new("ResetWinsock", "netsh.exe", "winsock reset", OutputEncoding.Oem, NeedsReboot: true),
         new("ResetTcpIp", "netsh.exe", "int ip reset", OutputEncoding.Oem, NeedsReboot: true),
         new("ResetStore", "wsreset.exe", "", OutputEncoding.Oem),
+        // /O picks the right job per drive: TRIM for SSDs, defragmentation for hard disks.
+        new("OptimizeDrives", "defrag.exe", "/C /O /U", OutputEncoding.Oem, LongRunning: true),
     ];
 
     private const string Winget = "winget.exe";

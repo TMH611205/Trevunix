@@ -74,6 +74,22 @@ public sealed partial class BatteryViewModel() : PageSection("Battery", SymbolRe
             LoadCommand.Execute(null);
     }
 
+    /// <summary>Windows' own detailed battery history, written to an HTML file and opened.</summary>
+    [RelayCommand]
+    private async Task OpenReport()
+    {
+        var path = System.IO.Path.Combine(System.IO.Path.GetTempPath(), "battery-report.html");
+        var (code, _) = await Task.Run(() =>
+            Trevunix.Core.Tools.CommandRunner.Run("powercfg.exe", "/batteryreport", "/output", path)
+        );
+        if (code == 0 && System.IO.File.Exists(path))
+            System.Diagnostics.Process.Start(
+                new System.Diagnostics.ProcessStartInfo(path) { UseShellExecute = true }
+            );
+        else
+            Status = Tr.Get("Battery.ReportFailed");
+    }
+
     [RelayCommand(CanExecute = nameof(CanLoad))]
     private async Task LoadAsync()
     {

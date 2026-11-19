@@ -10,6 +10,7 @@ public enum TweakCategory
     Ai,
     Performance,
     Gaming,
+    Updates,
     FileExplorer,
     Taskbar,
     Appearance,

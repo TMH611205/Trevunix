@@ -1996,4 +1996,52 @@ CPU {0}% · RAM {1}%</value>
   <data name="History.TweakUndone" xml:space="preserve">
     <value>Undone: {0}</value>
   </data>
+  <data name="Battery.Report" xml:space="preserve">
+    <value>Detailed report</value>
+  </data>
+  <data name="Battery.ReportFailed" xml:space="preserve">
+    <value>Windows could not create the battery report.</value>
+  </data>
+  <data name="Repair.OptimizeDrives" xml:space="preserve">
+    <value>Optimize drives</value>
+  </data>
+  <data name="Repair.OptimizeDrives.Description" xml:space="preserve">
+    <value>TRIM for SSDs and defragmentation for hard disks, the same as Windows' Optimize Drives.</value>
+  </data>
+  <data name="Tweak.Hibernation" xml:space="preserve">
+    <value>Turn off hibernation</value>
+  </data>
+  <data name="Tweak.Hibernation.Description" xml:space="preserve">
+    <value>Deletes hiberfil.sys after a restart, freeing several GB. Also turns off Fast Startup.</value>
+  </data>
+  <data name="Tweak.ReservedStorage" xml:space="preserve">
+    <value>Turn off reserved storage</value>
+  </data>
+  <data name="Tweak.ReservedStorage.Description" xml:space="preserve">
+    <value>Windows stops keeping about 7 GB aside for updates. Takes effect after a restart and the next update.</value>
+  </data>
+  <data name="Optimize.Category.Updates" xml:space="preserve">
+    <value>Windows Update</value>
+  </data>
+  <data name="Optimize.Category.Updates.Description" xml:space="preserve">
+    <value>Choose when Windows updates and restarts.</value>
+  </data>
+  <data name="Tweak.DeferFeatureUpdates" xml:space="preserve">
+    <value>Delay feature updates by a year</value>
+  </data>
+  <data name="Tweak.DeferFeatureUpdates.Description" xml:space="preserve">
+    <value>Security fixes still install. Only Pro, Education and Enterprise editions follow this setting.</value>
+  </data>
+  <data name="Tweak.NoDriverUpdates" xml:space="preserve">
+    <value>No drivers from Windows Update</value>
+  </data>
+  <data name="Tweak.NoDriverUpdates.Description" xml:space="preserve">
+    <value>Keeps the drivers you installed yourself, such as graphics drivers from NVIDIA or AMD.</value>
+  </data>
+  <data name="Tweak.NoAutoRestart" xml:space="preserve">
+    <value>No automatic restart while signed in</value>
+  </data>
+  <data name="Tweak.NoAutoRestart.Description" xml:space="preserve">
+    <value>Windows waits for you to restart after an update instead of restarting on its own.</value>
+  </data>
 </root>

@@ -64,6 +64,7 @@ public sealed partial class TweakGroup(TweakCategory category, IReadOnlyList<Twe
             TweakCategory.Ai => SymbolRegular.BrainCircuit24,
             TweakCategory.Performance => SymbolRegular.TopSpeed24,
             TweakCategory.Gaming => SymbolRegular.Games24,
+            TweakCategory.Updates => SymbolRegular.ArrowSync24,
             TweakCategory.FileExplorer => SymbolRegular.Folder24,
             TweakCategory.Appearance => SymbolRegular.PaintBrush24,
             _ => SymbolRegular.PanelBottom20,

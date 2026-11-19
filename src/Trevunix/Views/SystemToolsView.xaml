@@ -709,6 +709,12 @@
             Content="{l:T Battery.Load}"
             Icon="{ui:SymbolIcon ArrowClockwise24}"
           />
+          <ui:Button
+            Margin="8,0,0,0"
+            Command="{Binding OpenReportCommand}"
+            Content="{l:T Battery.Report}"
+            Icon="{ui:SymbolIcon DocumentText24}"
+          />
           <ui:ProgressRing
             Width="18"
             Height="18"

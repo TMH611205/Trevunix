@@ -236,6 +236,48 @@ public static class TweakCatalog
             ],
             TweakAfter.Reboot
         ),
+        new(
+            "Hibernation",
+            TweakCategory.Performance,
+            TweakRisk.Optional,
+            [Dword(@"HKLM\SYSTEM\CurrentControlSet\Control\Power", "HibernateEnabled", 0)],
+            TweakAfter.Reboot
+        ),
+        new(
+            "ReservedStorage",
+            TweakCategory.Performance,
+            TweakRisk.Optional,
+            [
+                Dword(
+                    @"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager",
+                    "ShippedWithReserves",
+                    0
+                ),
+            ],
+            TweakAfter.Reboot
+        ),
+        // Windows Update
+        new(
+            "DeferFeatureUpdates",
+            TweakCategory.Updates,
+            TweakRisk.Optional,
+            [
+                Dword(Policies + @"\WindowsUpdate", "DeferFeatureUpdates", 1),
+                Dword(Policies + @"\WindowsUpdate", "DeferFeatureUpdatesPeriodInDays", 365),
+            ]
+        ),
+        new(
+            "NoDriverUpdates",
+            TweakCategory.Updates,
+            TweakRisk.Optional,
+            [Dword(Policies + @"\WindowsUpdate", "ExcludeWUDriversInQualityUpdate", 1)]
+        ),
+        new(
+            "NoAutoRestart",
+            TweakCategory.Updates,
+            TweakRisk.Recommended,
+            [Dword(Policies + @"\WindowsUpdate\AU", "NoAutoRebootWithLoggedOnUsers", 1)]
+        ),
         // Gaming
         new(
             "GameMode",

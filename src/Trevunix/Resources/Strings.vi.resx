@@ -1996,4 +1996,52 @@ CPU {0}% · RAM {1}%</value>
   <data name="History.TweakUndone" xml:space="preserve">
     <value>Đã hoàn tác: {0}</value>
   </data>
+  <data name="Battery.Report" xml:space="preserve">
+    <value>Báo cáo chi tiết</value>
+  </data>
+  <data name="Battery.ReportFailed" xml:space="preserve">
+    <value>Windows không tạo được báo cáo pin.</value>
+  </data>
+  <data name="Repair.OptimizeDrives" xml:space="preserve">
+    <value>Tối ưu ổ đĩa</value>
+  </data>
+  <data name="Repair.OptimizeDrives.Description" xml:space="preserve">
+    <value>TRIM cho SSD và chống phân mảnh cho ổ cứng HDD, giống công cụ Optimize Drives của Windows.</value>
+  </data>
+  <data name="Tweak.Hibernation" xml:space="preserve">
+    <value>Tắt chế độ ngủ đông</value>
+  </data>
+  <data name="Tweak.Hibernation.Description" xml:space="preserve">
+    <value>Xoá hiberfil.sys sau khi khởi động lại, giải phóng vài GB. Fast Startup cũng bị tắt theo.</value>
+  </data>
+  <data name="Tweak.ReservedStorage" xml:space="preserve">
+    <value>Tắt bộ nhớ dự trữ</value>
+  </data>
+  <data name="Tweak.ReservedStorage.Description" xml:space="preserve">
+    <value>Windows thôi giữ khoảng 7 GB cho bản cập nhật. Có tác dụng sau khi khởi động lại và lần cập nhật kế tiếp.</value>
+  </data>
+  <data name="Optimize.Category.Updates" xml:space="preserve">
+    <value>Windows Update</value>
+  </data>
+  <data name="Optimize.Category.Updates.Description" xml:space="preserve">
+    <value>Chọn thời điểm Windows cập nhật và khởi động lại.</value>
+  </data>
+  <data name="Tweak.DeferFeatureUpdates" xml:space="preserve">
+    <value>Hoãn bản cập nhật tính năng 1 năm</value>
+  </data>
+  <data name="Tweak.DeferFeatureUpdates.Description" xml:space="preserve">
+    <value>Bản vá bảo mật vẫn được cài. Chỉ bản Pro, Education và Enterprise áp dụng cài đặt này.</value>
+  </data>
+  <data name="Tweak.NoDriverUpdates" xml:space="preserve">
+    <value>Không nhận driver qua Windows Update</value>
+  </data>
+  <data name="Tweak.NoDriverUpdates.Description" xml:space="preserve">
+    <value>Giữ nguyên driver bạn tự cài, ví dụ driver card đồ hoạ của NVIDIA hay AMD.</value>
+  </data>
+  <data name="Tweak.NoAutoRestart" xml:space="preserve">
+    <value>Không tự khởi động lại khi đang dùng</value>
+  </data>
+  <data name="Tweak.NoAutoRestart.Description" xml:space="preserve">
+    <value>Windows chờ bạn khởi động lại sau khi cập nhật thay vì tự khởi động lại.</value>
+  </data>
 </root>
