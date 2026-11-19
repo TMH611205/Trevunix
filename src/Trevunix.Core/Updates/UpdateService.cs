@@ -1,10 +1,11 @@
 using System.Net.Http.Headers;
+using System.Security.Cryptography;
 using System.Text.Json;
 
 namespace Trevunix.Core.Updates;
 
-/// <summary>A newer release published on GitHub.</summary>
-public sealed record UpdateInfo(Version Version, string DownloadUrl);
+/// <summary>A newer release published on GitHub, with the asset's SHA-256 as lowercase hex.</summary>
+public sealed record UpdateInfo(Version Version, string DownloadUrl, string Sha256);
 
 /// <summary>
 ///     Self-update from the GitHub releases of the repository. The new executable is
@@ -69,10 +70,45 @@ public static class UpdateService
             var url = asset.TryGetProperty("browser_download_url", out var u)
                 ? u.GetString()
                 : null;
-            return string.IsNullOrEmpty(url) ? null : new UpdateInfo(version, url);
+            var sha256 = ParseDigest(
+                asset.TryGetProperty("digest", out var d) && d.ValueKind == JsonValueKind.String
+                    ? d.GetString()
+                    : null
+            );
+            // No digest means nothing to check the download against, so no update.
+            return string.IsNullOrEmpty(url) || sha256 is null
+                ? null
+                : new UpdateInfo(version, url, sha256);
         }
 
         return null;
+    }
+
+    /// <summary>Parses GitHub's asset digest (<c>sha256:&lt;64 hex&gt;</c>) into lowercase hex.</summary>
+    public static string? ParseDigest(string? digest)
+    {
+        const string prefix = "sha256:";
+        if (digest is null || !digest.StartsWith(prefix, StringComparison.OrdinalIgnoreCase))
+            return null;
+
+        var hex = digest[prefix.Length..];
+        return hex.Length == 64 && hex.All(Uri.IsHexDigit) ? hex.ToLowerInvariant() : null;
+    }
+
+    /// <summary>True when the file's SHA-256 equals <paramref name="sha256"/> (hex).</summary>
+    public static async Task<bool> HasSha256Async(
+        string path,
+        string sha256,
+        CancellationToken cancellationToken = default
+    )
+    {
+        await using var stream = File.OpenRead(path);
+        var actual = await SHA256.HashDataAsync(stream, cancellationToken);
+        return string.Equals(
+            Convert.ToHexStringLower(actual),
+            sha256,
+            StringComparison.OrdinalIgnoreCase
+        );
     }
 
     public static async Task<UpdateInfo?> CheckAsync(CancellationToken cancellationToken = default)
@@ -110,6 +146,9 @@ public static class UpdateService
 
             if (new FileInfo(newPath).Length == 0)
                 throw new IOException("Downloaded update is empty.");
+
+            if (!await HasSha256Async(newPath, update.Sha256, cancellationToken))
+                throw new IOException("Downloaded update does not match its SHA-256 digest.");
 
             return StageDownloadedFile(exePath);
         }

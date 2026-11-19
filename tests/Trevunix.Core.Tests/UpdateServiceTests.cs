@@ -24,15 +24,65 @@ public class UpdateServiceTests : IDisposable
         }
     }
 
-    private static string Release(string tag, string assetName = UpdateService.AssetName) =>
+    private const string Hash = "9d0182d2837d4f30d5924c67b8f21303935a0b8494a39546e42e0158094eef2f";
+
+    private static string Release(
+        string tag,
+        string assetName = UpdateService.AssetName,
+        string digest = "\"sha256:" + Hash + "\""
+    ) =>
         $$"""
             {
               "tag_name": "{{tag}}",
               "assets": [
-                { "name": "{{assetName}}", "browser_download_url": "https://example.test/{{assetName}}" }
+                { "name": "{{assetName}}", "browser_download_url": "https://example.test/{{assetName}}", "digest": {{digest}} }
               ]
             }
             """;
+
+    [Fact]
+    public void ParseLatestRelease_CarriesDigest()
+    {
+        var update = UpdateService.ParseLatestRelease(Release("v9.0.0"), new Version(2, 0));
+
+        Assert.Equal(Hash, update?.Sha256);
+    }
+
+    [Theory]
+    [InlineData("null")]
+    [InlineData("\"\"")]
+    [InlineData("\"md5:abc\"")]
+    [InlineData("\"sha256:1234\"")]
+    [InlineData("\"sha256:zz82d2837d4f30d5924c67b8f21303935a0b8494a39546e42e0158094eef2f\"")]
+    public void ParseLatestRelease_MissingOrBadDigest_ReturnsNull(string digest)
+    {
+        Assert.Null(
+            UpdateService.ParseLatestRelease(Release("v9.0.0", digest: digest), new Version(2, 0))
+        );
+    }
+
+    [Fact]
+    public void ParseDigest_UppercaseHex_ReturnsLowercase()
+    {
+        Assert.Equal(Hash, UpdateService.ParseDigest("SHA256:" + Hash.ToUpperInvariant()));
+    }
+
+    [Fact]
+    public async Task HasSha256Async_MatchingAndTamperedFile()
+    {
+        var path = Path.Combine(_dir, "file.bin");
+        File.WriteAllText(path, "abc");
+        // SHA-256 of "abc".
+        const string abc = "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad";
+
+        Assert.True(
+            await UpdateService.HasSha256Async(path, abc, TestContext.Current.CancellationToken)
+        );
+        File.WriteAllText(path, "abd");
+        Assert.False(
+            await UpdateService.HasSha256Async(path, abc, TestContext.Current.CancellationToken)
+        );
+    }
 
     [Theory]
     [InlineData("v2.29.0.42", "2.29.0.42")]
