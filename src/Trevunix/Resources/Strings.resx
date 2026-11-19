@@ -1771,4 +1771,10 @@ CPU {0}% · RAM {1}%</value>
   <data name="Extensions.DoneSome" xml:space="preserve">
     <value>Removed {0} extensions; {1} could not be removed. Close the browser and try again.</value>
   </data>
+  <data name="Settings.Reset.Title" xml:space="preserve">
+    <value>Settings were reset</value>
+  </data>
+  <data name="Settings.Reset.Message" xml:space="preserve">
+    <value>The settings file could not be read, so Trevunix started with default settings. The old file was saved as {0}.</value>
+  </data>
 </root>

@@ -1771,4 +1771,10 @@ CPU {0}% · RAM {1}%</value>
   <data name="Extensions.DoneSome" xml:space="preserve">
     <value>Đã xoá {0} tiện ích; {1} tiện ích không xoá được. Hãy đóng trình duyệt rồi thử lại.</value>
   </data>
+  <data name="Settings.Reset.Title" xml:space="preserve">
+    <value>Cài đặt đã được đặt lại</value>
+  </data>
+  <data name="Settings.Reset.Message" xml:space="preserve">
+    <value>Không đọc được file cài đặt nên Trevunix dùng cài đặt mặc định. File cũ được lưu tại {0}.</value>
+  </data>
 </root>

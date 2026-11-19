@@ -27,6 +27,16 @@ public partial class App : Application
     {
         base.OnStartup(e);
         DispatcherUnhandledException += OnUnhandledException;
+        AppDomain.CurrentDomain.UnhandledException += (_, args) =>
+        {
+            if (args.ExceptionObject is Exception ex)
+                ErrorLog.Write(ex);
+        };
+        TaskScheduler.UnobservedTaskException += (_, args) =>
+        {
+            ErrorLog.Write(args.Exception);
+            args.SetObserved();
+        };
 
         _settings = _store.Load();
         Tr.SetLanguage(_settings.Language);
@@ -58,6 +68,11 @@ public partial class App : Application
             && _settings.CloseToTray;
         if (!startHidden)
             window.Show();
+        if (_store.LoadedDefaultsAfterError)
+            _ = Dialogs.InfoAsync(
+                Tr.Get("Settings.Reset.Title"),
+                Tr.Format("Settings.Reset.Message", _store.BackupPath)
+            );
 
         _tray = new TrayService();
         _tray.OpenRequested += ShowWindow;
@@ -208,15 +223,7 @@ public partial class App : Application
     private static void OnUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
     {
         e.Handled = true;
-        try
-        {
-            Directory.CreateDirectory(AppPaths.DataDirectory);
-            File.AppendAllText(
-                Path.Combine(AppPaths.DataDirectory, "errors.log"),
-                $"[{DateTime.Now:yyyy-MM-dd HH:mm:ss}] {e.Exception}{Environment.NewLine}"
-            );
-        }
-        catch (IOException) { }
+        ErrorLog.Write(e.Exception);
 
         if (ShownErrors.Add(e.Exception.GetType().FullName + e.Exception.Message))
             MessageBox.Show(

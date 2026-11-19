@@ -62,15 +62,30 @@ public sealed class SettingsStore(string? filePath = null)
     public string FilePath { get; } =
         filePath ?? Path.Combine(AppPaths.DataDirectory, "settings.json");
 
+    /// <summary>Set by <see cref="Load"/> when the file was unreadable and copied to <see cref="BackupPath"/>.</summary>
+    public bool LoadedDefaultsAfterError { get; private set; }
+
+    public string BackupPath => FilePath + ".bak";
+
     public AppSettings Load()
     {
+        LoadedDefaultsAfterError = false;
         try
         {
             if (File.Exists(FilePath))
                 return JsonSerializer.Deserialize<AppSettings>(File.ReadAllText(FilePath), Json)
                     ?? new AppSettings();
         }
-        catch (JsonException) { }
+        catch (JsonException)
+        {
+            // Keep the broken file so the owner can recover it; the next save overwrites the original.
+            try
+            {
+                File.Copy(FilePath, BackupPath, overwrite: true);
+            }
+            catch (IOException) { }
+            LoadedDefaultsAfterError = true;
+        }
         catch (IOException) { }
 
         return new AppSettings();
