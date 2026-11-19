@@ -39,6 +39,9 @@ public sealed class HealthWatcher
 
     public ObservableCollection<string> Active { get; } = [];
 
+    /// <summary>The last disk health reading; empty until the first check has run.</summary>
+    public IReadOnlyList<DiskHealth> Disks => _disks;
+
     /// <summary>Title and message of a problem that just appeared.</summary>
     public event Action<string, string>? Raised;
 

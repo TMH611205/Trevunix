@@ -151,6 +151,42 @@
         <ui:ToggleSwitch IsChecked="{Binding HealthAlerts}" />
       </ui:CardControl>
 
+      <ui:CardControl Margin="0,0,0,6" Icon="{ui:SymbolIcon Broom24}">
+        <ui:CardControl.Header>
+          <StackPanel>
+            <TextBlock
+              FontWeight="SemiBold"
+              Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+              Text="{l:T Settings.CleanBrowsersOnClose}"
+            />
+            <TextBlock
+              Style="{StaticResource Muted}"
+              Text="{l:T Settings.CleanBrowsersOnClose.Description}"
+              TextWrapping="Wrap"
+            />
+          </StackPanel>
+        </ui:CardControl.Header>
+        <ui:ToggleSwitch IsChecked="{Binding CleanBrowsersOnClose}" />
+      </ui:CardControl>
+
+      <ui:CardControl Margin="0,0,0,6" Icon="{ui:SymbolIcon AlertBadge24}">
+        <ui:CardControl.Header>
+          <StackPanel>
+            <TextBlock
+              FontWeight="SemiBold"
+              Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+              Text="{l:T Settings.UpdateNotices}"
+            />
+            <TextBlock
+              Style="{StaticResource Muted}"
+              Text="{l:T Settings.UpdateNotices.Description}"
+              TextWrapping="Wrap"
+            />
+          </StackPanel>
+        </ui:CardControl.Header>
+        <ui:ToggleSwitch IsChecked="{Binding UpdateNotices}" />
+      </ui:CardControl>
+
       <ui:CardControl Margin="0,0,0,6" Icon="{ui:SymbolIcon ArrowMinimize24}">
         <ui:CardControl.Header>
           <StackPanel>

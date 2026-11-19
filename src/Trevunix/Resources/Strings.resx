@@ -2281,4 +2281,55 @@ CPU {0}% · RAM {1}%</value>
   <data name="Shortcuts.Removed" xml:space="preserve">
     <value>Moved {0} to the Recycle Bin. {1} could not be moved.</value>
   </data>
+  <data name="Score.Title" xml:space="preserve">
+    <value>Health score</value>
+  </data>
+  <data name="Score.AllGood" xml:space="preserve">
+    <value>Everything looks good.</value>
+  </data>
+  <data name="Score.SystemDriveFull" xml:space="preserve">
+    <value>The system drive is almost full ({0}% free).</value>
+  </data>
+  <data name="Score.SystemDriveLow" xml:space="preserve">
+    <value>The system drive is getting full ({0}% free).</value>
+  </data>
+  <data name="Score.DiskFailing" xml:space="preserve">
+    <value>{0} disks report problems. Back up your files.</value>
+  </data>
+  <data name="Score.PendingTweaks" xml:space="preserve">
+    <value>{0} recommended tweaks are not on yet.</value>
+  </data>
+  <data name="Score.DriverProblems" xml:space="preserve">
+    <value>{0} devices have driver problems.</value>
+  </data>
+  <data name="Score.AppUpdates" xml:space="preserve">
+    <value>{0} apps have updates.</value>
+  </data>
+  <data name="Score.HeavyStartup" xml:space="preserve">
+    <value>{0} startup programs slow down sign-in a lot.</value>
+  </data>
+  <data name="Settings.CleanBrowsersOnClose" xml:space="preserve">
+    <value>Clean browsers when they close</value>
+  </data>
+  <data name="Settings.CleanBrowsersOnClose.Description" xml:space="preserve">
+    <value>While Trevunix runs, a browser's cache is cleaned right after you close it. History, passwords and sign-ins stay.</value>
+  </data>
+  <data name="Settings.UpdateNotices" xml:space="preserve">
+    <value>Daily update and driver check</value>
+  </data>
+  <data name="Settings.UpdateNotices.Description" xml:space="preserve">
+    <value>Once a day, look for app updates and devices with driver problems and say so in the notification area.</value>
+  </data>
+  <data name="Notice.AppUpdates.Title" xml:space="preserve">
+    <value>App updates available</value>
+  </data>
+  <data name="Notice.AppUpdates" xml:space="preserve">
+    <value>{0} apps can be updated. Open Tools &gt; App updates in Trevunix.</value>
+  </data>
+  <data name="Notice.Drivers.Title" xml:space="preserve">
+    <value>Driver problems</value>
+  </data>
+  <data name="Notice.Drivers" xml:space="preserve">
+    <value>{0} devices have driver problems. Open Tools &gt; Drivers in Trevunix.</value>
+  </data>
 </root>

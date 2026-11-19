@@ -43,6 +43,17 @@ public sealed class AppSettings
 
     /// <summary>The "still running in the tray" tip is shown once.</summary>
     public bool TrayTipShown { get; set; }
+
+    /// <summary>Clean a browser's cache as soon as it is closed.</summary>
+    public bool CleanBrowsersOnClose { get; set; }
+
+    /// <summary>Check once a day for app updates and driver problems and say so in the tray.</summary>
+    public bool UpdateNotices { get; set; } = true;
+
+    public DateTime? LastNoticeCheck { get; set; }
+
+    /// <summary>App updates found by the last daily check; part of the home page score.</summary>
+    public int? KnownAppUpdates { get; set; }
 }
 
 public static class AppPaths

@@ -47,6 +47,8 @@ public sealed partial class SettingsViewModel : ObservableObject
         _closeToTray = settings.CloseToTray;
         _startWithWindows = settings.StartWithWindows;
         _healthAlerts = settings.HealthAlerts;
+        _cleanBrowsersOnClose = settings.CleanBrowsersOnClose;
+        _updateNotices = settings.UpdateNotices;
         _autoCleanStatus = LastRunText();
     }
 
@@ -97,6 +99,24 @@ public sealed partial class SettingsViewModel : ObservableObject
 
     [ObservableProperty]
     private bool _healthAlerts;
+
+    [ObservableProperty]
+    private bool _cleanBrowsersOnClose;
+
+    [ObservableProperty]
+    private bool _updateNotices;
+
+    partial void OnCleanBrowsersOnCloseChanged(bool value)
+    {
+        _settings.CleanBrowsersOnClose = value;
+        Save();
+    }
+
+    partial void OnUpdateNoticesChanged(bool value)
+    {
+        _settings.UpdateNotices = value;
+        Save();
+    }
 
     public bool NeedsRestart => Language.Value != _startupLanguage;
 

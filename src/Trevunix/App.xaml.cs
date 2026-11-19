@@ -19,6 +19,7 @@ public partial class App : Application
     private readonly SettingsStore _store = new();
     private AppSettings _settings = new();
     private TrayService? _tray;
+    private BackgroundChecks? _background;
     private MainViewModel? _main;
     private SingleInstance? _instance;
     private bool _exiting;
@@ -78,6 +79,11 @@ public partial class App : Application
         _tray.OpenRequested += ShowWindow;
         _tray.FreeRamRequested += () => _ = FreeRamFromTrayAsync();
         _tray.ExitRequested += ExitFromTray;
+        _background = new BackgroundChecks(
+            _settings,
+            _store,
+            (title, message) => _tray.Notify(title, message)
+        );
         _main.Health.Raised += (title, message) =>
         {
             if (_settings.HealthAlerts)

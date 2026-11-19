@@ -10,6 +10,54 @@
       <TextBlock Style="{StaticResource PageTitle}" Text="{l:T Home.Greeting}" />
       <TextBlock Style="{StaticResource PageSubtitle}" Text="{l:T Home.Subtitle}" />
 
+      <!-- Health score -->
+      <Border Margin="0,16,0,0" Style="{StaticResource Panel}">
+        <DockPanel>
+          <StackPanel Margin="0,0,24,0" VerticalAlignment="Center" DockPanel.Dock="Left">
+            <TextBlock
+              HorizontalAlignment="Center"
+              FontSize="40"
+              FontWeight="Bold"
+              Text="{Binding Score}"
+            >
+              <TextBlock.Style>
+                <Style TargetType="TextBlock">
+                  <Setter
+                    Property="Foreground"
+                    Value="{DynamicResource SystemFillColorSuccessBrush}"
+                  />
+                  <Style.Triggers>
+                    <DataTrigger Binding="{Binding ScoreIsLow}" Value="True">
+                      <Setter
+                        Property="Foreground"
+                        Value="{DynamicResource SystemFillColorCautionBrush}"
+                      />
+                    </DataTrigger>
+                  </Style.Triggers>
+                </Style>
+              </TextBlock.Style>
+            </TextBlock>
+            <TextBlock
+              HorizontalAlignment="Center"
+              Style="{StaticResource Muted}"
+              Text="{l:T Score.Title}"
+            />
+          </StackPanel>
+          <ItemsControl VerticalAlignment="Center" ItemsSource="{Binding ScoreItems}">
+            <ItemsControl.ItemTemplate>
+              <DataTemplate>
+                <TextBlock
+                  Margin="0,2"
+                  Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                  Text="{Binding StringFormat='• {0}'}"
+                  TextWrapping="Wrap"
+                />
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+        </DockPanel>
+      </Border>
+
       <!-- Health alerts -->
       <ItemsControl Margin="0,16,0,0" ItemsSource="{Binding Alerts}">
         <ItemsControl.ItemTemplate>

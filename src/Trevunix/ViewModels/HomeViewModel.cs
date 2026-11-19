@@ -1,5 +1,6 @@
 using System.Collections.ObjectModel;
 using System.Globalization;
+using System.IO;
 using System.Windows.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -57,6 +58,56 @@ public sealed partial class HomeViewModel : ObservableObject
         _uptimeTimer.Tick += (_, _) => OnPropertyChanged(nameof(Uptime));
         _uptimeTimer.Start();
         _ = LoadHardwareAsync();
+        _ = LoadScoreAsync();
+    }
+
+    [ObservableProperty]
+    private string _score = "";
+
+    [ObservableProperty]
+    private bool _scoreIsLow;
+
+    public ObservableCollection<string> ScoreItems { get; } = [];
+
+    /// <summary>The 0 to 100 summary at the top of the page; the parts load in the background.</summary>
+    public async Task LoadScoreAsync()
+    {
+        var system = Path.GetPathRoot(Environment.SystemDirectory);
+        var drive = Drives.FirstOrDefault(d =>
+            string.Equals(d.Drive.RootPath, system, StringComparison.OrdinalIgnoreCase)
+        );
+        var failing = _main.Health.Disks.Count(d =>
+            d.Health is Core.Storage.HealthState.Warning or Core.Storage.HealthState.Unhealthy
+        );
+        var inputs = await Task.Run(() =>
+        {
+            var impacts = Core.Startup.StartupImpact.Read();
+            var heavy = new Core.Startup.StartupManager()
+                .List()
+                .Count(e =>
+                    e.Enabled
+                    && e.FilePath is { } path
+                    && impacts.TryGetValue(path, out var level)
+                    && level == Core.Startup.StartupImpactLevel.High
+                );
+            return new Core.Monitoring.HealthInputs(
+                drive is null ? null : 100 - drive.UsedPercent,
+                _main.Health.Disks.Count == 0 ? null : failing,
+                QuickMaintenance.PendingTweaks(new TweakEngine()).Count,
+                Core.Monitoring.HealthScore.CountDriverProblems(),
+                _main.Settings.KnownAppUpdates,
+                heavy
+            );
+        });
+
+        var (score, items) = Core.Monitoring.HealthScore.Compute(inputs);
+        Score = score.ToString(Tr.Culture);
+        ScoreIsLow = score < 70;
+        ScoreItems.Clear();
+        foreach (var item in items)
+            ScoreItems.Add(Tr.Format($"Score.{item.Issue}", item.Count));
+        if (items.Count == 0)
+            ScoreItems.Add(Tr.Get("Score.AllGood"));
     }
 
     public MachineInfo Machine { get; }
@@ -159,6 +210,7 @@ public sealed partial class HomeViewModel : ObservableObject
             if (applied.NeedsRestart)
                 result += " " + Tr.Get("Quick.Result.Restart");
             OptimizeResult = result;
+            _ = LoadScoreAsync();
 
             _main.RefreshOpenPages();
         }
