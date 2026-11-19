@@ -677,7 +677,7 @@
     <value>Công cụ tiện ích</value>
   </data>
   <data name="ToolsPage.Subtitle" xml:space="preserve">
-    <value>Đo tốc độ mạng, theo dõi máy, tiến trình, sửa lỗi, DNS, sức khoẻ ổ đĩa và pin.</value>
+    <value>Đo tốc độ mạng, theo dõi máy, tiến trình, sửa lỗi, cập nhật ứng dụng, driver, DNS, ổ đĩa, pin, file trùng và hơn nữa.</value>
   </data>
   <data name="Monitor.Cpu" xml:space="preserve">
     <value>CPU</value>
@@ -1857,5 +1857,143 @@ CPU {0}% · RAM {1}%</value>
   </data>
   <data name="Optimize.Profile.Confirm" xml:space="preserve">
     <value>Có {0} tinh chỉnh trong file chưa bật ở trang này. Áp dụng?</value>
+  </data>
+  <data name="Section.AppUpdates" xml:space="preserve">
+    <value>Cập nhật ứng dụng</value>
+  </data>
+  <data name="Section.AppUpdates.Description" xml:space="preserve">
+    <value>Cập nhật ứng dụng bằng winget</value>
+  </data>
+  <data name="AppUpdates.Hint" xml:space="preserve">
+    <value>Liệt kê ứng dụng có bản mới, rồi cập nhật tất cả cùng lúc. Hãy đóng các ứng dụng trước; một số ứng dụng vẫn có thể hỏi trước khi cập nhật.</value>
+  </data>
+  <data name="Repair.WingetList" xml:space="preserve">
+    <value>Liệt kê bản cập nhật</value>
+  </data>
+  <data name="Repair.WingetList.Description" xml:space="preserve">
+    <value>Kiểm tra mọi ứng dụng đã cài với danh mục winget. Không thay đổi gì.</value>
+  </data>
+  <data name="Repair.WingetUpgradeAll" xml:space="preserve">
+    <value>Cập nhật tất cả ứng dụng</value>
+  </data>
+  <data name="Repair.WingetUpgradeAll.Description" xml:space="preserve">
+    <value>Tải và cài mọi bản cập nhật có sẵn ở chế độ im lặng.</value>
+  </data>
+  <data name="Section.Drivers" xml:space="preserve">
+    <value>Driver</value>
+  </data>
+  <data name="Section.Drivers.Description" xml:space="preserve">
+    <value>Thiết bị lỗi và driver đã cài</value>
+  </data>
+  <data name="Drivers.Hint" xml:space="preserve">
+    <value>Chỉ kiểm tra, không thay đổi gì. Muốn cài hoặc quay lại driver cũ, dùng Device Manager hoặc trang web của hãng máy.</value>
+  </data>
+  <data name="Repair.DriverProblems" xml:space="preserve">
+    <value>Thiết bị bị lỗi</value>
+  </data>
+  <data name="Repair.DriverProblems.Description" xml:space="preserve">
+    <value>Liệt kê thiết bị đang kết nối mà Windows báo lỗi hoặc thiếu driver. Hiện OK nếu không có.</value>
+  </data>
+  <data name="Repair.DriverList" xml:space="preserve">
+    <value>Driver đã cài</value>
+  </data>
+  <data name="Repair.DriverList.Description" xml:space="preserve">
+    <value>Driver không phải của Microsoft, cũ nhất ở trên.</value>
+  </data>
+  <data name="Section.Duplicates" xml:space="preserve">
+    <value>File trùng lặp</value>
+  </data>
+  <data name="Section.Duplicates.Description" xml:space="preserve">
+    <value>File giống hệt nhau chiếm chỗ</value>
+  </data>
+  <data name="Duplicates.PickFolder" xml:space="preserve">
+    <value>Chọn thư mục</value>
+  </data>
+  <data name="Duplicates.Scan" xml:space="preserve">
+    <value>Quét</value>
+  </data>
+  <data name="Duplicates.Remove" xml:space="preserve">
+    <value>Chuyển vào Thùng rác</value>
+  </data>
+  <data name="Duplicates.Group" xml:space="preserve">
+    <value>{0} bản, mỗi bản {1}</value>
+  </data>
+  <data name="Duplicates.NoFolder" xml:space="preserve">
+    <value>Thư mục này không tồn tại.</value>
+  </data>
+  <data name="Duplicates.Scanning" xml:space="preserve">
+    <value>Đã kiểm tra {0} file...</value>
+  </data>
+  <data name="Duplicates.None" xml:space="preserve">
+    <value>Không có file trùng từ 1 KB trở lên. Thư mục Windows và chương trình được bỏ qua.</value>
+  </data>
+  <data name="Duplicates.Found" xml:space="preserve">
+    <value>{0} nhóm file trùng, có thể giải phóng {1}. File được đánh dấu sẽ bị xoá; bản đầu tiên của mỗi nhóm không được đánh dấu.</value>
+  </data>
+  <data name="Duplicates.Cancelled" xml:space="preserve">
+    <value>Đã huỷ quét.</value>
+  </data>
+  <data name="Duplicates.KeepOne" xml:space="preserve">
+    <value>Mỗi nhóm phải giữ lại ít nhất một bản không đánh dấu.</value>
+  </data>
+  <data name="Duplicates.Confirm" xml:space="preserve">
+    <value>Chuyển {0} file ({1}) vào Thùng rác? Bạn có thể khôi phục lại từ đó.</value>
+  </data>
+  <data name="Duplicates.Removed" xml:space="preserve">
+    <value>Đã chuyển vào Thùng rác: {0}.</value>
+  </data>
+  <data name="Duplicates.Failed" xml:space="preserve">
+    <value>{0} file không chuyển được.</value>
+  </data>
+  <data name="Section.Report" xml:space="preserve">
+    <value>Báo cáo hệ thống</value>
+  </data>
+  <data name="Section.Report.Description" xml:space="preserve">
+    <value>Tóm tắt cấu hình máy để nhờ hỗ trợ</value>
+  </data>
+  <data name="Report.Create" xml:space="preserve">
+    <value>Tạo báo cáo</value>
+  </data>
+  <data name="Report.Copy" xml:space="preserve">
+    <value>Sao chép</value>
+  </data>
+  <data name="Report.Save" xml:space="preserve">
+    <value>Lưu</value>
+  </data>
+  <data name="Section.History" xml:space="preserve">
+    <value>Lịch sử</value>
+  </data>
+  <data name="Section.History.Description" xml:space="preserve">
+    <value>Các lần dọn dẹp và tinh chỉnh</value>
+  </data>
+  <data name="History.Col.When" xml:space="preserve">
+    <value>Thời gian</value>
+  </data>
+  <data name="History.Col.What" xml:space="preserve">
+    <value>Thao tác</value>
+  </data>
+  <data name="History.Empty" xml:space="preserve">
+    <value>Chưa có gì.</value>
+  </data>
+  <data name="History.Total" xml:space="preserve">
+    <value>Tổng dung lượng đã giải phóng: {0}.</value>
+  </data>
+  <data name="History.Cleanup" xml:space="preserve">
+    <value>Dọn dẹp, giải phóng {0}</value>
+  </data>
+  <data name="History.QuickOptimize" xml:space="preserve">
+    <value>Tối ưu nhanh, giải phóng {0}</value>
+  </data>
+  <data name="History.AutoClean" xml:space="preserve">
+    <value>Dọn dẹp theo lịch, giải phóng {0}</value>
+  </data>
+  <data name="History.DuplicatesRemoved" xml:space="preserve">
+    <value>Chuyển file trùng vào Thùng rác, {0}</value>
+  </data>
+  <data name="History.TweakApplied" xml:space="preserve">
+    <value>Đã bật: {0}</value>
+  </data>
+  <data name="History.TweakUndone" xml:space="preserve">
+    <value>Đã hoàn tác: {0}</value>
   </data>
 </root>

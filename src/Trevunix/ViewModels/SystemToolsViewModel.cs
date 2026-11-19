@@ -24,7 +24,21 @@ public sealed partial class SystemToolsViewModel : ObservableObject
 {
     public SystemToolsViewModel()
     {
-        Sections = [SpeedTest, Monitor, Processes, Repair, Dns, Drives, Battery];
+        Sections =
+        [
+            SpeedTest,
+            Monitor,
+            Processes,
+            Repair,
+            AppUpdates,
+            Drivers,
+            Dns,
+            Drives,
+            Battery,
+            Duplicates,
+            Report,
+            History,
+        ];
         _selected = SpeedTest;
     }
 
@@ -32,6 +46,13 @@ public sealed partial class SystemToolsViewModel : ObservableObject
     public MonitorViewModel Monitor { get; } = new();
     public ProcessesViewModel Processes { get; } = new();
     public RepairViewModel Repair { get; } = new();
+    public RepairViewModel AppUpdates { get; } =
+        new("AppUpdates", SymbolRegular.ArrowSync24, RepairCatalog.AppUpdates);
+    public RepairViewModel Drivers { get; } =
+        new("Drivers", SymbolRegular.Connector24, RepairCatalog.Drivers);
+    public DuplicatesViewModel Duplicates { get; } = new();
+    public ReportViewModel Report { get; } = new();
+    public HistoryViewModel History { get; } = new();
     public DnsViewModel Dns { get; } = new();
     public DrivesViewModel Drives { get; } = new();
     public BatteryViewModel Battery { get; } = new();
@@ -46,6 +67,7 @@ public sealed partial class SystemToolsViewModel : ObservableObject
         Processes.Start();
         Dns.Refresh();
         Battery.OnShown();
+        History.Refresh();
     }
 
     public void OnHidden()
@@ -252,13 +274,23 @@ public sealed class RepairItem(RepairCommand command)
     public bool LongRunning => Command.LongRunning;
 }
 
-public sealed partial class RepairViewModel() : PageSection("Repair", SymbolRegular.Wrench24)
+/// <summary>A list of console commands with a live output pane: repairs, app updates, drivers.</summary>
+public sealed partial class RepairViewModel(
+    string key,
+    SymbolRegular icon,
+    IReadOnlyList<RepairCommand> commands
+) : PageSection(key, icon)
 {
     private const int MaxLines = 3000;
     private CancellationTokenSource? _cts;
 
+    public RepairViewModel()
+        : this("Repair", SymbolRegular.Wrench24, RepairCatalog.All) { }
+
+    public string Hint { get; } = Tr.Get($"{key}.Hint");
+
     public IReadOnlyList<RepairItem> Items { get; } =
-        RepairCatalog.All.Select(c => new RepairItem(c)).ToList();
+        commands.Select(c => new RepairItem(c)).ToList();
 
     public ObservableCollection<string> Output { get; } = [];
 

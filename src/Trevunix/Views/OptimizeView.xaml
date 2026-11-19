@@ -44,13 +44,13 @@
             Margin="8,0,0,0"
             Command="{Binding ExportProfileCommand}"
             Content="{l:T Optimize.Profile.Export}"
-            Icon="{ui:SymbolIcon ArrowExport24}"
+            Icon="{ui:SymbolIcon ArrowUpload24}"
           />
           <ui:Button
             Margin="8,0,0,0"
             Command="{Binding ImportProfileCommand}"
             Content="{l:T Optimize.Profile.Import}"
-            Icon="{ui:SymbolIcon ArrowImport24}"
+            Icon="{ui:SymbolIcon ArrowDownload24}"
           />
           <ui:ProgressRing
             Width="20"

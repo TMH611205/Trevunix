@@ -677,7 +677,7 @@
     <value>Utilities</value>
   </data>
   <data name="ToolsPage.Subtitle" xml:space="preserve">
-    <value>Network speed, live monitoring, processes, repairs, DNS, drive health and battery.</value>
+    <value>Network speed, monitoring, processes, repairs, app updates, drivers, DNS, drives, battery, duplicate files and more.</value>
   </data>
   <data name="Monitor.Cpu" xml:space="preserve">
     <value>CPU</value>
@@ -1857,5 +1857,143 @@ CPU {0}% · RAM {1}%</value>
   </data>
   <data name="Optimize.Profile.Confirm" xml:space="preserve">
     <value>{0} tweaks from the file are not on yet on this page. Apply them?</value>
+  </data>
+  <data name="Section.AppUpdates" xml:space="preserve">
+    <value>App updates</value>
+  </data>
+  <data name="Section.AppUpdates.Description" xml:space="preserve">
+    <value>Update installed apps with winget</value>
+  </data>
+  <data name="AppUpdates.Hint" xml:space="preserve">
+    <value>Shows the apps with a newer version, then updates them all at once. Close the apps first; some may still ask before they update.</value>
+  </data>
+  <data name="Repair.WingetList" xml:space="preserve">
+    <value>List available updates</value>
+  </data>
+  <data name="Repair.WingetList.Description" xml:space="preserve">
+    <value>Checks every installed app against the winget catalog. Changes nothing.</value>
+  </data>
+  <data name="Repair.WingetUpgradeAll" xml:space="preserve">
+    <value>Update all apps</value>
+  </data>
+  <data name="Repair.WingetUpgradeAll.Description" xml:space="preserve">
+    <value>Downloads and installs every available update silently.</value>
+  </data>
+  <data name="Section.Drivers" xml:space="preserve">
+    <value>Drivers</value>
+  </data>
+  <data name="Section.Drivers.Description" xml:space="preserve">
+    <value>Devices with problems, installed drivers</value>
+  </data>
+  <data name="Drivers.Hint" xml:space="preserve">
+    <value>Read-only checks. To install or roll back a driver, use Device Manager or the PC maker's website.</value>
+  </data>
+  <data name="Repair.DriverProblems" xml:space="preserve">
+    <value>Devices with problems</value>
+  </data>
+  <data name="Repair.DriverProblems.Description" xml:space="preserve">
+    <value>Lists connected devices that Windows reports as failing or missing a driver. Shows OK when there are none.</value>
+  </data>
+  <data name="Repair.DriverList" xml:space="preserve">
+    <value>Installed drivers</value>
+  </data>
+  <data name="Repair.DriverList.Description" xml:space="preserve">
+    <value>Drivers not made by Microsoft, oldest first.</value>
+  </data>
+  <data name="Section.Duplicates" xml:space="preserve">
+    <value>Duplicate files</value>
+  </data>
+  <data name="Section.Duplicates.Description" xml:space="preserve">
+    <value>Identical files taking up space</value>
+  </data>
+  <data name="Duplicates.PickFolder" xml:space="preserve">
+    <value>Choose folder</value>
+  </data>
+  <data name="Duplicates.Scan" xml:space="preserve">
+    <value>Scan</value>
+  </data>
+  <data name="Duplicates.Remove" xml:space="preserve">
+    <value>Move to Recycle Bin</value>
+  </data>
+  <data name="Duplicates.Group" xml:space="preserve">
+    <value>{0} copies, {1} each</value>
+  </data>
+  <data name="Duplicates.NoFolder" xml:space="preserve">
+    <value>This folder does not exist.</value>
+  </data>
+  <data name="Duplicates.Scanning" xml:space="preserve">
+    <value>Checked {0} files...</value>
+  </data>
+  <data name="Duplicates.None" xml:space="preserve">
+    <value>No duplicate files of 1 KB or more. Windows and program folders are skipped.</value>
+  </data>
+  <data name="Duplicates.Found" xml:space="preserve">
+    <value>{0} sets of duplicates, {1} can be freed. Ticked files will be removed; the first copy of each set stays unticked.</value>
+  </data>
+  <data name="Duplicates.Cancelled" xml:space="preserve">
+    <value>Scan cancelled.</value>
+  </data>
+  <data name="Duplicates.KeepOne" xml:space="preserve">
+    <value>At least one copy in every set must stay unticked.</value>
+  </data>
+  <data name="Duplicates.Confirm" xml:space="preserve">
+    <value>Move {0} files ({1}) to the Recycle Bin? You can restore them from there.</value>
+  </data>
+  <data name="Duplicates.Removed" xml:space="preserve">
+    <value>Moved to the Recycle Bin: {0}.</value>
+  </data>
+  <data name="Duplicates.Failed" xml:space="preserve">
+    <value>{0} files could not be moved.</value>
+  </data>
+  <data name="Section.Report" xml:space="preserve">
+    <value>System report</value>
+  </data>
+  <data name="Section.Report.Description" xml:space="preserve">
+    <value>PC summary to share when asking for help</value>
+  </data>
+  <data name="Report.Create" xml:space="preserve">
+    <value>Create report</value>
+  </data>
+  <data name="Report.Copy" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="Report.Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Section.History" xml:space="preserve">
+    <value>History</value>
+  </data>
+  <data name="Section.History.Description" xml:space="preserve">
+    <value>Past cleanups and tweaks</value>
+  </data>
+  <data name="History.Col.When" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="History.Col.What" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="History.Empty" xml:space="preserve">
+    <value>Nothing yet.</value>
+  </data>
+  <data name="History.Total" xml:space="preserve">
+    <value>Space freed in total: {0}.</value>
+  </data>
+  <data name="History.Cleanup" xml:space="preserve">
+    <value>Cleanup, freed {0}</value>
+  </data>
+  <data name="History.QuickOptimize" xml:space="preserve">
+    <value>Quick optimize, freed {0}</value>
+  </data>
+  <data name="History.AutoClean" xml:space="preserve">
+    <value>Scheduled cleanup, freed {0}</value>
+  </data>
+  <data name="History.DuplicatesRemoved" xml:space="preserve">
+    <value>Duplicate files moved to the Recycle Bin, {0}</value>
+  </data>
+  <data name="History.TweakApplied" xml:space="preserve">
+    <value>Turned on: {0}</value>
+  </data>
+  <data name="History.TweakUndone" xml:space="preserve">
+    <value>Undone: {0}</value>
   </data>
 </root>

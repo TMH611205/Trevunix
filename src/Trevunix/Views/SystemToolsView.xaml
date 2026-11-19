@@ -384,7 +384,7 @@
             Margin="0,0,0,8"
             DockPanel.Dock="Top"
             Style="{StaticResource Muted}"
-            Text="{l:T Repair.Hint}"
+            Text="{Binding Hint}"
             TextWrapping="Wrap"
           />
           <ScrollViewer VerticalScrollBarVisibility="Auto">
@@ -814,6 +814,177 @@
           </ItemsControl.ItemTemplate>
         </ItemsControl>
       </StackPanel>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:DuplicatesViewModel}">
+      <DockPanel>
+        <DockPanel Margin="0,0,0,8" DockPanel.Dock="Top">
+          <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+            <ui:Button
+              Margin="8,0,0,0"
+              Command="{Binding PickFolderCommand}"
+              Content="{l:T Duplicates.PickFolder}"
+              Icon="{ui:SymbolIcon FolderOpen24}"
+            />
+            <ui:Button
+              Margin="8,0,0,0"
+              Appearance="Primary"
+              Command="{Binding ScanCommand}"
+              Content="{l:T Duplicates.Scan}"
+              Icon="{ui:SymbolIcon Search24}"
+            />
+            <ui:Button
+              Margin="8,0,0,0"
+              Command="{Binding CancelCommand}"
+              Content="{l:T Repair.Cancel}"
+              Icon="{ui:SymbolIcon Stop24}"
+            />
+          </StackPanel>
+          <ui:TextBox Text="{Binding Folder, UpdateSourceTrigger=PropertyChanged}" />
+        </DockPanel>
+        <DockPanel Margin="0,0,0,8" DockPanel.Dock="Top">
+          <ui:Button
+            Appearance="Danger"
+            Command="{Binding RemoveSelectedCommand}"
+            Content="{l:T Duplicates.Remove}"
+            DockPanel.Dock="Right"
+            Icon="{ui:SymbolIcon Delete24}"
+          />
+          <ui:ProgressRing
+            Width="18"
+            Height="18"
+            Margin="0,0,8,0"
+            IsIndeterminate="True"
+            Visibility="{Binding IsBusy, Converter={StaticResource VisibleWhen}}"
+          />
+          <TextBlock
+            VerticalAlignment="Center"
+            Style="{StaticResource Muted}"
+            Text="{Binding Status}"
+            TextWrapping="Wrap"
+          />
+        </DockPanel>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+          <ItemsControl ItemsSource="{Binding Groups}" VirtualizingPanel.IsVirtualizing="True">
+            <ItemsControl.ItemTemplate>
+              <DataTemplate>
+                <Border Margin="0,0,0,6" Padding="14,10" Style="{StaticResource Panel}">
+                  <StackPanel>
+                    <TextBlock
+                      Margin="0,0,0,4"
+                      FontWeight="SemiBold"
+                      Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                      Text="{Binding Header}"
+                    />
+                    <ItemsControl ItemsSource="{Binding Files}">
+                      <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                          <DockPanel>
+                            <ui:Button
+                              Padding="6,2"
+                              Appearance="Transparent"
+                              Command="{Binding DataContext.OpenLocationCommand, RelativeSource={RelativeSource AncestorType=ScrollViewer}}"
+                              CommandParameter="{Binding}"
+                              DockPanel.Dock="Right"
+                              Icon="{ui:SymbolIcon FolderOpen24}"
+                              ToolTip="{l:T Processes.OpenLocation}"
+                            />
+                            <CheckBox IsChecked="{Binding IsChecked}" ToolTip="{Binding Path}">
+                              <StackPanel Orientation="Horizontal">
+                                <TextBlock
+                                  FontWeight="SemiBold"
+                                  Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                                  Text="{Binding Name}"
+                                />
+                                <TextBlock
+                                  Margin="10,0,0,0"
+                                  Style="{StaticResource Muted}"
+                                  Text="{Binding Folder}"
+                                  TextTrimming="CharacterEllipsis"
+                                />
+                              </StackPanel>
+                            </CheckBox>
+                          </DockPanel>
+                        </DataTemplate>
+                      </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                  </StackPanel>
+                </Border>
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+        </ScrollViewer>
+      </DockPanel>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:ReportViewModel}">
+      <DockPanel>
+        <StackPanel Margin="0,0,0,8" DockPanel.Dock="Top" Orientation="Horizontal">
+          <ui:Button
+            Appearance="Primary"
+            Command="{Binding CreateCommand}"
+            Content="{l:T Report.Create}"
+            Icon="{ui:SymbolIcon DocumentAdd24}"
+          />
+          <ui:Button
+            Margin="8,0,0,0"
+            Command="{Binding CopyCommand}"
+            Content="{l:T Report.Copy}"
+            Icon="{ui:SymbolIcon Copy24}"
+          />
+          <ui:Button
+            Margin="8,0,0,0"
+            Command="{Binding SaveCommand}"
+            Content="{l:T Report.Save}"
+            Icon="{ui:SymbolIcon Save24}"
+          />
+          <ui:ProgressRing
+            Width="18"
+            Height="18"
+            Margin="12,0,0,0"
+            IsIndeterminate="True"
+            Visibility="{Binding IsBusy, Converter={StaticResource VisibleWhen}}"
+          />
+        </StackPanel>
+        <Border Padding="10" Background="#FF101418" CornerRadius="8">
+          <TextBox
+            Background="Transparent"
+            BorderThickness="0"
+            FontFamily="Cascadia Mono, Consolas"
+            FontSize="12"
+            Foreground="#FFD6DEE6"
+            HorizontalScrollBarVisibility="Auto"
+            IsReadOnly="True"
+            Text="{Binding Text, Mode=OneWay}"
+            VerticalScrollBarVisibility="Auto"
+          />
+        </Border>
+      </DockPanel>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:HistoryViewModel}">
+      <DockPanel>
+        <TextBlock
+          Margin="0,0,0,8"
+          DockPanel.Dock="Top"
+          FontWeight="SemiBold"
+          Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+          Text="{Binding Total}"
+        />
+        <ListView ItemsSource="{Binding Rows}">
+          <ListView.View>
+            <GridView>
+              <GridViewColumn
+                Width="170"
+                DisplayMemberBinding="{Binding When}"
+                Header="{l:T History.Col.When}"
+              />
+              <GridViewColumn
+                Width="560"
+                DisplayMemberBinding="{Binding What}"
+                Header="{l:T History.Col.What}"
+              />
+            </GridView>
+          </ListView.View>
+        </ListView>
+      </DockPanel>
     </DataTemplate>
   </UserControl.Resources>
 

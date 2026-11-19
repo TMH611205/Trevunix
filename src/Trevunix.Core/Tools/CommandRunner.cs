@@ -75,6 +75,9 @@ public enum OutputEncoding
     /// <summary>The console code page; what DISM, netsh and ipconfig write.</summary>
     Oem,
 
+    /// <summary>winget, and PowerShell told to write UTF-8.</summary>
+    Utf8,
+
     /// <summary>UTF-16; what sfc.exe writes when redirected.</summary>
     Unicode,
 }
@@ -174,9 +177,12 @@ public static class CommandRunner
     }
 
     private static Encoding Resolve(OutputEncoding encoding) =>
-        encoding == OutputEncoding.Unicode
-            ? Encoding.Unicode
-            : Encoding.GetEncoding(CultureInfo.CurrentCulture.TextInfo.OEMCodePage);
+        encoding switch
+        {
+            OutputEncoding.Unicode => Encoding.Unicode,
+            OutputEncoding.Utf8 => new UTF8Encoding(false),
+            _ => Encoding.GetEncoding(CultureInfo.CurrentCulture.TextInfo.OEMCodePage),
+        };
 }
 
 public sealed record RepairCommand(
@@ -211,5 +217,47 @@ public static class RepairCatalog
         new("ResetWinsock", "netsh.exe", "winsock reset", OutputEncoding.Oem, NeedsReboot: true),
         new("ResetTcpIp", "netsh.exe", "int ip reset", OutputEncoding.Oem, NeedsReboot: true),
         new("ResetStore", "wsreset.exe", "", OutputEncoding.Oem),
+    ];
+
+    private const string Winget = "winget.exe";
+    private const string WingetCommon = "--accept-source-agreements --disable-interactivity";
+
+    /// <summary>App updates through winget, which ships with Windows 10 and 11.</summary>
+    public static IReadOnlyList<RepairCommand> AppUpdates { get; } =
+    [
+        new("WingetList", Winget, $"upgrade --include-unknown {WingetCommon}", OutputEncoding.Utf8),
+        new(
+            "WingetUpgradeAll",
+            Winget,
+            $"upgrade --all --silent --accept-package-agreements {WingetCommon}",
+            OutputEncoding.Utf8,
+            LongRunning: true
+        ),
+    ];
+
+    private const string PowerShellUtf8 =
+        "-NoProfile -NonInteractive -Command \"[Console]::OutputEncoding=[Text.Encoding]::UTF8; ";
+
+    /// <summary>Devices whose driver is missing or failing, and the installed third-party drivers.</summary>
+    public static IReadOnlyList<RepairCommand> Drivers { get; } =
+    [
+        new(
+            "DriverProblems",
+            "powershell.exe",
+            PowerShellUtf8
+                + "$d = Get-PnpDevice -PresentOnly | Where-Object Status -ne 'OK'; "
+                + "if ($d) { $d | Format-Table -AutoSize Status,Class,FriendlyName,InstanceId | Out-String -Width 300 } "
+                + "else { 'OK' }\"",
+            OutputEncoding.Utf8
+        ),
+        new(
+            "DriverList",
+            "powershell.exe",
+            PowerShellUtf8
+                + "Get-CimInstance Win32_PnPSignedDriver | Where-Object { $_.DriverProviderName -and $_.DriverProviderName -ne 'Microsoft' } "
+                + "| Sort-Object DriverDate | Format-Table -AutoSize DeviceName,DriverProviderName,DriverVersion,@{n='Date';e={if ($_.DriverDate) { $_.DriverDate.ToString('yyyy-MM-dd') }}} "
+                + "| Out-String -Width 300\"",
+            OutputEncoding.Utf8
+        ),
     ];
 }

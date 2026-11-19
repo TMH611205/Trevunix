@@ -146,6 +146,7 @@ public sealed partial class HomeViewModel : ObservableObject
             var purge = _main.Settings.PurgeStandbyCache;
             var memory = await Task.Run(() => MemoryCleaner.Clean(purge));
 
+            new ActivityLog().Add(HistoryKind.QuickOptimize, cleaned.FreedBytes);
             var result = Tr.Format(
                 "Quick.Result",
                 ByteSize.Format(cleaned.FreedBytes, Tr.Culture),

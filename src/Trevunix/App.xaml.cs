@@ -177,6 +177,7 @@ public partial class App : Application
                 AutoCleanSchedule.SaveRun(new AutoCleanRun(DateTime.Now, result.FreedBytes));
             }
             catch (IOException) { }
+            new ActivityLog().Add(HistoryKind.AutoClean, result.FreedBytes);
 
             if (result.FreedBytes >= 1024 * 1024)
             {

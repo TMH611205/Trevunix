@@ -1,5 +1,7 @@
 using System.Xml.Linq;
 using Trevunix.Core.Cleanup;
+using Trevunix.Core.Maintenance;
+using Trevunix.Core.Tools;
 using Trevunix.Core.Tweaks;
 
 namespace Trevunix.Core.Tests;
@@ -34,7 +36,14 @@ public class CatalogStringsTests
                 CleanupCatalog.All.SelectMany(t =>
                     new[] { $"Cleanup.Target.{t.Id}", $"Cleanup.Target.{t.Id}.Description" }
                 )
-            );
+            )
+            .Concat(
+                RepairCatalog
+                    .All.Concat(RepairCatalog.AppUpdates)
+                    .Concat(RepairCatalog.Drivers)
+                    .SelectMany(c => new[] { $"Repair.{c.Id}", $"Repair.{c.Id}.Description" })
+            )
+            .Concat(Enum.GetNames<HistoryKind>().Select(k => $"History.{k}"));
 
         Assert.Equal([], needed.Where(k => !keys.Contains(k)).ToArray());
     }

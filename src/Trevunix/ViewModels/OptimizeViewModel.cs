@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Trevunix.Core.Maintenance;
 using Trevunix.Core.Tweaks;
 using Trevunix.Localization;
 using Trevunix.Services;
@@ -342,6 +343,8 @@ public sealed partial class OptimizeViewModel : ObservableObject
         try
         {
             var outcome = await Task.Run(() => _engine.Apply(item.Tweak));
+            if (outcome.Success)
+                new ActivityLog().Add(HistoryKind.TweakApplied, detail: item.Tweak.Id);
             item.Error = outcome.Success
                 ? ""
                 : Tr.Format("Optimize.Failed", string.Join("; ", outcome.Errors.Distinct()));
@@ -368,6 +371,8 @@ public sealed partial class OptimizeViewModel : ObservableObject
         try
         {
             var outcome = await Task.Run(() => _engine.Undo(item.Tweak));
+            if (outcome.Success)
+                new ActivityLog().Add(HistoryKind.TweakUndone, detail: item.Tweak.Id);
             item.Error = outcome.Success
                 ? ""
                 : Tr.Format("Optimize.Failed", string.Join("; ", outcome.Errors.Distinct()));

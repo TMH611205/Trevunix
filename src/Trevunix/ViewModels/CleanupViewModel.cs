@@ -4,6 +4,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Trevunix.Core.Cleanup;
 using Trevunix.Core.Common;
+using Trevunix.Core.Maintenance;
 using Trevunix.Localization;
 using Trevunix.Services;
 
@@ -150,6 +151,7 @@ public sealed partial class CleanupViewModel : ObservableObject
             IsBusy = false;
         }
 
+        new ActivityLog().Add(HistoryKind.Cleanup, outcome.FreedBytes);
         var freed = ByteSize.Format(outcome.FreedBytes, Tr.Culture);
         var files = outcome.DeletedFiles.ToString("N0", Tr.Culture);
         Result =
