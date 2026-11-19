@@ -2332,4 +2332,55 @@ CPU {0}% · RAM {1}%</value>
   <data name="Notice.Drivers" xml:space="preserve">
     <value>{0} devices have driver problems. Open Tools &gt; Drivers in Trevunix.</value>
   </data>
+  <data name="Programs.Sort.Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Programs.Sort.Size" xml:space="preserve">
+    <value>Largest first</value>
+  </data>
+  <data name="Programs.Sort.Date" xml:space="preserve">
+    <value>Newest first</value>
+  </data>
+  <data name="Programs.Sort.Publisher" xml:space="preserve">
+    <value>Publisher</value>
+  </data>
+  <data name="Programs.SortBy" xml:space="preserve">
+    <value>Sort by</value>
+  </data>
+  <data name="Programs.Export" xml:space="preserve">
+    <value>Export list</value>
+  </data>
+  <data name="Programs.Exported" xml:space="preserve">
+    <value>Saved the program list to {0}.</value>
+  </data>
+  <data name="Programs.UninstallChecked" xml:space="preserve">
+    <value>Uninstall ticked ({0})</value>
+  </data>
+  <data name="Programs.ConfirmBatch" xml:space="preserve">
+    <value>Uninstall these {0} programs one after another? Each one's own uninstaller opens in turn; Trevunix then looks for what they all left behind.{1}</value>
+  </data>
+  <data name="Programs.BatchName" xml:space="preserve">
+    <value>{0} programs</value>
+  </data>
+  <data name="Programs.RunningBatch" xml:space="preserve">
+    <value>Uninstalling {0} of {1}: {2}. Finish its uninstaller to continue.</value>
+  </data>
+  <data name="Programs.NoUninstallerFor" xml:space="preserve">
+    <value>No uninstaller found for: {0}. Use Force uninstall for these.</value>
+  </data>
+  <data name="AppsPage.Tab.Autoruns" xml:space="preserve">
+    <value>Tasks and services</value>
+  </data>
+  <data name="Autoruns.Hint" xml:space="preserve">
+    <value>Scheduled tasks and services that other programs add, besides the startup list. Microsoft's own are not shown. Turning a task off disables it; turning a service off makes it start only when a program needs it. Both can be turned back on here.</value>
+  </data>
+  <data name="Autoruns.Tasks" xml:space="preserve">
+    <value>Scheduled tasks</value>
+  </data>
+  <data name="Autoruns.Services" xml:space="preserve">
+    <value>Services that start with Windows</value>
+  </data>
+  <data name="Autoruns.Summary" xml:space="preserve">
+    <value>{0} tasks, {1} services</value>
+  </data>
 </root>

@@ -11,10 +11,14 @@ using Trevunix.Services;
 
 namespace Trevunix.ViewModels;
 
-public sealed class ProgramItem(InstalledProgram program)
+public sealed partial class ProgramItem(InstalledProgram program) : ObservableObject
 {
     public InstalledProgram Program { get; } = program;
     public string Name => Program.DisplayName;
+
+    /// <summary>Ticked for uninstalling several programs in one go.</summary>
+    [ObservableProperty]
+    private bool _isChecked;
     public ImageSource? Icon => IconService.ForFile(Program.IconPath);
 
     public string Details =>
@@ -73,9 +77,20 @@ public sealed partial class ProgramsViewModel : ObservableObject
     private readonly RestorePointGuard _restorePoints;
     private IReadOnlyList<InstalledProgram> _all = [];
 
+    /// <summary>The programs of a batch uninstall; leftovers are looked for across all of them.</summary>
+    private List<InstalledProgram>? _batch;
+
     public ProgramsViewModel(RestorePointGuard restorePoints)
     {
         _restorePoints = restorePoints;
+        SortChoices =
+        [
+            .. new[] { "Name", "Size", "Date", "Publisher" }.Select(k => new Choice<string>(
+                k,
+                Tr.Get($"Programs.Sort.{k}")
+            )),
+        ];
+        _sortBy = SortChoices[0];
         View = CollectionViewSource.GetDefaultView(Items);
         View.Filter = o =>
             o is ProgramItem item
@@ -96,6 +111,41 @@ public sealed partial class ProgramsViewModel : ObservableObject
     public ICollectionView View { get; }
     public ObservableCollection<LeftoverItem> LeftoverItems { get; } = [];
 
+    public IReadOnlyList<Choice<string>> SortChoices { get; }
+
+    [ObservableProperty]
+    private Choice<string> _sortBy;
+
+    partial void OnSortByChanged(Choice<string> value)
+    {
+        View.SortDescriptions.Clear();
+        View.SortDescriptions.Add(
+            value.Value switch
+            {
+                "Size" => new SortDescription("Program.SizeBytes", ListSortDirection.Descending),
+                "Date" => new SortDescription("Program.InstalledOn", ListSortDirection.Descending),
+                "Publisher" => new SortDescription(
+                    "Program.Publisher",
+                    ListSortDirection.Ascending
+                ),
+                _ => new SortDescription("Name", ListSortDirection.Ascending),
+            }
+        );
+    }
+
+    public int CheckedCount => Items.Count(i => i.IsChecked);
+
+    public string UninstallCheckedText => Tr.Format("Programs.UninstallChecked", CheckedCount);
+
+    private void OnItemChanged(object? sender, PropertyChangedEventArgs e)
+    {
+        if (e.PropertyName != nameof(ProgramItem.IsChecked))
+            return;
+        OnPropertyChanged(nameof(CheckedCount));
+        OnPropertyChanged(nameof(UninstallCheckedText));
+        UninstallCheckedCommand.NotifyCanExecuteChanged();
+    }
+
     [ObservableProperty]
     private string _search = "";
 
@@ -109,7 +159,8 @@ public sealed partial class ProgramsViewModel : ObservableObject
         nameof(UninstallCommand),
         nameof(ScanLeftoversCommand),
         nameof(RemoveLeftoversCommand),
-        nameof(ForceUninstallCommand)
+        nameof(ForceUninstallCommand),
+        nameof(UninstallCheckedCommand)
     )]
     private bool _isBusy;
 
@@ -156,10 +207,17 @@ public sealed partial class ProgramsViewModel : ObservableObject
         try
         {
             _all = await Task.Run(InstalledPrograms.List);
+            foreach (var old in Items)
+                old.PropertyChanged -= OnItemChanged;
             Items.Clear();
             foreach (var program in _all)
-                Items.Add(new ProgramItem(program));
+            {
+                var item = new ProgramItem(program);
+                item.PropertyChanged += OnItemChanged;
+                Items.Add(item);
+            }
             OnPropertyChanged(nameof(Summary));
+            OnItemChanged(null, new PropertyChangedEventArgs(nameof(ProgramItem.IsChecked)));
         }
         finally
         {
@@ -201,6 +259,98 @@ public sealed partial class ProgramsViewModel : ObservableObject
             IsBusy = false;
         }
 
+        await ScanLeftoversAsync();
+        if (!StillInstalled)
+            await LoadAsync();
+    }
+
+    [RelayCommand]
+    private async Task ExportAsync()
+    {
+        var dialog = new Microsoft.Win32.SaveFileDialog
+        {
+            FileName = $"Programs-{Environment.MachineName}-{DateTime.Now:yyyyMMdd}.csv",
+            Filter = "CSV|*.csv",
+        };
+        if (dialog.ShowDialog() != true)
+            return;
+        try
+        {
+            // With a BOM, Excel opens it as UTF-8 and Vietnamese names stay readable.
+            await System.IO.File.WriteAllTextAsync(
+                dialog.FileName,
+                ProgramListExport.ToCsv(_all.Where(p => ShowHidden || !p.IsHidden)),
+                new System.Text.UTF8Encoding(true)
+            );
+            Result = Tr.Format("Programs.Exported", dialog.FileName);
+        }
+        catch (Exception ex) when (ex is System.IO.IOException or UnauthorizedAccessException)
+        {
+            Result = ex.Message;
+        }
+    }
+
+    private bool CanUninstallChecked => !IsBusy && CheckedCount > 0;
+
+    /// <summary>
+    ///     Runs the uninstallers of all ticked programs one after another (each waits for the
+    ///     previous one), then shows the leftovers of all of them together for review.
+    /// </summary>
+    [RelayCommand(CanExecute = nameof(CanUninstallChecked))]
+    private async Task UninstallCheckedAsync()
+    {
+        var chosen = Items.Where(i => i.IsChecked).ToList();
+        var confirmed = await Dialogs.ConfirmAsync(
+            Tr.Get("Programs.Confirm.Title"),
+            Tr.Format(
+                "Programs.ConfirmBatch",
+                chosen.Count,
+                string.Join(Environment.NewLine, chosen.Select(i => "• " + i.Name))
+            ),
+            Tr.Get("Programs.Uninstall")
+        );
+        if (!confirmed)
+            return;
+
+        var batch = new ProgramItem(
+            new InstalledProgram(
+                Tr.Format("Programs.BatchName", chosen.Count),
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                0,
+                null,
+                Microsoft.Win32.RegistryHive.CurrentUser,
+                Microsoft.Win32.RegistryView.Registry64,
+                ""
+            )
+        );
+        if (!await BeginAsync(batch))
+            return;
+
+        IsBusy = true;
+        var missing = new List<string>();
+        try
+        {
+            for (var i = 0; i < chosen.Count; i++)
+            {
+                Status = Tr.Format("Programs.RunningBatch", i + 1, chosen.Count, chosen[i].Name);
+                if (await InstalledPrograms.RunUninstallerAsync(chosen[i].Program) is null)
+                    missing.Add(chosen[i].Name);
+            }
+        }
+        finally
+        {
+            Status = "";
+            IsBusy = false;
+        }
+        if (missing.Count > 0)
+            Result = Tr.Format("Programs.NoUninstallerFor", string.Join(", ", missing));
+
+        _batch = [.. chosen.Select(c => c.Program)];
         await ScanLeftoversAsync();
         if (!StillInstalled)
             await LoadAsync();
@@ -292,11 +442,25 @@ public sealed partial class ProgramsViewModel : ObservableObject
         Status = Tr.Get("Programs.Scanning");
         try
         {
-            var program = item.Program;
+            IReadOnlyList<InstalledProgram> programs = _batch ?? [item.Program];
             var all = _all;
             var (found, still) = await Task.Run(() =>
-                (_leftovers.Find(program, all), InstalledPrograms.IsStillInstalled(program))
-            );
+            {
+                var left = new List<Leftover>();
+                var anyStill = false;
+                foreach (var program in programs)
+                {
+                    // A program whose uninstaller was cancelled keeps its files; skip it.
+                    if (InstalledPrograms.IsStillInstalled(program) && _batch is not null)
+                    {
+                        anyStill = true;
+                        continue;
+                    }
+                    anyStill |= InstalledPrograms.IsStillInstalled(program);
+                    left.AddRange(_leftovers.Find(program, all));
+                }
+                return (left.DistinctBy(l => (l.Kind, l.Path, l.Detail)).ToList(), anyStill);
+            });
             StillInstalled = still;
             LeftoverItems.Clear();
             foreach (var leftover in found)
@@ -343,6 +507,7 @@ public sealed partial class ProgramsViewModel : ObservableObject
     [RelayCommand]
     private void Close()
     {
+        _batch = null;
         Current = null;
         StillInstalled = false;
         LeftoverItems.Clear();

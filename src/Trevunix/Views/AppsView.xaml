@@ -66,6 +66,33 @@
                 Text="{Binding Search, UpdateSourceTrigger=PropertyChanged}"
               />
             </DockPanel>
+            <WrapPanel Margin="0,8,0,0">
+              <TextBlock
+                Margin="0,0,8,0"
+                VerticalAlignment="Center"
+                Style="{StaticResource Muted}"
+                Text="{l:T Programs.SortBy}"
+              />
+              <ComboBox
+                MinWidth="150"
+                DisplayMemberPath="Name"
+                ItemsSource="{Binding SortChoices}"
+                SelectedItem="{Binding SortBy}"
+              />
+              <ui:Button
+                Margin="8,0,0,0"
+                Command="{Binding ExportCommand}"
+                Content="{l:T Programs.Export}"
+                Icon="{ui:SymbolIcon ArrowDownload24}"
+              />
+              <ui:Button
+                Margin="8,0,0,0"
+                Appearance="Danger"
+                Command="{Binding UninstallCheckedCommand}"
+                Content="{Binding UninstallCheckedText}"
+                Icon="{ui:SymbolIcon Delete24}"
+              />
+            </WrapPanel>
 
             <StackPanel
               Margin="0,10,0,0"
@@ -169,6 +196,13 @@
                 <DataTemplate>
                   <Border Margin="0,0,0,6" Padding="14,10" Style="{StaticResource Panel}">
                     <DockPanel>
+                      <CheckBox
+                        MinWidth="0"
+                        Margin="0,0,8,0"
+                        VerticalAlignment="Center"
+                        DockPanel.Dock="Left"
+                        IsChecked="{Binding IsChecked}"
+                      />
                       <Grid Width="32" Height="32" VerticalAlignment="Center" DockPanel.Dock="Left">
                         <ui:SymbolIcon
                           FontSize="24"
@@ -457,6 +491,119 @@
             </ItemsControl>
           </ScrollViewer>
         </Grid>
+      </TabItem>
+
+      <!-- Scheduled tasks and services -->
+      <TabItem DataContext="{Binding Autoruns}" Header="{l:T AppsPage.Tab.Autoruns}">
+        <DockPanel Margin="0,12,0,0">
+          <DockPanel Margin="0,0,0,10" DockPanel.Dock="Top">
+            <ui:Button
+              Command="{Binding RefreshCommand}"
+              Content="{l:T Programs.Refresh}"
+              DockPanel.Dock="Left"
+              Icon="{ui:SymbolIcon ArrowClockwise24}"
+            />
+            <ui:ProgressRing
+              Width="18"
+              Height="18"
+              Margin="12,0,0,0"
+              DockPanel.Dock="Left"
+              IsIndeterminate="True"
+              Visibility="{Binding IsLoading, Converter={StaticResource VisibleWhen}}"
+            />
+            <TextBlock
+              Margin="12,0,0,0"
+              VerticalAlignment="Center"
+              Style="{StaticResource Muted}"
+              Text="{Binding Status}"
+            />
+          </DockPanel>
+          <TextBlock
+            Margin="0,0,0,10"
+            DockPanel.Dock="Top"
+            Style="{StaticResource Muted}"
+            Text="{l:T Autoruns.Hint}"
+            TextWrapping="Wrap"
+          />
+          <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+              <TextBlock
+                Margin="0,0,0,8"
+                FontSize="16"
+                FontWeight="SemiBold"
+                Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                Text="{l:T Autoruns.Tasks}"
+              />
+              <ItemsControl ItemsSource="{Binding Tasks}">
+                <ItemsControl.ItemTemplate>
+                  <DataTemplate>
+                    <Border Margin="0,0,0,6" Padding="14,8" Style="{StaticResource Panel}">
+                      <DockPanel>
+                        <ui:ToggleSwitch DockPanel.Dock="Right" IsChecked="{Binding IsOn}" />
+                        <StackPanel Margin="0,0,12,0">
+                          <TextBlock
+                            FontWeight="SemiBold"
+                            Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                            Text="{Binding Name}"
+                          />
+                          <TextBlock
+                            FontSize="11"
+                            Style="{StaticResource Muted}"
+                            Text="{Binding Detail}"
+                            TextTrimming="CharacterEllipsis"
+                          />
+                          <TextBlock
+                            Foreground="{DynamicResource SystemFillColorCriticalBrush}"
+                            Text="{Binding Error}"
+                            TextWrapping="Wrap"
+                            Visibility="{Binding Error, Converter={StaticResource VisibleWhen}}"
+                          />
+                        </StackPanel>
+                      </DockPanel>
+                    </Border>
+                  </DataTemplate>
+                </ItemsControl.ItemTemplate>
+              </ItemsControl>
+              <TextBlock
+                Margin="0,12,0,8"
+                FontSize="16"
+                FontWeight="SemiBold"
+                Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                Text="{l:T Autoruns.Services}"
+              />
+              <ItemsControl ItemsSource="{Binding Services}">
+                <ItemsControl.ItemTemplate>
+                  <DataTemplate>
+                    <Border Margin="0,0,0,6" Padding="14,8" Style="{StaticResource Panel}">
+                      <DockPanel>
+                        <ui:ToggleSwitch DockPanel.Dock="Right" IsChecked="{Binding IsOn}" />
+                        <StackPanel Margin="0,0,12,0">
+                          <TextBlock
+                            FontWeight="SemiBold"
+                            Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                            Text="{Binding Name}"
+                          />
+                          <TextBlock
+                            FontSize="11"
+                            Style="{StaticResource Muted}"
+                            Text="{Binding Detail}"
+                            TextTrimming="CharacterEllipsis"
+                          />
+                          <TextBlock
+                            Foreground="{DynamicResource SystemFillColorCriticalBrush}"
+                            Text="{Binding Error}"
+                            TextWrapping="Wrap"
+                            Visibility="{Binding Error, Converter={StaticResource VisibleWhen}}"
+                          />
+                        </StackPanel>
+                      </DockPanel>
+                    </Border>
+                  </DataTemplate>
+                </ItemsControl.ItemTemplate>
+              </ItemsControl>
+            </StackPanel>
+          </ScrollViewer>
+        </DockPanel>
       </TabItem>
 
       <!-- Preinstalled apps -->

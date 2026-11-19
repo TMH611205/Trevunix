@@ -74,11 +74,14 @@ public sealed partial class AppsViewModel : ObservableObject
         StoreView.Filter = FilterApp;
         LoadStartup();
         Programs.OnShown();
+        _ = Autoruns.RefreshAsync();
     }
 
     public ProgramsViewModel Programs { get; }
 
     public BrowserExtensionsViewModel Extensions { get; } = new();
+
+    public AutorunsViewModel Autoruns { get; } = new();
 
     public ObservableCollection<StartupItem> StartupItems { get; } = [];
     public ObservableCollection<StoreAppItem> StoreItems { get; } = [];

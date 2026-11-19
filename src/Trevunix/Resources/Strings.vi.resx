@@ -2332,4 +2332,55 @@ CPU {0}% · RAM {1}%</value>
   <data name="Notice.Drivers" xml:space="preserve">
     <value>{0} thiết bị bị lỗi driver. Mở Công cụ &gt; Driver trong Trevunix.</value>
   </data>
+  <data name="Programs.Sort.Name" xml:space="preserve">
+    <value>Tên</value>
+  </data>
+  <data name="Programs.Sort.Size" xml:space="preserve">
+    <value>Dung lượng lớn nhất</value>
+  </data>
+  <data name="Programs.Sort.Date" xml:space="preserve">
+    <value>Cài gần đây nhất</value>
+  </data>
+  <data name="Programs.Sort.Publisher" xml:space="preserve">
+    <value>Nhà phát hành</value>
+  </data>
+  <data name="Programs.SortBy" xml:space="preserve">
+    <value>Sắp xếp theo</value>
+  </data>
+  <data name="Programs.Export" xml:space="preserve">
+    <value>Xuất danh sách</value>
+  </data>
+  <data name="Programs.Exported" xml:space="preserve">
+    <value>Đã lưu danh sách chương trình vào {0}.</value>
+  </data>
+  <data name="Programs.UninstallChecked" xml:space="preserve">
+    <value>Gỡ các mục đã chọn ({0})</value>
+  </data>
+  <data name="Programs.ConfirmBatch" xml:space="preserve">
+    <value>Gỡ lần lượt {0} chương trình này? Trình gỡ cài đặt của từng chương trình sẽ mở lần lượt; sau đó Trevunix tìm những gì chúng còn để lại.{1}</value>
+  </data>
+  <data name="Programs.BatchName" xml:space="preserve">
+    <value>{0} chương trình</value>
+  </data>
+  <data name="Programs.RunningBatch" xml:space="preserve">
+    <value>Đang gỡ {0}/{1}: {2}. Hoàn tất trình gỡ cài đặt để tiếp tục.</value>
+  </data>
+  <data name="Programs.NoUninstallerFor" xml:space="preserve">
+    <value>Không tìm thấy trình gỡ cài đặt cho: {0}. Hãy dùng Gỡ cưỡng bức cho các chương trình này.</value>
+  </data>
+  <data name="AppsPage.Tab.Autoruns" xml:space="preserve">
+    <value>Tác vụ và dịch vụ</value>
+  </data>
+  <data name="Autoruns.Hint" xml:space="preserve">
+    <value>Tác vụ theo lịch và dịch vụ do chương trình khác thêm vào, ngoài danh sách khởi động. Mục của Microsoft không được hiển thị. Tắt một tác vụ sẽ vô hiệu hoá nó; tắt một dịch vụ sẽ khiến nó chỉ chạy khi có chương trình cần. Có thể bật lại ngay tại đây.</value>
+  </data>
+  <data name="Autoruns.Tasks" xml:space="preserve">
+    <value>Tác vụ theo lịch</value>
+  </data>
+  <data name="Autoruns.Services" xml:space="preserve">
+    <value>Dịch vụ chạy cùng Windows</value>
+  </data>
+  <data name="Autoruns.Summary" xml:space="preserve">
+    <value>{0} tác vụ, {1} dịch vụ</value>
+  </data>
 </root>
