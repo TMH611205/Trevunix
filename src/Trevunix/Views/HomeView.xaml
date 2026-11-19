@@ -58,6 +58,44 @@
         </DockPanel>
       </Border>
 
+      <!-- Apps with updates; clicking opens Tools > App updates -->
+      <Border
+        Margin="0,8,0,0"
+        Style="{StaticResource Panel}"
+        Visibility="{Binding HasAppUpdates, Converter={StaticResource VisibleWhen}}"
+      >
+        <DockPanel>
+          <ui:Button
+            Margin="12,0,0,0"
+            VerticalAlignment="Center"
+            Appearance="Primary"
+            Command="{Binding OpenAppUpdatesCommand}"
+            Content="{l:T Home.AppUpdates.Open}"
+            DockPanel.Dock="Right"
+            Icon="{ui:SymbolIcon ArrowRight24}"
+          />
+          <ui:SymbolIcon
+            Margin="0,0,12,0"
+            VerticalAlignment="Center"
+            DockPanel.Dock="Left"
+            FontSize="24"
+            Symbol="ArrowSync24"
+          />
+          <StackPanel VerticalAlignment="Center">
+            <TextBlock
+              FontWeight="SemiBold"
+              Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+              Text="{Binding AppUpdatesTitle}"
+            />
+            <TextBlock
+              Style="{StaticResource Muted}"
+              Text="{Binding AppUpdatesNames}"
+              TextWrapping="Wrap"
+            />
+          </StackPanel>
+        </DockPanel>
+      </Border>
+
       <!-- Health alerts -->
       <ItemsControl Margin="0,16,0,0" ItemsSource="{Binding Alerts}">
         <ItemsControl.ItemTemplate>

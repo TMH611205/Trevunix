@@ -59,6 +59,30 @@ public sealed partial class HomeViewModel : ObservableObject
         _uptimeTimer.Start();
         _ = LoadHardwareAsync();
         _ = LoadScoreAsync();
+        _main.AppUpdatesChanged += () =>
+        {
+            OnPropertyChanged(nameof(HasAppUpdates));
+            OnPropertyChanged(nameof(AppUpdatesTitle));
+            OnPropertyChanged(nameof(AppUpdatesNames));
+            _ = LoadScoreAsync();
+        };
+    }
+
+    private const int NamesShown = 6;
+
+    public bool HasAppUpdates => _main.AppUpdates.Count > 0;
+
+    public string AppUpdatesTitle => Tr.Format("Home.AppUpdates", _main.AppUpdates.Count);
+
+    /// <summary>"7-Zip, WinRAR and 3 more": enough to know what is waiting without a long list.</summary>
+    public string AppUpdatesNames
+    {
+        get
+        {
+            var names = string.Join(", ", _main.AppUpdates.Take(NamesShown).Select(u => u.Name));
+            var more = _main.AppUpdates.Count - NamesShown;
+            return more > 0 ? Tr.Format("Home.AppUpdates.More", names, more) : names;
+        }
     }
 
     [ObservableProperty]
@@ -95,7 +119,7 @@ public sealed partial class HomeViewModel : ObservableObject
                 _main.Health.Disks.Count == 0 ? null : failing,
                 QuickMaintenance.PendingTweaks(new TweakEngine()).Count,
                 Core.Monitoring.HealthScore.CountDriverProblems(),
-                _main.Settings.KnownAppUpdates,
+                _main.AppUpdates.Count,
                 heavy
             );
         });
@@ -111,6 +135,9 @@ public sealed partial class HomeViewModel : ObservableObject
     }
 
     public MachineInfo Machine { get; }
+
+    [RelayCommand]
+    private void OpenAppUpdates() => _main.OpenAppUpdates();
 
     /// <summary>Problems found right now: a nearly full drive, a failing disk, high temperature.</summary>
     public ObservableCollection<string> Alerts => _main.Health.Active;

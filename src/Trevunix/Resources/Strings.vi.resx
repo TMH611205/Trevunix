@@ -2383,4 +2383,13 @@ CPU {0}% · RAM {1}%</value>
   <data name="Autoruns.Summary" xml:space="preserve">
     <value>{0} tác vụ, {1} dịch vụ</value>
   </data>
+  <data name="Home.AppUpdates" xml:space="preserve">
+    <value>{0} ứng dụng có bản cập nhật</value>
+  </data>
+  <data name="Home.AppUpdates.More" xml:space="preserve">
+    <value>{0} và {1} ứng dụng khác</value>
+  </data>
+  <data name="Home.AppUpdates.Open" xml:space="preserve">
+    <value>Xem bản cập nhật</value>
+  </data>
 </root>

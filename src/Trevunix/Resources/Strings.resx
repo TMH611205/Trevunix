@@ -2383,4 +2383,13 @@ CPU {0}% · RAM {1}%</value>
   <data name="Autoruns.Summary" xml:space="preserve">
     <value>{0} tasks, {1} services</value>
   </data>
+  <data name="Home.AppUpdates" xml:space="preserve">
+    <value>{0} apps have updates</value>
+  </data>
+  <data name="Home.AppUpdates.More" xml:space="preserve">
+    <value>{0} and {1} more</value>
+  </data>
+  <data name="Home.AppUpdates.Open" xml:space="preserve">
+    <value>View updates</value>
+  </data>
 </root>

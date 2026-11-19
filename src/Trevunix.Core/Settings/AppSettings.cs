@@ -52,8 +52,8 @@ public sealed class AppSettings
 
     public DateTime? LastNoticeCheck { get; set; }
 
-    /// <summary>App updates found by the last daily check; part of the home page score.</summary>
-    public int? KnownAppUpdates { get; set; }
+    /// <summary>App updates found by the last check, shown on the home page.</summary>
+    public List<Monitoring.AppUpdate>? AppUpdates { get; set; }
 }
 
 public static class AppPaths

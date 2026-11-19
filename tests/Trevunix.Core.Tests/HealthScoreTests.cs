@@ -44,17 +44,28 @@ public class HealthScoreTests
         Assert.Equal(0, HealthScore.Compute(new HealthInputs(1, 5, 50, 9, 99, 20)).Score);
 
     [Fact]
-    public void ParseWingetUpgrades_CountsRowsInAnyLanguage()
+    public void ParseWingetUpgrades_ReadsRowsInAnyLanguage()
     {
         const string output = """
             Tên                Id                  Phiên bản  Có sẵn     Nguồn
             ------------------------------------------------------------------
-            7-Zip              7zip.7zip           24.07      24.09      winget
+            7-Zip 24.07 (x64)  7zip.7zip           24.07      24.09      winget
             Spotify            9NCBCSZSJRSB        1.2        1.3        msstore
-            Có 2 bản nâng cấp.
+            Old Tool           Vendor.OldTool      < 2.0      2.5        winget
+            Có 3 bản nâng cấp.
             """;
-        Assert.Equal(2, HealthScore.ParseWingetUpgrades(output));
-        Assert.Equal(0, HealthScore.ParseWingetUpgrades("No installed package found."));
+
+        var updates = HealthScore.ParseWingetUpgrades(output);
+
+        Assert.Equal(
+            [
+                new AppUpdate("7-Zip 24.07 (x64)", "7zip.7zip", "24.07", "24.09"),
+                new AppUpdate("Spotify", "9NCBCSZSJRSB", "1.2", "1.3"),
+                new AppUpdate("Old Tool", "Vendor.OldTool", "< 2.0", "2.5"),
+            ],
+            updates
+        );
+        Assert.Empty(HealthScore.ParseWingetUpgrades("No installed package found."));
     }
 
     [Fact]

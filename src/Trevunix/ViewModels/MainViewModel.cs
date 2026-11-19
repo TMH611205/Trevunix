@@ -60,6 +60,7 @@ public sealed partial class MainViewModel : ObservableObject
             () => new SettingsViewModel(settings, store)
         );
 
+        AppUpdates = new(settings.AppUpdates ?? []);
         _selected = Items[0];
     }
 
@@ -96,6 +97,33 @@ public sealed partial class MainViewModel : ObservableObject
                 _ = optimize.RefreshAsync();
             else if (item.Page is CleanupViewModel cleanup && cleanup.ScanCommand.CanExecute(null))
                 cleanup.ScanCommand.Execute(null);
+        }
+    }
+
+    /// <summary>Apps with a newer version, from the last check; the home page lists them.</summary>
+    public ObservableCollection<Core.Monitoring.AppUpdate> AppUpdates { get; }
+
+    public void SetAppUpdates(IReadOnlyList<Core.Monitoring.AppUpdate> updates)
+    {
+        AppUpdates.Clear();
+        foreach (var update in updates)
+            AppUpdates.Add(update);
+        AppUpdatesChanged?.Invoke();
+    }
+
+    public event Action? AppUpdatesChanged;
+
+    /// <summary>Tools > App updates, listing the updates right away.</summary>
+    public void OpenAppUpdates()
+    {
+        var item = Items.First(i => i.Title == Tr.Get("Nav.Tools"));
+        Selected = item;
+        if (item.Page is SystemToolsViewModel tools)
+        {
+            tools.Selected = tools.AppUpdates;
+            var list = tools.AppUpdates.Items[0];
+            if (tools.AppUpdates.RunCommand.CanExecute(list))
+                tools.AppUpdates.RunCommand.Execute(list);
         }
     }
 

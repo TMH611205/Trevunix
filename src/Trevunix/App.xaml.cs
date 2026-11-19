@@ -84,6 +84,7 @@ public partial class App : Application
             _store,
             (title, message) => _tray.Notify(title, message)
         );
+        _background.AppUpdatesFound += _main.SetAppUpdates;
         _main.Health.Raised += (title, message) =>
         {
             if (_settings.HealthAlerts)

@@ -66,7 +66,7 @@ public static class HealthScore
         ).Count;
 
     /// <summary>Apps winget can update, or null when winget is missing or failed.</summary>
-    public static int? CountAppUpdates()
+    public static IReadOnlyList<AppUpdate>? ListAppUpdates()
     {
         var (code, output) = CommandRunner.Run(
             "winget.exe",
@@ -80,14 +80,42 @@ public static class HealthScore
 
     /// <summary>
     ///     Rows of the winget upgrade table. Headers and footers are translated, but every row
-    ///     ends with its source name, which is not.
+    ///     ends with its source name, which is not. Read from the right, the columns before it
+    ///     are the available version, the installed version and the id; the rest is the name.
     /// </summary>
-    internal static int ParseWingetUpgrades(string output) =>
-        output
-            .Split('\n')
-            .Select(l => l.TrimEnd())
-            .Count(l =>
-                l.EndsWith(" winget", StringComparison.Ordinal)
-                || l.EndsWith(" msstore", StringComparison.Ordinal)
+    internal static IReadOnlyList<AppUpdate> ParseWingetUpgrades(string output)
+    {
+        var updates = new List<AppUpdate>();
+        foreach (var raw in output.Split('\n'))
+        {
+            var line = raw.TrimEnd();
+            if (
+                !line.EndsWith(" winget", StringComparison.Ordinal)
+                && !line.EndsWith(" msstore", StringComparison.Ordinal)
+            )
+                continue;
+
+            var parts = line.Split(' ', StringSplitOptions.RemoveEmptyEntries).ToList();
+            if (parts.Count < 5)
+                continue;
+            var available = parts[^2];
+            var version = parts[^3];
+            var idAt = parts.Count - 4;
+            // Unknown versions show as "< 1.2" or "> 1.2", which is two words.
+            if (idAt > 0 && parts[idAt] is "<" or ">")
+            {
+                version = parts[idAt] + " " + version;
+                idAt--;
+            }
+            if (idAt < 1)
+                continue;
+            updates.Add(
+                new AppUpdate(string.Join(' ', parts[..idAt]), parts[idAt], version, available)
             );
+        }
+        return updates;
+    }
 }
+
+/// <summary>One app winget can update.</summary>
+public sealed record AppUpdate(string Name, string Id, string Version, string Available);
