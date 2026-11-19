@@ -921,6 +921,242 @@
         </ScrollViewer>
       </DockPanel>
     </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:WindowsUpdateViewModel}">
+      <StackPanel>
+        <TextBlock
+          Margin="0,0,0,12"
+          FontWeight="SemiBold"
+          Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+          Text="{Binding Status}"
+        />
+        <StackPanel Orientation="Horizontal">
+          <ui:Button
+            Command="{Binding PauseCommand}"
+            CommandParameter="7"
+            Content="{l:T WindowsUpdate.Pause7}"
+            Icon="{ui:SymbolIcon Pause24}"
+          />
+          <ui:Button
+            Margin="8,0,0,0"
+            Command="{Binding PauseCommand}"
+            CommandParameter="35"
+            Content="{l:T WindowsUpdate.Pause35}"
+            Icon="{ui:SymbolIcon Pause24}"
+          />
+          <ui:Button
+            Margin="8,0,0,0"
+            Command="{Binding ResumeCommand}"
+            Content="{l:T WindowsUpdate.Resume}"
+            Icon="{ui:SymbolIcon Play24}"
+          />
+          <ui:Button
+            Margin="8,0,0,0"
+            Command="{Binding OpenSettingsCommand}"
+            Content="{l:T WindowsUpdate.OpenSettings}"
+            Icon="{ui:SymbolIcon Open24}"
+          />
+        </StackPanel>
+        <TextBlock
+          Margin="0,12,0,0"
+          Style="{StaticResource Muted}"
+          Text="{l:T WindowsUpdate.Hint}"
+          TextWrapping="Wrap"
+        />
+      </StackPanel>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:RestorePointsViewModel}">
+      <DockPanel>
+        <StackPanel Margin="0,0,0,8" DockPanel.Dock="Top" Orientation="Horizontal">
+          <ui:Button
+            Appearance="Primary"
+            Command="{Binding CreateCommand}"
+            Content="{l:T RestorePoints.Create}"
+            Icon="{ui:SymbolIcon Add24}"
+          />
+          <ui:Button
+            Margin="8,0,0,0"
+            Command="{Binding DeleteCommand}"
+            Content="{l:T RestorePoints.Delete}"
+            Icon="{ui:SymbolIcon Delete24}"
+          />
+          <ui:Button
+            Margin="8,0,0,0"
+            Command="{Binding OpenSystemRestoreCommand}"
+            Content="{l:T RestorePoints.Restore}"
+            Icon="{ui:SymbolIcon ArrowUndo24}"
+          />
+          <ui:ProgressRing
+            Width="18"
+            Height="18"
+            Margin="12,0,0,0"
+            IsIndeterminate="True"
+            Visibility="{Binding IsBusy, Converter={StaticResource VisibleWhen}}"
+          />
+        </StackPanel>
+        <StackPanel Margin="0,0,0,8" DockPanel.Dock="Top" Orientation="Horizontal">
+          <TextBlock
+            VerticalAlignment="Center"
+            Style="{StaticResource Muted}"
+            Text="{l:T RestorePoints.MaxSize}"
+          />
+          <ComboBox
+            Width="90"
+            Margin="8,0,0,0"
+            ItemStringFormat="{}{0}%"
+            ItemsSource="{Binding SizeChoices}"
+            SelectedItem="{Binding MaxPercent}"
+          />
+          <ui:Button
+            Margin="8,0,0,0"
+            Command="{Binding ApplySizeCommand}"
+            Content="{l:T RestorePoints.ApplySize}"
+          />
+        </StackPanel>
+        <TextBlock
+          Margin="0,0,0,8"
+          DockPanel.Dock="Top"
+          FontWeight="SemiBold"
+          Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+          Text="{Binding Status}"
+          TextWrapping="Wrap"
+        />
+        <ListView
+          ItemsSource="{Binding Points}"
+          SelectedItem="{Binding Selected}"
+          SelectionMode="Single"
+        >
+          <ListView.View>
+            <GridView>
+              <GridViewColumn
+                Width="170"
+                DisplayMemberBinding="{Binding When}"
+                Header="{l:T History.Col.When}"
+              />
+              <GridViewColumn
+                Width="520"
+                DisplayMemberBinding="{Binding Description}"
+                Header="{l:T RestorePoints.Col.Description}"
+              />
+            </GridView>
+          </ListView.View>
+        </ListView>
+      </DockPanel>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:FirewallViewModel}">
+      <DockPanel>
+        <TextBlock
+          Margin="0,0,0,8"
+          DockPanel.Dock="Top"
+          Style="{StaticResource Muted}"
+          Text="{l:T Firewall.Hint}"
+          TextWrapping="Wrap"
+        />
+        <StackPanel Margin="0,0,0,8" DockPanel.Dock="Top" Orientation="Horizontal">
+          <ui:Button
+            Appearance="Primary"
+            Command="{Binding AddCommand}"
+            Content="{l:T Firewall.Add}"
+            Icon="{ui:SymbolIcon ShieldProhibited24}"
+          />
+          <TextBlock
+            Margin="12,0,0,0"
+            VerticalAlignment="Center"
+            Style="{StaticResource Muted}"
+            Text="{Binding Status}"
+          />
+        </StackPanel>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+          <ItemsControl ItemsSource="{Binding Apps}">
+            <ItemsControl.ItemTemplate>
+              <DataTemplate>
+                <Border Margin="0,0,0,6" Padding="14,8" Style="{StaticResource Panel}">
+                  <DockPanel>
+                    <ui:Button
+                      Command="{Binding DataContext.RemoveCommand, RelativeSource={RelativeSource AncestorType=ScrollViewer}}"
+                      CommandParameter="{Binding}"
+                      Content="{l:T Firewall.Remove}"
+                      DockPanel.Dock="Right"
+                      Icon="{ui:SymbolIcon Checkmark24}"
+                    />
+                    <Image Width="20" Height="20" Margin="0,0,10,0" Source="{Binding Icon}" />
+                    <StackPanel>
+                      <TextBlock
+                        FontWeight="SemiBold"
+                        Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                        Text="{Binding Name}"
+                      />
+                      <TextBlock
+                        Style="{StaticResource Muted}"
+                        Text="{Binding Path}"
+                        TextTrimming="CharacterEllipsis"
+                      />
+                    </StackPanel>
+                  </DockPanel>
+                </Border>
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+        </ScrollViewer>
+      </DockPanel>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:ContextMenuViewModel}">
+      <DockPanel>
+        <DockPanel Margin="0,0,0,8" DockPanel.Dock="Top">
+          <ui:Button
+            Margin="12,0,0,0"
+            Command="{Binding RestartExplorerCommand}"
+            Content="{l:T Optimize.RestartExplorer}"
+            DockPanel.Dock="Right"
+            Icon="{ui:SymbolIcon ArrowClockwise24}"
+          />
+          <TextBlock
+            Style="{StaticResource Muted}"
+            Text="{l:T ContextMenu.Hint}"
+            TextWrapping="Wrap"
+          />
+        </DockPanel>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+          <ItemsControl ItemsSource="{Binding Rows}" VirtualizingPanel.IsVirtualizing="True">
+            <ItemsControl.ItemTemplate>
+              <DataTemplate>
+                <Border Margin="0,0,0,6" Padding="14,8" Style="{StaticResource Panel}">
+                  <DockPanel>
+                    <ui:ToggleSwitch DockPanel.Dock="Right" IsChecked="{Binding IsOn}" />
+                    <StackPanel>
+                      <StackPanel Orientation="Horizontal">
+                        <TextBlock
+                          FontWeight="SemiBold"
+                          Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                          Text="{Binding Name}"
+                        />
+                        <Border Style="{StaticResource Badge}">
+                          <TextBlock
+                            FontSize="11"
+                            Style="{StaticResource Muted}"
+                            Text="{Binding Place}"
+                          />
+                        </Border>
+                      </StackPanel>
+                      <TextBlock
+                        Style="{StaticResource Muted}"
+                        Text="{Binding Detail}"
+                        TextTrimming="CharacterEllipsis"
+                      />
+                      <TextBlock
+                        Foreground="{DynamicResource SystemFillColorCriticalBrush}"
+                        Text="{Binding Error}"
+                        TextWrapping="Wrap"
+                        Visibility="{Binding Error, Converter={StaticResource VisibleWhen}}"
+                      />
+                    </StackPanel>
+                  </DockPanel>
+                </Border>
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+        </ScrollViewer>
+      </DockPanel>
+    </DataTemplate>
     <DataTemplate DataType="{x:Type vm:ShredderViewModel}">
       <DockPanel>
         <TextBlock

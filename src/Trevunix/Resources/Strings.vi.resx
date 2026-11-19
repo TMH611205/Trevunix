@@ -2116,4 +2116,121 @@ CPU {0}% · RAM {1}%</value>
   <data name="Shredder.Done" xml:space="preserve">
     <value>Đã xoá vĩnh viễn {0} file. {1} file không xoá được (đang dùng hoặc không có quyền).</value>
   </data>
+  <data name="Section.WindowsUpdate" xml:space="preserve">
+    <value>Windows Update</value>
+  </data>
+  <data name="Section.WindowsUpdate.Description" xml:space="preserve">
+    <value>Tạm dừng hoặc tiếp tục cập nhật</value>
+  </data>
+  <data name="WindowsUpdate.Running" xml:space="preserve">
+    <value>Windows Update đang hoạt động bình thường.</value>
+  </data>
+  <data name="WindowsUpdate.PausedUntil" xml:space="preserve">
+    <value>Cập nhật đang tạm dừng đến {0}.</value>
+  </data>
+  <data name="WindowsUpdate.Pause7" xml:space="preserve">
+    <value>Tạm dừng 1 tuần</value>
+  </data>
+  <data name="WindowsUpdate.Pause35" xml:space="preserve">
+    <value>Tạm dừng 5 tuần</value>
+  </data>
+  <data name="WindowsUpdate.Resume" xml:space="preserve">
+    <value>Tiếp tục</value>
+  </data>
+  <data name="WindowsUpdate.OpenSettings" xml:space="preserve">
+    <value>Mở Windows Update</value>
+  </data>
+  <data name="WindowsUpdate.Hint" xml:space="preserve">
+    <value>Giống nút tạm dừng trong Settings. Windows cho tạm dừng tối đa 5 tuần; sau đó phải cài các bản đang chờ rồi mới tạm dừng tiếp được. Tuỳ chọn khác nằm ở Tối ưu &gt; Windows Update.</value>
+  </data>
+  <data name="Section.RestorePoints" xml:space="preserve">
+    <value>Điểm khôi phục</value>
+  </data>
+  <data name="Section.RestorePoints.Description" xml:space="preserve">
+    <value>Tạo, xoá và giới hạn điểm khôi phục</value>
+  </data>
+  <data name="RestorePoints.Create" xml:space="preserve">
+    <value>Tạo ngay</value>
+  </data>
+  <data name="RestorePoints.Delete" xml:space="preserve">
+    <value>Xoá</value>
+  </data>
+  <data name="RestorePoints.Restore" xml:space="preserve">
+    <value>Quay về một điểm...</value>
+  </data>
+  <data name="RestorePoints.MaxSize" xml:space="preserve">
+    <value>Dung lượng dành cho điểm khôi phục trên ổ hệ thống:</value>
+  </data>
+  <data name="RestorePoints.ApplySize" xml:space="preserve">
+    <value>Áp dụng</value>
+  </data>
+  <data name="RestorePoints.Col.Description" xml:space="preserve">
+    <value>Mô tả</value>
+  </data>
+  <data name="RestorePoints.None" xml:space="preserve">
+    <value>Chưa có điểm khôi phục. Có thể System Protection đang tắt cho ổ hệ thống.</value>
+  </data>
+  <data name="RestorePoints.Manual" xml:space="preserve">
+    <value>Tạo bằng Trevunix</value>
+  </data>
+  <data name="RestorePoints.Created" xml:space="preserve">
+    <value>Đã tạo điểm khôi phục.</value>
+  </data>
+  <data name="RestorePoints.Failed" xml:space="preserve">
+    <value>Windows không tạo được điểm khôi phục. Hãy bật System Protection cho ổ hệ thống trước.</value>
+  </data>
+  <data name="RestorePoints.ConfirmDelete" xml:space="preserve">
+    <value>Xoá điểm khôi phục "{0}" lúc {1}?</value>
+  </data>
+  <data name="RestorePoints.DeleteFailed" xml:space="preserve">
+    <value>Windows không xoá được điểm khôi phục này.</value>
+  </data>
+  <data name="RestorePoints.SizeSet" xml:space="preserve">
+    <value>Điểm khôi phục giờ được dùng tối đa {0}% ổ hệ thống.</value>
+  </data>
+  <data name="RestorePoints.SizeFailed" xml:space="preserve">
+    <value>Windows không chấp nhận dung lượng mới. Có thể System Protection đang tắt.</value>
+  </data>
+  <data name="Section.Firewall" xml:space="preserve">
+    <value>Chặn Internet</value>
+  </data>
+  <data name="Section.Firewall.Description" xml:space="preserve">
+    <value>Không cho ứng dụng đã chọn kết nối mạng</value>
+  </data>
+  <data name="Firewall.Hint" xml:space="preserve">
+    <value>Thêm luật Windows Firewall chặn ứng dụng cả hai chiều. Bỏ chặn sẽ xoá các luật này.</value>
+  </data>
+  <data name="Firewall.Add" xml:space="preserve">
+    <value>Chặn một ứng dụng...</value>
+  </data>
+  <data name="Firewall.Remove" xml:space="preserve">
+    <value>Bỏ chặn</value>
+  </data>
+  <data name="Firewall.Filter" xml:space="preserve">
+    <value>Chương trình</value>
+  </data>
+  <data name="Firewall.None" xml:space="preserve">
+    <value>Chưa chặn ứng dụng nào.</value>
+  </data>
+  <data name="Section.ContextMenu" xml:space="preserve">
+    <value>Menu chuột phải</value>
+  </data>
+  <data name="Section.ContextMenu.Description" xml:space="preserve">
+    <value>Ẩn mục do ứng dụng thêm vào menu</value>
+  </data>
+  <data name="ContextMenu.Hint" xml:space="preserve">
+    <value>Các mục trong menu cổ điển (Show more options trên Windows 11). Tắt một mục chỉ ẩn nó, không gỡ gì cả. Khởi động lại File Explorer để thấy thay đổi.</value>
+  </data>
+  <data name="ContextMenu.Place.Files" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="ContextMenu.Place.Folders" xml:space="preserve">
+    <value>Thư mục</value>
+  </data>
+  <data name="ContextMenu.Place.FolderBackground" xml:space="preserve">
+    <value>Nền thư mục</value>
+  </data>
+  <data name="ContextMenu.Place.Drives" xml:space="preserve">
+    <value>Ổ đĩa</value>
+  </data>
 </root>

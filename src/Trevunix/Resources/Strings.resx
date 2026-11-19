@@ -2116,4 +2116,121 @@ CPU {0}% · RAM {1}%</value>
   <data name="Shredder.Done" xml:space="preserve">
     <value>Shredded {0} files. {1} could not be shredded (in use or no access).</value>
   </data>
+  <data name="Section.WindowsUpdate" xml:space="preserve">
+    <value>Windows Update</value>
+  </data>
+  <data name="Section.WindowsUpdate.Description" xml:space="preserve">
+    <value>Pause or resume updates</value>
+  </data>
+  <data name="WindowsUpdate.Running" xml:space="preserve">
+    <value>Windows Update is not paused.</value>
+  </data>
+  <data name="WindowsUpdate.PausedUntil" xml:space="preserve">
+    <value>Updates are paused until {0}.</value>
+  </data>
+  <data name="WindowsUpdate.Pause7" xml:space="preserve">
+    <value>Pause 1 week</value>
+  </data>
+  <data name="WindowsUpdate.Pause35" xml:space="preserve">
+    <value>Pause 5 weeks</value>
+  </data>
+  <data name="WindowsUpdate.Resume" xml:space="preserve">
+    <value>Resume</value>
+  </data>
+  <data name="WindowsUpdate.OpenSettings" xml:space="preserve">
+    <value>Open Windows Update</value>
+  </data>
+  <data name="WindowsUpdate.Hint" xml:space="preserve">
+    <value>The same pause as in Settings. Windows allows at most 5 weeks; after that it installs pending updates before it can be paused again. More options are in Optimize &gt; Windows Update.</value>
+  </data>
+  <data name="Section.RestorePoints" xml:space="preserve">
+    <value>Restore points</value>
+  </data>
+  <data name="Section.RestorePoints.Description" xml:space="preserve">
+    <value>Create, remove and limit restore points</value>
+  </data>
+  <data name="RestorePoints.Create" xml:space="preserve">
+    <value>Create now</value>
+  </data>
+  <data name="RestorePoints.Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="RestorePoints.Restore" xml:space="preserve">
+    <value>Go back to a point...</value>
+  </data>
+  <data name="RestorePoints.MaxSize" xml:space="preserve">
+    <value>Space for restore points on the system drive:</value>
+  </data>
+  <data name="RestorePoints.ApplySize" xml:space="preserve">
+    <value>Apply</value>
+  </data>
+  <data name="RestorePoints.Col.Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="RestorePoints.None" xml:space="preserve">
+    <value>No restore points. System Protection may be off for the system drive.</value>
+  </data>
+  <data name="RestorePoints.Manual" xml:space="preserve">
+    <value>Made with Trevunix</value>
+  </data>
+  <data name="RestorePoints.Created" xml:space="preserve">
+    <value>Restore point created.</value>
+  </data>
+  <data name="RestorePoints.Failed" xml:space="preserve">
+    <value>Windows did not create a restore point. Turn on System Protection for the system drive first.</value>
+  </data>
+  <data name="RestorePoints.ConfirmDelete" xml:space="preserve">
+    <value>Delete the restore point "{0}" from {1}?</value>
+  </data>
+  <data name="RestorePoints.DeleteFailed" xml:space="preserve">
+    <value>Windows could not delete this restore point.</value>
+  </data>
+  <data name="RestorePoints.SizeSet" xml:space="preserve">
+    <value>Restore points can now use up to {0}% of the system drive.</value>
+  </data>
+  <data name="RestorePoints.SizeFailed" xml:space="preserve">
+    <value>Windows did not accept the new size. System Protection may be off.</value>
+  </data>
+  <data name="Section.Firewall" xml:space="preserve">
+    <value>Block internet</value>
+  </data>
+  <data name="Section.Firewall.Description" xml:space="preserve">
+    <value>Stop chosen apps from going online</value>
+  </data>
+  <data name="Firewall.Hint" xml:space="preserve">
+    <value>Adds Windows Firewall rules that block the app in both directions. Unblocking removes them.</value>
+  </data>
+  <data name="Firewall.Add" xml:space="preserve">
+    <value>Block an app...</value>
+  </data>
+  <data name="Firewall.Remove" xml:space="preserve">
+    <value>Unblock</value>
+  </data>
+  <data name="Firewall.Filter" xml:space="preserve">
+    <value>Programs</value>
+  </data>
+  <data name="Firewall.None" xml:space="preserve">
+    <value>No apps are blocked.</value>
+  </data>
+  <data name="Section.ContextMenu" xml:space="preserve">
+    <value>Right-click menu</value>
+  </data>
+  <data name="Section.ContextMenu.Description" xml:space="preserve">
+    <value>Hide entries apps add to the menu</value>
+  </data>
+  <data name="ContextMenu.Hint" xml:space="preserve">
+    <value>Entries in the classic menu (Show more options on Windows 11). Turning one off hides it without uninstalling anything. Restart File Explorer to see the change.</value>
+  </data>
+  <data name="ContextMenu.Place.Files" xml:space="preserve">
+    <value>Files</value>
+  </data>
+  <data name="ContextMenu.Place.Folders" xml:space="preserve">
+    <value>Folders</value>
+  </data>
+  <data name="ContextMenu.Place.FolderBackground" xml:space="preserve">
+    <value>Folder background</value>
+  </data>
+  <data name="ContextMenu.Place.Drives" xml:space="preserve">
+    <value>Drives</value>
+  </data>
 </root>

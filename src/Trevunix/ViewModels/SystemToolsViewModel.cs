@@ -32,6 +32,10 @@ public sealed partial class SystemToolsViewModel : ObservableObject
             Repair,
             AppUpdates,
             Drivers,
+            WindowsUpdate,
+            RestorePoints,
+            Firewall,
+            ContextMenu,
             Dns,
             Drives,
             Battery,
@@ -53,6 +57,10 @@ public sealed partial class SystemToolsViewModel : ObservableObject
     public RepairViewModel Drivers { get; } =
         new("Drivers", SymbolRegular.Connector24, RepairCatalog.Drivers);
     public DuplicatesViewModel Duplicates { get; } = new();
+    public WindowsUpdateViewModel WindowsUpdate { get; } = new();
+    public RestorePointsViewModel RestorePoints { get; } = new();
+    public FirewallViewModel Firewall { get; } = new();
+    public ContextMenuViewModel ContextMenu { get; } = new();
     public ShredderViewModel Shredder { get; } = new();
     public RepairViewModel WipeFreeSpace { get; } =
         new("WipeFreeSpace", SymbolRegular.Eraser24, RepairCatalog.WipeFreeSpace());
@@ -73,6 +81,10 @@ public sealed partial class SystemToolsViewModel : ObservableObject
         Dns.Refresh();
         Battery.OnShown();
         History.Refresh();
+        WindowsUpdate.Refresh();
+        _ = RestorePoints.RefreshAsync();
+        _ = Firewall.RefreshAsync();
+        _ = ContextMenu.RefreshAsync();
     }
 
     public void OnHidden()
