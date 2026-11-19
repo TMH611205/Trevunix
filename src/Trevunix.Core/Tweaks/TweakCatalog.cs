@@ -127,6 +127,27 @@ public static class TweakCatalog
             [Dword(UserPolicies + @"\WindowsAI", "DisableAIDataAnalysis", 1)],
             MinBuild: 26100
         ),
+        new(
+            "RecallFeature",
+            TweakCategory.Ai,
+            TweakRisk.Optional,
+            [Dword(Policies + @"\WindowsAI", "AllowRecallEnablement", 0)],
+            TweakAfter.Reboot,
+            MinBuild: 26100
+        ),
+        new(
+            "ClickToDo",
+            TweakCategory.Ai,
+            TweakRisk.Optional,
+            [Dword(UserPolicies + @"\WindowsAI", "DisableClickToDo", 1)],
+            MinBuild: 26100
+        ),
+        new(
+            "EdgeSidebar",
+            TweakCategory.Ai,
+            TweakRisk.Optional,
+            [Dword(@"HKLM\SOFTWARE\Policies\Microsoft\Edge", "HubsSidebarEnabled", 0)]
+        ),
         // Performance
         new(
             "StartupDelay",
@@ -146,6 +167,47 @@ public static class TweakCatalog
             TweakCategory.Performance,
             TweakRisk.Optional,
             [Dword(CurrentVersion + @"\BackgroundAccessApplications", "GlobalUserDisabled", 1)]
+        ),
+        new(
+            "FastShutdown",
+            TweakCategory.Performance,
+            TweakRisk.Optional,
+            [
+                Text(@"HKCU\Control Panel\Desktop", "AutoEndTasks", "1"),
+                Text(@"HKCU\Control Panel\Desktop", "WaitToKillAppTimeout", "3000"),
+                Text(@"HKCU\Control Panel\Desktop", "HungAppTimeout", "3000"),
+            ]
+        ),
+        new(
+            "SearchIndexing",
+            TweakCategory.Performance,
+            TweakRisk.Optional,
+            [new ServiceStartAction("WSearch", ServiceStartAction.Disabled)],
+            TweakAfter.Reboot
+        ),
+        new(
+            "XboxServices",
+            TweakCategory.Performance,
+            TweakRisk.Optional,
+            [
+                new ServiceStartAction("XblAuthManager", ServiceStartAction.Disabled),
+                new ServiceStartAction("XblGameSave", ServiceStartAction.Disabled),
+                new ServiceStartAction("XboxNetApiSvc", ServiceStartAction.Disabled),
+                new ServiceStartAction("XboxGipSvc", ServiceStartAction.Disabled),
+            ],
+            TweakAfter.Reboot
+        ),
+        new(
+            "UnusedServices",
+            TweakCategory.Performance,
+            TweakRisk.Optional,
+            [
+                new ServiceStartAction("Fax", ServiceStartAction.Disabled),
+                new ServiceStartAction("MapsBroker", ServiceStartAction.Disabled),
+                new ServiceStartAction("RetailDemo", ServiceStartAction.Disabled),
+                new ServiceStartAction("WMPNetworkSvc", ServiceStartAction.Disabled),
+            ],
+            TweakAfter.Reboot
         ),
         new(
             "GpuScheduling",

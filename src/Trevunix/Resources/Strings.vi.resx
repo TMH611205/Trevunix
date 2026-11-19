@@ -1777,4 +1777,85 @@ CPU {0}% · RAM {1}%</value>
   <data name="Settings.Reset.Message" xml:space="preserve">
     <value>Không đọc được file cài đặt nên Trevunix dùng cài đặt mặc định. File cũ được lưu tại {0}.</value>
   </data>
+  <data name="Tweak.RecallFeature" xml:space="preserve">
+    <value>Gỡ tính năng Recall</value>
+  </data>
+  <data name="Tweak.RecallFeature.Description" xml:space="preserve">
+    <value>Không cho Windows bật Recall. Có tác dụng sau khi khởi động lại.</value>
+  </data>
+  <data name="Tweak.ClickToDo" xml:space="preserve">
+    <value>Tắt Click to Do</value>
+  </data>
+  <data name="Tweak.ClickToDo.Description" xml:space="preserve">
+    <value>Tắt các thao tác AI hiện ra trên nội dung màn hình khi nhấn Windows + chuột.</value>
+  </data>
+  <data name="Tweak.EdgeSidebar" xml:space="preserve">
+    <value>Ẩn thanh bên của Edge</value>
+  </data>
+  <data name="Tweak.EdgeSidebar.Description" xml:space="preserve">
+    <value>Bỏ thanh bên chứa Copilot và các ứng dụng khác trong Microsoft Edge.</value>
+  </data>
+  <data name="Tweak.FastShutdown" xml:space="preserve">
+    <value>Tắt máy nhanh hơn</value>
+  </data>
+  <data name="Tweak.FastShutdown.Description" xml:space="preserve">
+    <value>Tự đóng ứng dụng không phản hồi sau 3 giây thay vì chờ bạn. Dữ liệu chưa lưu trong ứng dụng bị treo sẽ mất.</value>
+  </data>
+  <data name="Tweak.SearchIndexing" xml:space="preserve">
+    <value>Tắt lập chỉ mục tìm kiếm</value>
+  </data>
+  <data name="Tweak.SearchIndexing.Description" xml:space="preserve">
+    <value>Dừng dịch vụ Windows Search. Giảm tải ổ đĩa trên máy yếu, nhưng tìm file và thư Outlook sẽ chậm hơn.</value>
+  </data>
+  <data name="Tweak.XboxServices" xml:space="preserve">
+    <value>Tắt các dịch vụ Xbox</value>
+  </data>
+  <data name="Tweak.XboxServices.Description" xml:space="preserve">
+    <value>Cho máy không dùng ứng dụng Xbox hay Game Pass. Đăng nhập Xbox, lưu game đám mây và cài đặt phụ kiện Xbox sẽ không hoạt động.</value>
+  </data>
+  <data name="Tweak.UnusedServices" xml:space="preserve">
+    <value>Tắt các dịch vụ ít dùng</value>
+  </data>
+  <data name="Tweak.UnusedServices.Description" xml:space="preserve">
+    <value>Fax, tải bản đồ ngoại tuyến, chế độ trưng bày ở cửa hàng và chia sẻ Windows Media Player.</value>
+  </data>
+  <data name="Cleanup.Target.VsCode" xml:space="preserve">
+    <value>Visual Studio Code</value>
+  </data>
+  <data name="Cleanup.Target.VsCode.Description" xml:space="preserve">
+    <value>Bộ nhớ đệm của trình soạn thảo và gói tiện ích đã tải. Cài đặt và tiện ích vẫn giữ nguyên.</value>
+  </data>
+  <data name="Cleanup.Target.Steam" xml:space="preserve">
+    <value>Steam</value>
+  </data>
+  <data name="Cleanup.Target.Steam.Description" xml:space="preserve">
+    <value>Bộ nhớ đệm trang web của cửa hàng và thư viện Steam. Game vẫn giữ nguyên.</value>
+  </data>
+  <data name="Cleanup.Target.Spotify" xml:space="preserve">
+    <value>Spotify</value>
+  </data>
+  <data name="Cleanup.Target.Spotify.Description" xml:space="preserve">
+    <value>Bộ nhớ đệm nhạc đã nghe. Bài hát đã tải có thể phải tải lại.</value>
+  </data>
+  <data name="Cleanup.Target.DevCaches" xml:space="preserve">
+    <value>Bộ nhớ đệm gói lập trình</value>
+  </data>
+  <data name="Cleanup.Target.DevCaches.Description" xml:space="preserve">
+    <value>Bộ nhớ đệm của npm, NuGet, pip và Yarn. Gói sẽ được tải lại khi dự án cần.</value>
+  </data>
+  <data name="Optimize.Profile.Export" xml:space="preserve">
+    <value>Xuất</value>
+  </data>
+  <data name="Optimize.Profile.Import" xml:space="preserve">
+    <value>Nhập</value>
+  </data>
+  <data name="Optimize.Profile.Apply" xml:space="preserve">
+    <value>Áp dụng</value>
+  </data>
+  <data name="Optimize.Profile.Filter" xml:space="preserve">
+    <value>Hồ sơ tinh chỉnh Trevunix</value>
+  </data>
+  <data name="Optimize.Profile.Confirm" xml:space="preserve">
+    <value>Có {0} tinh chỉnh trong file chưa bật ở trang này. Áp dụng?</value>
+  </data>
 </root>

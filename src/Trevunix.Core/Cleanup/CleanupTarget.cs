@@ -173,6 +173,36 @@ public static class CleanupCatalog
                 ),
             ]
         ),
+        new(
+            "VsCode",
+            CleanupGroup.AppsAndGames,
+            true,
+            [
+                new(@"%APPDATA%\Code\Cache"),
+                new(@"%APPDATA%\Code\CachedData"),
+                new(@"%APPDATA%\Code\Code Cache"),
+                new(@"%APPDATA%\Code\GPUCache"),
+                new(@"%APPDATA%\Code\CachedExtensionVSIXs"),
+            ]
+        ),
+        new(
+            "Steam",
+            CleanupGroup.AppsAndGames,
+            true,
+            [new(@"%LOCALAPPDATA%\Steam\htmlcache\Cache")]
+        ),
+        new("Spotify", CleanupGroup.AppsAndGames, false, [new(@"%LOCALAPPDATA%\Spotify\Data")]),
+        new(
+            "DevCaches",
+            CleanupGroup.AppsAndGames,
+            false,
+            [
+                new(@"%LOCALAPPDATA%\npm-cache"),
+                new(@"%LOCALAPPDATA%\NuGet\v3-cache"),
+                new(@"%LOCALAPPDATA%\pip\Cache"),
+                new(@"%LOCALAPPDATA%\Yarn\Cache"),
+            ]
+        ),
         new("RecycleBin", CleanupGroup.RecycleBin, false, []),
     ];
 

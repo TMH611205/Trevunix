@@ -1,5 +1,6 @@
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.IO;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Trevunix.Core.Tweaks;
@@ -227,6 +228,73 @@ public sealed partial class OptimizeViewModel : ObservableObject
         {
             foreach (var item in Items.Where(i => _engine.HasUndo(i.Tweak)))
                 await UndoAsync(item);
+        }
+        finally
+        {
+            IsBusy = false;
+            UpdateSummary();
+        }
+    }
+
+    [RelayCommand]
+    private async Task ExportProfile()
+    {
+        var dialog = new Microsoft.Win32.SaveFileDialog
+        {
+            FileName = "Trevunix-tweaks.json",
+            Filter = Tr.Get("Optimize.Profile.Filter") + "|*.json",
+        };
+        if (dialog.ShowDialog() != true)
+            return;
+
+        try
+        {
+            TweakProfile.Save(dialog.FileName, Items.Where(i => i.IsOn).Select(i => i.Tweak.Id));
+        }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
+        {
+            await Dialogs.InfoAsync(Tr.Get("Optimize.Profile.Export"), ex.Message);
+        }
+    }
+
+    [RelayCommand]
+    private async Task ImportProfile()
+    {
+        var dialog = new Microsoft.Win32.OpenFileDialog
+        {
+            Filter = Tr.Get("Optimize.Profile.Filter") + "|*.json",
+        };
+        if (dialog.ShowDialog() != true)
+            return;
+
+        IReadOnlyList<Tweak> tweaks;
+        try
+        {
+            tweaks = TweakProfile.Load(dialog.FileName);
+        }
+        catch (Exception ex)
+            when (ex is IOException or UnauthorizedAccessException or InvalidDataException)
+        {
+            await Dialogs.InfoAsync(Tr.Get("Optimize.Profile.Import"), ex.Message);
+            return;
+        }
+
+        // Only this page's tweaks; the other page (Optimize or Appearance) imports its own.
+        var ids = tweaks.Select(t => t.Id).ToHashSet();
+        var toApply = Items.Where(i => ids.Contains(i.Tweak.Id) && !i.IsOn).ToList();
+        var confirmed = await Dialogs.ConfirmAsync(
+            Tr.Get("Optimize.Profile.Import"),
+            Tr.Format("Optimize.Profile.Confirm", toApply.Count),
+            Tr.Get("Optimize.Profile.Apply")
+        );
+        if (!confirmed || toApply.Count == 0 || !await EnsureRestorePointAsync())
+            return;
+
+        IsBusy = true;
+        try
+        {
+            foreach (var item in toApply)
+                await ApplyAsync(item);
         }
         finally
         {

@@ -40,6 +40,18 @@
             Content="{l:T Optimize.UndoAll}"
             Icon="{ui:SymbolIcon ArrowUndo24}"
           />
+          <ui:Button
+            Margin="8,0,0,0"
+            Command="{Binding ExportProfileCommand}"
+            Content="{l:T Optimize.Profile.Export}"
+            Icon="{ui:SymbolIcon ArrowExport24}"
+          />
+          <ui:Button
+            Margin="8,0,0,0"
+            Command="{Binding ImportProfileCommand}"
+            Content="{l:T Optimize.Profile.Import}"
+            Icon="{ui:SymbolIcon ArrowImport24}"
+          />
           <ui:ProgressRing
             Width="20"
             Height="20"

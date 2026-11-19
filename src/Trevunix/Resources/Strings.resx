@@ -1777,4 +1777,85 @@ CPU {0}% · RAM {1}%</value>
   <data name="Settings.Reset.Message" xml:space="preserve">
     <value>The settings file could not be read, so Trevunix started with default settings. The old file was saved as {0}.</value>
   </data>
+  <data name="Tweak.RecallFeature" xml:space="preserve">
+    <value>Remove Recall</value>
+  </data>
+  <data name="Tweak.RecallFeature.Description" xml:space="preserve">
+    <value>Stops Windows from turning on Recall at all. Takes effect after a restart.</value>
+  </data>
+  <data name="Tweak.ClickToDo" xml:space="preserve">
+    <value>Turn off Click to Do</value>
+  </data>
+  <data name="Tweak.ClickToDo.Description" xml:space="preserve">
+    <value>Stops the AI actions that appear on screen content when you press Windows + click.</value>
+  </data>
+  <data name="Tweak.EdgeSidebar" xml:space="preserve">
+    <value>Hide the Edge sidebar</value>
+  </data>
+  <data name="Tweak.EdgeSidebar.Description" xml:space="preserve">
+    <value>Removes the sidebar with Copilot and other apps from Microsoft Edge.</value>
+  </data>
+  <data name="Tweak.FastShutdown" xml:space="preserve">
+    <value>Faster shutdown</value>
+  </data>
+  <data name="Tweak.FastShutdown.Description" xml:space="preserve">
+    <value>Closes apps that do not respond after 3 seconds instead of waiting for you. Unsaved work in a frozen app is lost.</value>
+  </data>
+  <data name="Tweak.SearchIndexing" xml:space="preserve">
+    <value>Turn off search indexing</value>
+  </data>
+  <data name="Tweak.SearchIndexing.Description" xml:space="preserve">
+    <value>Stops the Windows Search service. Uses less disk on slow PCs, but searching files and Outlook mail gets slower.</value>
+  </data>
+  <data name="Tweak.XboxServices" xml:space="preserve">
+    <value>Turn off Xbox services</value>
+  </data>
+  <data name="Tweak.XboxServices.Description" xml:space="preserve">
+    <value>For PCs that never use Xbox apps or Game Pass. Xbox sign-in, cloud saves and Xbox accessory settings stop working.</value>
+  </data>
+  <data name="Tweak.UnusedServices" xml:space="preserve">
+    <value>Turn off rarely used services</value>
+  </data>
+  <data name="Tweak.UnusedServices.Description" xml:space="preserve">
+    <value>Fax, offline maps download, store demo mode and Windows Media Player sharing.</value>
+  </data>
+  <data name="Cleanup.Target.VsCode" xml:space="preserve">
+    <value>Visual Studio Code</value>
+  </data>
+  <data name="Cleanup.Target.VsCode.Description" xml:space="preserve">
+    <value>Editor cache and downloaded extension packages. Settings and extensions stay.</value>
+  </data>
+  <data name="Cleanup.Target.Steam" xml:space="preserve">
+    <value>Steam</value>
+  </data>
+  <data name="Cleanup.Target.Steam.Description" xml:space="preserve">
+    <value>Web page cache of the Steam store and library. Games stay.</value>
+  </data>
+  <data name="Cleanup.Target.Spotify" xml:space="preserve">
+    <value>Spotify</value>
+  </data>
+  <data name="Cleanup.Target.Spotify.Description" xml:space="preserve">
+    <value>Streamed music cache. Downloaded songs may need to download again.</value>
+  </data>
+  <data name="Cleanup.Target.DevCaches" xml:space="preserve">
+    <value>Developer package caches</value>
+  </data>
+  <data name="Cleanup.Target.DevCaches.Description" xml:space="preserve">
+    <value>npm, NuGet, pip and Yarn caches. Packages download again when a project needs them.</value>
+  </data>
+  <data name="Optimize.Profile.Export" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="Optimize.Profile.Import" xml:space="preserve">
+    <value>Import</value>
+  </data>
+  <data name="Optimize.Profile.Apply" xml:space="preserve">
+    <value>Apply</value>
+  </data>
+  <data name="Optimize.Profile.Filter" xml:space="preserve">
+    <value>Trevunix tweak profile</value>
+  </data>
+  <data name="Optimize.Profile.Confirm" xml:space="preserve">
+    <value>{0} tweaks from the file are not on yet on this page. Apply them?</value>
+  </data>
 </root>
